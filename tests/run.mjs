@@ -84,9 +84,9 @@ function project(plan) {
   fs.mkdirSync(path.join(home, '.gemini', 'config'), {recursive: true});
   const quiet = () => {};
   installSkill({agent: 'all', home, env: {}, log: quiet});
-  for (const d of ['.claude/skills', '.agents/skills', '.gemini/config/skills']) assert.ok(fs.existsSync(path.join(home, d, 'video-motion', 'SKILL.md')), d);
+  for (const d of ['.claude/skills', '.agents/skills', '.gemini/config/skills']) assert.ok(fs.existsSync(path.join(home, d, 'connect-ai-video-motion', 'SKILL.md')), d);
   removeSkill({agent: 'all', home, env: {}, log: quiet});
-  for (const d of ['.claude/skills', '.agents/skills', '.gemini/config/skills']) assert.ok(!fs.existsSync(path.join(home, d, 'video-motion')), d);
+  for (const d of ['.claude/skills', '.agents/skills', '.gemini/config/skills']) assert.ok(!fs.existsSync(path.join(home, d, 'connect-ai-video-motion')), d);
   ok('install-skill / remove-skill in a temp HOME (Claude Code, Codex, Antigravity)');
 }
 console.log(`${n} passed`);

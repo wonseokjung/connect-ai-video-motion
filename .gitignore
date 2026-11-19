@@ -5,6 +5,6 @@ models/
 vm-demo/
 *-video-motion/
 projects/
-.video-motion.json
+.connect-ai-video-motion.json
 *.log
 .DS_Store

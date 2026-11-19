@@ -37,7 +37,7 @@ export const Sheet: React.FC<SheetProps> = (p) => {
   const cellW = p.cellW!, cellH = Math.round((cellW * layout.H) / layout.W), k = cellW / layout.W;
   return (
     <AbsoluteFill style={{background: '#0B0A09', fontFamily: FONT, color: '#EBE2D2'}}>
-      <div style={{position: 'absolute', left: 16, top: 18, fontSize: 26, fontWeight: 300}}>{p.title || 'video-motion · still sheet'}</div>
+      <div style={{position: 'absolute', left: 16, top: 18, fontSize: 26, fontWeight: 300}}>{p.title || 'connect-ai-video-motion · still sheet'}</div>
       {p.cells!.map((c, i) => {
         const x = 16 + (i % p.cols!) * (cellW + 16), y = 70 + Math.floor(i / p.cols!) * (cellH + 46);
         return (

@@ -1,4 +1,4 @@
-# video-motion
+# connect-ai-video-motion
 
 **얼굴 필터가 아닙니다.** 내 모습의 픽셀은 한 점도 바꾸지 않고, 얼굴과 몸 위에는 아무것도 올리지 않습니다. 내가 찍은 말하는 영상에서 내 **옆**의 빈 곳에 코드로 만든 모션그래픽을 얹습니다.
 
@@ -6,7 +6,7 @@
 
 > **Remotion 라이선스.** 이 키트는 MIT 지만, 돌아가는 엔진인 [Remotion](https://www.remotion.dev) 은 MIT 가 아닙니다. 개인, 직원 3명 이하 회사, 비영리는 무료이고, 그 밖의 회사는 Remotion 회사 라이선스가 필요합니다. 회사에서 쓰기 전에 [Remotion LICENSE.md](https://github.com/remotion-dev/remotion/blob/main/LICENSE.md) 를 읽어 주세요.
 
-![실제 말하는 영상에 얹은 video-motion](docs/demo/demo_a.webp)
+![실제 말하는 영상에 얹은 connect-ai-video-motion](docs/demo/demo_a.webp)
 
 만든 사람이 직접 찍은 12초 영상입니다. 그가 한 말에서 핵심 낱말 두 개와 챕터 줄을 뽑아 옆에 놓았고, 얼굴, 몸, 손 자리는 비웠습니다. [mp4](docs/demo/demo_a.mp4)
 
@@ -30,27 +30,27 @@ Node.js 18 이상과 git 만 있으면 됩니다. 파이썬은 필요 없고, ff
 GitHub 에서 바로:
 
 ```bash
-npx github:wonseokjung/video-motion demo
+npx github:wonseokjung/connect-ai-video-motion demo
 ```
 
 또는 내려받아서:
 
 ```bash
-git clone https://github.com/wonseokjung/video-motion.git
-cd video-motion
+git clone https://github.com/wonseokjung/connect-ai-video-motion.git
+cd connect-ai-video-motion
 npm install
-npx video-motion demo     # 내장 12초 샘플(그림으로 그린 대역 + 합성 목소리)을 처음부터 끝까지
+npx connect-ai-video-motion demo     # 내장 12초 샘플(그림으로 그린 대역 + 합성 목소리)을 처음부터 끝까지
 ```
 
 `vm-demo/out/final.mp4`, 스틸 시트(`sheet.jpg`), 보고서(`report.md`)가 생깁니다.
-안 되면 `npx video-motion doctor` 로 컴퓨터를 점검합니다.
+안 되면 `npx connect-ai-video-motion doctor` 로 컴퓨터를 점검합니다.
 
 ## 내 영상으로
 
 코딩 에이전트(Claude Code, Codex, Antigravity)와 함께 하는 것이 가장 쉽습니다.
 
 ```bash
-npx video-motion install-skill   # 에이전트에 스킬 추가
+npx connect-ai-video-motion install-skill   # 에이전트에 스킬 추가
 ```
 
 에이전트에게 "내 영상에 모션그래픽 얹어 줘" 라고 하고 파일을 주면, 스킬이 아래 단계를 돌리고 `check` 가 통과할 때까지 plan 을 고칩니다.
@@ -58,14 +58,14 @@ npx video-motion install-skill   # 에이전트에 스킬 추가
 영상 파일 하나로 한 줄에:
 
 ```bash
-npx video-motion my-talk.mp4      # 옆에 my-talk-video-motion/ 폴더를 만들고 전부 돌림
+npx connect-ai-video-motion my-talk.mp4      # 옆에 my-talk-video-motion/ 폴더를 만들고 전부 돌림
 ```
 
 직접 할 때:
 
 1. 폴더를 만들고 영상을 `<폴더>/input/` 에 넣습니다. 자막(YouTube, CapCut, Premiere 의 `.srt` / `.vtt`)이 있으면 옆에 둡니다.
 2. `my-info.json` 을 폴더에 복사해 이름, 하는 일, 스타일(`connect`, `night`, `clean`), 엔드카드 문구를 씁니다.
-3. `npx video-motion run <폴더>`. 9:16 판은 `--short`, 투명 `overlay.mov`(Premiere, CapCut, DaVinci 용)는 `--overlay`.
+3. `npx connect-ai-video-motion run <폴더>`. 9:16 판은 `--short`, 투명 `overlay.mov`(Premiere, CapCut, DaVinci 용)는 `--overlay`.
 4. `out/report.md` 를 읽고 `plan.json` 을 고친 뒤 다시 돌립니다. 그래픽 하나만 다시 뽑을 때는 `--only <id>`.
 
 ## 어떻게 돌아가나

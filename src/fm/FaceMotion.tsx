@@ -37,7 +37,7 @@ export const calcFaceMotion: CalculateMetadataFunction<FMProps> = async ({props}
     };
     data = {meta: await get('meta.json'), face: await get('face.json'), words: await get('words.json', {tier: 'C', captions: []}), plan: await get('plan.json', {items: []}), info: await get('my-info.json', {}), contrast: await get('contrast.json', {})};
   }
-  if (!data?.meta) throw new Error('No project loaded. Run: npx video-motion demo');
+  if (!data?.meta) throw new Error('No project loaded. Run: npx connect-ai-video-motion demo');
   const style = getStyle(data.info?.style);
   const layout = layoutPlan({meta: data.meta, face: data.face, words: data.words, plan: data.plan, info: data.info, style, aspect: props.aspect, outWidth: props.outWidth});
   return {durationInFrames: layout.total, fps: layout.fps, width: layout.W, height: layout.H, props: {...props, data, layout}};

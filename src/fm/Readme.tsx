@@ -82,7 +82,7 @@ export const Readme: React.FC<RP> = (p) => {
       </div>
       <div style={{position: 'absolute', left: 60, top: 60, fontFamily: FONT, fontWeight: 200, fontSize: 56, color: '#EBE2D2'}}>{broken ? 'Broken on purpose' : 'Fixed: remove "pos"'}</div>
       <div style={{position: 'absolute', left: 1210, top: 150, width: 650, fontFamily: 'ui-monospace, Menlo, monospace', fontSize: 25, lineHeight: 1.5, color: broken ? '#F08A84' : '#8FD694', whiteSpace: 'pre-wrap'}}>
-        {'$ npx video-motion check\n\n'}
+        {'$ npx connect-ai-video-motion check\n\n'}
         {(broken ? p.msg || '' : p.pass || '').slice(0, typed)}
       </div>
     </AbsoluteFill>

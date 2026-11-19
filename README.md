@@ -1,4 +1,4 @@
-# video-motion
+# connect-ai-video-motion
 
 **Not a face filter.** It never changes a single pixel of you and never puts anything on your face or body. It puts code-made motion graphics in the empty space *next to* you in your own talking-head video.
 
@@ -6,7 +6,7 @@ You talk. The kit reads where your face is and what you said, puts the matching 
 
 > **Remotion licence.** This kit is MIT, but it runs on [Remotion](https://www.remotion.dev), which is not MIT. Remotion is free for individuals, companies with up to 3 employees and non-profits; other companies need a Remotion Company License. Read [Remotion's LICENSE.md](https://github.com/remotion-dev/remotion/blob/main/LICENSE.md) before you use this at work.
 
-![video-motion on a real talking-head video](docs/demo/demo_a.webp)
+![connect-ai-video-motion on a real talking-head video](docs/demo/demo_a.webp)
 
 The author's own 12 s clip: two key words and a chapter line, placed beside him from the words he said, face, body and hands left clear. [mp4](docs/demo/demo_a.mp4)
 
@@ -30,27 +30,27 @@ You need Node.js 18 or newer and git. Nothing else: the kit uses the ffmpeg that
 Straight from GitHub:
 
 ```bash
-npx github:wonseokjung/video-motion demo
+npx github:wonseokjung/connect-ai-video-motion demo
 ```
 
 Or clone it:
 
 ```bash
-git clone https://github.com/wonseokjung/video-motion.git
-cd video-motion
+git clone https://github.com/wonseokjung/connect-ai-video-motion.git
+cd connect-ai-video-motion
 npm install
-npx video-motion demo     # built-in 12 s sample (a drawn stand-in, synthetic voice), start to finish
+npx connect-ai-video-motion demo     # built-in 12 s sample (a drawn stand-in, synthetic voice), start to finish
 ```
 
 It writes `vm-demo/out/final.mp4`, a still sheet (`sheet.jpg`) and a report (`report.md`).
-`npx video-motion doctor` checks your computer if something does not run.
+`npx connect-ai-video-motion doctor` checks your computer if something does not run.
 
 ## Your own video
 
 The easy way is with a coding agent (Claude Code, Codex, Antigravity):
 
 ```bash
-npx video-motion install-skill   # adds the skill to your agents
+npx connect-ai-video-motion install-skill   # adds the skill to your agents
 ```
 
 Then tell your agent: "put motion graphics on my video" and give it the file. The skill runs the steps below and fixes the plan until `check` passes.
@@ -58,14 +58,14 @@ Then tell your agent: "put motion graphics on my video" and give it the file. Th
 Or in one line, with any video file:
 
 ```bash
-npx video-motion my-talk.mp4      # makes my-talk-video-motion/ next to it and runs everything
+npx connect-ai-video-motion my-talk.mp4      # makes my-talk-video-motion/ next to it and runs everything
 ```
 
 By hand:
 
 1. Make a folder, put your video in `<folder>/input/`. If you have subtitles (`.srt` / `.vtt` from YouTube, CapCut, Premiere), put them next to it.
 2. Copy `my-info.json` into the folder and fill in your name, what you do, a style (`connect`, `night`, `clean`) and your end card line.
-3. `npx video-motion run <folder>`, add `--short` for a 9:16 version and `--overlay` for a transparent `overlay.mov` (Premiere, CapCut, DaVinci).
+3. `npx connect-ai-video-motion run <folder>`, add `--short` for a 9:16 version and `--overlay` for a transparent `overlay.mov` (Premiere, CapCut, DaVinci).
 4. Read `out/report.md`. Change `plan.json`, run again. `--only <id>` re-renders one graphic.
 
 ## How it works

@@ -1,5 +1,5 @@
 {
-  "name": "video-motion",
+  "name": "connect-ai-video-motion",
   "description": "Put code-made motion graphics on top of your own talking-head video. Face-aware, speech-aware, self-checking. Never touches face pixels.",
   "scripts": {
     "studio": "remotion studio src/index.ts",
@@ -24,7 +24,7 @@
   },
   "version": "0.1.0",
   "bin": {
-    "video-motion": "bin/cli.mjs"
+    "connect-ai-video-motion": "bin/cli.mjs"
   },
   "type": "module",
   "license": "MIT",
@@ -49,9 +49,9 @@
   ],
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/wonseokjung/video-motion.git"
+    "url": "git+https://github.com/wonseokjung/connect-ai-video-motion.git"
   },
-  "homepage": "https://github.com/wonseokjung/video-motion#readme",
+  "homepage": "https://github.com/wonseokjung/connect-ai-video-motion#readme",
   "author": "CONNECT AI LAB",
   "keywords": [
     "remotion",

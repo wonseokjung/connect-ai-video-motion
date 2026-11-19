@@ -6,7 +6,7 @@ import {StandIn} from './standin/StandIn';
 import {FaceSheet, calcFaceSheet} from './fm/FaceSheet';
 import {Readme, calcReadme} from './fm/Readme';
 
-// video-motion: FaceMotion (16:9), FaceMotionShort (9:16), Sheet (still sheet for check).
+// connect-ai-video-motion: FaceMotion (16:9), FaceMotionShort (9:16), Sheet (still sheet for check).
 // Data comes from the project folder (the CLI passes it in; the Studio reads it from the public dir).
 export const Root: React.FC = () => (
   <>

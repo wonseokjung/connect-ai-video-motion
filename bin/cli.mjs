@@ -1,5 +1,5 @@
 #!/usr/bin/env node
-// video-motion: motion graphics on top of your own talking-head video.
+// connect-ai-video-motion: motion graphics on top of your own talking-head video.
 // The kit never changes a face pixel and never puts anything on the detected face box.
 import fs from 'node:fs';
 import path from 'node:path';
@@ -86,7 +86,7 @@ async function full(P, {short = false, overlay = false, only = null, force = fal
 
 const projectDir = (d) => path.resolve(d || '.');
 
-// `video-motion my-talk.mp4`: a video file instead of a command makes a project folder next to it and runs everything
+// `connect-ai-video-motion my-talk.mp4`: a video file instead of a command makes a project folder next to it and runs everything
 const VIDEO = /\.(mp4|mov|m4v|mkv|webm)$/i;
 async function fromFile(file) {
   const src = path.resolve(file);

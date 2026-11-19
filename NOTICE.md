@@ -1,6 +1,6 @@
 # NOTICE
 
-video-motion is CONNECT AI LAB's code (MIT, see LICENSE), built on Remotion. It is put together from the open-source parts below. Licence texts are in `licenses/`. "Adapted" = code was copied and changed; "idea" = no code copied.
+connect-ai-video-motion is CONNECT AI LAB's code (MIT, see LICENSE), built on Remotion. It is put together from the open-source parts below. Licence texts are in `licenses/`. "Adapted" = code was copied and changed; "idea" = no code copied.
 
 ## Parts and where they come from
 

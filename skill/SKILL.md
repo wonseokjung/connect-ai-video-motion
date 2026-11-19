@@ -1,12 +1,12 @@
 ---
-name: video-motion
+name: connect-ai-video-motion
 description: Put code-made motion graphics on top of the user's own talking-head video (name tag, key word, number counter, 1-2-3 steps, screen card with arrow, chapter line, end card). Use when the user says "put motion graphics on my video", "add graphics to this clip", "이 영상에 모션그래픽 얹어 줘", or gives a facecam / talking-head video and wants it to look edited. It never changes the person's pixels and never places anything on the face or body.
 ---
 
-# video-motion
+# connect-ai-video-motion
 
 You turn the user's video into: `out/final.mp4` (video + graphics), and on request `out/overlay.mov` (transparent, for Premiere / CapCut / DaVinci) and `out/short_9x16.mp4`.
-The kit is at the path in `.video-motion.json` next to this file (`kit`). Run its CLI with `node <kit>/bin/cli.mjs`.
+The kit is at the path in `.connect-ai-video-motion.json` next to this file (`kit`). Run its CLI with `node <kit>/bin/cli.mjs`.
 
 ## Rules you must keep
 - Only what the speaker said. Every graphic comes from a word in `work/words.json` (or from `my-info.json`, which the user wrote). Never add numbers, claims or names they did not say.
