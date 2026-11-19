@@ -1,0 +1,63 @@
+{
+  "name": "video-motion",
+  "description": "Put code-made motion graphics on top of your own talking-head video. Face-aware, speech-aware, self-checking. Never touches face pixels.",
+  "scripts": {
+    "studio": "remotion studio src/index.ts",
+    "demo": "node bin/cli.mjs demo",
+    "check": "node bin/cli.mjs check",
+    "test": "node tests/run.mjs",
+    "vm": "node bin/cli.mjs"
+  },
+  "dependencies": {
+    "@remotion/bundler": "4.0.529",
+    "@remotion/captions": "4.0.529",
+    "@remotion/cli": "4.0.529",
+    "@remotion/google-fonts": "4.0.529",
+    "@remotion/layout-utils": "4.0.529",
+    "@remotion/paths": "4.0.529",
+    "@remotion/renderer": "4.0.529",
+    "@remotion/rough-notation": "4.0.529",
+    "@remotion/transitions": "4.0.529",
+    "react": "19.1.0",
+    "react-dom": "19.1.0",
+    "remotion": "4.0.529"
+  },
+  "version": "0.1.0",
+  "bin": {
+    "video-motion": "bin/cli.mjs"
+  },
+  "type": "module",
+  "license": "MIT",
+  "engines": {
+    "node": ">=18"
+  },
+  "files": [
+    "bin/",
+    "lib/",
+    "src/",
+    "skill/",
+    "licenses/",
+    "public/sample/",
+    "tests/",
+    "my-info.json",
+    "remotion.config.ts",
+    "tsconfig.json",
+    "NOTICE.md",
+    "README.md",
+    "README.ko.md",
+    "LICENSE"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/wonseokjung/video-motion.git"
+  },
+  "homepage": "https://github.com/wonseokjung/video-motion#readme",
+  "author": "CONNECT AI LAB",
+  "keywords": [
+    "remotion",
+    "motion-graphics",
+    "talking-head",
+    "video",
+    "face-aware"
+  ]
+}

@@ -1,0 +1,15 @@
+1
+00:00:00,600 --> 00:00:02,760
+Hi, I'm Alex Rivera.
+
+2
+00:00:03,210 --> 00:00:05,530
+I make short videos with AI.
+
+3
+00:00:05,980 --> 00:00:09,420
+This month I tried three new tools.
+
+4
+00:00:09,870 --> 00:00:11,310
+Here is what worked.

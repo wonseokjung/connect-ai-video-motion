@@ -1,0 +1,8 @@
+{
+  "version": 1,
+  "note": "Broken on purpose: a big title forced onto the middle of the frame (over the face) and a 6-word label. check must FAIL on both.",
+  "items": [
+    {"id": "title-on-face", "kind": "keyword", "at": {"text": "AI", "near": 5.1}, "text": "AI", "pos": [0.44, 0.22]},
+    {"id": "too-many-words", "kind": "counter", "at": {"text": "three", "near": 8.0}, "value": "3", "unit": "tools", "label": "tools I tried this whole month"}
+  ]
+}

@@ -1,0 +1,10 @@
+node_modules/
+out/
+work/
+models/
+vm-demo/
+*-video-motion/
+projects/
+.video-motion.json
+*.log
+.DS_Store
