@@ -1,0 +1,30 @@
+{
+  "kind": "remotion/paths-journey",
+  "title": "Journey A to B",
+  "description": "A pointer travels along a curved path (getPointAtLength, getTangentAtLength) and draws it gold behind itself, from the first word to the second.",
+  "source": {
+    "type": "remotion",
+    "package": "@remotion/paths",
+    "version": "4.0.529"
+  },
+  "license": "MIT",
+  "use": "compare",
+  "props": {
+    "text": "from (1-2 words)",
+    "sub": "to (1-2 words)",
+    "label": "optional small caps"
+  },
+  "place": "box",
+  "size": {
+    "aspect": 1.7,
+    "minW": 0.22,
+    "maxW": 0.34
+  },
+  "dur": 2.8,
+  "family": "journey",
+  "example": {
+    "text": "Raw clip",
+    "sub": "Finished video",
+    "label": "today"
+  }
+}

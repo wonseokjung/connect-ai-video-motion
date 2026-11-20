@@ -1,0 +1,29 @@
+{
+  "kind": "remotion/noise-topo-label",
+  "title": "Contour map label",
+  "description": "Thin contour lines drawn from noise sweep across like a map, one gold ridge, a label above (@remotion/noise noise2D).",
+  "source": {
+    "type": "remotion",
+    "package": "@remotion/noise",
+    "version": "4.0.529"
+  },
+  "license": "MIT",
+  "use": "label",
+  "props": {
+    "text": "1-2 words",
+    "sub": "small caps",
+    "color": "line colour (teal default)"
+  },
+  "place": "box",
+  "size": {
+    "aspect": 1.8,
+    "minW": 0.22,
+    "maxW": 0.34
+  },
+  "dur": 3,
+  "family": "topo",
+  "example": {
+    "text": "The big picture",
+    "sub": "overview"
+  }
+}

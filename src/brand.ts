@@ -1,9 +1,11 @@
 // CONNECT AI LAB look: black × gold base, thin sans, subject colours on top.
 import {loadFont} from '@remotion/google-fonts/Inter';
 
-const inter = loadFont('normal', {weights: ['200', '300', '400'], subsets: ['latin']});
+const inter = loadFont('normal', {weights: ['200', '300', '400', '500'], subsets: ['latin']});
 
 export const FONT = inter.fontFamily;
+// resolves when every weight is loaded: graphics that measure text wait for it (src/parts/FontGate.tsx)
+export const fontsReady: Promise<unknown> = inter.waitUntilDone();
 
 export const C = {
   black: '#0B0A09',

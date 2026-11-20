@@ -1,0 +1,28 @@
+{
+  "kind": "remotion/motion-blur-trail",
+  "title": "Fast word with trail",
+  "description": "A word flies in fast and stops, a short motion trail follows it (@remotion/motion-blur Trail).",
+  "source": {
+    "type": "remotion",
+    "package": "@remotion/motion-blur",
+    "version": "4.0.529"
+  },
+  "license": "MIT",
+  "use": "emphasis",
+  "props": {
+    "text": "1-2 words",
+    "sub": "small caps under it"
+  },
+  "place": "box",
+  "size": {
+    "aspect": 3,
+    "minW": 0.22,
+    "maxW": 0.36
+  },
+  "dur": 2.4,
+  "family": "trail-word",
+  "example": {
+    "text": "Faster",
+    "sub": "no install"
+  }
+}

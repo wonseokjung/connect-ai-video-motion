@@ -1,0 +1,23 @@
+{
+  "kind": "body/contour-line",
+  "title": "Line around you",
+  "description": "A thin gold line traces your head and shoulders a little outside the outline and a word rides at its end. It moves with you.",
+  "use": "body",
+  "props": {
+    "text": "small caps word at the end"
+  },
+  "place": "attach",
+  "attach": "contour",
+  "dur": 2.8,
+  "family": "contour-line",
+  "example": {
+    "text": "focus",
+    "at": 2.2
+  },
+  "source": {
+    "type": "body",
+    "path": "catalog/body/contour-line/index.tsx",
+    "note": "uses the body detector (work/body.json: joints, hands, person grid, matte)"
+  },
+  "license": "MIT"
+}

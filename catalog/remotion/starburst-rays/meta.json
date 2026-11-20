@@ -1,0 +1,29 @@
+{
+  "kind": "remotion/starburst-rays",
+  "title": "Rays behind a number",
+  "description": "Sun rays turn slowly behind a big number that counts up (@remotion/starburst, WebGL).",
+  "source": {
+    "type": "remotion",
+    "package": "@remotion/starburst",
+    "version": "4.0.529"
+  },
+  "license": "Remotion License",
+  "use": "number",
+  "props": {
+    "value": "number",
+    "unit": "short unit or label",
+    "color": "ray colour (gold default)"
+  },
+  "place": "box",
+  "size": {
+    "aspect": 1.4,
+    "minW": 0.16,
+    "maxW": 0.26
+  },
+  "dur": 2.8,
+  "family": "starburst",
+  "example": {
+    "value": "100",
+    "unit": "percent free"
+  }
+}

@@ -1,126 +1,151 @@
 # connect-ai-video-motion
 
-**얼굴 필터가 아닙니다.** 내 모습의 픽셀은 한 점도 바꾸지 않고, 얼굴과 몸 위에는 아무것도 올리지 않습니다. 내가 찍은 말하는 영상에서 내 **옆**의 빈 곳에 코드로 만든 모션그래픽을 얹습니다.
-
-내가 말하면 키트가 얼굴이 어디 있는지와 무슨 말을 했는지 읽고, 그 말에 맞는 그래픽(이름표, 핵심 낱말, 올라가는 숫자, 1 · 2 · 3 단계, 화살표가 달린 화면 카드, 챕터 줄, 엔드카드)을 내 옆에 놓습니다. 그리고 스스로 검사해서 무엇이 잘못됐는지 문장으로 알려 줍니다.
-
-> **Remotion 라이선스.** 이 키트는 MIT 지만, 돌아가는 엔진인 [Remotion](https://www.remotion.dev) 은 MIT 가 아닙니다. 개인, 직원 3명 이하 회사, 비영리는 무료이고, 그 밖의 회사는 Remotion 회사 라이선스가 필요합니다. 회사에서 쓰기 전에 [Remotion LICENSE.md](https://github.com/remotion-dev/remotion/blob/main/LICENSE.md) 를 읽어 주세요.
-
-![실제 말하는 영상에 얹은 connect-ai-video-motion](docs/demo/demo_a.webp)
-
-만든 사람이 직접 찍은 12초 영상입니다. 그가 한 말에서 핵심 낱말 두 개와 챕터 줄을 뽑아 옆에 놓았고, 얼굴, 몸, 손 자리는 비웠습니다. [mp4](docs/demo/demo_a.mp4)
-
-## 먼저 보기
-
-| | 데모 | 볼 곳 |
-|---|---|---|
-| A | [demo_a.mp4](docs/demo/demo_a.mp4) | 실제 영상에 얹은 완성본(위) |
-| B | [demo_b.mp4](docs/demo/demo_b.mp4) | 왼쪽: 같은 그래픽을 템플릿처럼 한 자리에 고정해서 화면 밖으로 나감. 오른쪽: 얼굴 기준으로 배치 |
-| C | [demo_c.mp4](docs/demo/demo_c.mp4) | 일부러 얼굴을 가리는 plan(그림 대역) → `check` 가 실제 메시지로 잡음 → 고침 → `PASS` |
-| 9:16 | [demo_916.mp4](docs/demo/demo_916.mp4) | plan 하나로 16:9 와 9:16 을 동시에(그림 대역) |
-
-<p><img src="docs/demo/demo_b.webp" width="360" alt="고정 자리 대 얼굴 기준"> <img src="docs/demo/demo_c.webp" width="360" alt="check 가 얼굴 가림을 잡음"></p>
-
-데모 영상은 이 저장소의 `docs/demo/` 에만 있고 npm 패키지에는 들어가지 않습니다.
-
-## 30초 만에 해 보기
-
-Node.js 18 이상과 git 만 있으면 됩니다. 파이썬은 필요 없고, ffmpeg 는 Remotion 안에 든 것을 씁니다.
-
-GitHub 에서 바로:
+**CONNECT AI LAB 이 만든 오픈소스 · 모두를 위한 AI 교육.** 쓰임은 하나입니다. 내 영상 위에 모션그래픽을 올릴 때 쓰는 도구.
 
 ```bash
-npx github:wonseokjung/connect-ai-video-motion demo
+npx connect-ai-video-motion demo
 ```
 
-또는 내려받아서:
+[![만든 사람의 실제 영상 위 그래픽 57종](docs/hero.webp)](docs/index.html)
+
+**[카탈로그 페이지 열기](docs/index.html)**: 그래픽 57종을 실제 영상 위 살아 있는 클립으로, 출처별로 골라 보고, 코딩 에이전트에게 줄 프롬프트를 복사합니다.
+
+**모든 모션그래픽 생태계를 한 줄로 불러서, 내 주변 빈자리에.** Remotion 패키지, HyperFrames 블록, Lottie 파일, 내가 만든 컴포넌트가 모두 하나의 층을 지나갑니다. 이 층은 내 얼굴 · 몸 · 손이 어디 있는지 알고, 그래픽마다 좋은 빈자리를 찾고, 스스로 검사합니다.
+
+```mermaid
+flowchart LR
+  R["Remotion 패키지<br/>paths · shapes · rough-notation · transitions<br/>noise · motion-blur · three · gsap · light-leaks ..."] --> C
+  H["HyperFrames 블록<br/>HTML + CSS + GSAP 타임라인"] --> C
+  L["Lottie 파일<br/>After Effects / LottieFiles"] --> C
+  U["내 .tsx 컴포넌트"] --> C
+  C["카탈로그<br/>공통 meta.json 규격<br/>{ kind: ... }"] --> E
+  F["내 영상<br/>얼굴 · 몸 · 손 · 말"] --> E
+  E["얼굴 + 몸 인식 층<br/>빈자리 찾기 · 사람 피하기 · 검사"] --> O["final.mp4 · overlay.mov · report"]
+```
+
+MMA 가 여러 무술의 좋은 기술을 하나로 이어 붙였듯이, 이 키트는 그래픽 라이브러리를 하나 더 만들지 않습니다. 이미 있는 것들을 이어서, 어느 것이든 `plan.json` 한 줄이 되게 합니다.
+
+```json
+{"kind": "remotion/rough-highlight", "at": {"text": "무료로", "near": 2.0}, "text": "Free"}
+{"kind": "hyperframes/split-words-rise", "at": 7.6, "text": "More colorful"}
+{"kind": "lottie/gold-check", "at": 9.9}
+{"kind": "custom", "component": "./my/Thing.tsx", "at": 4.2, "text": "Mine"}
+```
+
+**사람 픽셀은 한 점도 바꾸지 않습니다.** 기본값은 얼굴 · 몸 · 손(1초에 15번 측정)을 피해 빈자리에 놓는 것입니다. 손을 따라다니는 그래픽, 사람 뒤에 서는 그래픽도 있지만 카탈로그의 선택지 몇 개일 뿐 기본값이 아닙니다.
+
+> **라이선스.** 이 키트는 MIT 입니다. 바탕인 [Remotion](https://www.remotion.dev) 은 MIT 가 아닙니다. 개인, 직원 3명 이하 회사, 비영리는 무료이고 그 밖의 회사는 Remotion Company License 가 필요합니다([LICENSE.md](https://github.com/remotion-dev/remotion/blob/main/LICENSE.md)). 카탈로그 일부는 같은 Remotion License 패키지를 쓰고, HyperFrames 블록은 Apache-2.0, GSAP 는 GreenSock 의 standard no-charge license 입니다. 항목마다 `meta.json` 에 라이선스가 적혀 있고 전체 목록은 [NOTICE.md](NOTICE.md) 에 있습니다.
+
+위 영상과 [카탈로그 페이지](docs/index.html)의 모든 클립은 만든 사람의 실제 영상입니다(방 네 곳, 빛 네 가지, 허락하에 실었습니다). 그래픽 하나가 `plan.json` 한 줄이고, 화면 글자는 그 클립에서 그가 한 말입니다(한국어, 화면은 영어). 손 위치를 손으로 적은 상자는 없습니다. 몸 인식이 찾았습니다.
+
+## 보기
+
+| | 파일 | 볼 것 |
+|---|---|---|
+| 카탈로그 페이지 | [docs/index.html](docs/index.html) | 그래픽 57종, 하나에 살아 있는 클립 하나, `kind` · 라이선스 · 복사할 프롬프트 |
+| 몽타주 | [docs/hero.mp4](docs/hero.mp4) | 그중 열한 개, 한 박자에 하나 |
+| 시트 | [docs/sheet.jpg](docs/sheet.jpg) | 그래픽마다 정점의 정지 화면 하나 |
+| 몸 | [docs/body_sheet.jpg](docs/body_sheet.jpg) | 몸 인식이 보는 것: 사람 영역, 관절, 손, 손가락 수 |
+
+## 해 보기
+
+Node.js 18 이상만 있으면 됩니다. Python 은 필요 없고 ffmpeg 는 Remotion 안에 든 것을 씁니다.
 
 ```bash
 git clone https://github.com/wonseokjung/connect-ai-video-motion.git
 cd connect-ai-video-motion
 npm install
-npx connect-ai-video-motion demo     # 내장 12초 샘플(그림으로 그린 대역 + 합성 목소리)을 처음부터 끝까지
+npx connect-ai-video-motion demo           # 들어 있는 샘플로 처음부터 끝까지
+npx connect-ai-video-motion catalog        # 부를 수 있는 그래픽 전부, 출처별
+npx connect-ai-video-motion gallery vm-demo --sheet
 ```
 
-`vm-demo/out/final.mp4`, 스틸 시트(`sheet.jpg`), 보고서(`report.md`)가 생깁니다.
-안 되면 `npx connect-ai-video-motion doctor` 로 컴퓨터를 점검합니다.
+내 영상: `npx connect-ai-video-motion my-talk.mp4`. 코딩 에이전트(Claude Code, Codex, Antigravity)로 하려면 `npx connect-ai-video-motion install-skill` 한 뒤 "내 영상에 모션그래픽 얹어 줘" 라고 하면 됩니다.
 
-## 내 영상으로
+## 어떻게 놓는가
 
-코딩 에이전트(Claude Code, Codex, Antigravity)와 함께 하는 것이 가장 쉽습니다.
+1. **얼굴.** Mac 에서는 macOS Vision. 다른 컴퓨터에서는 `face-sheet.jpg` 를 보고 사람이나 에이전트가 얼굴 상자를 적습니다.
+2. **몸과 손.** macOS Vision 이 몸 관절(최대 19개), 손마다 21점, 사람 영역(64×36 격자)을 1초에 15번 찾고, 그래픽이 사람 뒤로 가는 구간에는 사람 매트도 만듭니다. Windows · Linux 에서는 MediaPipe 가 같은 일을 합니다(아래). 둘 다 없으면 0.1 처럼 얼굴 상자에서 몸을 짐작합니다.
+3. **빈자리.** 보호 영역 = 얼굴 + 측정한 사람(팔 · 손 포함) + 여백, 그래픽이 떠 있는 시간 전체에 걸쳐서. 이름 붙은 자리(옆, 아래 띠, 위)를 먼저 보고 없으면 빈 곳 전체에서 찾습니다. 크게 움직여서 한 자리가 끝까지 비지 않으면 반으로 나눠 한 자리에서 다음 자리로 페이드합니다. 그래도 없으면 숨기고 리포트에 이유를 씁니다.
+4. **말.** `plan.json` 은 "한 말 → 그래픽" 표입니다. 단어 시간이 있으면 단어 뒤 40 ms, 문장 자막이면 ±0.2 s 에 뜹니다.
+5. **검사.** `check` 가 문제를 문장으로 씁니다: 얼굴을 가림, 사람(몸 · 팔 · 손, 측정값)을 가림, 다른 그래픽 위에 겹침, 화면 밖, 4단어 넘음, 대비 부족, 손가락 광선이 얼굴을 지남, 몸 윤곽선이 몸에 닿음, 같은 디자인 두 번.
 
-```bash
-npx connect-ai-video-motion install-skill   # 에이전트에 스킬 추가
-```
+## 카탈로그
 
-에이전트에게 "내 영상에 모션그래픽 얹어 줘" 라고 하고 파일을 주면, 스킬이 아래 단계를 돌리고 `check` 가 통과할 때까지 plan 을 고칩니다.
+`npx connect-ai-video-motion catalog` 이 전부 보여 줍니다. 지금 **재생되는 그래픽 57개**, 그리고 아직 안 되는 4개는 이유와 함께 목록에 있습니다.
 
-영상 파일 하나로 한 줄에:
-
-```bash
-npx connect-ai-video-motion my-talk.mp4      # 옆에 my-talk-video-motion/ 폴더를 만들고 전부 돌림
-```
-
-직접 할 때:
-
-1. 폴더를 만들고 영상을 `<폴더>/input/` 에 넣습니다. 자막(YouTube, CapCut, Premiere 의 `.srt` / `.vtt`)이 있으면 옆에 둡니다.
-2. `my-info.json` 을 폴더에 복사해 이름, 하는 일, 스타일(`connect`, `night`, `clean`), 엔드카드 문구를 씁니다.
-3. `npx connect-ai-video-motion run <폴더>`. 9:16 판은 `--short`, 투명 `overlay.mov`(Premiere, CapCut, DaVinci 용)는 `--overlay`.
-4. `out/report.md` 를 읽고 `plan.json` 을 고친 뒤 다시 돌립니다. 그래픽 하나만 다시 뽑을 때는 `--only <id>`.
-
-## 어떻게 돌아가나
-
-**1. 얼굴을 안다.** 맥에서는 macOS Vision 으로 얼굴을 찾습니다(Xcode 명령줄 도구 필요, 내려받을 것 없음). 다른 컴퓨터에서는 `face-sheet.jpg` 를 보고 나나 에이전트가 얼굴 상자를 적습니다. 선택: 어느 컴퓨터에서나 도는 pico 얼굴 찾기는 240 KB 모델 파일(`models/facefinder`, MIT)이 필요하고 아직 함께 넣지 않았습니다. 모든 그래픽은 찾아낸 얼굴 상자 + 24 px 밖, 옆으로는 얼굴 폭의 0.3배 이상 떨어뜨려 둡니다. 그래픽은 떠 있는 동안 한 자리에 있고, 내가 크게 움직일 때만 한 번 옮깁니다. 옆자리가 좁으면 작게 줄이지 않고 아래 띠나 위 띠로 갑니다. 얼굴을 확실히 못 찾은 구간에서는 그래픽을 숨기고 보고서에 적습니다. 몸도 비웁니다. 얼굴 상자에서 어깨와 몸통을 어림합니다(얼굴 폭의 3배 너비, 어깨선부터 화면 아래 끝까지). `my-info.json` 이나 `plan.json` 의 `"body": {"width": 3, "top": 0.75}` 로 바꾸고, `"body": false` 로 끕니다. 9:16 에서는 몸이 화면 폭을 다 채우므로 몸 영역을 윗가슴까지만 잡고(`tallDepth`, 얼굴 높이의 0.55배) 그 아래 가슴 띠는 쓸 수 있게 둡니다. 손이나 마이크 암은 찾지 못하므로 `plan.protect` 에 적어 두면 그곳을 비웁니다.
-
-**2. 말을 안다.** `plan.json` 은 "말한 낱말 → 그래픽" 표입니다. 첫 판은 내 말에서 자동으로 씁니다. 이름을 말하면 이름표, "첫째 / 둘째 / 셋째" 는 단계, 숫자는 카운터, "다음으로 …" 는 챕터. 그래픽은 그 낱말 뒤 0–80 ms 에 들어옵니다. 시간이 어디서 왔는지는 정직하게 밝힙니다.
-
-| 등급 | 가진 것 | 정확도 |
+| 출처 | 수 | 예 |
 |---|---|---|
-| A | 낱말 시간(`<이름>.words.json`) | 낱말 그대로 |
-| B | 문장 자막(`.srt` / `.vtt`) | 문장 안에 낱말을 나눈 뒤 목소리에 맞춤, 약 ±0.2초 |
-| C | 없음 | 손으로 쓴 시간 |
+| `kit/` | 7 | 이름표, 핵심 단어, 숫자 카운터, 1 · 2 · 3 단계, 화면 카드, 챕터, 엔드카드 |
+| `remotion/` | 35 | rough-notation 박스 · 형광펜 · 취소선 · 괄호 목록, paths 여정 · 모핑 · 신호 · 밑줄, shapes 파이 · 막대 · 말풍선 · 별 도장 · 육각 배지, transitions 시계 와이프 · 아이리스 · 뒤집기 · 밀기 · 대각 와이프 · 푸시 컷, noise 흔들림 · 등고선, motion-blur 잔상, starburst 빛살, 사람 뒤 라이트 릭, 3D 육각 배지(svg-3d-engine), 3D 금화(three), GSAP 글자, macOS 커서 클릭, 말에 맞춰 켜지는 단어(captions) |
+| `hyperframes/` | 7 | warm-grain 원 숫자 · 알약 숫자 · 도형 라벨 · 제목 카드, 스크램블 제목 · 단어 솟음 · 링 카운터(HyperFrames 형식으로 만든 우리 블록) |
+| `lottie/` | 3 | 체크, 신호 펄스, 궤도 호 |
+| `body/` | 5 | 사람 뒤 글자, 몸 윤곽선, 손 옆 태그, 손가락 수 도장, 손가락 광선 |
 
-한 줄은 이렇게 낱말을 가리켜서, 자막을 조금 고쳐도 살아남습니다.
+항목 하나 = 폴더 `catalog/<출처>/<이름>/` (컴포넌트 또는 `block.html` / `anim.json`) + `meta.json`:
 
 ```json
-{"id": "counter-3", "kind": "counter", "at": {"text": "three", "near": 7.9}, "value": "3", "unit": "tools"}
+{
+  "kind": "remotion/shapes-pie",
+  "title": "Pie to a percent",
+  "description": "A pie fills to the percent you said, the number counts with it.",
+  "source": {"type": "remotion", "package": "@remotion/shapes", "version": "4.0.529"},
+  "license": "MIT",
+  "use": "number",
+  "props": {"value": "percent 0-100", "text": "what it is (1-3 words)"},
+  "place": "box",
+  "size": {"aspect": 2.2, "minW": 0.22, "maxW": 0.34},
+  "dur": 2.8,
+  "family": "pie"
+}
 ```
 
-**3. 스스로 검사한다.** `check` 는 까다로운 편집자처럼 plan 을 재고, 문제마다 무엇이, 언제, 어떻게 고치는지를 문장으로 씁니다.
+plan 한 줄에 `"scale": 1.3`(이 그래픽만 30 % 크게. 자리가 없으면 평소처럼 한 단계씩 줄어듭니다), `"slot": "beside-right"`(이쪽부터 시도), `"behind": true` 또는 `"head"`(글자를 내 뒤에 크게: 사람 매트 아래에 그리고, 낱말 경계에서 갈라 내 양옆에 놓아서 머리가 글자를 가리지 않습니다. 25 % 넘게 가리면 `check` 가 오류를 냅니다), `"side": "minutes"`(그래픽 반대편에 같은 높이로 놓는 큰 낱말 하나: 왼쪽 숫자, 오른쪽 낱말)를 적을 수 있고, `kit/keyword` 는 글자에 줄바꿈(`"Visual\nVibe Coding"`)을 넣으면 낱말을 쌓고 마지막 줄을 골드로 씁니다. `my-info.json` 의 `"style"` 로 분위기를 고릅니다: `connect`(검정 × 골드, 기본), `day`(밝은 방용 같은 분위기: 어두운 글자), `night`, `clean`.
 
-- 오류(꼭 고침): 얼굴을 가림, 몸을 가림, 화면 밖, 4낱말 넘음, 글자 대비 부족, `plan.protect` 자리를 가림, 화살표가 얼굴을 지남, 말하지 않은 낱말을 가리킴.
-- 조언(내 판단): 같은 종류 두 번(1 · 2 · 3 묶음은 한 번), 3초 넘게 변화 없음, 그래픽이 너무 작음, 자리가 없어 숨김.
+`place` 는 층이 어떻게 다룰지입니다: `box`(옆 빈자리), `attach`(`hand`, `fingers`, `point`, `contour`: 몸을 따라감, 손이 잘 안 보이면 숨김), `behind`(사람 뒤, 사람 매트 아래), `edge`, `post`, `full`. `family` 는 디자인 이름이라 한 영상에 두 번 쓰면 경고가 나옵니다.
 
-대비는 그래픽 밑의 실제 영상 밝기로 잽니다. 밝은 곳이면 글자 둘레에 4.5:1 이 될 만큼만 옅은 그림자를 둡니다. 9:16 에서는 앱 화면 영역(위 막대, 옆 버튼, 자막 자리)을 비웁니다.
+### 내 그래픽
 
-## 그래픽 7종, 스타일 3종
-
-| 종류 | 움직임 |
+| 가진 것 | plan.json 한 줄 |
 |---|---|
-| `nametag` | 강조 막대가 자라고, 이름이 밀려 올라오며 스크램블이 풀리고, 선이 그려지고, 하는 일이 미끄러져 들어옴 |
-| `keyword` | 글자가 하나씩 솟고, 빛이 한 번 훑고, 끝 눈금이 달린 가는 선 |
-| `counter` | 숫자 띠가 모션블러와 함께 구르고, 눈금자가 차고, 단위가 눈금자 위에 |
-| `steps` | 진행 점, 숫자가 초점이 맞으며 나타나고, 단계 글자가 미끄러져 나옴 |
-| `card` | 화면을 확대한 카드가 펼쳐지고, 화살표가 그려지고, 손그림 원이 대상을 감쌈 |
-| `chapter` | 선이 그려지고, 챕터 번호가 내려앉고, 제목이 선 위로 솟음 |
-| `endcard` | 영상 뒤에: 이름이 낱말씩, 선, 행동 문구 |
+| Remotion 컴포넌트 | `{"kind": "custom", "component": "./my/Thing.tsx", "at": 4.2, "meta": {"size": {"aspect": 2, "maxW": 0.3}}}` |
+| HyperFrames 블록 | `{"kind": "hyperframes", "src": "./block.html", "at": 6, "meta": {"window": [0, 3], "text": {".title": "text"}}, "text": "Hello"}` |
+| Lottie 파일 | `{"kind": "lottie", "src": "./anim.json", "at": 8}` |
 
-스타일: `connect`(검정과 금색, 얇은 글자), `night`(틸), `clean`(파랑, 흰 카드). 강조색은 하나, 선과 숫자에만. 박스 테두리, 파티클, 이모지는 없습니다.
+컴포넌트는 `{it, r, lf, dur, st, ink, u, fps, L, mainF}` 를 받습니다: plan 한 줄, 자기 상자 `[x, y, w, h]`, 그래픽 안 프레임 등(`src/catalog/ui.tsx`). `r` 밖으로 나가면 안 됩니다.
+
+### HyperFrames
+
+어댑터가 블록(HTML + CSS + `window.__timelines` 의 멈춘 GSAP 타임라인)을 투명 iframe 안에서 돌리고 Remotion 프레임마다 그 시간으로 맞춥니다. GSAP 와 플러그인은 CDN 이 아니라 설치된 `gsap` 패키지에서 가져옵니다. `Math.random` 은 씨앗을 고정하고 CSS 애니메이션도 프레임 시간에 붙잡아 두어, 몇 번을 렌더해도 같은 그림이 나옵니다. `meta.window` 는 블록 타임라인의 몇 초를 쓸지, `meta.crop` 은 캔버스의 어느 부분을, `meta.text` 는 내 말을 어디에 넣을지입니다.
+
+```bash
+npx connect-ai-video-motion hf-import <폴더>   # 레지스트리, 템플릿, 내 .html 파일
+```
+
+블록마다 검사합니다. WebGL · canvas, 자체 영상 · 소리, `requestAnimationFrame` 루프, 인터넷에서 가져오는 스크립트, 템플릿 자리표시자, 타임라인 없음은 `unsupported` 와 이유로 목록에 남습니다.
+
+## Windows · Linux 에서 몸 인식
+
+macOS 몸 인식은 따로 받을 것이 없습니다. 다른 컴퓨터에서는 MediaPipe 어댑터(`lib/adapters/mediapipe-body.mjs`)가 Remotion 의 Chrome 안에서 MediaPipe Pose + Hands 를 돌립니다. 키트에 들어 있지 않은 세 가지가 필요합니다(Google, Apache-2.0):
+
+| 무엇 | 넣을 곳 |
+|---|---|
+| `npm install @mediapipe/tasks-vision` | `node_modules/` |
+| `pose_landmarker_lite.task` | `models/mediapipe/` |
+| `hand_landmarker.task` | `models/mediapipe/` |
+
+받는 주소는 `lib/adapters/mediapipe-body.mjs` 맨 위에 있습니다. 파일이 있으면 `analyze` 가 알아서 MediaPipe 를 쓰고, 없으면 어느 파일이 없는지 말합니다. 사람 매트는 만들지 않아 사람 뒤 그래픽은 숨겨집니다. 이 어댑터는 tasks-vision 공식 API 대로 썼지만 Windows 에서 아직 시험하지 않았습니다. 보이는 그대로 이슈로 알려 주세요.
 
 ## 결과물
 
-`out/final.mp4`(기본) · `out/short_9x16.mp4`(`--short`) · `out/overlay.mov`(`--overlay`, 알파가 있는 ProRes 4444) · `out/sheet.jpg`(모든 그래픽의 들어옴 / 정점 / 나감, 얼굴 상자 빨강, 몸 상자 주황, 그래픽 상자 파랑) · `out/report.md`.
+`out/final.mp4` · `out/short_9x16.mp4`(`--short`) · `out/overlay.mov`(`--overlay`, 알파 있는 ProRes 4444, Premiere / CapCut / DaVinci 용) · `out/sheet.jpg`(그래픽마다 등장 / 정점 / 퇴장, 측정한 사람 표시) · `out/report.md` · `out/gallery.mp4`, `out/gallery_sheet.jpg`(`gallery`) · `out/body-sheet.jpg`(`body-sheet`).
 
-## 무엇이고 무엇이 아닌가
+## 아직
 
-[ossclip](https://github.com/AhsanAyaz/ossclip) 은 이미 얼굴 찾기 + 낱말 시간 + 코드 그래픽을 하고, 우리도 거기서 배웠습니다. 이 키트가 더하려는 것은, 코딩을 모르는 사람이 샘플에서 내 영상, 수정까지 따라갈 수 있는 길과, 실패마다 이유를 문장으로 알려 주어 에이전트(또는 내)가 고칠 수 있게 하는 검사 고리입니다.
-
-## 아직 (로드맵)
-
-사람 뒤로 지나가는 글자, 효과음, 더 많은 그래픽 종류, 같은 `plan.json` 을 HyperFrames 로 그리는 길, 자동 낱말 시간(whisper), 어느 컴퓨터에서나 도는 얼굴 찾기(pico 또는 MediaPipe). 모두 모델을 내려받아야 해서 이번 판에는 넣지 않았습니다.
+HyperFrames 레지스트리 전체(456개)는 패키지에 없습니다. 받아서 `hf-import` 하면 됩니다. `@remotion/transitions` 의 셰이더 전환(book flip, crosswarp, ripple ...)은 실험 기능인 HTML-in-canvas 가 켜진 브라우저가 필요해서 unsupported 로 적어 두었습니다. 효과음과 자동 단어 시간(whisper)은 이번 버전에 없습니다.
 
 ## 출처
 
-열린 소스 부품으로 만들었고, 부품마다 저장소 · 커밋 · 라이선스를 [NOTICE.md](NOTICE.md) 에 적었습니다. 패키지 안의 샘플 영상은 그림으로 그린 대역이고 목소리는 합성입니다. npm 패키지에는 실제 사람이 들어 있지 않습니다. `docs/demo/` 의 데모 A, B 에는 만든 사람이 본인 허락 아래 나옵니다.
+오픈소스 부품으로 만들었고 패키지 · 버전 · 라이선스를 [NOTICE.md](NOTICE.md) 에 하나씩 적었습니다. npm 패키지 안의 샘플 영상은 코드로 그린 대역과 합성 목소리입니다. `docs/` 의 클립에는 만든 사람이 허락하에 나옵니다. `tools/make-showcase.mjs` 와 `tools/make-docs.mjs` 로 만들었습니다.
 
 MIT · CONNECT AI LAB

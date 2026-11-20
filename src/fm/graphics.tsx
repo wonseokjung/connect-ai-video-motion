@@ -94,24 +94,34 @@ export const NameTag: React.FC<GProps> = ({it, r, lf, dur, st, ink, scrim, u}) =
 // 2. KEY WORD. Letters rise from a mask, one light sweep runs across them, a hairline draws under with an end tick.
 //    Exit: lifts and goes soft in 9 frames.
 export const KeyWord: React.FC<GProps> = ({it, r, lf, dur, st, ink, scrim, u}) => {
-  const text = String(it.text || '');
-  const fs = fit(text, r[2] * 0.96, r[3] / (1.14 + 0.34), st.weight, st.tracking);
+  const lines = String(it.text || '').split('\n');
+  const n = lines.length;
+  const longest = lines.reduce((p, c) => (c.length > p.length ? c : p), '');
+  const fs = fit(longest, r[2] * 0.96, r[3] / (1.14 * n + 0.34), st.weight, st.tracking);
   const out = exitK(lf, dur);
-  const rule = k01(lf, 6, 22);
+  const rule = k01(lf, 6 + (n - 1) * 5, 22 + (n - 1) * 5);
   const sweep = interpolate(lf, [10, 34], [-20, 120], clamp);
   const typeStyle: React.CSSProperties = {fontFamily: FONT, fontSize: fs, fontWeight: st.weight, letterSpacing: `${st.tracking}em`, lineHeight: 1.14};
   const w = Math.min(r[2], r[2] * 0.96);
   const sw = Math.max(2, fs * 0.018);
+  const mask = `linear-gradient(100deg, transparent ${sweep - 12}%, #000 ${sweep}%, transparent ${sweep + 12}%)`;
   return (
     <Box r={r} scrim={scrim} u={u} style={{opacity: 1 - out, transform: `translateY(${-out * 26 * u}px)`, filter: out > 0 ? `blur(${out * 12 * u}px)` : undefined}}>
       <Backing r={r} st={st} scrim={scrim} k={k01(lf, 0, 8)} />
-      <div style={{position: 'absolute', left: 0, top: 0}}>
-        <RiseLetters text={text} lf={lf} at={0} style={{...typeStyle, color: ink}} />
-        <div style={{position: 'absolute', left: 0, top: 0, WebkitMaskImage: `linear-gradient(100deg, transparent ${sweep - 12}%, #000 ${sweep}%, transparent ${sweep + 12}%)`, maskImage: `linear-gradient(100deg, transparent ${sweep - 12}%, #000 ${sweep}%, transparent ${sweep + 12}%)`}}>
-          <RiseLetters text={text} lf={lf} at={0} style={{...typeStyle, color: st.accentHi}} />
-        </div>
-      </div>
-      <svg style={{position: 'absolute', left: 0, top: fs * 1.22, overflow: 'visible'}} width={r[2]} height={fs * 0.12}>
+      {lines.map((line, i) => {
+        const gold = n > 1 && i === n - 1; // stacked: the last line is the key word
+        return (
+          <div key={i} style={{position: 'absolute', left: 0, top: fs * 1.14 * i}}>
+            <RiseLetters text={line} lf={lf} at={i * 5} style={{...typeStyle, color: gold ? st.accentHi : ink}} />
+            {!gold && (
+              <div style={{position: 'absolute', left: 0, top: 0, WebkitMaskImage: mask, maskImage: mask}}>
+                <RiseLetters text={line} lf={lf} at={i * 5} style={{...typeStyle, color: st.accentHi}} />
+              </div>
+            )}
+          </div>
+        );
+      })}
+      <svg style={{position: 'absolute', left: 0, top: fs * (1.14 * n + 0.08), overflow: 'visible'}} width={r[2]} height={fs * 0.12}>
         <line x1={0} y1={0} x2={w * rule} y2={0} stroke={st.accent} strokeWidth={sw} />
         <line x1={w * rule} y1={-fs * 0.05} x2={w * rule} y2={fs * 0.05} stroke={st.accent} strokeWidth={sw} opacity={rule > 0.02 ? 1 : 0} />
       </svg>
@@ -213,8 +223,8 @@ export const Steps: React.FC<GProps> = ({it, r, lf, dur, st, ink, scrim, u, seri
 export const Card: React.FC<GProps> = ({it, r, lf, dur, st, u, video, target}) => {
   const k = k01(lf, 0, 14), out = exitK(lf, dur, 8);
   const title = String(it.text || '');
-  const barH = r[3] * (it.zoom ? 0.18 : 0.6);
-  const fs = fit(title, r[2] * 0.78, barH * 0.46, st.weight, st.tracking);
+  const barH = r[3] * (it.zoom ? 0.18 : 1);
+  const fs = fit(title, r[2] * 0.78, barH * (it.zoom ? 0.46 : 0.5), st.weight, st.tracking);
   const arrowK = k01(lf, 8, 24);
   const fade = 1 - k01(lf, dur - 8, dur - 4, Easing.linear);
   let arrow: React.ReactNode = null;

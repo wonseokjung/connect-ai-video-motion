@@ -1,0 +1,29 @@
+{
+  "kind": "remotion/paths-signal",
+  "title": "Signal wave",
+  "description": "The label wipes in, a straight rule under it warps into a travelling wave (warpPath) and calms down before it leaves.",
+  "source": {
+    "type": "remotion",
+    "package": "@remotion/paths",
+    "version": "4.0.529"
+  },
+  "license": "MIT",
+  "use": "label",
+  "props": {
+    "text": "1-2 words",
+    "sub": "small caps",
+    "color": "teal (default)"
+  },
+  "place": "box",
+  "size": {
+    "aspect": 2.6,
+    "minW": 0.2,
+    "maxW": 0.32
+  },
+  "dur": 2.6,
+  "family": "wave",
+  "example": {
+    "text": "Recording",
+    "sub": "live"
+  }
+}

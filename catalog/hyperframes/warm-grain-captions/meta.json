@@ -1,0 +1,37 @@
+{
+  "kind": "hyperframes/warm-grain-captions",
+  "title": "Warm Grain (HyperFrames)",
+  "description": "Cream aesthetic with grain texture",
+  "source": {
+    "type": "hyperframes",
+    "repo": "heygen-com/hyperframes",
+    "path": "dist/templates/warm-grain/compositions/captions.html",
+    "note": "imported by hf-import; unchanged copy",
+    "package": "hyperframes@0.8.86"
+  },
+  "license": "Apache-2.0",
+  "src": "block.html",
+  "use": "label",
+  "props": {},
+  "text": {},
+  "canvas": [
+    1920,
+    1080
+  ],
+  "window": [
+    0,
+    6
+  ],
+  "place": "box",
+  "size": {
+    "aspect": 1.78,
+    "minW": 0.24,
+    "maxW": 0.4
+  },
+  "dur": 4,
+  "family": "hf-warm-grain-captions",
+  "status": "unsupported",
+  "reasons": [
+    "has template placeholders (like __VIDEO_DURATION__) that the HyperFrames CLI fills"
+  ]
+}

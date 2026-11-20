@@ -1,0 +1,41 @@
+{
+  "kind": "hyperframes/ring-count",
+  "title": "Ring counter (GSAP)",
+  "description": "A teal ring draws around a number that counts up to yours (GSAP DrawSVG + snap), the unit slides in.",
+  "use": "number",
+  "props": {
+    "value": "whole number",
+    "unit": "word after it"
+  },
+  "text": {
+    ".num": "value",
+    ".unit": "unit"
+  },
+  "canvas": [
+    900,
+    420
+  ],
+  "window": [
+    0,
+    3
+  ],
+  "place": "box",
+  "size": {
+    "aspect": 2.14,
+    "minW": 0.2,
+    "maxW": 0.3
+  },
+  "dur": 3,
+  "family": "hf-ring",
+  "example": {
+    "value": "12",
+    "unit": "steps"
+  },
+  "source": {
+    "type": "hyperframes",
+    "path": "catalog/hyperframes/ring-count/block.html",
+    "note": "our own block in the HyperFrames format (HTML + CSS + paused GSAP timeline); GSAP plugins come from the installed gsap package"
+  },
+  "license": "MIT",
+  "src": "block.html"
+}

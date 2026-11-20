@@ -1,0 +1,46 @@
+{
+  "kind": "hyperframes/warm-grain-pill-stat",
+  "title": "Pill stat (HyperFrames)",
+  "description": "HyperFrames warm-grain: an ochre pill drops in with one big number.",
+  "source": {
+    "type": "hyperframes",
+    "repo": "heygen-com/hyperframes",
+    "package": "hyperframes@0.8.86",
+    "path": "dist/templates/warm-grain/compositions/graphics.html",
+    "note": "unchanged copy; the adapter plays a part of its timeline"
+  },
+  "license": "Apache-2.0",
+  "src": "block.html",
+  "canvas": [
+    1920,
+    1080
+  ],
+  "use": "number",
+  "props": {
+    "value": "number, e.g. 62%"
+  },
+  "text": {
+    "#moment-2 .stat-text": "value"
+  },
+  "window": [
+    4.4,
+    8.6
+  ],
+  "crop": [
+    690,
+    70,
+    540,
+    260
+  ],
+  "place": "box",
+  "size": {
+    "aspect": 2.08,
+    "minW": 0.18,
+    "maxW": 0.28
+  },
+  "dur": 2.6,
+  "family": "hf-pill",
+  "example": {
+    "value": "62%"
+  }
+}

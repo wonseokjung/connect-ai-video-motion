@@ -1,0 +1,30 @@
+{
+  "kind": "body/finger-count",
+  "title": "Finger count stamp",
+  "description": "Hold up 1, 2 or 3 fingers: that number is stamped next to your hand with the matching line from your list.",
+  "use": "body",
+  "props": {
+    "text": "comma list, one line per finger count: \"Plan, Make, Check\"",
+    "sub": "small caps",
+    "hand": "left | right | any"
+  },
+  "place": "attach",
+  "attach": "fingers",
+  "size": {
+    "aspect": 2.6,
+    "minW": 0.14,
+    "maxW": 0.22
+  },
+  "dur": 3,
+  "family": "finger-count",
+  "example": {
+    "text": "Plan, Film, Code, Render, Share",
+    "at": 7.6
+  },
+  "source": {
+    "type": "body",
+    "path": "catalog/body/finger-count/index.tsx",
+    "note": "uses the body detector (work/body.json: joints, hands, person grid, matte)"
+  },
+  "license": "MIT"
+}

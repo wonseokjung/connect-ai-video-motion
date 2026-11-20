@@ -1,0 +1,13 @@
+{
+  "kind": "hyperframes/registry",
+  "title": "HyperFrames registry (456 items)",
+  "description": "The full HyperFrames registry: 238 components, 210 blocks, 8 examples. Not on this machine yet.",
+  "source": {"type": "hyperframes", "repo": "heygen-com/hyperframes", "path": "registry/", "commit": "6bd0b5d870ef197b1ff6d3d50d17944444c31a8f"},
+  "license": "Apache-2.0",
+  "use": "label",
+  "props": {},
+  "place": "box",
+  "family": "hf-registry",
+  "status": "needs-download",
+  "reasons": ["download the registry folder (1,685 files, 108 MB; HTML + JSON only is about 10 MB), then run: connect-ai-video-motion hf-import <folder>. Each block is checked and the ones that cannot play frame by frame are listed with the reason."]
+}

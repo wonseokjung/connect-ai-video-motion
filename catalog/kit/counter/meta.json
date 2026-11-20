@@ -1,0 +1,29 @@
+{
+  "kind": "kit/counter",
+  "title": "Number counter",
+  "description": "Digit strips roll with motion blur, a tick ruler fills, the unit sits on the ruler.",
+  "source": {
+    "type": "kit",
+    "path": "src/fm/graphics.tsx"
+  },
+  "license": "MIT",
+  "use": "number",
+  "props": {
+    "value": "number (12, 1.5K, 40%)",
+    "unit": "word after it",
+    "label": "optional"
+  },
+  "place": "box",
+  "legacy": "counter",
+  "dur": 2.8,
+  "family": "kit-counter",
+  "size": {
+    "aspect": 3,
+    "minW": 0.22,
+    "maxW": 0.4
+  },
+  "example": {
+    "value": "12",
+    "unit": "graphics"
+  }
+}

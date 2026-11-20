@@ -1,0 +1,23 @@
+{
+  "kind": "kit/endcard",
+  "title": "End card",
+  "description": "After the video: your name word by word, a line, your call to action.",
+  "source": {
+    "type": "kit",
+    "path": "src/fm/graphics.tsx"
+  },
+  "license": "MIT",
+  "use": "end",
+  "props": {
+    "text": "name",
+    "sub": "action"
+  },
+  "place": "post",
+  "legacy": "endcard",
+  "dur": 3,
+  "family": "kit-endcard",
+  "example": {
+    "text": "CONNECT AI LAB",
+    "sub": "Subscribe"
+  }
+}

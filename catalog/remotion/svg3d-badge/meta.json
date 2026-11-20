@@ -1,0 +1,30 @@
+{
+  "kind": "remotion/svg3d-badge",
+  "title": "3D hex badge",
+  "description": "A thick hexagon badge turns in 3D and lands facing you, the word beside it (@remotion/svg-3d-engine + @remotion/shapes + @remotion/paths).",
+  "source": {
+    "type": "remotion",
+    "package": "@remotion/svg-3d-engine",
+    "version": "4.0.529",
+    "licenseNote": "package.json has no license field; it ships under the Remotion License like remotion itself"
+  },
+  "license": "Remotion License",
+  "use": "keyword",
+  "props": {
+    "text": "1-2 words",
+    "sub": "small caps",
+    "color": "badge colour (gold default)"
+  },
+  "place": "box",
+  "size": {
+    "aspect": 2.4,
+    "minW": 0.2,
+    "maxW": 0.32
+  },
+  "dur": 2.8,
+  "family": "badge-3d",
+  "example": {
+    "text": "Version 0.2",
+    "sub": "open source"
+  }
+}

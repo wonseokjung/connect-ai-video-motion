@@ -1,0 +1,28 @@
+{
+  "kind": "body/behind-text",
+  "title": "Word behind you",
+  "description": "A big thin word stands in the room behind you; the person matte draws you in front of it.",
+  "use": "keyword",
+  "props": {
+    "text": "1-2 words",
+    "color": "word colour"
+  },
+  "place": "behind",
+  "size": {
+    "aspect": 4,
+    "minW": 0.6,
+    "maxW": 0.9
+  },
+  "dur": 3,
+  "family": "behind-text",
+  "example": {
+    "text": "Vibe coding",
+    "at": 3.2
+  },
+  "source": {
+    "type": "body",
+    "path": "catalog/body/behind-text/index.tsx",
+    "note": "uses the body detector (work/body.json: joints, hands, person grid, matte)"
+  },
+  "license": "MIT"
+}

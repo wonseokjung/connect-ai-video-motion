@@ -1,0 +1,28 @@
+{
+  "kind": "remotion/shapes-bars",
+  "title": "Rising bars",
+  "description": "Rounded bars (makeRect) rise one after another to the numbers you said, each with its number; the last bar is the gold one.",
+  "source": {
+    "type": "remotion",
+    "package": "@remotion/shapes",
+    "version": "4.0.529"
+  },
+  "license": "MIT",
+  "use": "compare",
+  "props": {
+    "value": "numbers, e.g. \"3, 5, 12\" (2-5 of them)",
+    "text": "small caps label"
+  },
+  "place": "box",
+  "size": {
+    "aspect": 1.5,
+    "minW": 0.2,
+    "maxW": 0.3
+  },
+  "dur": 3,
+  "family": "bars",
+  "example": {
+    "value": "3, 5, 12",
+    "text": "graphics per minute"
+  }
+}

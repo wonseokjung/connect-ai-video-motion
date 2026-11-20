@@ -1,0 +1,29 @@
+{
+  "kind": "remotion/shapes-triangle-marker",
+  "title": "Triangle marker",
+  "description": "A solid triangle (makeTriangle) points towards the person, a rule runs out of it and the label slides up from the rule.",
+  "source": {
+    "type": "remotion",
+    "package": "@remotion/shapes",
+    "version": "4.0.529"
+  },
+  "license": "MIT",
+  "use": "label",
+  "props": {
+    "text": "1-3 words",
+    "sub": "small caps line",
+    "color": "coral (default)"
+  },
+  "place": "box",
+  "size": {
+    "aspect": 3.4,
+    "minW": 0.22,
+    "maxW": 0.34
+  },
+  "dur": 2.4,
+  "family": "marker",
+  "example": {
+    "text": "Start here",
+    "sub": "step one"
+  }
+}

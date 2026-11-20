@@ -1,0 +1,41 @@
+{
+  "kind": "hyperframes/gold-scramble-title",
+  "title": "Scramble title (GSAP)",
+  "description": "A thin title decodes letter by letter (GSAP ScrambleText), a gold rule draws under it (DrawSVG), small caps above.",
+  "use": "chapter",
+  "props": {
+    "text": "title (1-3 words)",
+    "sub": "small caps above"
+  },
+  "text": {
+    ".title": "text",
+    ".kicker": "sub"
+  },
+  "canvas": [
+    1200,
+    360
+  ],
+  "window": [
+    0,
+    3
+  ],
+  "place": "box",
+  "size": {
+    "aspect": 3.33,
+    "minW": 0.26,
+    "maxW": 0.4
+  },
+  "dur": 3,
+  "family": "hf-scramble",
+  "example": {
+    "text": "Vibe coding",
+    "sub": "chapter 02"
+  },
+  "source": {
+    "type": "hyperframes",
+    "path": "catalog/hyperframes/gold-scramble-title/block.html",
+    "note": "our own block in the HyperFrames format (HTML + CSS + paused GSAP timeline); GSAP plugins come from the installed gsap package"
+  },
+  "license": "MIT",
+  "src": "block.html"
+}

@@ -24,6 +24,24 @@ connect-ai-video-motion is CONNECT AI LAB's code (MIT, see LICENSE), built on Re
 
 remotion, @remotion/cli, @remotion/bundler, @remotion/renderer (render + the ffmpeg inside it), @remotion/captions (`parseSrt`, Caption shape of words.json), @remotion/layout-utils (`fitText`), @remotion/paths (`evolvePath`), @remotion/rough-notation (`Underline`, `Circle`), @remotion/transitions (`fade` into the end card), @remotion/google-fonts (Inter, SIL Open Font License). All 4.0.529.
 
+## 0.2: catalog, adapters and body detector
+
+| Part | Source | Licence | How |
+|---|---|---|---|
+| `catalog/remotion/*` (35 items) | official Remotion packages 4.0.529: @remotion/paths, shapes, rough-notation, rounded-text-box, layout-utils, animation-utils, captions, noise, motion-blur, gsap, three, transitions, light-leaks, starburst, svg-3d-engine, mac-cursors | MIT: paths, shapes, rough-notation, rounded-text-box, layout-utils, captions, noise, motion-blur, gsap, three; animation-utils (LICENSE.md, MIT, Chetan Karwa). Remotion License: light-leaks, starburst, mac-cursors, lottie; transitions and svg-3d-engine (package.json says UNLICENSED / nothing, shipped under the Remotion License like remotion itself) | Used as they are; the components around them are ours |
+| 3D coin | three 0.170.0, @react-three/fiber 9.3.0 | MIT | Used as they are |
+| GSAP letters, HyperFrames adapter | gsap 3.15.0 and its plugins (SplitText, ScrambleTextPlugin, DrawSVGPlugin) | GreenSock standard no-charge license, https://gsap.com/standard-license (not OSI) | Used as they are, from the installed package (never a CDN) |
+| `catalog/hyperframes/warm-grain-*` (4 playable + 2 listed) | heygen-com/hyperframes, npm `hyperframes@0.8.86` `dist/templates/warm-grain/` | Apache-2.0, `licenses/hyperframes-Apache-2.0.txt` | Unchanged copies of `graphics.html`, `intro.html`, `captions.html`, `index.html`; the adapter plays parts of them (window, crop, text in `meta.json`) |
+| `catalog/hyperframes/{gold-scramble-title,split-words-rise,ring-count}` | ours, written in the HyperFrames format | MIT | Ours |
+| `src/adapters/HyperFrames.tsx` (iframe, seek every frame) | same idea as @remotion/gsap and the HyperFrames runtime (`window.__timelines`, `data-start`) | ours, MIT | Idea; our own code |
+| `src/adapters/Lottie.tsx` | @remotion/lottie 4.0.529 + lottie-web 5.13.0 | Remotion License / MIT | Used as they are |
+| `catalog/lottie/*` | ours, made by `tools/make-lottie.mjs` | MIT | Ours |
+| `lib/adapters/vision-body.swift` | Apple Vision (VNDetectHumanBodyPoseRequest, VNDetectHumanHandPoseRequest, VNGeneratePersonSegmentationRequest), part of macOS | system framework | Ours (calls the system API) |
+| `lib/adapters/mediapipe-body.mjs`, `src/fm/MediaPipeProbe.tsx` | MediaPipe tasks-vision (Pose, Hands), Google | Apache-2.0 | Not shipped: the package and the two models are downloaded by you (README "Body on Windows and Linux") |
+| `catalog/body/*`, `src/core/body.mjs` (person grid, hand track, finger count, outline) | ours | MIT | Ours |
+
+Not in the package: the full HyperFrames registry (heygen-com/hyperframes `registry/` at 6bd0b5d8, 456 items, Apache-2.0; its images, sounds and 3D files may carry their own terms, so `hf-import` copies the block HTML only), MediaPipe models.
+
 ## Our own code
 
 Face-relative slot engine (slide along the free side, chest band, size range, newest word wins) and its checks, contrast picking and the soft halo backing, plan draft from words, check + report, sheet and face sheet, the seven graphics' motion code, stand-in sample footage, CLI, skill installer (same pattern as our rea-biz-kit), scramble text, grain.

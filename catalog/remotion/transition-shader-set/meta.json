@@ -1,0 +1,20 @@
+{
+  "kind": "remotion/transition-shader-set",
+  "title": "Shader transitions",
+  "description": "bookFlip, blurSlide, crossZoom, crosswarp, dissolve, dreamyZoom, filmBurn, linearBlur, ripple, swap, zoomBlur, zoomInOut from @remotion/transitions.",
+  "source": {
+    "type": "remotion",
+    "package": "@remotion/transitions",
+    "version": "4.0.529"
+  },
+  "license": "Remotion License",
+  "use": "transition",
+  "props": {},
+  "place": "box",
+  "dur": 1,
+  "family": "transition-shader",
+  "status": "unsupported",
+  "reasons": [
+    "they draw the HTML into a canvas with the experimental HTML-in-canvas API, which the render browser does not have switched on; the DOM transitions (clock wipe, iris, flip, slide, wipe, push cut) are in the catalog"
+  ]
+}

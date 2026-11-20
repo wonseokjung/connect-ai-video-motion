@@ -1,0 +1,28 @@
+{
+  "kind": "kit/chapter",
+  "title": "Chapter line",
+  "description": "A line draws, the chapter number lands, the title rises out of the line.",
+  "source": {
+    "type": "kit",
+    "path": "src/fm/graphics.tsx"
+  },
+  "license": "MIT",
+  "use": "chapter",
+  "props": {
+    "value": "chapter number",
+    "text": "title"
+  },
+  "place": "edge",
+  "legacy": "chapter",
+  "dur": 2.6,
+  "family": "kit-chapter",
+  "size": {
+    "aspect": 3,
+    "minW": 0.22,
+    "maxW": 0.4
+  },
+  "example": {
+    "value": "02",
+    "text": "Make it move"
+  }
+}

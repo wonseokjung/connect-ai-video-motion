@@ -1,0 +1,26 @@
+{
+  "kind": "remotion/rough-box",
+  "title": "Pen box",
+  "description": "A rough pen box (@remotion/rough-notation Box) is drawn around the word, two passes, gold.",
+  "source": {
+    "type": "remotion",
+    "package": "@remotion/rough-notation",
+    "version": "4.0.529"
+  },
+  "license": "MIT",
+  "use": "keyword",
+  "props": {
+    "text": "1-2 words"
+  },
+  "place": "box",
+  "size": {
+    "aspect": 2.8,
+    "minW": 0.2,
+    "maxW": 0.32
+  },
+  "dur": 2.2,
+  "family": "pen-box",
+  "example": {
+    "text": "Test it"
+  }
+}

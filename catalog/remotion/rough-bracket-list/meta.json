@@ -1,0 +1,27 @@
+{
+  "kind": "remotion/rough-bracket-list",
+  "title": "Bracket list",
+  "description": "2-4 short lines held by a rough bracket (@remotion/rough-notation Bracket), numbered, coming in one by one.",
+  "source": {
+    "type": "remotion",
+    "package": "@remotion/rough-notation",
+    "version": "4.0.529"
+  },
+  "license": "MIT",
+  "use": "list",
+  "props": {
+    "text": "lines split by commas, e.g. \"Plan, Make, Check\" (each 1-2 words)"
+  },
+  "place": "box",
+  "size": {
+    "aspect": 1.4,
+    "minW": 0.2,
+    "maxW": 0.3
+  },
+  "dur": 3.2,
+  "words": 8,
+  "family": "bracket-list",
+  "example": {
+    "text": "Film, Code, Render"
+  }
+}

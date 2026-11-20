@@ -1,0 +1,49 @@
+{
+  "kind": "hyperframes/warm-grain-circle-stat",
+  "title": "Circle stat (HyperFrames)",
+  "description": "HyperFrames warm-grain: a forest-green circle drifts in with a big percent and a short line under it.",
+  "source": {
+    "type": "hyperframes",
+    "repo": "heygen-com/hyperframes",
+    "package": "hyperframes@0.8.86",
+    "path": "dist/templates/warm-grain/compositions/graphics.html",
+    "note": "unchanged copy; the adapter plays a part of its timeline"
+  },
+  "license": "Apache-2.0",
+  "src": "block.html",
+  "canvas": [
+    1920,
+    1080
+  ],
+  "use": "number",
+  "props": {
+    "value": "number with %, e.g. 47%",
+    "text": "short line (2-3 words)"
+  },
+  "text": {
+    "#moment-1 .stat-text": "value",
+    "#moment-1 .stat-desc": "text"
+  },
+  "window": [
+    1.6,
+    4.5
+  ],
+  "crop": [
+    1100,
+    240,
+    600,
+    600
+  ],
+  "place": "box",
+  "size": {
+    "aspect": 1,
+    "minW": 0.16,
+    "maxW": 0.24
+  },
+  "dur": 2.9,
+  "family": "hf-circle",
+  "example": {
+    "value": "47%",
+    "text": "need motion"
+  }
+}

@@ -1,0 +1,27 @@
+{
+  "kind": "remotion/captions-karaoke",
+  "title": "Words lit in time",
+  "description": "One line of words lights up word by word (@remotion/captions createTikTokStyleCaptions); with words.json timing it follows the real speech.",
+  "source": {
+    "type": "remotion",
+    "package": "@remotion/captions",
+    "version": "4.0.529"
+  },
+  "license": "MIT",
+  "use": "quote",
+  "props": {
+    "text": "3-6 words",
+    "words": "optional [{text, startMs, endMs}] from work/words.json"
+  },
+  "place": "box",
+  "size": {
+    "aspect": 4.4,
+    "minW": 0.3,
+    "maxW": 0.46
+  },
+  "dur": 3,
+  "family": "karaoke",
+  "example": {
+    "text": "just say what you want"
+  }
+}

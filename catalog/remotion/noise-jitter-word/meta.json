@@ -1,0 +1,26 @@
+{
+  "kind": "remotion/noise-jitter-word",
+  "title": "Jitter to clean word",
+  "description": "Letters arrive shaken by noise and settle one by one into a clean word (@remotion/noise noise3D).",
+  "source": {
+    "type": "remotion",
+    "package": "@remotion/noise",
+    "version": "4.0.529"
+  },
+  "license": "MIT",
+  "use": "keyword",
+  "props": {
+    "text": "1 word"
+  },
+  "place": "box",
+  "size": {
+    "aspect": 3,
+    "minW": 0.2,
+    "maxW": 0.32
+  },
+  "dur": 2.4,
+  "family": "jitter-word",
+  "example": {
+    "text": "Clean"
+  }
+}

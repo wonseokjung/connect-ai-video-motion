@@ -1,0 +1,26 @@
+{
+  "kind": "remotion/layout-fit-word",
+  "title": "Fit-to-space word",
+  "description": "One word set exactly as wide as the empty place (fitText), revealed when a gold slab slides off it.",
+  "source": {
+    "type": "remotion",
+    "package": "@remotion/layout-utils",
+    "version": "4.0.529"
+  },
+  "license": "MIT",
+  "use": "keyword",
+  "props": {
+    "text": "one word"
+  },
+  "place": "box",
+  "size": {
+    "aspect": 3.6,
+    "minW": 0.22,
+    "maxW": 0.36
+  },
+  "dur": 1.8,
+  "family": "fit-word",
+  "example": {
+    "text": "FREE"
+  }
+}

@@ -1,0 +1,32 @@
+{
+  "kind": "remotion/transition-slide",
+  "title": "Push slide, before to after",
+  "description": "The new word pushes the old one out of the card (@remotion/transitions slide).",
+  "source": {
+    "type": "remotion",
+    "package": "@remotion/transitions",
+    "version": "4.0.529",
+    "licenseNote": "package.json says UNLICENSED; it ships under the Remotion License like remotion itself"
+  },
+  "license": "Remotion License",
+  "use": "compare",
+  "props": {
+    "text": "before (1-2 words)",
+    "sub": "after (1-2 words)",
+    "label": "small caps on the first card",
+    "label2": "small caps on the second card",
+    "color": "colour of the second word"
+  },
+  "place": "box",
+  "size": {
+    "aspect": 2.4,
+    "minW": 0.2,
+    "maxW": 0.32
+  },
+  "dur": 2.6,
+  "family": "transition-words",
+  "example": {
+    "text": "Plain clip",
+    "sub": "Motion video"
+  }
+}

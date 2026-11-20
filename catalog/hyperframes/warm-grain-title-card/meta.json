@@ -1,0 +1,49 @@
+{
+  "kind": "hyperframes/warm-grain-title-card",
+  "title": "Title card (HyperFrames)",
+  "description": "HyperFrames warm-grain intro: a green title card slides in from the left with a title and a subtitle.",
+  "source": {
+    "type": "hyperframes",
+    "repo": "heygen-com/hyperframes",
+    "package": "hyperframes@0.8.86",
+    "path": "dist/templates/warm-grain/compositions/intro.html",
+    "note": "unchanged copy; the adapter plays a part of its timeline"
+  },
+  "license": "Apache-2.0",
+  "src": "block.html",
+  "canvas": [
+    1920,
+    1080
+  ],
+  "use": "title",
+  "props": {
+    "text": "title (1-2 words)",
+    "sub": "subtitle"
+  },
+  "text": {
+    ".title": "text",
+    ".subtitle": "sub"
+  },
+  "window": [
+    0,
+    2.6
+  ],
+  "crop": [
+    60,
+    340,
+    1000,
+    400
+  ],
+  "place": "box",
+  "size": {
+    "aspect": 2.5,
+    "minW": 0.24,
+    "maxW": 0.36
+  },
+  "dur": 2.6,
+  "family": "hf-title-card",
+  "example": {
+    "text": "Vibe coding",
+    "sub": "No install."
+  }
+}

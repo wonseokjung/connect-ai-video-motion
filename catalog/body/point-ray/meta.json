@@ -1,0 +1,32 @@
+{
+  "kind": "body/point-ray",
+  "title": "Ray from your finger",
+  "description": "A thin ray leaves your index finger tip and ends at a card in empty space; the ray follows your finger.",
+  "use": "pointer",
+  "props": {
+    "text": "1-3 words",
+    "sub": "small caps",
+    "hand": "left | right | any",
+    "color": "ray colour (blue default)"
+  },
+  "place": "attach",
+  "attach": "point",
+  "size": {
+    "aspect": 2.6,
+    "minW": 0.14,
+    "maxW": 0.22
+  },
+  "dur": 2.8,
+  "family": "point-ray",
+  "example": {
+    "text": "Right here",
+    "sub": "the result",
+    "at": 4.6
+  },
+  "source": {
+    "type": "body",
+    "path": "catalog/body/point-ray/index.tsx",
+    "note": "uses the body detector (work/body.json: joints, hands, person grid, matte)"
+  },
+  "license": "MIT"
+}

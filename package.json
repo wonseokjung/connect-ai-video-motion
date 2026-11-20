@@ -1,6 +1,6 @@
 {
   "name": "connect-ai-video-motion",
-  "description": "Put code-made motion graphics on top of your own talking-head video. Face-aware, speech-aware, self-checking. Never touches face pixels.",
+  "description": "Every motion graphic ecosystem (Remotion packages, HyperFrames blocks, Lottie, your own components) called with one line and placed around you in your own talking-head video. Face, body and hand aware, self-checking. Never touches your pixels.",
   "scripts": {
     "studio": "remotion studio src/index.ts",
     "demo": "node bin/cli.mjs demo",
@@ -9,20 +9,36 @@
     "vm": "node bin/cli.mjs"
   },
   "dependencies": {
+    "@react-three/fiber": "9.3.0",
+    "@remotion/animation-utils": "4.0.529",
     "@remotion/bundler": "4.0.529",
     "@remotion/captions": "4.0.529",
     "@remotion/cli": "4.0.529",
     "@remotion/google-fonts": "4.0.529",
+    "@remotion/gsap": "4.0.529",
     "@remotion/layout-utils": "4.0.529",
+    "@remotion/light-leaks": "4.0.529",
+    "@remotion/lottie": "4.0.529",
+    "@remotion/mac-cursors": "4.0.529",
+    "@remotion/motion-blur": "4.0.529",
+    "@remotion/noise": "4.0.529",
     "@remotion/paths": "4.0.529",
     "@remotion/renderer": "4.0.529",
     "@remotion/rough-notation": "4.0.529",
+    "@remotion/rounded-text-box": "4.0.529",
+    "@remotion/shapes": "4.0.529",
+    "@remotion/starburst": "4.0.529",
+    "@remotion/svg-3d-engine": "4.0.529",
+    "@remotion/three": "4.0.529",
     "@remotion/transitions": "4.0.529",
+    "gsap": "3.15.0",
+    "lottie-web": "5.13.0",
     "react": "19.1.0",
     "react-dom": "19.1.0",
-    "remotion": "4.0.529"
+    "remotion": "4.0.529",
+    "three": "0.170.0"
   },
-  "version": "0.1.0",
+  "version": "0.2.0",
   "bin": {
     "connect-ai-video-motion": "bin/cli.mjs"
   },
@@ -35,6 +51,8 @@
     "bin/",
     "lib/",
     "src/",
+    "catalog/",
+    "tools/make-lottie.mjs",
     "skill/",
     "licenses/",
     "public/sample/",
@@ -58,6 +76,11 @@
     "motion-graphics",
     "talking-head",
     "video",
-    "face-aware"
+    "face-aware",
+    "hyperframes",
+    "lottie",
+    "gsap",
+    "body-aware",
+    "pose"
   ]
 }

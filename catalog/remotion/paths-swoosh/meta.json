@@ -1,0 +1,26 @@
+{
+  "kind": "remotion/paths-swoosh",
+  "title": "Swoosh underline",
+  "description": "The word lands, then a brush swoosh (evolvePath, getPointAtLength) writes itself under it with a bright pen tip and flicks up.",
+  "source": {
+    "type": "remotion",
+    "package": "@remotion/paths",
+    "version": "4.0.529"
+  },
+  "license": "MIT",
+  "use": "emphasis",
+  "props": {
+    "text": "1-2 words"
+  },
+  "place": "box",
+  "size": {
+    "aspect": 2.6,
+    "minW": 0.2,
+    "maxW": 0.34
+  },
+  "dur": 2.2,
+  "family": "swoosh",
+  "example": {
+    "text": "Quality"
+  }
+}

@@ -1,0 +1,28 @@
+{
+  "kind": "remotion/mac-cursor-click",
+  "title": "Cursor clicks a button",
+  "description": "A real macOS cursor glides to a button and clicks; the button fills and a small answer appears (@remotion/mac-cursors).",
+  "source": {
+    "type": "remotion",
+    "package": "@remotion/mac-cursors",
+    "version": "4.0.529"
+  },
+  "license": "Remotion License",
+  "use": "pointer",
+  "props": {
+    "text": "button word",
+    "sub": "small caps answer after the click"
+  },
+  "place": "box",
+  "size": {
+    "aspect": 2.6,
+    "minW": 0.2,
+    "maxW": 0.32
+  },
+  "dur": 2.6,
+  "family": "cursor-click",
+  "example": {
+    "text": "Render",
+    "sub": "done"
+  }
+}

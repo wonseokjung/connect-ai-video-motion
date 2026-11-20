@@ -1,0 +1,29 @@
+{
+  "kind": "remotion/light-leaks-glow",
+  "title": "Light leak behind you",
+  "description": "A warm light leak drifts through the room behind the person (@remotion/light-leaks, WebGL). The person matte keeps him in front: no face or body pixel changes.",
+  "source": {
+    "type": "remotion",
+    "package": "@remotion/light-leaks",
+    "version": "4.0.529"
+  },
+  "license": "Remotion License",
+  "use": "background",
+  "props": {
+    "seed": "pattern number",
+    "hue": "hue shift in degrees",
+    "strength": "0..1 (0.5)"
+  },
+  "place": "behind",
+  "band": "full",
+  "size": {
+    "aspect": 1.78,
+    "minW": 1,
+    "maxW": 1
+  },
+  "dur": 3,
+  "family": "light-leak",
+  "example": {
+    "at": 4.2
+  }
+}

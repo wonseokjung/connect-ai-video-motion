@@ -1,0 +1,29 @@
+{
+  "kind": "remotion/three-coin",
+  "title": "3D gold coin",
+  "description": "A gold coin flips in real 3D and settles, the number lands beside it (@remotion/three: React Three Fiber + three.js, WebGL).",
+  "source": {
+    "type": "remotion",
+    "package": "@remotion/three",
+    "version": "4.0.529",
+    "also": "three 0.170 (MIT), @react-three/fiber 9 (MIT)"
+  },
+  "license": "MIT",
+  "use": "number",
+  "props": {
+    "value": "number or short word",
+    "unit": "small caps under it"
+  },
+  "place": "box",
+  "size": {
+    "aspect": 2.2,
+    "minW": 0.2,
+    "maxW": 0.3
+  },
+  "dur": 2.8,
+  "family": "coin-3d",
+  "example": {
+    "value": "57",
+    "unit": "graphics"
+  }
+}

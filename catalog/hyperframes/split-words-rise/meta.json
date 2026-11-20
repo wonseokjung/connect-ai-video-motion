@@ -1,0 +1,38 @@
+{
+  "kind": "hyperframes/split-words-rise",
+  "title": "Words rise (GSAP SplitText)",
+  "description": "Each word rises out of its own mask one after another (GSAP SplitText); the last word turns gold.",
+  "use": "emphasis",
+  "props": {
+    "text": "2-4 words; the last one is gold"
+  },
+  "text": {
+    ".line": "text"
+  },
+  "canvas": [
+    1400,
+    420
+  ],
+  "window": [
+    0,
+    3
+  ],
+  "place": "box",
+  "size": {
+    "aspect": 3.33,
+    "minW": 0.26,
+    "maxW": 0.42
+  },
+  "dur": 3,
+  "family": "hf-split",
+  "example": {
+    "text": "Make it with words"
+  },
+  "source": {
+    "type": "hyperframes",
+    "path": "catalog/hyperframes/split-words-rise/block.html",
+    "note": "our own block in the HyperFrames format (HTML + CSS + paused GSAP timeline); GSAP plugins come from the installed gsap package"
+  },
+  "license": "MIT",
+  "src": "block.html"
+}

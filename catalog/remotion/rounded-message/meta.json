@@ -1,0 +1,27 @@
+{
+  "kind": "remotion/rounded-message",
+  "title": "Message bubble",
+  "description": "A chat-style bubble whose rounded outline hugs every line (createRoundedTextBox + measureText), pops up from its corner.",
+  "source": {
+    "type": "remotion",
+    "package": "@remotion/rounded-text-box + @remotion/layout-utils",
+    "version": "4.0.529"
+  },
+  "license": "MIT",
+  "use": "quote",
+  "props": {
+    "text": "1-4 words",
+    "color": "blue (default)"
+  },
+  "place": "box",
+  "size": {
+    "aspect": 2.6,
+    "minW": 0.2,
+    "maxW": 0.32
+  },
+  "dur": 2.6,
+  "family": "bubble",
+  "example": {
+    "text": "Just ask in words"
+  }
+}

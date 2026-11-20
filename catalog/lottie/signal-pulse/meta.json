@@ -1,0 +1,23 @@
+{
+  "kind": "lottie/signal-pulse",
+  "title": "Signal pulse (Lottie)",
+  "description": "A teal dot sends out rings, looped: \"live\", \"listening\", \"recording\".",
+  "use": "label",
+  "loop": true,
+  "size": {
+    "aspect": 1,
+    "minW": 0.08,
+    "maxW": 0.14
+  },
+  "dur": 2,
+  "family": "lottie-pulse",
+  "source": {
+    "type": "lottie",
+    "path": "catalog/lottie/signal-pulse/anim.json",
+    "note": "our own Lottie file (tools/make-lottie.mjs), played by @remotion/lottie"
+  },
+  "license": "MIT",
+  "src": "anim.json",
+  "place": "box",
+  "props": {}
+}

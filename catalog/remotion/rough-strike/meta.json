@@ -1,0 +1,28 @@
+{
+  "kind": "remotion/rough-strike",
+  "title": "Strike out",
+  "description": "The word is struck out with a rough pen line (@remotion/rough-notation StrikeThrough) and fades back; an optional new word rises under it.",
+  "source": {
+    "type": "remotion",
+    "package": "@remotion/rough-notation",
+    "version": "4.0.529"
+  },
+  "license": "MIT",
+  "use": "compare",
+  "props": {
+    "text": "the word to strike (1-2 words)",
+    "sub": "optional new word"
+  },
+  "place": "box",
+  "size": {
+    "aspect": 2.6,
+    "minW": 0.2,
+    "maxW": 0.32
+  },
+  "dur": 2.4,
+  "family": "strike",
+  "example": {
+    "text": "Paid app",
+    "sub": "Free"
+  }
+}

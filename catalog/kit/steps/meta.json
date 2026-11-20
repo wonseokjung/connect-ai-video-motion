@@ -1,0 +1,28 @@
+{
+  "kind": "kit/steps",
+  "title": "1 · 2 · 3 steps",
+  "description": "Progress dots, the numeral comes into focus, the step text slides out. One series shares one place.",
+  "source": {
+    "type": "kit",
+    "path": "src/fm/graphics.tsx"
+  },
+  "license": "MIT",
+  "use": "steps",
+  "props": {
+    "value": "1, 2, 3",
+    "text": "step text"
+  },
+  "place": "box",
+  "legacy": "steps",
+  "dur": 2.2,
+  "family": "kit-steps",
+  "size": {
+    "aspect": 3,
+    "minW": 0.22,
+    "maxW": 0.4
+  },
+  "example": {
+    "value": "1, 2, 3",
+    "text": "Film, Code, Render"
+  }
+}

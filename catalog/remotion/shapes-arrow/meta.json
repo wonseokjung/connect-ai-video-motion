@@ -1,0 +1,29 @@
+{
+  "kind": "remotion/shapes-arrow",
+  "title": "Arrow with a word",
+  "description": "A solid arrow (makeArrow) shoots out with a small overshoot, the word rides on its shaft. Points away from the person unless you set direction.",
+  "source": {
+    "type": "remotion",
+    "package": "@remotion/shapes",
+    "version": "4.0.529"
+  },
+  "license": "MIT",
+  "use": "pointer",
+  "props": {
+    "text": "1-2 words",
+    "direction": "left | right",
+    "color": "blue (default)"
+  },
+  "place": "box",
+  "size": {
+    "aspect": 4.2,
+    "minW": 0.22,
+    "maxW": 0.32
+  },
+  "dur": 2.2,
+  "family": "arrow",
+  "example": {
+    "text": "Look here",
+    "direction": "right"
+  }
+}

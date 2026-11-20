@@ -1,0 +1,28 @@
+{
+  "kind": "remotion/shapes-star-seal",
+  "title": "Star seal",
+  "description": "A thin 18-point star (makeStar) turns like a seal; the number stamps into the middle with a little overshoot.",
+  "source": {
+    "type": "remotion",
+    "package": "@remotion/shapes",
+    "version": "4.0.529"
+  },
+  "license": "MIT",
+  "use": "number",
+  "props": {
+    "value": "number or 1-2 characters",
+    "unit": "small label under it"
+  },
+  "place": "box",
+  "size": {
+    "aspect": 1,
+    "minW": 0.13,
+    "maxW": 0.2
+  },
+  "dur": 2.2,
+  "family": "seal",
+  "example": {
+    "value": "1",
+    "unit": "line"
+  }
+}

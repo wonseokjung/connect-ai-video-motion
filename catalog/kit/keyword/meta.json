@@ -1,0 +1,26 @@
+{
+  "kind": "kit/keyword",
+  "title": "Key word",
+  "description": "Letters rise one by one out of a mask, one light sweep, a hairline with an end tick.",
+  "source": {
+    "type": "kit",
+    "path": "src/fm/graphics.tsx"
+  },
+  "license": "MIT",
+  "use": "keyword",
+  "props": {
+    "text": "1-4 words"
+  },
+  "place": "box",
+  "legacy": "keyword",
+  "dur": 1.9,
+  "family": "kit-keyword",
+  "size": {
+    "aspect": 3,
+    "minW": 0.22,
+    "maxW": 0.4
+  },
+  "example": {
+    "text": "Vibe coding"
+  }
+}

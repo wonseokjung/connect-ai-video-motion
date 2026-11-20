@@ -1,0 +1,26 @@
+{
+  "kind": "remotion/paths-brackets",
+  "title": "Square brackets",
+  "description": "Two square brackets draw themselves around the word (evolvePath) and close in while the letters tighten.",
+  "source": {
+    "type": "remotion",
+    "package": "@remotion/paths",
+    "version": "4.0.529"
+  },
+  "license": "MIT",
+  "use": "keyword",
+  "props": {
+    "text": "1-2 words"
+  },
+  "place": "box",
+  "size": {
+    "aspect": 3,
+    "minW": 0.2,
+    "maxW": 0.32
+  },
+  "dur": 2.2,
+  "family": "brackets",
+  "example": {
+    "text": "One line"
+  }
+}

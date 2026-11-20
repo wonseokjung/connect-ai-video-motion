@@ -1,0 +1,26 @@
+{
+  "kind": "remotion/shapes-callout",
+  "title": "Speech callout",
+  "description": "A callout bubble (makeCallout) grows from its pointer towards the person, the outline draws, the words appear one by one.",
+  "source": {
+    "type": "remotion",
+    "package": "@remotion/shapes + @remotion/paths",
+    "version": "4.0.529"
+  },
+  "license": "MIT",
+  "use": "quote",
+  "props": {
+    "text": "1-4 words"
+  },
+  "place": "box",
+  "size": {
+    "aspect": 2.3,
+    "minW": 0.22,
+    "maxW": 0.32
+  },
+  "dur": 2.8,
+  "family": "callout",
+  "example": {
+    "text": "Made with code"
+  }
+}

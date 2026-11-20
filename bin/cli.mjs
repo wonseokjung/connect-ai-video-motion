@@ -5,13 +5,17 @@ import fs from 'node:fs';
 import path from 'node:path';
 import {spawn} from 'node:child_process';
 import {KIT_NAME} from '../src/core/name.mjs';
-import {analyze, projectPaths, readJson, writeJson, KIT} from '../lib/analyze.mjs';
+import {analyze, projectPaths, readJson, writeJson, KIT, findBody} from '../lib/analyze.mjs';
+import {buildCatalog, scanCatalog} from '../lib/catalog-build.mjs';
+import {renderComp, chromiumOptions} from '../lib/render.mjs';
+import {loadData} from '../lib/check.mjs';
 import {draftPlan} from '../lib/plan-draft.mjs';
 import {check} from '../lib/check.mjs';
 import {render, renderStillComp} from '../lib/render.mjs';
 import {doctor} from '../lib/doctor.mjs';
 import {cliPath} from '../lib/ffmpeg.mjs';
 import {installSkill, removeSkill} from '../lib/install.mjs';
+import {importHyperFrames} from '../lib/hf-import.mjs';
 
 const argv = process.argv.slice(2);
 const flag = (n) => argv.includes('--' + n);
@@ -19,7 +23,7 @@ const opt = (n, d = null) => {
   const i = argv.indexOf('--' + n);
   return i >= 0 && argv[i + 1] && !argv[i + 1].startsWith('--') ? argv[i + 1] : d;
 };
-const pos = argv.filter((a, i) => !a.startsWith('--') && !(i > 0 && argv[i - 1].startsWith('--') && ['only', 'agent', 'dir', 'style'].includes(argv[i - 1].slice(2))));
+const pos = argv.filter((a, i) => !a.startsWith('--') && !(i > 0 && argv[i - 1].startsWith('--') && ['only', 'agent', 'dir', 'style', 'source', 'secs', 'out', 'prefix', 'license'].includes(argv[i - 1].slice(2))));
 const cmd = pos[0] || 'help';
 const log = (...a) => console.log(...a);
 const secs = (t) => ((Date.now() - t) / 1000).toFixed(1) + ' s';
@@ -59,6 +63,21 @@ async function runCheck(P, aspects) {
   return r;
 }
 
+// graphics behind the person need the person matte (one PNG per frame): made only when the plan asks for it
+async function ensureMatte(P, r, need = r?.layouts?.['16x9']?.needsMatte) {
+  if (!need) return;
+  // only the stretches where something goes behind the person (+0.5 s), so a long video does not get a PNG per frame
+  const L = r?.layouts?.['16x9'];
+  const want = L ? L.items.filter((it) => it.place === 'behind' && !it.hidden).map((it) => [it.f0 / L.fps - 0.5, it.f1 / L.fps + 0.5]) : true;
+  const body = readJson(path.join(P.work, 'body.json'));
+  const ranges = body?.matte?.ranges || 'all';
+  if (body?.matte && fs.existsSync(path.join(P.work, 'matte')) && (ranges === 'all' || (Array.isArray(want) && want.every(([a, b]) => ranges.some(([c, d]) => c <= a && d >= b))))) return;
+  log('  matte: a graphic goes behind you, making the person matte');
+  const meta = readJson(path.join(P.work, 'meta.json'));
+  const j = await findBody(P, path.join(P.work, meta.file), meta, readJson(path.join(P.work, 'my-info.json'), {}), (x) => log('  ' + x.trim()), {matte: want});
+  if (j) writeJson(path.join(P.work, 'body.json'), j);
+}
+
 async function full(P, {short = false, overlay = false, only = null, force = false} = {}) {
   const t = Date.now();
   log(`${KIT_NAME} · ${P.dir}`);
@@ -78,6 +97,7 @@ async function full(P, {short = false, overlay = false, only = null, force = fal
     await render(P, {media: false, short, bad: r.errors.map((e) => e.id), log: (s) => log('   ' + s)});
     return r;
   }
+  await ensureMatte(P, r);
   log('4/4 render');
   await render(P, {short, overlay, only, bad: r.errors.map((e) => e.id), log: (s) => log('   ' + s)});
   log(`done in ${secs(t)}. Open ${path.join(P.out, 'final.mp4')}  · report: ${path.join(P.out, 'report.md')}`);
@@ -135,7 +155,76 @@ async function main() {
       sync(P);
       const r = await runCheck(P, flag('short') ? ['16x9', '9x16'] : ['16x9']);
       if (!r.ok && !flag('force')) { process.exitCode = 1; break; }
+      await ensureMatte(P, r);
       await render(P, {short: flag('short'), overlay: flag('overlay'), only: opt('only'), bad: r.errors.map((e) => e.id), log: (s) => log('  ' + s)});
+      break;
+    }
+    case 'catalog': {
+      // every graphic you can call with one "kind", checked against the common meta.json contract
+      const {metas, errors} = buildCatalog();
+      const all = Object.values(metas);
+      if (flag('json')) { console.log(JSON.stringify(all, null, 1)); break; }
+      const by = {};
+      for (const m of all) (by[m.kind.split('/')[0]] ||= []).push(m);
+      for (const [src, list] of Object.entries(by)) {
+        log(`\n${src} (${list.length})`);
+        for (const m of list) {
+          log(`  ${m.kind.padEnd(38)} ${m.status && m.status !== 'ok' ? '[' + m.status + '] ' : ''}${m.use.padEnd(9)} ${m.place.padEnd(7)} ${m.license}`);
+          for (const r of m.reasons || []) log(`      why: ${r}`);
+        }
+      }
+      const ok = all.filter((m) => !m.status || m.status === 'ok').length;
+      log(`\n${ok} ready, ${all.length - ok} listed but not playable.`);
+      log(`${all.length} graphics. Use one in plan.json: {"kind": "<kind>", "at": {"text": "word", "near": 3.2}, "text": "..."}`);
+      log('Your own: {"kind": "custom", "component": "./my/Thing.tsx"} · {"kind": "hyperframes", "src": "./block.html"} · {"kind": "lottie", "src": "./anim.json"}');
+      for (const e of errors) log('  problem: ' + e);
+      process.exitCode = errors.length ? 1 : 0;
+      break;
+    }
+    case 'hf-import': {
+      // HyperFrames blocks (registry checkout, template folder or your own .html) -> catalog/hyperframes/<name>/
+      if (!pos[1]) { log('usage: hf-import <folder> [--dry] [--prefix my-] [--license Apache-2.0]'); process.exitCode = 1; break; }
+      const res = importHyperFrames(pos[1], {dry: flag('dry'), prefix: opt('prefix', ''), license: opt('license', 'Apache-2.0')});
+      for (const x of res) {
+        log(`  ${x.kind.padEnd(44)} ${x.status}`);
+        for (const r of x.reasons) log(`      why: ${r}`);
+        for (const w of x.warnings) log(`      note: ${w}`);
+      }
+      log(`${res.filter((x) => x.status === 'ok').length} of ${res.length} blocks can play frame by frame.${flag('dry') ? ' (dry run: nothing written)' : ' Tune window / crop / text in each meta.json, then run gallery --source hyperframes.'}`);
+      break;
+    }
+    case 'gallery': {
+      // the whole catalog, 2 s each (graphics that need a person run on the project video)
+      const P = projectPaths(projectDir(pos[1] || 'vm-demo'));
+      sync(P);
+      const {metas} = buildCatalog();
+      const kinds = opt('source') ? opt('source').split(',') : [];
+      const hasVideo = fs.existsSync(path.join(P.work, 'meta.json'));
+      // graphics that go behind the person need the person matte of the project video
+      if (hasVideo) await ensureMatte(P, null, Object.values(metas).some((m) => m.place === 'behind' && (!kinds.length || kinds.some((k) => m.kind.startsWith(k)))));
+      const data = hasVideo ? loadData(P) : null;
+      const plan = {items: Object.keys(metas).map((k) => ({kind: k}))};
+      const gsecs = Number(opt('secs', '2'));
+      const t = Date.now();
+      if (flag('sheet') || flag('both')) {
+        const f = path.join(P.out, `gallery${kinds.length ? '_' + kinds.join('_').replace(/[\/]/g, '-') : ''}_sheet.jpg`);
+        await renderStillComp(P, 'GallerySheet', {data, kinds, secs: gsecs, sheet: true}, f, {plan});
+        log(`  ${f}`);
+      }
+      if (!flag('sheet')) {
+        const f = path.join(P.out, `gallery${kinds.length ? '_' + kinds.join('_').replace(/[\/]/g, '-') : ''}.mp4`);
+        await renderComp(P, 'Gallery', {data, kinds, secs: gsecs}, f, {plan, crf: 23});
+        log(`  ${f}  (${secs(t)})`);
+      }
+      break;
+    }
+    case 'body-sheet': {
+      // stills that show what the body detector found (person area, shoulders, arms, hands, finger count)
+      const P = projectPaths(projectDir(pos[1]));
+      const data = loadData(P);
+      const f = path.join(P.out, 'body-sheet.jpg');
+      await renderStillComp(P, 'BodySheet', {data}, f);
+      log(`  ${f}`);
       break;
     }
     case 'face-sheet': {
@@ -176,6 +265,10 @@ and checks its own work. It does not filter, retouch or change faces.
   npx ${KIT_NAME} plan [folder]        first plan.json from the words
   npx ${KIT_NAME} preview [folder]     Remotion Studio with face guides
   npx ${KIT_NAME} face-sheet [folder]  stills for your agent to mark the face
+  npx ${KIT_NAME} catalog              every graphic you can call (Remotion, HyperFrames, Lottie, kit, body)
+  npx ${KIT_NAME} hf-import <folder>   HyperFrames blocks -> catalog items (unsupported ones listed with reasons)
+  npx ${KIT_NAME} gallery [folder]     render the catalog, 2 s each (--source remotion, --sheet for one still sheet)
+  npx ${KIT_NAME} body-sheet [folder]  stills of what the body detector found
   npx ${KIT_NAME} doctor               check this computer
   npx ${KIT_NAME} install-skill        add the agent skill (Claude Code, Codex, Antigravity)`);
   }

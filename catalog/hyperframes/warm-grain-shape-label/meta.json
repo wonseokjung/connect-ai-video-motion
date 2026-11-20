@@ -1,0 +1,46 @@
+{
+  "kind": "hyperframes/warm-grain-shape-label",
+  "title": "Shape label (HyperFrames)",
+  "description": "HyperFrames warm-grain: a terracotta card with a soft blob icon and a label slides in.",
+  "source": {
+    "type": "hyperframes",
+    "repo": "heygen-com/hyperframes",
+    "package": "hyperframes@0.8.86",
+    "path": "dist/templates/warm-grain/compositions/graphics.html",
+    "note": "unchanged copy; the adapter plays a part of its timeline"
+  },
+  "license": "Apache-2.0",
+  "src": "block.html",
+  "canvas": [
+    1920,
+    1080
+  ],
+  "use": "label",
+  "props": {
+    "text": "1-3 words"
+  },
+  "text": {
+    "#moment-3 .stat-text": "text"
+  },
+  "window": [
+    8.6,
+    13.8
+  ],
+  "crop": [
+    55,
+    410,
+    700,
+    260
+  ],
+  "place": "box",
+  "size": {
+    "aspect": 2.69,
+    "minW": 0.2,
+    "maxW": 0.32
+  },
+  "dur": 2.6,
+  "family": "hf-shape-label",
+  "example": {
+    "text": "Editing skills"
+  }
+}

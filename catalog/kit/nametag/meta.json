@@ -1,0 +1,28 @@
+{
+  "kind": "kit/nametag",
+  "title": "Name tag",
+  "description": "Accent bar grows, the name rises out of a mask while it unscrambles, a line draws, the role slides in.",
+  "source": {
+    "type": "kit",
+    "path": "src/fm/graphics.tsx"
+  },
+  "license": "MIT",
+  "use": "name",
+  "props": {
+    "text": "name",
+    "sub": "role"
+  },
+  "place": "box",
+  "legacy": "nametag",
+  "dur": 3.6,
+  "family": "kit-nametag",
+  "size": {
+    "aspect": 3,
+    "minW": 0.22,
+    "maxW": 0.4
+  },
+  "example": {
+    "text": "AI Mentor Jay",
+    "sub": "CONNECT AI LAB"
+  }
+}

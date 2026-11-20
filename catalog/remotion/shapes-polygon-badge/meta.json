@@ -1,0 +1,27 @@
+{
+  "kind": "remotion/shapes-polygon-badge",
+  "title": "Hexagon badge",
+  "description": "A hexagon (makePolygon) draws its outline (evolvePath), turns into place, the word rises inside.",
+  "source": {
+    "type": "remotion",
+    "package": "@remotion/shapes + @remotion/paths",
+    "version": "4.0.529"
+  },
+  "license": "MIT",
+  "use": "keyword",
+  "props": {
+    "text": "1-2 words",
+    "color": "violet (default) or another hue"
+  },
+  "place": "box",
+  "size": {
+    "aspect": 1,
+    "minW": 0.14,
+    "maxW": 0.22
+  },
+  "dur": 2.4,
+  "family": "hexagon",
+  "example": {
+    "text": "Open source"
+  }
+}

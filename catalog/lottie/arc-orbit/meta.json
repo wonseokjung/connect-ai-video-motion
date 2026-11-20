@@ -1,0 +1,23 @@
+{
+  "kind": "lottie/arc-orbit",
+  "title": "Orbit arcs (Lottie)",
+  "description": "Two thin arcs orbit in opposite ways around a faint track, looped: working, thinking, rendering.",
+  "use": "label",
+  "loop": true,
+  "size": {
+    "aspect": 1,
+    "minW": 0.08,
+    "maxW": 0.14
+  },
+  "dur": 2,
+  "family": "lottie-orbit",
+  "source": {
+    "type": "lottie",
+    "path": "catalog/lottie/arc-orbit/anim.json",
+    "note": "our own Lottie file (tools/make-lottie.mjs), played by @remotion/lottie"
+  },
+  "license": "MIT",
+  "src": "anim.json",
+  "place": "box",
+  "props": {}
+}

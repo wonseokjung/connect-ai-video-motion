@@ -1,0 +1,29 @@
+{
+  "kind": "kit/card",
+  "title": "Screen card + arrow",
+  "description": "A zoomed copy of your screen swings up, an arrow draws, a hand-drawn ring closes on the target.",
+  "source": {
+    "type": "kit",
+    "path": "src/fm/graphics.tsx"
+  },
+  "license": "MIT",
+  "use": "card",
+  "props": {
+    "text": "title",
+    "target": "[x,y] 0..1",
+    "zoom": "[x,y,w,h] 0..1",
+    "ring": "[w,h] 0..1"
+  },
+  "place": "box",
+  "legacy": "card",
+  "dur": 3.4,
+  "family": "kit-card",
+  "size": {
+    "aspect": 3,
+    "minW": 0.22,
+    "maxW": 0.4
+  },
+  "example": {
+    "text": "Your screen"
+  }
+}
