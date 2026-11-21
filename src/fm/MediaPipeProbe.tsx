@@ -77,10 +77,10 @@ export const MediaPipeProbe: React.FC<ProbeProps> = ({frames, width: W, height: 
         person = {bbox: null, cover: +(on / (gw * gh)).toFixed(3), rows};
         m.close?.();
       }
-      console.log('VMBODY ' + JSON.stringify({t: fr.t, joints, hands: out, person}));
+      console.debug('VMBODY ' + JSON.stringify({t: fr.t, joints, hands: out, person}));
       if (!done) continueRender(h);
     })().catch((e) => {
-      console.log('VMBODY_ERROR ' + String(e?.message || e));
+      console.debug('VMBODY_ERROR ' + String(e?.message || e));
       continueRender(h);
     });
     return () => { done = true; };

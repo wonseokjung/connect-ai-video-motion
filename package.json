@@ -9,6 +9,7 @@
     "vm": "node bin/cli.mjs"
   },
   "dependencies": {
+    "@mediapipe/tasks-vision": "1.2.2",
     "@react-three/fiber": "9.3.0",
     "@remotion/animation-utils": "4.0.529",
     "@remotion/bundler": "4.0.529",
@@ -51,6 +52,7 @@
     "bin/",
     "lib/",
     "src/",
+    "models/mediapipe/blaze_face_short_range.tflite",
     "catalog/",
     "tools/make-lottie.mjs",
     "skill/",

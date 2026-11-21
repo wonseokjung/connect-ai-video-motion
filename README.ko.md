@@ -132,7 +132,7 @@ npx github:wonseokjung/connect-ai-video-motion gallery vm-demo --sheet
 
 ## 어떻게 놓는가
 
-1. **얼굴.** Mac 에서는 macOS Vision. 다른 컴퓨터에서는 `face-sheet.jpg` 를 보고 사람이나 에이전트가 얼굴 상자를 적습니다.
+1. **얼굴.** Mac 에서는 macOS Vision. Windows · Linux(또는 Xcode 도구가 없는 Mac)에서는 MediaPipe 얼굴 인식이 자동으로 찾습니다. 키트에 들어 있어 따로 받을 것이 없습니다. 얼굴을 못 찾으면 `face-sheet.jpg` 를 보고 사람이나 에이전트가 얼굴 상자를 적습니다.
 2. **몸과 손.** macOS Vision 이 몸 관절(최대 19개), 손마다 21점, 사람 영역(64×36 격자)을 1초에 15번 찾고, 그래픽이 사람 뒤로 가는 구간에는 사람 매트도 만듭니다. Windows · Linux 에서는 MediaPipe 가 같은 일을 합니다(아래). 둘 다 없으면 0.1 처럼 얼굴 상자에서 몸을 짐작합니다.
 3. **빈자리.** 보호 영역 = 얼굴 + 측정한 사람(팔 · 손 포함) + 여백, 그래픽이 떠 있는 시간 전체에 걸쳐서. 이름 붙은 자리(옆, 아래 띠, 위)를 먼저 보고 없으면 빈 곳 전체에서 찾습니다. 크게 움직여서 한 자리가 끝까지 비지 않으면 반으로 나눠 한 자리에서 다음 자리로 페이드합니다. 그래도 없으면 숨기고 리포트에 이유를 씁니다.
 4. **말.** `plan.json` 은 "한 말 → 그래픽" 표입니다. 단어 시간이 있으면 단어 뒤 40 ms, 문장 자막이면 ±0.2 s 에 뜹니다.
@@ -192,13 +192,14 @@ npx github:wonseokjung/connect-ai-video-motion hf-import <폴더>   # 레지스�
 
 블록마다 검사합니다. WebGL · canvas, 자체 영상 · 소리, `requestAnimationFrame` 루프, 인터넷에서 가져오는 스크립트, 템플릿 자리표시자, 타임라인 없음은 `unsupported` 와 이유로 목록에 남습니다.
 
-## Windows · Linux 에서 몸 인식
+## Windows · Linux 에서 얼굴 · 몸 인식
 
-macOS 몸 인식은 따로 받을 것이 없습니다. 다른 컴퓨터에서는 MediaPipe 어댑터(`lib/adapters/mediapipe-body.mjs`)가 Remotion 의 Chrome 안에서 MediaPipe Pose + Hands 를 돌립니다. 키트에 들어 있지 않은 세 가지가 필요합니다(Google, Apache-2.0):
+얼굴은 어느 컴퓨터에서나 바로 됩니다. `@mediapipe/tasks-vision` 이 의존성으로 함께 설치되고, 얼굴 모델(`models/mediapipe/blaze_face_short_range.tflite`, 230 KB, Google, Apache-2.0)이 키트에 들어 있습니다. 시험 영상(3840x2160, 23번 비교)에서 머리 상자가 macOS Vision 상자와 중앙값 37 px 안쪽으로 맞았습니다. Mac 에서도 `VM_FACE=mediapipe` 로 돌려 볼 수 있습니다.
+
+macOS 몸 인식은 따로 받을 것이 없습니다. 다른 컴퓨터에서는 MediaPipe 어댑터(`lib/adapters/mediapipe-body.mjs`)가 Remotion 의 Chrome 안에서 MediaPipe Pose + Hands 를 돌립니다. 패키지는 키트와 함께 설치되고, 몸 모델 두 개는 따로 받아야 합니다(Google, Apache-2.0):
 
 | 무엇 | 넣을 곳 |
 |---|---|
-| `npm install @mediapipe/tasks-vision` | `node_modules/` |
 | `pose_landmarker_lite.task` | `models/mediapipe/` |
 | `hand_landmarker.task` | `models/mediapipe/` |
 

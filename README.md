@@ -132,7 +132,7 @@ Your own video: `npx github:wonseokjung/connect-ai-video-motion my-talk.mp4`, or
 
 ## How it places things
 
-1. **Face.** macOS Vision on a Mac. On other computers you or your agent write the face box from `face-sheet.jpg`.
+1. **Face.** macOS Vision on a Mac. On Windows and Linux (or a Mac without Xcode tools) the MediaPipe face detector finds it automatically; it ships with the kit, nothing to download. If no face is found, you or your agent write the face box from `face-sheet.jpg`.
 2. **Body and hands.** macOS Vision finds the body joints (up to 19), 21 points per hand and the person area (a 64×36 grid), 15 times a second, plus a person matte where a graphic goes behind you. On Windows and Linux the same comes from MediaPipe (see below). Without either, the body is estimated from the face box, as in 0.1.
 3. **Empty space.** The protected area is face + measured person (arms and hands too) + a margin, over the whole time a graphic is on screen. Named places beside you are tried first, then any free space. If you move so much that no place stays free, the graphic is cut in two halves that fade from one place to the next. If there is still no room, it is hidden and the report says why.
 4. **Words.** `plan.json` is a table of "said word → graphic". A graphic lands 40 ms after its word (word times), or ±0.2 s with sentence subtitles.
@@ -192,13 +192,14 @@ npx github:wonseokjung/connect-ai-video-motion hf-import <folder>   # a registry
 
 Each block is checked: WebGL / canvas, its own video or audio, a `requestAnimationFrame` loop, scripts from the internet, template placeholders and missing timelines are listed as `unsupported` with the reason.
 
-## Body on Windows and Linux
+## Face and body on Windows and Linux
 
-The macOS detector needs nothing extra. On other computers the MediaPipe adapter (`lib/adapters/mediapipe-body.mjs`) runs MediaPipe Pose + Hands inside Remotion's own Chrome. It needs three things that are not installed with the kit (Apache-2.0, by Google):
+The face works out of the box on every computer: `@mediapipe/tasks-vision` is a dependency and the face model (`models/mediapipe/blaze_face_short_range.tflite`, 230 KB, Apache-2.0, by Google) ships with the kit. On our test clip (3840x2160, 23 looks) its head box was within a median 37 px of the macOS Vision box. Run with `VM_FACE=mediapipe` on a Mac to try it there.
+
+The macOS body detector needs nothing extra. On other computers the MediaPipe adapter (`lib/adapters/mediapipe-body.mjs`) runs MediaPipe Pose + Hands inside Remotion's own Chrome. The package comes with the kit; the two body models do not (Apache-2.0, by Google):
 
 | What | Where it goes |
 |---|---|
-| `npm install @mediapipe/tasks-vision` | `node_modules/` |
 | `pose_landmarker_lite.task` | `models/mediapipe/` |
 | `hand_landmarker.task` | `models/mediapipe/` |
 

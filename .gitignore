@@ -1,7 +1,10 @@
 node_modules/
 out/
 work/
-models/
+models/*
+!models/mediapipe/
+models/mediapipe/*
+!models/mediapipe/blaze_face_short_range.tflite
 vm-demo/
 *-video-motion/
 projects/

@@ -6,7 +6,6 @@ connect-ai-video-motion is CONNECT AI LAB's code (MIT, see LICENSE), built on Re
 
 | Part in this kit | Source (repo, commit) | Licence | How |
 |---|---|---|---|
-| `src/vendor/pico.mjs` face detector runtime (cascade unpack, scan, cluster, tilt sweep) | AhsanAyaz/ossclip `packages/core/src/face.ts` @ 49660fc2063467cf, itself a port of nenadmarkus/picojs | MIT (ossclip, `licenses/ossclip-MIT.txt`; pico, `licenses/pico-MIT.txt`) | Adapted: TypeScript to JavaScript, logic kept |
 | `src/core/layout.mjs` rules "one box for a graphic's whole window" and "no room = drop and report, never squeeze" | AhsanAyaz/ossclip `packages/scenes/src/overlay-rect.ts`, `overlay-room.ts` @ 49660fc | MIT | Idea; our own placement code (face-relative slots) |
 | `src/vendor/facecam.mjs` 9:16 platform zones (top 250, rail x 940 from y 864, captions under 1536), number reading and K/M format | aaksa/facecammaxxing `remotion/src/lib/layout.ts`, `effects/guide.tsx` @ a9976a70b02c | MIT, `licenses/facecammaxxing-MIT.txt` | Adapted |
 | `src/vendor/hf.mjs` hand-wobble arrow (`hwHash`, arrow path) | heygen-com/hyperframes `registry/components/hw-arrow/hw-arrow.html` @ e383abf475b6 | Apache-2.0, `licenses/hyperframes-Apache-2.0.txt` | Adapted: point A to point B instead of a fixed box, no GSAP |
@@ -37,10 +36,11 @@ remotion, @remotion/cli, @remotion/bundler, @remotion/renderer (render + the ffm
 | `src/adapters/Lottie.tsx` | @remotion/lottie 4.0.529 + lottie-web 5.13.0 | Remotion License / MIT | Used as they are |
 | `catalog/lottie/*` | ours, made by `tools/make-lottie.mjs` | MIT | Ours |
 | `lib/adapters/vision-body.swift` | Apple Vision (VNDetectHumanBodyPoseRequest, VNDetectHumanHandPoseRequest, VNGeneratePersonSegmentationRequest), part of macOS | system framework | Ours (calls the system API) |
-| `lib/adapters/mediapipe-body.mjs`, `src/fm/MediaPipeProbe.tsx` | MediaPipe tasks-vision (Pose, Hands), Google | Apache-2.0 | Not shipped: the package and the two models are downloaded by you (README "Body on Windows and Linux") |
+| `lib/adapters/mediapipe-face.mjs`, `src/fm/MediaPipeFaceProbe.tsx` | MediaPipe tasks-vision 1.2.2 (Face Detector) and `blaze_face_short_range.tflite`, Google | Apache-2.0, `licenses/mediapipe-Apache-2.0.txt` | Package installed as a dependency; the face model ships unchanged in `models/mediapipe/`; the adapter code is ours |
+| `lib/adapters/mediapipe-body.mjs`, `src/fm/MediaPipeProbe.tsx` | MediaPipe tasks-vision (Pose, Hands), Google | Apache-2.0 | The package comes with the kit; the two body models are downloaded by you (README "Face and body on Windows and Linux") |
 | `catalog/body/*`, `src/core/body.mjs` (person grid, hand track, finger count, outline) | ours | MIT | Ours |
 
-Not in the package: the full HyperFrames registry (heygen-com/hyperframes `registry/` at 6bd0b5d8, 456 items, Apache-2.0; its images, sounds and 3D files may carry their own terms, so `hf-import` copies the block HTML only), MediaPipe models.
+Not in the package: the full HyperFrames registry (heygen-com/hyperframes `registry/` at 6bd0b5d8, 456 items, Apache-2.0; its images, sounds and 3D files may carry their own terms, so `hf-import` copies the block HTML only), MediaPipe pose and hand models.
 
 ## Our own code
 
