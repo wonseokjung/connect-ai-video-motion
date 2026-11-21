@@ -16,6 +16,7 @@ import {doctor} from '../lib/doctor.mjs';
 import {cliPath} from '../lib/ffmpeg.mjs';
 import {installSkill, removeSkill} from '../lib/install.mjs';
 import {importHyperFrames} from '../lib/hf-import.mjs';
+import {banner, gold, dimmed, tint} from '../lib/banner.mjs';
 
 const argv = process.argv.slice(2);
 const flag = (n) => argv.includes('--' + n);
@@ -80,15 +81,15 @@ async function ensureMatte(P, r, need = r?.layouts?.['16x9']?.needsMatte) {
 
 async function full(P, {short = false, overlay = false, only = null, force = false} = {}) {
   const t = Date.now();
-  log(`${KIT_NAME} · ${P.dir}`);
-  log('1/4 analyze');
+  log(dimmed(`${KIT_NAME} · ${P.dir}`));
+  log(tint(0, 4, '● 1/4 analyze'));
   await analyze(P, log);
   if (!fs.existsSync(path.join(P.dir, 'plan.json'))) {
-    log('2/4 plan (first draft from the words)');
+    log(tint(1, 4, '● 2/4 plan (first draft from the words)'));
     await makePlan(P);
-  } else log('2/4 plan: using your plan.json');
+  } else log(tint(1, 4, '● 2/4 plan: using your plan.json'));
   sync(P);
-  log('3/4 check');
+  log(tint(2, 4, '● 3/4 check'));
   const aspects = short ? ['16x9', '9x16'] : ['16x9'];
   const r = await runCheck(P, aspects);
   if (!r.ok && !force) {
@@ -98,9 +99,9 @@ async function full(P, {short = false, overlay = false, only = null, force = fal
     return r;
   }
   await ensureMatte(P, r);
-  log('4/4 render');
+  log(tint(3, 4, '● 4/4 render'));
   await render(P, {short, overlay, only, bad: r.errors.map((e) => e.id), log: (s) => log('   ' + s)});
-  log(`done in ${secs(t)}. Open ${path.join(P.out, 'final.mp4')}  · report: ${path.join(P.out, 'report.md')}`);
+  log('\n' + gold(`Done in ${secs(t)}.`) + ` Open ${path.join(P.out, 'final.mp4')}  ` + dimmed(`· report: ${path.join(P.out, 'report.md')}`));
   return r;
 }
 
@@ -123,7 +124,15 @@ async function fromFile(file) {
   return full(P, {short: flag('short'), overlay: flag('overlay'), only: opt('only'), force: flag('force')});
 }
 
+const BANNER_CMDS = new Set(['demo', 'run', 'help', 'doctor', 'install-skill', 'catalog']);
+function hello() {
+  log(banner());
+  log('  ' + 'Motion graphics on top of your own video. ' + gold('Never on your face.'));
+  log('');
+}
+
 async function main() {
+  if ((BANNER_CMDS.has(cmd) || VIDEO.test(cmd) || !['check','plan','preview','face-sheet','hf-import','gallery','body-sheet','remove-skill','studio'].includes(cmd)) && !flag('quiet')) hello();
   if (VIDEO.test(cmd) && fs.existsSync(cmd)) return fromFile(cmd);
   switch (cmd) {
     case 'demo': {

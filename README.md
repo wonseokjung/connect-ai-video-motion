@@ -3,8 +3,10 @@
 **Open source by CONNECT AI LAB · AI education for everyone.** A tool for one job: motion graphics on top of your own video.
 
 ```bash
-npx connect-ai-video-motion demo
+npx github:wonseokjung/connect-ai-video-motion demo
 ```
+
+<img src="docs/terminal.png" width="640" alt="What you see in the terminal">
 
 [![57 graphics on the author's own talking videos](docs/hero.webp)](docs/index.html)
 
@@ -38,6 +40,72 @@ Like mixed martial arts took the best moves of every style and made them work to
 
 The clip above and every clip on the [catalog page](docs/index.html) is the author's own footage (four rooms, four kinds of light), shown with his permission. Each graphic is one line of `plan.json`; the words on screen are words he said in that clip (Korean, shown in English). No box was drawn by hand around his hands: the body detector found them.
 
+
+<!-- gallery:start -->
+## Gallery: 57 graphics, one line of plan.json each
+
+Everything below was made with this kit, on the author's own footage (AI Mentor Jay, shown with his permission). The words on screen are words he said in that clip. Not one face pixel was changed.
+
+<p align="center"><img src="docs/gallery/_compare.webp" width="720" alt="Same graphic: fixed spot vs face aware"><br><sub>The same graphic. Left: pinned to one spot (cut off by the frame). Right: placed by the face.</sub></p>
+
+### Body aware · 5
+
+Graphics that know where your body and hands are.
+
+<table>
+<tr><td width="33%" valign="top"><img src="docs/gallery/body-behind-text.webp" width="100%" alt="Word behind you"><br><b>Word behind you</b><br><code>body/behind-text</code></td><td width="33%" valign="top"><img src="docs/gallery/body-contour-line.webp" width="100%" alt="Line around you"><br><b>Line around you</b><br><code>body/contour-line</code></td><td width="33%" valign="top"><img src="docs/gallery/body-finger-count.webp" width="100%" alt="Finger count stamp"><br><b>Finger count stamp</b><br><code>body/finger-count</code></td></tr>
+<tr><td width="33%" valign="top"><img src="docs/gallery/body-hand-tag.webp" width="100%" alt="Tag on the hand"><br><b>Tag on the hand</b><br><code>body/hand-tag</code></td><td width="33%" valign="top"><img src="docs/gallery/body-point-ray.webp" width="100%" alt="Ray from your finger"><br><b>Ray from your finger</b><br><code>body/point-ray</code></td></tr>
+</table>
+
+### Remotion · 35
+
+Official Remotion packages: paths, shapes, rough notation, three, GSAP, transitions.
+
+<table>
+<tr><td width="33%" valign="top"><img src="docs/gallery/remotion-animation-utils-chip.webp" width="100%" alt="Chip to card"><br><b>Chip to card</b><br><code>remotion/animation-utils-chip</code></td><td width="33%" valign="top"><img src="docs/gallery/remotion-captions-karaoke.webp" width="100%" alt="Words lit in time"><br><b>Words lit in time</b><br><code>remotion/captions-karaoke</code></td><td width="33%" valign="top"><img src="docs/gallery/remotion-gsap-letters.webp" width="100%" alt="Letters fold up (GSAP)"><br><b>Letters fold up (GSAP)</b><br><code>remotion/gsap-letters</code></td></tr>
+<tr><td width="33%" valign="top"><img src="docs/gallery/remotion-layout-fit-word.webp" width="100%" alt="Fit-to-space word"><br><b>Fit-to-space word</b><br><code>remotion/layout-fit-word</code></td><td width="33%" valign="top"><img src="docs/gallery/remotion-light-leaks-glow.webp" width="100%" alt="Light leak behind you"><br><b>Light leak behind you</b><br><code>remotion/light-leaks-glow</code></td><td width="33%" valign="top"><img src="docs/gallery/remotion-mac-cursor-click.webp" width="100%" alt="Cursor clicks a button"><br><b>Cursor clicks a button</b><br><code>remotion/mac-cursor-click</code></td></tr>
+<tr><td width="33%" valign="top"><img src="docs/gallery/remotion-motion-blur-trail.webp" width="100%" alt="Fast word with trail"><br><b>Fast word with trail</b><br><code>remotion/motion-blur-trail</code></td><td width="33%" valign="top"><img src="docs/gallery/remotion-noise-jitter-word.webp" width="100%" alt="Jitter to clean word"><br><b>Jitter to clean word</b><br><code>remotion/noise-jitter-word</code></td><td width="33%" valign="top"><img src="docs/gallery/remotion-noise-topo-label.webp" width="100%" alt="Contour map label"><br><b>Contour map label</b><br><code>remotion/noise-topo-label</code></td></tr>
+<tr><td width="33%" valign="top"><img src="docs/gallery/remotion-paths-brackets.webp" width="100%" alt="Square brackets"><br><b>Square brackets</b><br><code>remotion/paths-brackets</code></td><td width="33%" valign="top"><img src="docs/gallery/remotion-paths-journey.webp" width="100%" alt="Journey A to B"><br><b>Journey A to B</b><br><code>remotion/paths-journey</code></td><td width="33%" valign="top"><img src="docs/gallery/remotion-paths-morph.webp" width="100%" alt="Shape morph, before to after"><br><b>Shape morph, before to after</b><br><code>remotion/paths-morph</code></td></tr>
+<tr><td width="33%" valign="top"><img src="docs/gallery/remotion-paths-signal.webp" width="100%" alt="Signal wave"><br><b>Signal wave</b><br><code>remotion/paths-signal</code></td><td width="33%" valign="top"><img src="docs/gallery/remotion-paths-swoosh.webp" width="100%" alt="Swoosh underline"><br><b>Swoosh underline</b><br><code>remotion/paths-swoosh</code></td><td width="33%" valign="top"><img src="docs/gallery/remotion-rough-box.webp" width="100%" alt="Pen box"><br><b>Pen box</b><br><code>remotion/rough-box</code></td></tr>
+<tr><td width="33%" valign="top"><img src="docs/gallery/remotion-rough-bracket-list.webp" width="100%" alt="Bracket list"><br><b>Bracket list</b><br><code>remotion/rough-bracket-list</code></td><td width="33%" valign="top"><img src="docs/gallery/remotion-rough-highlight.webp" width="100%" alt="Highlighter"><br><b>Highlighter</b><br><code>remotion/rough-highlight</code></td><td width="33%" valign="top"><img src="docs/gallery/remotion-rough-strike.webp" width="100%" alt="Strike out"><br><b>Strike out</b><br><code>remotion/rough-strike</code></td></tr>
+<tr><td width="33%" valign="top"><img src="docs/gallery/remotion-rounded-message.webp" width="100%" alt="Message bubble"><br><b>Message bubble</b><br><code>remotion/rounded-message</code></td><td width="33%" valign="top"><img src="docs/gallery/remotion-shapes-arrow.webp" width="100%" alt="Arrow with a word"><br><b>Arrow with a word</b><br><code>remotion/shapes-arrow</code></td><td width="33%" valign="top"><img src="docs/gallery/remotion-shapes-bars.webp" width="100%" alt="Rising bars"><br><b>Rising bars</b><br><code>remotion/shapes-bars</code></td></tr>
+<tr><td width="33%" valign="top"><img src="docs/gallery/remotion-shapes-callout.webp" width="100%" alt="Speech callout"><br><b>Speech callout</b><br><code>remotion/shapes-callout</code></td><td width="33%" valign="top"><img src="docs/gallery/remotion-shapes-pie.webp" width="100%" alt="Pie to a percent"><br><b>Pie to a percent</b><br><code>remotion/shapes-pie</code></td><td width="33%" valign="top"><img src="docs/gallery/remotion-shapes-polygon-badge.webp" width="100%" alt="Hexagon badge"><br><b>Hexagon badge</b><br><code>remotion/shapes-polygon-badge</code></td></tr>
+<tr><td width="33%" valign="top"><img src="docs/gallery/remotion-shapes-star-seal.webp" width="100%" alt="Star seal"><br><b>Star seal</b><br><code>remotion/shapes-star-seal</code></td><td width="33%" valign="top"><img src="docs/gallery/remotion-shapes-triangle-marker.webp" width="100%" alt="Triangle marker"><br><b>Triangle marker</b><br><code>remotion/shapes-triangle-marker</code></td><td width="33%" valign="top"><img src="docs/gallery/remotion-starburst-rays.webp" width="100%" alt="Rays behind a number"><br><b>Rays behind a number</b><br><code>remotion/starburst-rays</code></td></tr>
+<tr><td width="33%" valign="top"><img src="docs/gallery/remotion-svg3d-badge.webp" width="100%" alt="3D hex badge"><br><b>3D hex badge</b><br><code>remotion/svg3d-badge</code></td><td width="33%" valign="top"><img src="docs/gallery/remotion-three-coin.webp" width="100%" alt="3D gold coin"><br><b>3D gold coin</b><br><code>remotion/three-coin</code></td><td width="33%" valign="top"><img src="docs/gallery/remotion-transition-clock-wipe.webp" width="100%" alt="Clock wipe, before to after"><br><b>Clock wipe, before to after</b><br><code>remotion/transition-clock-wipe</code></td></tr>
+<tr><td width="33%" valign="top"><img src="docs/gallery/remotion-transition-flip.webp" width="100%" alt="Card flip, before to after"><br><b>Card flip, before to after</b><br><code>remotion/transition-flip</code></td><td width="33%" valign="top"><img src="docs/gallery/remotion-transition-iris.webp" width="100%" alt="Iris, before to after"><br><b>Iris, before to after</b><br><code>remotion/transition-iris</code></td><td width="33%" valign="top"><img src="docs/gallery/remotion-transition-push-cut.webp" width="100%" alt="Push cut with flash, before to after"><br><b>Push cut with flash, before to after</b><br><code>remotion/transition-push-cut</code></td></tr>
+<tr><td width="33%" valign="top"><img src="docs/gallery/remotion-transition-slide.webp" width="100%" alt="Push slide, before to after"><br><b>Push slide, before to after</b><br><code>remotion/transition-slide</code></td><td width="33%" valign="top"><img src="docs/gallery/remotion-transition-wipe.webp" width="100%" alt="Diagonal wipe, before to after"><br><b>Diagonal wipe, before to after</b><br><code>remotion/transition-wipe</code></td></tr>
+</table>
+
+### HyperFrames · 7
+
+HTML + CSS + GSAP blocks.
+
+<table>
+<tr><td width="33%" valign="top"><img src="docs/gallery/hyperframes-gold-scramble-title.webp" width="100%" alt="Scramble title (GSAP)"><br><b>Scramble title (GSAP)</b><br><code>hyperframes/gold-scramble-title</code></td><td width="33%" valign="top"><img src="docs/gallery/hyperframes-ring-count.webp" width="100%" alt="Ring counter (GSAP)"><br><b>Ring counter (GSAP)</b><br><code>hyperframes/ring-count</code></td><td width="33%" valign="top"><img src="docs/gallery/hyperframes-split-words-rise.webp" width="100%" alt="Words rise (GSAP SplitText)"><br><b>Words rise (GSAP SplitText)</b><br><code>hyperframes/split-words-rise</code></td></tr>
+<tr><td width="33%" valign="top"><img src="docs/gallery/hyperframes-warm-grain-circle-stat.webp" width="100%" alt="Circle stat (HyperFrames)"><br><b>Circle stat (HyperFrames)</b><br><code>hyperframes/warm-grain-circle-stat</code></td><td width="33%" valign="top"><img src="docs/gallery/hyperframes-warm-grain-pill-stat.webp" width="100%" alt="Pill stat (HyperFrames)"><br><b>Pill stat (HyperFrames)</b><br><code>hyperframes/warm-grain-pill-stat</code></td><td width="33%" valign="top"><img src="docs/gallery/hyperframes-warm-grain-shape-label.webp" width="100%" alt="Shape label (HyperFrames)"><br><b>Shape label (HyperFrames)</b><br><code>hyperframes/warm-grain-shape-label</code></td></tr>
+<tr><td width="33%" valign="top"><img src="docs/gallery/hyperframes-warm-grain-title-card.webp" width="100%" alt="Title card (HyperFrames)"><br><b>Title card (HyperFrames)</b><br><code>hyperframes/warm-grain-title-card</code></td></tr>
+</table>
+
+### Lottie · 3
+
+After Effects / LottieFiles animations.
+
+<table>
+<tr><td width="33%" valign="top"><img src="docs/gallery/lottie-arc-orbit.webp" width="100%" alt="Orbit arcs (Lottie)"><br><b>Orbit arcs (Lottie)</b><br><code>lottie/arc-orbit</code></td><td width="33%" valign="top"><img src="docs/gallery/lottie-gold-check.webp" width="100%" alt="Check mark (Lottie)"><br><b>Check mark (Lottie)</b><br><code>lottie/gold-check</code></td><td width="33%" valign="top"><img src="docs/gallery/lottie-signal-pulse.webp" width="100%" alt="Signal pulse (Lottie)"><br><b>Signal pulse (Lottie)</b><br><code>lottie/signal-pulse</code></td></tr>
+</table>
+
+### Kit · 7
+
+The kit's own graphics.
+
+<table>
+<tr><td width="33%" valign="top"><img src="docs/gallery/kit-card.webp" width="100%" alt="Screen card + arrow"><br><b>Screen card + arrow</b><br><code>kit/card</code></td><td width="33%" valign="top"><img src="docs/gallery/kit-chapter.webp" width="100%" alt="Chapter line"><br><b>Chapter line</b><br><code>kit/chapter</code></td><td width="33%" valign="top"><img src="docs/gallery/kit-counter.webp" width="100%" alt="Number counter"><br><b>Number counter</b><br><code>kit/counter</code></td></tr>
+<tr><td width="33%" valign="top"><img src="docs/gallery/kit-endcard.webp" width="100%" alt="End card"><br><b>End card</b><br><code>kit/endcard</code></td><td width="33%" valign="top"><img src="docs/gallery/kit-keyword.webp" width="100%" alt="Key word"><br><b>Key word</b><br><code>kit/keyword</code></td><td width="33%" valign="top"><img src="docs/gallery/kit-nametag.webp" width="100%" alt="Name tag"><br><b>Name tag</b><br><code>kit/nametag</code></td></tr>
+<tr><td width="33%" valign="top"><img src="docs/gallery/kit-steps.webp" width="100%" alt="1 · 2 · 3 steps"><br><b>1 · 2 · 3 steps</b><br><code>kit/steps</code></td></tr>
+</table>
+
+<!-- gallery:end -->
+
 ## See it
 
 | | File | What to look at |
@@ -55,12 +123,12 @@ You need Node.js 18 or newer. No Python. The ffmpeg inside Remotion is used.
 git clone https://github.com/wonseokjung/connect-ai-video-motion.git
 cd connect-ai-video-motion
 npm install
-npx connect-ai-video-motion demo           # built-in sample, start to finish
-npx connect-ai-video-motion catalog        # every graphic you can call, by source
-npx connect-ai-video-motion gallery vm-demo --sheet
+npx github:wonseokjung/connect-ai-video-motion demo           # built-in sample, start to finish
+npx github:wonseokjung/connect-ai-video-motion catalog        # every graphic you can call, by source
+npx github:wonseokjung/connect-ai-video-motion gallery vm-demo --sheet
 ```
 
-Your own video: `npx connect-ai-video-motion my-talk.mp4`, or with a coding agent (Claude Code, Codex, Antigravity): `npx connect-ai-video-motion install-skill`, then ask it to "put motion graphics on my video".
+Your own video: `npx github:wonseokjung/connect-ai-video-motion my-talk.mp4`, or with a coding agent (Claude Code, Codex, Antigravity): `npx github:wonseokjung/connect-ai-video-motion install-skill`, then ask it to "put motion graphics on my video".
 
 ## How it places things
 
@@ -72,7 +140,7 @@ Your own video: `npx connect-ai-video-motion my-talk.mp4`, or with a coding agen
 
 ## The catalog
 
-`npx connect-ai-video-motion catalog` lists everything. Today: **57 graphics you can play** and 4 listed with the reason they cannot (yet).
+`npx github:wonseokjung/connect-ai-video-motion catalog` lists everything. Today: **57 graphics you can play** and 4 listed with the reason they cannot (yet).
 
 | Source | Count | Examples |
 |---|---|---|
@@ -119,7 +187,7 @@ A component gets `{it, r, lf, dur, st, ink, u, fps, L, mainF}`: the plan line, i
 The adapter runs a block (HTML + CSS + a paused GSAP timeline in `window.__timelines`) in its own transparent iframe and seeks it to every Remotion frame. GSAP and its plugins come from the installed `gsap` package, never a CDN. `Math.random` is seeded and CSS animations are held at the frame time, so every render gives the same picture. `meta.window` picks seconds of the block's timeline, `meta.crop` a part of its canvas, `meta.text` puts your words in.
 
 ```bash
-npx connect-ai-video-motion hf-import <folder>   # a registry checkout, a template, or your .html files
+npx github:wonseokjung/connect-ai-video-motion hf-import <folder>   # a registry checkout, a template, or your .html files
 ```
 
 Each block is checked: WebGL / canvas, its own video or audio, a `requestAnimationFrame` loop, scripts from the internet, template placeholders and missing timelines are listed as `unsupported` with the reason.
