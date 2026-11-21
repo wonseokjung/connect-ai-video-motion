@@ -20,6 +20,7 @@ import {banner, gold, dimmed, tint} from '../lib/banner.mjs';
 
 const argv = process.argv.slice(2);
 const flag = (n) => argv.includes('--' + n);
+if (flag('verbose')) process.env.VM_VERBOSE = '1'; // debugging: print what the face probe sees, frame by frame
 const opt = (n, d = null) => {
   const i = argv.indexOf('--' + n);
   return i >= 0 && argv[i + 1] && !argv[i + 1].startsWith('--') ? argv[i + 1] : d;
@@ -270,6 +271,7 @@ and checks its own work. It does not filter, retouch or change faces.
   npx ${KIT_NAME} run [folder]         your video: put it in <folder>/input/ (plus .srt/.vtt if you have one)
       --short   also a 9:16 version     --overlay  also a transparent overlay.mov for Premiere / CapCut / DaVinci
       --only <id>  re-render one graphic --force   render even if check fails
+      --verbose    print what the face probe sees, frame by frame (or VM_VERBOSE=1)
   npx ${KIT_NAME} check [folder]       face overlap, frame edges, words, contrast -> out/report.md
   npx ${KIT_NAME} plan [folder]        first plan.json from the words
   npx ${KIT_NAME} preview [folder]     Remotion Studio with face guides

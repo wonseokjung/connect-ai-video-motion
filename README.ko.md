@@ -194,7 +194,7 @@ npx github:wonseokjung/connect-ai-video-motion hf-import <폴더>   # 레지스�
 
 ## Windows · Linux 에서 얼굴 · 몸 인식
 
-얼굴은 어느 컴퓨터에서나 바로 됩니다. `@mediapipe/tasks-vision` 이 의존성으로 함께 설치되고, 얼굴 모델(`models/mediapipe/blaze_face_short_range.tflite`, 230 KB, Google, Apache-2.0)이 키트에 들어 있습니다. 시험 영상(3840x2160, 23번 비교)에서 머리 상자가 macOS Vision 상자와 중앙값 37 px 안쪽으로 맞았습니다. Mac 에서도 `VM_FACE=mediapipe` 로 돌려 볼 수 있습니다.
+얼굴은 어느 컴퓨터에서나 바로 됩니다. `@mediapipe/tasks-vision` 이 의존성으로 함께 설치되고, 얼굴 모델(`models/mediapipe/blaze_face_short_range.tflite`, 230 KB, Google, Apache-2.0)이 키트에 들어 있습니다. 시험 영상(3840x2160, 23번 비교)에서 머리 상자가 macOS Vision 상자와 중앙값 37 px 안쪽으로 맞았습니다. Mac 에서도 `VM_FACE=mediapipe` 로 돌려 볼 수 있습니다. `--verbose`(또는 `VM_VERBOSE=1`)를 붙이면 얼굴 탐지기가 본 내용을 한 장씩 출력합니다.
 
 macOS 몸 인식은 따로 받을 것이 없습니다. 다른 컴퓨터에서는 MediaPipe 어댑터(`lib/adapters/mediapipe-body.mjs`)가 Remotion 의 Chrome 안에서 MediaPipe Pose + Hands 를 돌립니다. 패키지는 키트와 함께 설치되고, 몸 모델 두 개는 따로 받아야 합니다(Google, Apache-2.0):
 
