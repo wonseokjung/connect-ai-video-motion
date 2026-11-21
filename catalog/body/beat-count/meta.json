@@ -1,0 +1,32 @@
+{
+  "kind": "body/beat-count",
+  "title": "Count on the beat",
+  "description": "Every time your hand comes down on a beat (a real measured down stroke) the next number slams into the room behind you, giant, on the side with more space, with the matching word from your list.",
+  "use": "list",
+  "props": {
+    "text": "comma list, one word per beat: \"Check, Check, Check, Done\"",
+    "value": "how many beats (default: list length)",
+    "hand": "left | right | any",
+    "place": "left | right (side of the number)"
+  },
+  "place": "behind",
+  "band": "full",
+  "size": {
+    "aspect": 1.78,
+    "minW": 1,
+    "maxW": 1
+  },
+  "rig": true,
+  "dur": 3.2,
+  "family": "beat-count",
+  "example": {
+    "text": "Check, Check, Check, Check",
+    "at": 6.5
+  },
+  "source": {
+    "type": "body",
+    "path": "catalog/body/beat-count/index.tsx",
+    "note": "uses the person matte (drawn behind you, you stay in front) and the body detector through meta \"rig\""
+  },
+  "license": "MIT"
+}

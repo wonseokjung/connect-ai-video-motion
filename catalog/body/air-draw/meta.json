@@ -1,0 +1,31 @@
+{
+  "kind": "body/air-draw",
+  "title": "Write in the air",
+  "description": "Your index finger tip leaves a line of light in the room: gold head, colours shifting along the stroke, white core, soft glow. The path is your measured finger, frame by frame. It is drawn behind you, so it never lies on your body.",
+  "use": "body",
+  "props": {
+    "text": "optional word at the end of the stroke",
+    "hand": "left | right | any",
+    "color": "head colour (gold default)"
+  },
+  "place": "behind",
+  "band": "full",
+  "size": {
+    "aspect": 1.78,
+    "minW": 1,
+    "maxW": 1
+  },
+  "rig": true,
+  "dur": 2.8,
+  "family": "air-draw",
+  "example": {
+    "text": "Touch",
+    "at": 11.6
+  },
+  "source": {
+    "type": "body",
+    "path": "catalog/body/air-draw/index.tsx",
+    "note": "uses the person matte (drawn behind you, you stay in front) and the body detector through meta \"rig\""
+  },
+  "license": "MIT"
+}

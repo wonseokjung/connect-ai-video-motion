@@ -241,6 +241,90 @@ export function handTrack(B, side, f0, f1, fps) {
   });
 }
 
+/**
+ * The whole measured rig per video frame over [f0,f1): {joints: {name: [x,y]}, hands: [{side, pts: {name: [x,y]}, box, count, pinch}]}
+ * in body.json px. Samples (often 15 per second) are interpolated to every frame, then smoothed over +-2 frames,
+ * so lines drawn from a fingertip or a shoulder glide with the real body. Points under 0.3 confidence are left out.
+ * A hand that is not seen for longer than 0.3 s is simply absent at those frames (the graphic decides what to do).
+ */
+export function rigTrack(B, f0, f1, fps) {
+  if (!B) return null;
+  const S = B.S;
+  const lerpPts = (a, b, u) => {
+    const out = {};
+    for (const k of new Set([...Object.keys(a || {}), ...Object.keys(b || {})])) {
+      const p = a?.[k] && a[k][2] >= 0.3 ? a[k] : null, q = b?.[k] && b[k][2] >= 0.3 ? b[k] : null;
+      if (p && q) out[k] = [p[0] + (q[0] - p[0]) * u, p[1] + (q[1] - p[1]) * u];
+      else if (p && u < 0.5) out[k] = [p[0], p[1]];
+      else if (q && u >= 0.5) out[k] = [q[0], q[1]];
+    }
+    return out;
+  };
+  const handOf = (s, side) => (s?.hands || []).filter((h) => h.side === side && h.conf >= 0.3).sort((a, b) => b.conf - a.conf)[0] || null;
+  const raw = [];
+  for (let f = f0; f < f1; f++) {
+    const t = f / fps;
+    let lo = B.idxAt(t);
+    if (S[lo].t > t && lo > 0) lo--;
+    const hi = Math.min(S.length - 1, lo + 1);
+    const span = S[hi].t - S[lo].t;
+    const u = span > 0 ? Math.max(0, Math.min(1, (t - S[lo].t) / span)) : 0;
+    const joints = lerpPts(S[lo].joints, S[hi].joints, u);
+    const hands = [];
+    for (const side of ['left', 'right']) {
+      const a = handOf(S[lo], side), b = handOf(S[hi], side);
+      if (!a && !b) continue;
+      // one side only: keep it if that sample is close in time (bridges a single missed look)
+      if (!a && Math.abs(S[hi].t - t) > 0.3) continue;
+      if (!b && Math.abs(t - S[lo].t) > 0.3) continue;
+      const pts = a && b ? lerpPts(a.pts, b.pts, u) : lerpPts((a || b).pts, (a || b).pts, 0);
+      if (Object.keys(pts).length < 5) continue;
+      hands.push({side, pts, count: fingerCount(u < 0.5 ? a || b : b || a)});
+    }
+    raw.push({joints, hands});
+  }
+  // smoothing: centred average over +-2 frames, per named point
+  const R = 2;
+  const avg = (get) => (i) => {
+    let sx = 0, sy = 0, n = 0;
+    for (let k = i - R; k <= i + R; k++) { const p = k >= 0 && k < raw.length ? get(raw[k]) : null; if (p) { sx += p[0]; sy += p[1]; n++; } }
+    return n ? [sx / n, sy / n] : null;
+  };
+  return raw.map((r, i) => {
+    const joints = {};
+    for (const k of Object.keys(r.joints)) joints[k] = avg((x) => x.joints[k])(i);
+    const hands = r.hands.map((h) => {
+      const pts = {};
+      for (const k of Object.keys(h.pts)) pts[k] = avg((x) => x.hands.find((q) => q.side === h.side)?.pts[k])(i);
+      const xs = Object.values(pts).map((p) => p[0]), ys = Object.values(pts).map((p) => p[1]);
+      const box = [Math.min(...xs), Math.min(...ys), Math.max(...xs) - Math.min(...xs), Math.max(...ys) - Math.min(...ys)];
+      const palm = pts.indexMCP && pts.littleMCP ? dist(pts.indexMCP, pts.littleMCP) : Math.max(box[2], box[3]) * 0.4;
+      const pinch = pts.thumbTip && pts.indexTip ? Math.max(0, Math.min(1, 1 - dist(pts.thumbTip, pts.indexTip) / (palm * 1.6 || 1))) : null;
+      return {side: h.side, pts, box, count: h.count, pinch};
+    });
+    return {joints, hands};
+  });
+}
+
+/**
+ * Beats of a hand: indexes where a height series (y grows downward, null = not seen) reaches a lowest point on screen
+ * right after a down stroke of at least `drop` px within 9 frames, at least `gap` frames after the last beat.
+ */
+export function downBeats(ys, drop, gap = 7) {
+  const beats = [];
+  for (let q = 3; q < ys.length - 2; q++) {
+    const y = ys[q];
+    if (y == null) continue;
+    if ([ys[q - 1], ys[q + 1], ys[q + 2]].some((v) => v == null || v > y)) continue;
+    let top = y;
+    for (let b = Math.max(0, q - 9); b < q; b++) if (ys[b] != null) top = Math.min(top, ys[b]);
+    if (y - top < drop) continue;
+    if (beats.length && q - beats[beats.length - 1] < gap) continue;
+    beats.push(q);
+  }
+  return beats;
+}
+
 /** Which joints were seen (share of samples with conf >= 0.3), for the report. */
 export function bodyFacts(B) {
   if (!B) return null;

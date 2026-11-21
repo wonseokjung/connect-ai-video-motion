@@ -1,0 +1,33 @@
+{
+  "kind": "body/grab-card",
+  "title": "Card in your hand",
+  "description": "A glass question card rides next to your raised hand on the side clear of your body, leans in 3D with the real speed of your hand, and a grip line runs from thumb and index finger to its corner. Pinch and the corner clamp lights up.",
+  "use": "card",
+  "props": {
+    "text": "1-4 words",
+    "sub": "small caps (QUESTION)",
+    "hand": "left | right | any",
+    "color": "card colour (violet default)"
+  },
+  "place": "attach",
+  "attach": "hand",
+  "size": {
+    "aspect": 1.7,
+    "minW": 0.2,
+    "maxW": 0.29
+  },
+  "rig": true,
+  "dur": 2.8,
+  "family": "grab-card",
+  "example": {
+    "text": "Address",
+    "sub": "just one",
+    "at": 5.6
+  },
+  "source": {
+    "type": "body",
+    "path": "catalog/body/grab-card/index.tsx",
+    "note": "uses the body detector (work/body.json: hands, joints, face) read every frame through meta \"rig\""
+  },
+  "license": "MIT"
+}

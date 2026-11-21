@@ -5,7 +5,7 @@
 import {METAS} from '../catalog/metas.generated.mjs';
 
 export const PLACES = ['box', 'attach', 'behind', 'edge', 'post', 'full'];
-export const ATTACH = ['hand', 'fingers', 'point', 'contour'];
+export const ATTACH = ['hand', 'fingers', 'point', 'contour', 'shoulder'];
 export const USES = ['name', 'keyword', 'number', 'steps', 'list', 'compare', 'quote', 'emphasis', 'pointer', 'chapter', 'card', 'background', 'transition', 'end', 'body', 'label', 'title'];
 export const SOURCES = ['kit', 'remotion', 'hyperframes', 'lottie', 'body', 'custom'];
 export const STATUS = ['ok', 'needs-download', 'unsupported'];

@@ -1,0 +1,29 @@
+{
+  "kind": "body/afterimage",
+  "title": "Afterimages of your motion",
+  "description": "Your outline from a moment ago is laid behind you as five flat colour silhouettes, older ones fainter. Move your arms and a rainbow of your own motion trails them; hold still and it hides behind you.",
+  "use": "emphasis",
+  "props": {
+    "value": "frames between two echoes (2-8, default 3)",
+    "color": "first echo colour"
+  },
+  "place": "behind",
+  "band": "full",
+  "size": {
+    "aspect": 1.78,
+    "minW": 1,
+    "maxW": 1
+  },
+  "rig": true,
+  "dur": 2.8,
+  "family": "afterimage",
+  "example": {
+    "at": 3.0
+  },
+  "source": {
+    "type": "body",
+    "path": "catalog/body/afterimage/index.tsx",
+    "note": "uses the person matte (drawn behind you, you stay in front) and the body detector through meta \"rig\""
+  },
+  "license": "MIT"
+}

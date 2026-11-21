@@ -1,0 +1,31 @@
+{
+  "kind": "body/room-to-data",
+  "title": "Room turns into data",
+  "description": "A scan line sweeps across and the real room behind you becomes big data pixels sampled from the video, with cell lines and live scan readouts. You stay real: it all happens behind the person matte.",
+  "use": "background",
+  "props": {
+    "text": "optional small caps",
+    "from": "left | right",
+    "color": "grid colour (teal default)"
+  },
+  "place": "behind",
+  "band": "full",
+  "size": {
+    "aspect": 1.78,
+    "minW": 1,
+    "maxW": 1
+  },
+  "rig": true,
+  "dur": 3.2,
+  "family": "room-to-data",
+  "example": {
+    "text": "Reverse",
+    "at": 4.3
+  },
+  "source": {
+    "type": "body",
+    "path": "catalog/body/room-to-data/index.tsx",
+    "note": "uses the person matte (drawn behind you, you stay in front) and the body detector through meta \"rig\""
+  },
+  "license": "MIT"
+}

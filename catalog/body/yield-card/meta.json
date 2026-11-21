@@ -1,0 +1,36 @@
+{
+  "kind": "body/yield-card",
+  "title": "Card that makes way",
+  "description": "A card in a free spot leans away in 3D, shrinks and slides back when your measured hand comes near, and its edge facing the hand lights up. The bar is the real distance to your hand.",
+  "use": "card",
+  "props": {
+    "text": "1-4 words",
+    "sub": "small caps",
+    "color": "card colour (blue default)"
+  },
+  "place": "box",
+  "slots": [
+    "beside-right",
+    "beside-left",
+    "top-banner"
+  ],
+  "size": {
+    "aspect": 1.6,
+    "minW": 0.2,
+    "maxW": 0.3
+  },
+  "rig": true,
+  "dur": 3,
+  "family": "yield-card",
+  "example": {
+    "text": "Copy it",
+    "sub": "then change",
+    "at": 3.4
+  },
+  "source": {
+    "type": "body",
+    "path": "catalog/body/yield-card/index.tsx",
+    "note": "uses the body detector (work/body.json: hands, joints, face) read every frame through meta \"rig\""
+  },
+  "license": "MIT"
+}

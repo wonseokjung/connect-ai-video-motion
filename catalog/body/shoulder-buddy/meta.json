@@ -1,0 +1,31 @@
+{
+  "kind": "body/shoulder-buddy",
+  "title": "Robot behind your shoulder",
+  "description": "The kit robot lands behind your measured shoulder on the side with more room, its lower half hidden by you (person matte in front), its eyes on your face. It moves with your shoulder every frame.",
+  "use": "body",
+  "props": {
+    "text": "optional small caps over it",
+    "hand": "left | right: which shoulder (default: the side with more room)",
+    "color": "robot colour (gold default)"
+  },
+  "place": "behind",
+  "band": "full",
+  "size": {
+    "aspect": 1.78,
+    "minW": 1,
+    "maxW": 1
+  },
+  "rig": true,
+  "dur": 3,
+  "family": "shoulder-buddy",
+  "example": {
+    "text": "All of it",
+    "at": 9.6
+  },
+  "source": {
+    "type": "body",
+    "path": "catalog/body/shoulder-buddy/index.tsx",
+    "note": "uses the person matte (drawn behind you, you stay in front) and the body detector through meta \"rig\""
+  },
+  "license": "MIT"
+}

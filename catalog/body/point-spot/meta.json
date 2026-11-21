@@ -1,0 +1,33 @@
+{
+  "kind": "body/point-spot",
+  "title": "Spotlight where you point",
+  "description": "A cone of light leaves your index finger in the real direction you point and lands as a spotlight on the room behind you, with your word inside the light.",
+  "use": "pointer",
+  "props": {
+    "text": "1-2 words",
+    "sub": "small caps",
+    "hand": "left | right | any",
+    "color": "light colour"
+  },
+  "place": "behind",
+  "band": "full",
+  "size": {
+    "aspect": 1.78,
+    "minW": 1,
+    "maxW": 1
+  },
+  "rig": true,
+  "dur": 2.8,
+  "family": "point-spot",
+  "example": {
+    "text": "Click",
+    "sub": "test it",
+    "at": 7.0
+  },
+  "source": {
+    "type": "body",
+    "path": "catalog/body/point-spot/index.tsx",
+    "note": "uses the person matte (drawn behind you, you stay in front) and the body detector through meta \"rig\""
+  },
+  "license": "MIT"
+}

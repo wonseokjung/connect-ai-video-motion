@@ -3,6 +3,7 @@
 //   VNDetectHumanBodyPoseRequest  -> body joints (nose, neck, shoulders, elbows, wrists, hips, ...)
 //   VNDetectHumanHandPoseRequest  -> up to 2 hands, 21 points each, left/right
 //   VNGeneratePersonSegmentationRequest -> person matte (hands and arms included)
+//   VNGenerateForegroundInstanceMaskRequest (macOS 14+, matte frames only) -> microphone, mic arm, desk edge in front
 // Prints one JSON line: {"width","height","fps","source":"macos-vision-body","step","grid":{w,h},"samples":[...],"matte":{...}}
 //   sample = {"t", "joints":{"name":[x,y,conf]}, "hands":[{"side","conf","pts":{"name":[x,y,conf]}}],
 //             "person":{"bbox":[x,y,w,h],"cover":0.31,"rows":["hex per grid row"]}}
@@ -116,11 +117,28 @@ while let sb = out.copyNextSampleBuffer() {
 
   if mt, let dir = matteDir, !mask.isEmpty {
     let m = mask
+    // things in front of the room that are not the person (microphone, mic arm, the desk edge): Vision's foreground
+    // instance mask (macOS 14+), measured on the same frame. They must stay in front of graphics behind the person too.
+    var front = m
+    if #available(macOS 14.0, *) {
+      let fg = VNGenerateForegroundInstanceMaskRequest()
+      if (try? handler.perform([fg])) != nil, let obs = fg.results?.first,
+         let fpb = try? obs.generateScaledMaskForImage(forInstances: obs.allInstances, from: handler) {
+        let ci = CIImage(cvPixelBuffer: fpb)
+        let sx = CGFloat(mw) / ci.extent.width, sy = CGFloat(mh) / ci.extent.height
+        var fm = [UInt8](repeating: 0, count: mw * mh)
+        fm.withUnsafeMutableBytes { buf in
+          ctx.render(ci.transformed(by: CGAffineTransform(scaleX: sx, y: sy)), toBitmap: buf.baseAddress!, rowBytes: mw, bounds: CGRect(x: 0, y: 0, width: mw, height: mh), format: .L8, colorSpace: nil)
+        }
+        for i in 0..<(mw * mh) where fm[i] > front[i] { front[i] = fm[i] }
+      }
+    }
     // no growing here: this matte redraws the person over graphics behind him, a grown edge would show a halo of
     // the old background. Keeping graphics off the person is the job of the person grid (layout + check).
-    // white with the matte as alpha: works as a CSS alpha mask and as a luminance mask
+    // alpha = everything in front (person + foreground objects): the CSS alpha mask that redraws them on top.
+    // colour = the person only (premultiplied): a CSS luminance mask gives the person alone (glows, outlines).
     var rgba = [UInt8](repeating: 255, count: mw * mh * 4)
-    for i in 0..<(mw * mh) { let a = m[i]; rgba[i * 4] = a; rgba[i * 4 + 1] = a; rgba[i * 4 + 2] = a; rgba[i * 4 + 3] = a }
+    for i in 0..<(mw * mh) { let a = min(m[i], front[i]); rgba[i * 4] = a; rgba[i * 4 + 1] = a; rgba[i * 4 + 2] = a; rgba[i * 4 + 3] = front[i] }
     let cs = CGColorSpaceCreateDeviceRGB()
     if let prov = CGDataProvider(data: Data(rgba) as CFData),
        let img = CGImage(width: mw, height: mh, bitsPerComponent: 8, bitsPerPixel: 32, bytesPerRow: mw * 4, space: cs, bitmapInfo: CGBitmapInfo(rawValue: CGImageAlphaInfo.premultipliedLast.rawValue), provider: prov, decode: nil, shouldInterpolate: true, intent: .defaultIntent) {
