@@ -33,10 +33,11 @@ export const METAS = {
  "body/contour-line": {
   "kind": "body/contour-line",
   "title": "Line around you",
-  "description": "A thin gold line traces your head and shoulders a little outside the outline and a word rides at its end. It moves with you.",
+  "description": "A glowing gold line traces your head and shoulders a little outside the outline, a second line in a subject colour runs further out, and a word rides at its end. It moves with you.",
   "use": "body",
   "props": {
-   "text": "small caps word at the end"
+   "text": "small caps word at the end",
+   "color": "colour of the outer line (teal by default)"
   },
   "place": "attach",
   "attach": "contour",
@@ -187,7 +188,7 @@ export const METAS = {
  "body/palm-hologram": {
   "kind": "body/palm-hologram",
   "title": "Hologram from your hand",
-  "description": "A real 3D object (three.js) spins over a glowing platform next to your raised hand, a light beam runs from your palm to it. The hand is measured every frame and the hologram moves with it, never on your face or body.",
+  "description": "A real 3D object (three.js) spins in a lit core and a turning hexagon ring over a glowing platform next to your raised hand, a light beam runs from your palm to it. The hand is measured every frame and the hologram moves with it, never on your face or body.",
   "use": "body",
   "props": {
    "text": "optional small caps under it",
@@ -1130,7 +1131,8 @@ export const METAS = {
   "size": {
    "aspect": 3.6,
    "minW": 0.22,
-   "maxW": 0.36
+   "maxW": 0.36,
+   "fitText": true
   },
   "dur": 1.8,
   "family": "fit-word",

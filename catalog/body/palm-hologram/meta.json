@@ -1,7 +1,7 @@
 {
   "kind": "body/palm-hologram",
   "title": "Hologram from your hand",
-  "description": "A real 3D object (three.js) spins over a glowing platform next to your raised hand, a light beam runs from your palm to it. The hand is measured every frame and the hologram moves with it, never on your face or body.",
+  "description": "A real 3D object (three.js) spins in a lit core and a turning hexagon ring over a glowing platform next to your raised hand, a light beam runs from your palm to it. The hand is measured every frame and the hologram moves with it, never on your face or body.",
   "use": "body",
   "props": {
     "text": "optional small caps under it",

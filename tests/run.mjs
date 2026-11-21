@@ -244,6 +244,11 @@ const withBody = (plan) => {
   const r = await check(withBody({version: 1, items: [{id: 'a', kind: 'remotion/rough-box', at: 2, text: 'One', scale: 1.6}]}), {aspects: ['16x9'], measure: false});
   assert.ok(!r.errors.some((x) => x.what === 'face' || x.what === 'person'), JSON.stringify(r.errors));
   ok(`"scale" makes a graphic bigger without touching the person (${a.segments[0].r[2]} -> ${b.segments[0].r[2]} px)`);
+  // a fit-to-space word takes the shape of the word: a short word gets a taller box than a long one
+  const short = lay([{id: 'a', kind: 'remotion/layout-fit-word', at: 2, text: 'FREE'}]).items[0];
+  const long = lay([{id: 'a', kind: 'remotion/layout-fit-word', at: 2, text: 'Everything'}]).items[0];
+  assert.ok(short.h / short.w > long.h / long.w, `short word box is taller for its width (${short.w}x${short.h} vs ${long.w}x${long.h})`);
+  ok(`fit-to-space word: "FREE" box ${Math.round(short.w)}x${Math.round(short.h)}, "Everything" ${Math.round(long.w)}x${Math.round(long.h)}`);
   const one = lay([{id: 'k', kind: 'kit/keyword', at: 2, text: 'Visual Vibe Coding'}]).items[0];
   const two = lay([{id: 'k', kind: 'kit/keyword', at: 2, text: 'Visual\nVibe Coding'}]).items[0];
   assert.ok(!two.hidden && two.h / two.w > one.h / one.w, 'stacked key word is taller for its width');

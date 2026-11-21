@@ -25,8 +25,8 @@ const PalmHologram: React.FC<GraphicProps> = ({it, r, lf, dur, st, u, L, mainF})
       <svg style={{position: 'absolute', left: 0, top: 0, overflow: 'visible'}} width={1} height={1}>
         <defs>
           <linearGradient id="phBeam" gradientUnits="userSpaceOnUse" x1={a?.[0] ?? 0} y1={a?.[1] ?? 0} x2={base[0]} y2={base[1]}>
-            <stop offset="0" stopColor={col} stopOpacity={0.05} />
-            <stop offset="1" stopColor={col} stopOpacity={0.45} />
+            <stop offset="0" stopColor={col} stopOpacity={0.15} />
+            <stop offset="1" stopColor={col} stopOpacity={0.75} />
           </linearGradient>
           <radialGradient id="phDisc">
             <stop offset="0" stopColor={col} stopOpacity={0.9} />
@@ -40,22 +40,35 @@ const PalmHologram: React.FC<GraphicProps> = ({it, r, lf, dur, st, u, L, mainF})
         <ellipse cx={base[0]} cy={base[1]} rx={D * 0.46 * k} ry={D * 0.09 * k} fill="none" stroke={col} strokeWidth={2 * u} />
         <ellipse cx={base[0]} cy={base[1]} rx={D * 0.3 * k * (1 + 0.15 * Math.sin(lf / 4))} ry={D * 0.06 * k} fill="none" stroke={col2} strokeWidth={1.5 * u} opacity={0.8} />
       </svg>
-      <div style={{position: 'absolute', left: ox, top: oy, width: D, height: D, opacity: k01(lf, 4, 14), filter: `drop-shadow(0 0 ${14 * u}px ${col})`}}>
+      <div style={{position: 'absolute', left: ox, top: oy, width: D, height: D, opacity: k01(lf, 4, 14), filter: `drop-shadow(0 0 ${10 * u}px ${col}) drop-shadow(0 0 ${30 * u}px ${col2})`}}>
+        {/* a lit core behind the object so it reads on any room */}
+        <div style={{position: 'absolute', inset: '8%', borderRadius: '50%', background: `radial-gradient(circle, #FFFFFFCC 0%, ${col}AA 22%, ${col2}55 48%, transparent 70%)`}} />
+        <svg style={{position: 'absolute', inset: 0}} width={D} height={D} viewBox={`0 0 ${D} ${D}`}>
+          {[0, 1, 2, 3, 4, 5].map((i) => {
+            const a0 = spin * 1.4 + (i * Math.PI) / 3, R = D * 0.36;
+            const p = (t: number) => `${D / 2 + R * Math.cos(t)},${D / 2 + R * Math.sin(t) * 0.92}`;
+            return <line key={i} x1={p(a0).split(',')[0]} y1={p(a0).split(',')[1]} x2={p(a0 + Math.PI / 3).split(',')[0]} y2={p(a0 + Math.PI / 3).split(',')[1]} stroke={i % 2 ? col2 : col} strokeWidth={4 * u} strokeLinecap="round" />;
+          })}
+        </svg>
         <ThreeCanvas width={D} height={D} gl={{antialias: true, alpha: true, preserveDrawingBuffer: true}} camera={{position: [0, 0, 6], fov: 40}}>
-          <ambientLight intensity={0.6} />
+          <ambientLight intensity={1.1} />
           <pointLight position={[3, 3, 5]} intensity={60} color={col} />
           <pointLight position={[-3, -2, 4]} intensity={50} color={col2} />
           <group rotation={[0.4 + Math.sin(lf / 20) * 0.2, spin, 0]} scale={0.3 + 0.7 * k01(lf, 2, 20, OUT)} position={[0, Math.sin(lf / 9) * 0.12, 0]}>
             <mesh>
               <icosahedronGeometry args={[1.5, 0]} />
-              <meshStandardMaterial color={col} emissive={col2} emissiveIntensity={0.35} metalness={0.3} roughness={0.25} transparent opacity={0.55} />
+              <meshBasicMaterial color={col2} transparent opacity={0.5} />
+            </mesh>
+            <mesh scale={0.62}>
+              <icosahedronGeometry args={[1.5, 0]} />
+              <meshBasicMaterial color="#E8FDFF" />
             </mesh>
             <mesh scale={1.18}>
               <icosahedronGeometry args={[1.5, 1]} />
-              <meshBasicMaterial color={col} wireframe transparent opacity={0.9} />
+              <meshBasicMaterial color={col} wireframe />
             </mesh>
             <mesh rotation={[Math.PI / 2, 0, spin * 1.7]}>
-              <torusGeometry args={[2.25, 0.03, 8, 96]} />
+              <torusGeometry args={[2.25, 0.06, 8, 96]} />
               <meshBasicMaterial color={col2} />
             </mesh>
           </group>
@@ -63,7 +76,7 @@ const PalmHologram: React.FC<GraphicProps> = ({it, r, lf, dur, st, u, L, mainF})
         {/* scan lines */}
         <div style={{position: 'absolute', inset: 0, background: `repeating-linear-gradient(0deg, rgba(56,232,255,0.10) 0px, rgba(56,232,255,0.10) ${2 * u}px, transparent ${2 * u}px, transparent ${7 * u}px)`, backgroundPositionY: lf * 2 * u, maskImage: 'radial-gradient(circle, black 45%, transparent 70%)', WebkitMaskImage: 'radial-gradient(circle, black 45%, transparent 70%)'}} />
       </div>
-      {text && <div style={{position: 'absolute', left: r[0] - r[2] * 0.05, width: r[2] * 1.1, top: base[1] + D * 0.12, textAlign: 'center', ...caps(st, fs * 0.7, col), opacity: k01(lf, 12, 22)}}>{text}</div>}
+      {text && <div style={{position: 'absolute', left: r[0] - r[2] * 0.05, width: r[2] * 1.1, top: base[1] + D * 0.12, textAlign: 'center', ...caps(st, fs * 1.05, col), textShadow: `0 0 ${12 * u}px ${col}`, opacity: k01(lf, 12, 22)}}>{text}</div>}
     </div>
   );
 };

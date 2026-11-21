@@ -249,10 +249,12 @@ export function layoutPlan(input) {
     const k = mt.legacy ? KINDS[mt.legacy] : null;
     if (k) return k.size(it, u, style, {W, H, tall});
     const z = {...DEFAULT_SIZE, ...(mt.size || {})};
+    // size.fitText: the box takes the shape of the word itself, so a short word ("FREE") can be set tall
+    const aspect = z.fitText && it.text ? Math.max(z.minAspect ?? 1.6, Math.min(z.aspect, String(it.text).length * 0.66)) : z.aspect;
     let w = W * (tall ? z.tallMaxW ?? 0.78 : z.maxW);
-    let h = w / z.aspect;
+    let h = w / aspect;
     const hMax = (tall ? 0.34 : 0.46) * H;
-    if (h > hMax) { h = hMax; w = h * z.aspect; }
+    if (h > hMax) { h = hMax; w = h * aspect; }
     return [w, h];
   };
   const minWOf = (it, mt) => {
@@ -272,9 +274,10 @@ export function layoutPlan(input) {
     const place = it.behind && (mt.place || 'box') === 'box' ? 'behind' : mt.place || 'box';
     const k = mt.legacy ? KINDS[mt.legacy] : {slots: mt.slots || DEFAULT_SLOTS[place] || DEFAULT_SLOTS.box};
     let [w, h] = sizeOf(it, mt);
-    // plan line "scale": 1.2 = this graphic 20 % bigger than its catalog size (0.5-2). The person is still avoided:
-    // if the bigger box has no room it steps down like any other graphic.
-    const big = Math.max(0.5, Math.min(2, Number(it.scale) || 1));
+    // plan line "scale": 1.2 = this graphic 20 % bigger than its catalog size (0.5-3; 3 is for a part of the video with
+    // nobody in it, or a big empty panel). The person is still avoided: if the bigger box has no room it steps down
+    // like any other graphic.
+    const big = Math.max(0.5, Math.min(3, Number(it.scale) || 1));
     w *= big; h *= big;
     const minW = Math.min(minWOf(it, mt), w);
     const scales = [1, 0.88, 0.77, 0.68, 0.6, 0.52, 0.45, 0.39, 0.34].filter((sc, i) => i === 0 || w * sc >= minW);
@@ -576,7 +579,7 @@ export function layoutPlan(input) {
     const gap = 18 * u;
     // candidate offsets around the hand: outward (away from the body centre), above, inward-above
     const track = new Array(n).fill(null);
-    let shown = 0, hiddenBy = {lost: 0, person: 0, face: 0, edge: 0}, lastO = -1;
+    let shown = 0, hiddenBy = {lost: 0, person: 0, face: 0, edge: 0, protect: 0}, lastO = -1;
     for (let i = 0; i < n; i++) {
       const f = it.f0 + i, p = tr[i];
       if (!p || !p.ok) { hiddenBy.lost++; continue; }
@@ -607,6 +610,8 @@ export function layoutPlan(input) {
         if (fb && overlapArea(r, inflate(fb, margin)) > 0) { why = 'face'; continue; }
         if (B.hitAt(toBody(r, f, margin * 0.5), f / fps) > 0) { why = 'person'; continue; }
         if (zones.some((z) => overlapArea(r, z.r) > 0)) { why = 'edge'; continue; }
+        // things that are not the person but must stay clear (plan "protect": a mic arm): a hand graphic avoids them too
+        if (protAt(f, f + 1).some((b) => overlapArea(r, b) > 0)) { why = 'protect'; continue; }
         got = r;
         gotO = o;
         break;

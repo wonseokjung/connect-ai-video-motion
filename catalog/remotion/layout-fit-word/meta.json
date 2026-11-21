@@ -16,7 +16,8 @@
   "size": {
     "aspect": 3.6,
     "minW": 0.22,
-    "maxW": 0.36
+    "maxW": 0.36,
+    "fitText": true
   },
   "dur": 1.8,
   "family": "fit-word",

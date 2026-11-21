@@ -9,6 +9,10 @@
 // All points in video pixels, origin top-left. The grid is the matte reduced to grid.w x grid.h cells (1 = person).
 // With matteDir, a grayscale PNG matte (soft edge, not grown) is written for EVERY video frame (m_000000.png ...), used only to draw
 // graphics behind the person; the person's own pixels are never changed.
+// The drawn matte is the person PLUS the things in front of the background (microphone, mic arm, the desk edge, a laptop):
+// VNGenerateForegroundInstanceMaskRequest (macOS 14+) measures them on every matte frame, and the two mattes are merged,
+// so a light or a word behind you also stays behind your microphone. VM_MATTE_OBJECTS=0 = person only.
+// The person grid in the JSON stays the person only (layout and check keep graphics off YOU; objects use plan "protect").
 import AVFoundation
 import CoreImage
 import Foundation
@@ -74,6 +78,8 @@ var samples: [String] = []
 var frame = 0
 var nextPose = 0.0
 var matteCount = 0
+var objFrames = 0
+let withObjects = ProcessInfo.processInfo.environment["VM_MATTE_OBJECTS"] != "0"
 var mH = 0
 
 // dilate a binary-ish 8-bit mask by r px (max filter, separable)
@@ -98,6 +104,14 @@ while let sb = out.copyNextSampleBuffer() {
   let handReq = VNDetectHumanHandPoseRequest()
   handReq.maximumHandCount = 2
   try? handler.perform(doPose ? [seg, bodyReq, handReq] : [seg])
+  // objects in front of the background (mic, mic arm, desk edge): only for the drawn matte
+  var objMask: CVPixelBuffer? = nil
+  if mt && withObjects, #available(macOS 14.0, *) {
+    let fg = VNGenerateForegroundInstanceMaskRequest()
+    if (try? handler.perform([fg])) != nil, let r = fg.results?.first {
+      objMask = try? r.generateScaledMaskForImage(forInstances: r.allInstances, from: handler)
+    }
+  }
 
   // matte -> small array at matteW
   var mask: [UInt8] = []
@@ -115,7 +129,18 @@ while let sb = out.copyNextSampleBuffer() {
   }
 
   if mt, let dir = matteDir, !mask.isEmpty {
-    let m = mask
+    var m = mask
+    if let ob = objMask {
+      // merge: the brighter of the two (person matte keeps its fine hair edge, the object matte adds the mic and the arm)
+      let oc = CIImage(cvPixelBuffer: ob)
+      let scaledO = oc.transformed(by: CGAffineTransform(scaleX: CGFloat(mw) / oc.extent.width, y: CGFloat(mh) / oc.extent.height))
+      var om = [UInt8](repeating: 0, count: mw * mh)
+      om.withUnsafeMutableBytes { buf in
+        ctx.render(scaledO, toBitmap: buf.baseAddress!, rowBytes: mw, bounds: CGRect(x: 0, y: 0, width: mw, height: mh), format: .L8, colorSpace: nil)
+      }
+      for i in 0..<(mw * mh) where om[i] > m[i] { m[i] = om[i] }
+      objFrames += 1
+    }
     // no growing here: this matte redraws the person over graphics behind him, a grown edge would show a halo of
     // the old background. Keeping graphics off the person is the job of the person grid (layout + check).
     // white with the matte as alpha: works as a CSS alpha mask and as a luminance mask
@@ -190,5 +215,5 @@ while let sb = out.copyNextSampleBuffer() {
   frame += 1
 }
 
-let matte = matteDir != nil ? ",\"matte\":{\"dir\":\"\(matteDir!)\",\"w\":\(matteW),\"h\":\(mH),\"fps\":\(f3(fps)),\"count\":\(matteCount),\"pattern\":\"m_%06d.png\"}" : ""
+let matte = matteDir != nil ? ",\"matte\":{\"dir\":\"\(matteDir!)\",\"w\":\(matteW),\"h\":\(mH),\"fps\":\(f3(fps)),\"count\":\(matteCount),\"objects\":\(objFrames),\"pattern\":\"m_%06d.png\"}" : ""
 print("{\"width\":\(W),\"height\":\(H),\"fps\":\(f3(fps)),\"source\":\"macos-vision-body\",\"step\":\(f3(poseStep)),\"grid\":{\"w\":\(GW),\"h\":\(GH)},\"samples\":[\(samples.joined(separator: ","))]\(matte)}")

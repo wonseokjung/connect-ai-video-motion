@@ -1,10 +1,11 @@
 {
   "kind": "body/contour-line",
   "title": "Line around you",
-  "description": "A thin gold line traces your head and shoulders a little outside the outline and a word rides at its end. It moves with you.",
+  "description": "A glowing gold line traces your head and shoulders a little outside the outline, a second line in a subject colour runs further out, and a word rides at its end. It moves with you.",
   "use": "body",
   "props": {
-    "text": "small caps word at the end"
+    "text": "small caps word at the end",
+    "color": "colour of the outer line (teal by default)"
   },
   "place": "attach",
   "attach": "contour",

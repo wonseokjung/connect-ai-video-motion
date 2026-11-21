@@ -25,7 +25,7 @@ const pkg = readJson(path.join(KIT, 'package.json'));
 
 const HERO = ['kit-nametag', 'kit-keyword', 'remotion-starburst-rays', 'kit-counter', 'body-behind-text', 'remotion-shapes-callout', 'remotion-motion-blur-trail', 'remotion-three-coin', 'remotion-gsap-letters', 'remotion-shapes-bars', 'remotion-layout-fit-word'];
 // the first cards of the grid: the strongest ones, rooms alternating
-const FIRST = ['kit-keyword', 'body-behind-text', 'kit-counter', 'remotion-shapes-callout', 'remotion-motion-blur-trail', 'remotion-starburst-rays', 'remotion-three-coin', 'remotion-gsap-letters'];
+const FIRST = ['body-behind-text', 'remotion-shapes-agents', 'remotion-gsap-letters', 'remotion-noise-flow-field', 'body-contour-line', 'remotion-layout-fit-word', 'remotion-transition-iris', 'hyperframes-neon-stack'];
 const BEAT = 1.2; // seconds per shot
 
 const ORDER = ['kit', 'body', 'remotion', 'hyperframes', 'lottie'];
@@ -43,9 +43,11 @@ for (const it of spec.items) {
   const description = (isCut ? `${m.description} Shown here between two clips with the same presentation.` : m.description) + (it.note ? ' ' + it.note : '');
   items.push({look: it.cut ? 'mix' : spec.sources?.[it.src]?.look || 'night', name, kind: it.kind, source: it.kind.split('/')[0], title: m.title, description, license: m.license, from: m.source?.package || (m.source?.type === 'hyperframes' ? 'HyperFrames' + (m.source?.version ? '@' + m.source.version : '') : m.source?.repo || m.source?.type || 'kit'), words, prompt, clip, still});
 }
-// order: the strongest first, then source by source; inside a source the rooms take turns (night, warm, morning, day)
+// order: the strongest first, then source by source; inside a source the kinds of shot take turns
+// (night, warm, morning, day rooms, talk layout with a panel, practice screen, graphic-only scene, transitions)
+for (const x of items) x.look = String(x.look).split('-')[0];
 {
-  const LOOKS = ['night', 'warm', 'morning', 'day', 'mix'];
+  const LOOKS = ['night', 'warm', 'morning', 'day', 'talk', 'practice', 'graphic', 'mix'];
   const rest = items.filter((x) => !FIRST.includes(x.name));
   const out = FIRST.map((n) => items.find((x) => x.name === n)).filter(Boolean);
   for (const src of ORDER) {
