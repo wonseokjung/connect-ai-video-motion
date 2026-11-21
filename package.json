@@ -39,7 +39,7 @@
     "remotion": "4.0.529",
     "three": "0.170.0"
   },
-  "version": "0.2.0",
+  "version": "0.3.0",
   "bin": {
     "connect-ai-video-motion": "bin/cli.mjs"
   },
