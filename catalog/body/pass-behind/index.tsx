@@ -4,8 +4,8 @@
 import React from 'react';
 import {ThreeCanvas} from '@remotion/three';
 import {interpolate} from 'remotion';
-import {GraphicProps, HUE, caps, clamp, exitK, hueOf, k01} from '../../../src/catalog/ui';
-import {rigAt} from '../../../src/catalog/rig';
+import {GraphicProps, HUE, clamp, exitK, hueOf, k01} from '../../../src/catalog/ui';
+import {rigAt, label} from '../../../src/catalog/rig';
 
 const ease = (x: number) => (x < 0.5 ? 4 * x * x * x : 1 - Math.pow(-2 * x + 2, 3) / 2);
 
@@ -65,7 +65,7 @@ const PassBehind: React.FC<GraphicProps> = ({it, lf, dur, st, u, L, mainF, W, H}
         </ThreeCanvas>
       </div>
       {it.text && (
-        <div style={{position: 'absolute', left: x + dir * D * 0.55 * sc - (ltr ? 260 * u : 0), width: 260 * u, textAlign: ltr ? 'right' : 'left', top: y + D * 0.32 * sc, ...caps(st, 22 * u, col), textShadow: `0 0 ${14 * u}px ${glow}`, opacity: k01(lf, 6, 16)}}>{String(it.text)}</div>
+        <div style={{position: 'absolute', left: x + dir * D * 0.55 * sc - (ltr ? 260 * u : 0), width: 260 * u, textAlign: ltr ? 'right' : 'left', top: y + D * 0.32 * sc, ...label(u, st, 22 * u, col), textShadow: `0 0 ${14 * u}px ${glow}`, opacity: k01(lf, 6, 16)}}>{String(it.text)}</div>
       )}
     </div>
   );

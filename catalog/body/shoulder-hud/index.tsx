@@ -2,8 +2,8 @@
 // shoulder and read your own body live: shoulder tilt, head turn and hand height, measured every frame, with a trace
 // of the shoulder line drawn as you move. Your title on top. From the live show's "body HUD beside the shoulder".
 import React from 'react';
-import {GraphicProps, HUE, caps, exitK, fit, hueOf, k01, type} from '../../../src/catalog/ui';
-import {RigFrame, rigAt} from '../../../src/catalog/rig';
+import {GraphicProps, HUE, exitK, fit, hueOf, k01, type} from '../../../src/catalog/ui';
+import {RigFrame, rigAt, label} from '../../../src/catalog/rig';
 
 const tiltOf = (r: RigFrame | null) => {
   const a = r?.joints.leftShoulder, b = r?.joints.rightShoulder;
@@ -29,15 +29,18 @@ const ShoulderHud: React.FC<GraphicProps> = ({it, r, lf, dur, st, ink, u, L, mai
   for (let q = Math.max(0, i - 50); q <= i; q++) { const t = tiltOf(rigAt(L, q, 2)); if (t != null) hist.push(t); }
   const w = r[2], h = r[3], pad = w * 0.06;
   const title = String(it.text || 'Body data');
-  const fs = fit(title, w - pad * 2, h * 0.15, st.weight, st.tracking);
+  const fs = fit(title, w - pad * 2, h * 0.13, st.weight, st.tracking);
+  // stacked from the top in px so the 40 px labels never overlap: small caps, title, line, three rows, trace
+  const subY = pad * 0.6, titleY = subY + 50 * u, lineY = titleY + fs * 1.3, rowY = lineY + 14 * u;
+  const rowH = Math.max(46 * u, (h * 0.78 - rowY) / 3);
   const rows: [string, string, string][] = [
-    ['SHOULDER TILT', tilt == null ? '--' : `${tilt > 0 ? '+' : ''}${tilt.toFixed(1)}°`, teal],
-    ['HEAD TURN', turn == null ? '--' : `${turn > 0 ? '+' : ''}${Math.round(turn)}%`, coral],
-    ['HAND HEIGHT', handPct == null ? '--' : `${handPct}%`, violet],
+    ['TILT', tilt == null ? '--' : `${tilt > 0 ? '+' : ''}${tilt.toFixed(1)}°`, teal],
+    ['TURN', turn == null ? '--' : `${turn > 0 ? '+' : ''}${Math.round(turn)}%`, coral],
+    ['HAND', handPct == null ? '--' : `${handPct}%`, violet],
   ];
   const sx = (q: number) => pad + (q / Math.max(1, hist.length - 1)) * (w - pad * 2);
   const lo = Math.min(-4, ...hist), hi = Math.max(4, ...hist);
-  const gy0 = h * 0.8, gy1 = h * 0.96;
+  const gy0 = Math.max(h * 0.8, rowY + rowH * 3 + 6 * u), gy1 = Math.max(h * 0.96, gy0 + 40 * u);
   const sy = (v: number) => gy1 - ((v - lo) / (hi - lo)) * (gy1 - gy0);
   const spark = hist.map((v, q) => `${q ? 'L' : 'M'}${sx(q).toFixed(1)},${sy(v).toFixed(1)}`).join(' ');
   const ex = a ? Math.max(r[0], Math.min(r[0] + w, a[0])) : 0, ey = a ? Math.max(r[1], Math.min(r[1] + h, a[1])) : 0;
@@ -54,13 +57,13 @@ const ShoulderHud: React.FC<GraphicProps> = ({it, r, lf, dur, st, ink, u, L, mai
         {[[0, 0], [1, 0], [0, 1], [1, 1]].map(([x, y], q) => (
           <div key={q} style={{position: 'absolute', left: x ? w - br : 0, top: y ? h - br : 0, width: br, height: br, [x ? 'borderRight' : 'borderLeft']: `2px solid ${gold}`, [y ? 'borderBottom' : 'borderTop']: `2px solid ${gold}`}} />
         ))}
-        <div style={{position: 'absolute', left: pad, top: h * 0.06, ...caps(st, Math.max(10, h * 0.04), gold)}}>{it.sub ? String(it.sub) : 'LIVE · MEASURED'}</div>
-        <div style={{position: 'absolute', left: pad, top: h * 0.12, ...type(st, fs, ink)}}>{title}</div>
-        <div style={{position: 'absolute', left: pad, top: h * 0.29, width: (w - pad * 2) * k01(lf, 4, 20), height: 1, background: `linear-gradient(90deg, ${gold}, transparent)`}} />
+        <div style={{position: 'absolute', left: pad, top: subY, ...label(u, st, 40 * u, gold)}}>{it.sub ? String(it.sub) : 'MEASURED'}</div>
+        <div style={{position: 'absolute', left: pad, top: titleY, ...type(st, fs, ink)}}>{title}</div>
+        <div style={{position: 'absolute', left: pad, top: lineY, width: (w - pad * 2) * k01(lf, 4, 20), height: 1, background: `linear-gradient(90deg, ${gold}, transparent)`}} />
         {rows.map(([lab, val, c], q) => (
-          <div key={q} style={{position: 'absolute', left: pad, right: pad, top: h * (0.33 + q * 0.145), opacity: k01(lf, 6 + q * 4, 16 + q * 4), display: 'flex', alignItems: 'baseline', justifyContent: 'space-between', borderBottom: '1px solid rgba(235,226,210,0.14)', paddingBottom: 4 * u}}>
-            <span style={{...caps(st, Math.max(10, h * 0.04), 'rgba(235,226,210,0.8)')}}><span style={{display: 'inline-block', width: 8 * u, height: 8 * u, borderRadius: '50%', background: c, marginRight: 8 * u, boxShadow: `0 0 ${8 * u}px ${c}`}} />{lab}</span>
-            <span style={{...type(st, h * 0.1, c, 400), fontVariantNumeric: 'tabular-nums'}}>{val}</span>
+          <div key={q} style={{position: 'absolute', left: pad, right: pad, top: rowY + q * rowH, height: rowH - 6 * u, boxSizing: 'border-box', opacity: k01(lf, 6 + q * 4, 16 + q * 4), display: 'flex', alignItems: 'baseline', justifyContent: 'space-between', borderBottom: '1px solid rgba(235,226,210,0.14)', paddingBottom: 4 * u}}>
+            <span style={{...label(u, st, 40 * u, 'rgba(235,226,210,0.85)')}}><span style={{display: 'inline-block', width: 14 * u, height: 14 * u, borderRadius: '50%', background: c, marginRight: 8 * u, boxShadow: `0 0 ${8 * u}px ${c}`}} />{lab}</span>
+            <span style={{...type(st, Math.min(rowH * 0.8, h * 0.11), c, 500), fontVariantNumeric: 'tabular-nums'}}>{val}</span>
           </div>
         ))}
         <svg width={w} height={h} style={{position: 'absolute', left: 0, top: 0}}>

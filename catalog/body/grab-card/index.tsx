@@ -2,8 +2,8 @@
 // with the real speed of the hand (it leans the way you move, settles when you stop), and a grip line runs from your
 // thumb and index finger to its corner. When you pinch, the corner clamp lights up. From the live "chat card" grab.
 import React from 'react';
-import {GraphicProps, HUE, caps, exitK, fit, hueOf, k01, type, SNAP} from '../../../src/catalog/ui';
-import {lockSide, pickHand, rigAt} from '../../../src/catalog/rig';
+import {GraphicProps, HUE, exitK, fit, hueOf, k01, type, SNAP} from '../../../src/catalog/ui';
+import {lockSide, pickHand, rigAt, label} from '../../../src/catalog/rig';
 
 const GrabCard: React.FC<GraphicProps> = ({it, r, lf, dur, st, ink, u, L, mainF}) => {
   const i = (mainF ?? 0) - (L?.f0 ?? 0);
@@ -45,7 +45,7 @@ const GrabCard: React.FC<GraphicProps> = ({it, r, lf, dur, st, ink, u, L, mainF}
           <div style={{position: 'absolute', inset: 0, borderRadius: 18 * u, background: `linear-gradient(135deg, rgba(155,123,216,0.42), rgba(18,14,26,0.78) 45%, rgba(224,96,90,0.35))`, border: `1.5px solid rgba(255,255,255,0.22)`, boxShadow: `0 ${20 * u}px ${60 * u}px rgba(0,0,0,0.45), 0 0 ${40 * u}px rgba(155,123,216,0.35), inset 0 1px 0 rgba(255,255,255,0.35)`}} />
           <div style={{position: 'absolute', left: -r[2] * 0.2, top: 0, width: r[2] * 0.35, height: '100%', background: 'linear-gradient(90deg, transparent, rgba(255,255,255,0.10), transparent)', transform: `translateX(${((lf * 9 * u) % (r[2] * 1.6))}px) skewX(-18deg)`, borderRadius: 18 * u, mixBlendMode: 'screen'}} />
           <div style={{position: 'absolute', left: pad, top: r[3] * 0.12, width: r[3] * 0.2, height: r[3] * 0.2, borderRadius: '50%', background: `linear-gradient(135deg, ${col}, ${col2})`, display: 'flex', alignItems: 'center', justifyContent: 'center', ...type(st, r[3] * 0.11, '#fff', 500)}}>{initial}</div>
-          <div style={{position: 'absolute', left: pad + r[3] * 0.27, top: r[3] * 0.16, ...caps(st, Math.max(10, r[3] * 0.065), gold)}}>{sub}</div>
+          <div style={{position: 'absolute', left: pad + r[3] * 0.27, top: r[3] * 0.16, ...label(u, st, Math.max(10, r[3] * 0.065), gold)}}>{sub}</div>
           <div style={{position: 'absolute', left: pad + r[3] * 0.27, top: r[3] * 0.25, height: 2 * u, width: r[2] * 0.3 * k01(lf, 6, 20), background: `linear-gradient(90deg, ${gold}, transparent)`}} />
           <div style={{position: 'absolute', left: pad, top: r[3] * 0.44, ...type(st, fs, ink, 400)}}>{text}</div>
           {/* typing dots under the line: it is a live question */}

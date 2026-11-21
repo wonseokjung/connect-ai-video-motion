@@ -2,9 +2,9 @@
 // on the side with more room, its lower half hidden by you (person matte in front), its eyes on your face, and it
 // moves with your shoulder every frame. Your word floats over it.
 import React from 'react';
-import {GraphicProps, HUE, caps, exitK, hueOf, k01} from '../../../src/catalog/ui';
+import {GraphicProps, HUE, exitK, hueOf, k01} from '../../../src/catalog/ui';
 import {Mascot} from '../../remotion/_shared/Mascot';
-import {rigAt} from '../../../src/catalog/rig';
+import {rigAt, label} from '../../../src/catalog/rig';
 
 const ShoulderBuddy: React.FC<GraphicProps> = ({it, lf, dur, st, u, L, mainF, fps, W, H}) => {
   const i = (mainF ?? 0) - (L?.f0 ?? 0);
@@ -37,7 +37,7 @@ const ShoulderBuddy: React.FC<GraphicProps> = ({it, lf, dur, st, u, L, mainF, fp
         <Mascot size={S} lf={lf} fps={fps} body={col} face="#14121A" eye="#7CF7E4" look={look} wave delay={6} />
       </div>
       {it.text && (
-        <div style={{position: 'absolute', left: cx - 200 * u, width: 400 * u, top: top + S * 0.05 - 40 * u, textAlign: 'center', ...caps(st, 26 * u, col), textShadow: `0 0 ${14 * u}px rgba(0,0,0,0.6)`, opacity: k01(lf, 14, 24)}}>{String(it.text)}</div>
+        <div style={{position: 'absolute', left: cx - 200 * u, width: 400 * u, top: top + S * 0.05 - 40 * u, textAlign: 'center', ...label(u, st, 26 * u, col), textShadow: `0 0 ${14 * u}px rgba(0,0,0,0.6)`, opacity: k01(lf, 14, 24)}}>{String(it.text)}</div>
       )}
     </div>
   );

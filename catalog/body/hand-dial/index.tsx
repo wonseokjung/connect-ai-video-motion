@@ -2,8 +2,8 @@
 // tilt of the hand (wrist to middle knuckle, measured every frame). Tilt the hand, the value turns; the arc fills
 // from teal through gold to coral and the number reads the angle in degrees. From the live "turn the 3D model" gesture.
 import React from 'react';
-import {GraphicProps, HUE, caps, exitK, fit, hueOf, k01, type, SNAP} from '../../../src/catalog/ui';
-import {lockSide, palmOf, pickHand, rigAt} from '../../../src/catalog/rig';
+import {GraphicProps, HUE, exitK, fit, hueOf, k01, type, SNAP} from '../../../src/catalog/ui';
+import {lockSide, palmOf, pickHand, rigAt, label} from '../../../src/catalog/rig';
 
 const HandDial: React.FC<GraphicProps> = ({it, r, lf, dur, st, ink, u, L, mainF}) => {
   const i = (mainF ?? 0) - (L?.f0 ?? 0);
@@ -65,7 +65,7 @@ const HandDial: React.FC<GraphicProps> = ({it, r, lf, dur, st, ink, u, L, mainF}
         <circle cx={tip[0]} cy={tip[1]} r={7 * u} fill="#FFF6E6" style={{filter: `drop-shadow(0 0 ${10 * u}px ${c2})`}} />
       </svg>
       <div style={{position: 'absolute', left: cx - R, width: R * 2, top: cy + R * 0.22, textAlign: 'center', ...type(st, R * 0.42, ink, 300), fontVariantNumeric: 'tabular-nums'}}>{deg > 0 ? '+' : ''}{deg}<span style={{fontSize: R * 0.22, color: c2}}>°</span></div>
-      <div style={{position: 'absolute', left: r[0] - r[2] * 0.05, width: r[2] * 1.1, top: cy + R * 1.24, textAlign: 'center', ...caps(st, fs, c2), opacity: k01(lf, 8, 18)}}>{text}</div>
+      <div style={{position: 'absolute', left: r[0] - r[2] * 0.05, width: r[2] * 1.1, top: cy + R * 1.24, textAlign: 'center', ...label(u, st, fs, c2), opacity: k01(lf, 8, 18)}}>{text}</div>
     </div>
   );
 };

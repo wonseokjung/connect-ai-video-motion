@@ -3,10 +3,10 @@
 // show on both sides, so it reads as a field you hold in the room (from the live two-hand grab). A light disc sits
 // behind each palm. With only one hand in view the field waits as a disc behind that hand.
 import React from 'react';
-import {GraphicProps, HUE, caps, exitK, hueOf, k01} from '../../../src/catalog/ui';
-import {Pt, hash, palmOf, rigAt} from '../../../src/catalog/rig';
+import {GraphicProps, HUE, exitK, hueOf, k01} from '../../../src/catalog/ui';
+import {Pt, hash, palmOf, rigAt, label} from '../../../src/catalog/rig';
 
-const HandArc: React.FC<GraphicProps> = ({it, lf, dur, st, u, L, mainF}) => {
+const HandArc: React.FC<GraphicProps> = ({it, lf, dur, st, u, L, mainF, W}) => {
   const i = (mainF ?? 0) - (L?.f0 ?? 0);
   const r = rigAt(L, i, 4);
   const out = exitK(lf, dur, 14);
@@ -69,7 +69,7 @@ const HandArc: React.FC<GraphicProps> = ({it, lf, dur, st, u, L, mainF}) => {
         {(two ? [A, B] : [A]).map((h, q) => disc(h.p, h.w, q))}
       </svg>
       {it.text && (
-        <div style={{position: 'absolute', left: top.p[0] + (top === A ? -260 * u : 60 * u), top: top.p[1] - 150 * u, width: 200 * u, textAlign: top === A ? 'right' : 'left', ...caps(st, 26 * u, cols[0]), textShadow: `0 0 ${16 * u}px ${cols[0]}`, opacity: k01(lf, 12, 24)}}>{String(it.text)}</div>
+        <div style={{position: 'absolute', left: Math.max(40 * u, Math.min((W ?? 1920) - 400 * u, top.p[0] + (top === A ? -420 * u : 60 * u))), top: Math.max(40 * u, top.p[1] - 300 * u), width: 360 * u, textAlign: top === A ? 'right' : 'left', ...label(u, st, 26 * u, cols[0]), textShadow: `0 0 ${16 * u}px ${cols[0]}`, opacity: k01(lf, 12, 24)}}>{String(it.text)}</div>
       )}
     </div>
   );

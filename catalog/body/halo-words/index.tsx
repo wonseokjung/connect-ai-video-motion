@@ -7,7 +7,7 @@ import {GraphicProps, HUE, exitK, hueOf, k01, OUT} from '../../../src/catalog/ui
 import {FONT} from '../../../src/brand';
 import {rigAt} from '../../../src/catalog/rig';
 
-const HaloWords: React.FC<GraphicProps> = ({it, lf, dur, st, u, L, mainF}) => {
+const HaloWords: React.FC<GraphicProps> = ({it, lf, dur, st, u, L, mainF, W = 1920}) => {
   const i = (mainF ?? 0) - (L?.f0 ?? 0);
   // smooth the face over +-3 frames: the ring should float, not shake
   let n = 0, fx = 0, fy = 0, fw = 0, fh = 0, roll = 0, nr = 0;
@@ -23,10 +23,17 @@ const HaloWords: React.FC<GraphicProps> = ({it, lf, dur, st, u, L, mainF}) => {
   const deg = nr ? Math.max(-14, Math.min(14, ((roll / nr) * 180) / Math.PI)) : 0;
   const col = hueOf(it, HUE.goldHi), line = HUE.teal, node = HUE.coral;
   const k = k01(lf, 0, 26, OUT), out = exitK(lf, dur, 14);
-  const rx = fw * 1.95 * (0.7 + 0.3 * k), ry = rx * 0.34;
-  const cx = fx, cy = fy + fh * 0.12;
-  const words = String(it.text || 'Think in data').toUpperCase();
   const fs = Math.max(20 * u, fh * 0.2);
+  const cx = fx, cy = fy + fh * 0.12;
+  // the ring and its words stay 40 px inside the frame (a close-up face gets a flatter, narrower ring)
+  const rxMax = Math.max(fw * 0.9, Math.min(cx, W - cx) - 40 * u - fs);
+  const rx = Math.min(fw * 1.95, rxMax) * (0.7 + 0.3 * k);
+  // the tilted ring's top is sqrt((ry cos)^2 + (rx sin)^2) above its centre: flatten (and if needed straighten) it to fit
+  const avail = Math.max(fh * 0.2, cy - 40 * u - fs * 1.3);
+  const th = (Math.min(Math.abs(deg), (Math.asin(Math.min(1, (avail * 0.7) / rx)) * 180) / Math.PI) * Math.PI) / 180;
+  const ry = Math.max(fh * 0.1, Math.min(rx * 0.34, Math.sqrt(Math.max(0, avail * avail - (rx * Math.sin(th)) ** 2)) / Math.cos(th)));
+  const tilt = (Math.sign(deg) * th * 180) / Math.PI;
+  const words = String(it.text || 'Think in data').toUpperCase();
   const ring = (rx2: number, ry2: number) => `M ${cx - rx2},${cy} a ${rx2},${ry2} 0 1,1 ${rx2 * 2},0 a ${rx2},${ry2} 0 1,1 ${-rx2 * 2},0`;
   const per = Math.PI * (3 * (rx + ry) - Math.sqrt((3 * rx + ry) * (rx + 3 * ry)));
   const rep = Math.max(2, Math.floor(per / (words.length * fs * 0.78 + fs * 2)));
@@ -48,7 +55,7 @@ const HaloWords: React.FC<GraphicProps> = ({it, lf, dur, st, u, L, mainF}) => {
             <rect x={cx - rx * 2} y={cy - ry * 3} width={rx * 4} height={ry * 6} fill="url(#hwFar)" />
           </mask>
         </defs>
-        <g transform={`rotate(${deg} ${cx} ${cy})`}>
+        <g transform={`rotate(${tilt} ${cx} ${cy})`}>
           <ellipse cx={cx} cy={cy} rx={rx * 1.12} ry={ry * 1.12} fill="none" stroke={line} strokeWidth={6 * u} opacity={0.35} filter="url(#hwGlow)" />
           <ellipse cx={cx} cy={cy} rx={rx * 1.12} ry={ry * 1.12} fill="none" stroke={line} strokeWidth={1.6 * u} strokeDasharray={`${40 * u} ${10 * u}`} strokeDashoffset={-lf * 3 * u} />
           {[0, 1, 2, 3].map((q) => {

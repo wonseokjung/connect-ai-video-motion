@@ -2,9 +2,9 @@
 // the next number slams into the room behind you, giant, on the side with more space, with the matching word from
 // your list. The old number falls back into the room. Behind the person matte: your shoulder can cut into it.
 import React from 'react';
-import {GraphicProps, HUE, SNAP, caps, exitK, hueOf, k01} from '../../../src/catalog/ui';
+import {GraphicProps, HUE, SNAP, exitK, hueOf, k01} from '../../../src/catalog/ui';
 import {FONT} from '../../../src/brand';
-import {lockSide, palmOf, pickHand, rigAt, tipOf} from '../../../src/catalog/rig';
+import {lockSide, palmOf, pickHand, rigAt, tipOf, label} from '../../../src/catalog/rig';
 import {downBeats} from '../../../src/core/body.mjs';
 
 /** frames (since the graphic started) where the hand lands a beat (src/core/body.mjs downBeats on the finger tip height) */
@@ -49,7 +49,7 @@ const BeatCount: React.FC<GraphicProps> = ({it, lf, dur, st, u, L, mainF, W, H})
       <div style={{position: 'absolute', left: right ? x0 + 10 * u : undefined, right: right ? undefined : W - x0 + 10 * u, top: base + 16 * u, display: 'flex', gap: 10 * u, flexDirection: right ? 'row' : 'row-reverse'}}>
         {Array.from({length: max}, (_, q) => <div key={q} style={{width: 34 * u, height: 6 * u, borderRadius: 3 * u, background: q < n ? COLS[q % COLS.length] : 'rgba(235,226,210,0.25)', boxShadow: q < n ? `0 0 ${10 * u}px ${COLS[q % COLS.length]}` : undefined}} />)}
       </div>
-      {word && <div style={{position: 'absolute', left: right ? x0 + 10 * u : undefined, right: right ? undefined : W - x0 + 10 * u, top: base - NH - 10 * u, ...caps(st, 30 * u, col), letterSpacing: '0.3em', opacity: kk}}>{word}</div>}
+      {word && <div style={{position: 'absolute', left: right ? x0 + 10 * u : undefined, right: right ? undefined : W - x0 + 10 * u, top: base - NH - 10 * u, ...label(u, st, 30 * u, col), letterSpacing: '0.3em', opacity: kk}}>{word}</div>}
     </div>
   );
 };

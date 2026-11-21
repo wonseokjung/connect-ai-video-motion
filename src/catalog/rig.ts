@@ -1,6 +1,7 @@
 // Helpers for body graphics that read the measured rig (meta.json "rig": true -> layout item L.rig[frame]).
 // Everything is in output px: joints {nose, neck, leftShoulder ...}, hands [{side, pts {indexTip ...}, box, count, pinch}], face box.
 import {staticFile} from 'remotion';
+import {caps} from './ui';
 
 export type Pt = [number, number];
 export type RigHand = {side: 'left' | 'right'; pts: Record<string, Pt>; box: number[]; count: number | null; pinch: number | null};
@@ -70,3 +71,6 @@ export const mix = (a: string, b: string, t: number) => {
   const A = p(a), B = p(b);
   return '#' + A.map((v, i) => Math.round(v + (B[i] - v) * Math.max(0, Math.min(1, t))).toString(16).padStart(2, '0')).join('');
 };
+
+/** small caps label for body graphics: weight 600 and never under 40 px at 1080p, so it still reads in a 400 px wide gallery clip */
+export const label = (u: number, st: any, fs: number, color: string) => ({...caps(st, Math.max(fs, 40 * u), color), fontWeight: 600, letterSpacing: '0.14em'});

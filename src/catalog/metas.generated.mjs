@@ -34,10 +34,11 @@ export const METAS = {
  "body/air-draw": {
   "kind": "body/air-draw",
   "title": "Write in the air",
-  "description": "Your index finger tip leaves a line of light in the room: gold head, colours shifting along the stroke, white core, soft glow. The path is your measured finger, frame by frame. It is drawn behind you, so it never lies on your body.",
+  "description": "Your index finger tip is a pen of light: a thin trail stays at your fingertip and the same measured path is drawn big on the wall behind you (scaled up around its centre to fill about a third of the frame), joined to your finger by a faint beam. Colours shift along the stroke, white core, soft glow. It is drawn behind you (you, your mic and desk stay in front).",
   "use": "body",
   "props": {
-   "text": "optional word at the end of the stroke",
+   "text": "optional word above the drawing",
+   "value": "scale of the wall drawing (auto by default, 1 = life size)",
    "hand": "left | right | any",
    "color": "head colour (gold default)"
   },
@@ -52,8 +53,8 @@ export const METAS = {
   "dur": 2.8,
   "family": "air-draw",
   "example": {
-   "text": "Touch",
-   "at": 11.6
+   "text": "Store it",
+   "at": 1.6
   },
   "source": {
    "type": "body",

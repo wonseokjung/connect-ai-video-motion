@@ -2,8 +2,8 @@
 // measured every frame) and lands as a spotlight on the room behind you, with your word inside the light. Drawn
 // behind the person matte, so the beam starts behind your finger and never lies on you.
 import React from 'react';
-import {GraphicProps, HUE, caps, exitK, fit, hueOf, k01, type, OUT} from '../../../src/catalog/ui';
-import {Pt, lockSide, pickHand, rigAt} from '../../../src/catalog/rig';
+import {GraphicProps, HUE, exitK, fit, hueOf, k01, type, OUT} from '../../../src/catalog/ui';
+import {Pt, lockSide, pickHand, rigAt, label} from '../../../src/catalog/rig';
 
 const PointSpot: React.FC<GraphicProps> = ({it, lf, dur, st, u, L, mainF, W, H}) => {
   const i = (mainF ?? 0) - (L?.f0 ?? 0);
@@ -60,7 +60,7 @@ const PointSpot: React.FC<GraphicProps> = ({it, lf, dur, st, u, L, mainF, W, H})
         <circle cx={tip[0]} cy={tip[1]} r={14 * u} fill="none" stroke={beam} strokeWidth={2 * u} opacity={0.9} />
       </svg>
       {text && <div style={{position: 'absolute', left: sp[0] - R * 1.4, width: R * 2.8, top: sp[1] - fs * 0.62, textAlign: 'center', ...type(st, fs, '#FFFFFF', 400), textShadow: `0 0 ${16 * u}px rgba(0,0,0,0.6)`, opacity: k01(lf, 10, 20)}}>{text}</div>}
-      {it.sub && <div style={{position: 'absolute', left: sp[0] - R * 1.4, width: R * 2.8, top: sp[1] + fs * 0.55, textAlign: 'center', ...caps(st, Math.max(10, fs * 0.3), col), opacity: k01(lf, 14, 24)}}>{String(it.sub)}</div>}
+      {it.sub && <div style={{position: 'absolute', left: sp[0] - R * 1.4, width: R * 2.8, top: sp[1] + fs * 0.55, textAlign: 'center', ...label(u, st, Math.max(10, fs * 0.3), col), opacity: k01(lf, 14, 24)}}>{String(it.sub)}</div>}
     </div>
   );
 };

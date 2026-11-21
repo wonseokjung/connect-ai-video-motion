@@ -3,7 +3,8 @@
 // behind the person matte, so the scan passes behind you and your pixels never change. Our "real / virtual" look.
 import React from 'react';
 import {OffthreadVideo, staticFile} from 'remotion';
-import {GraphicProps, HUE, caps, exitK, hueOf, k01, OUT, IN} from '../../../src/catalog/ui';
+import {GraphicProps, HUE, exitK, hueOf, k01, OUT, IN} from '../../../src/catalog/ui';
+import {label} from '../../../src/catalog/rig';
 
 const RoomToData: React.FC<GraphicProps & {video?: any}> = ({it, lf, dur, st, u, W, H, video}) => {
   if (!video?.src) return null;
@@ -44,14 +45,14 @@ const RoomToData: React.FC<GraphicProps & {video?: any}> = ({it, lf, dur, st, u,
           <div style={{position: 'absolute', left: xLine - 60 * u, top: 0, width: 120 * u, height: H, background: `linear-gradient(90deg, transparent, rgba(242,180,90,0.25), transparent)`}} />
           <div style={{position: 'absolute', left: xLine - 1.5 * u, top: 0, width: 3 * u, height: H, background: gold, boxShadow: `0 0 ${20 * u}px ${gold}, 0 0 ${50 * u}px ${gold}`}} />
           {rows.map((y, q) => (
-            <div key={q} style={{position: 'absolute', left: xLine + (fromRight ? -190 * u : 14 * u), top: H * y, width: 176 * u, textAlign: fromRight ? 'right' : 'left', ...caps(st, 15 * u, gold), fontVariantNumeric: 'tabular-nums'}}>
+            <div key={q} style={{position: 'absolute', left: xLine + (fromRight ? -190 * u : 14 * u), top: H * y, width: 176 * u, textAlign: fromRight ? 'right' : 'left', ...label(u, st, 15 * u, gold), fontVariantNumeric: 'tabular-nums'}}>
               {['SCAN X ' + String(readX).padStart(4, '0'), 'CELL ' + B + ' PX', 'ROOM > DATA'][q]}
             </div>
           ))}
         </>
       )}
       {it.text && (
-        <div style={{position: 'absolute', left: fromRight ? W * 0.62 : 60 * u, top: H * 0.1, ...caps(st, 34 * u, '#FFFFFF'), letterSpacing: '0.4em', textShadow: `0 0 ${18 * u}px ${col}`, opacity: k01(lf, 18, 30) * (1 - outK)}}>{String(it.text)}</div>
+        <div style={{position: 'absolute', left: fromRight ? W * 0.62 : 60 * u, top: H * 0.1, ...label(u, st, 34 * u, '#FFFFFF'), letterSpacing: '0.4em', textShadow: `0 0 ${18 * u}px ${col}`, opacity: k01(lf, 18, 30) * (1 - outK)}}>{String(it.text)}</div>
       )}
     </div>
   );
