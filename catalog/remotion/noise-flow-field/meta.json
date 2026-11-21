@@ -1,0 +1,14 @@
+{
+  "kind": "remotion/noise-flow-field",
+  "title": "Flow field lines",
+  "description": "Generative geometry: a field of thin lines grows through a moving noise field (@remotion/noise noise3D), each line following the flow, colours running across a gradient. The word sits on top.",
+  "source": {"type": "remotion", "package": "@remotion/noise", "version": "4.0.529"},
+  "license": "MIT",
+  "use": "keyword",
+  "props": {"text": "1 word on top (optional)", "palette": "0 violet-cyan | 1 pink-amber | 2 cyan-lime"},
+  "place": "box",
+  "size": {"aspect": 1.4, "minW": 0.22, "maxW": 0.34},
+  "dur": 3,
+  "family": "flow-field",
+  "example": {"text": "Gravity", "palette": 0}
+}

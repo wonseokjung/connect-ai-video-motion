@@ -1,0 +1,29 @@
+{
+  "kind": "body/palm-hologram",
+  "title": "Hologram from your hand",
+  "description": "A real 3D object (three.js) spins over a glowing platform next to your raised hand, a light beam runs from your palm to it. The hand is measured every frame and the hologram moves with it, never on your face or body.",
+  "use": "body",
+  "props": {
+    "text": "optional small caps under it",
+    "color": "hologram colour"
+  },
+  "place": "attach",
+  "attach": "hand",
+  "size": {
+    "aspect": 0.8,
+    "minW": 0.15,
+    "maxW": 0.21
+  },
+  "dur": 3,
+  "family": "palm-hologram",
+  "example": {
+    "text": "3D",
+    "at": 4.6
+  },
+  "source": {
+    "type": "body",
+    "path": "catalog/body/palm-hologram/index.tsx",
+    "note": "uses the body detector (work/body.json: hands); @remotion/three (three.js, React Three Fiber) for the object"
+  },
+  "license": "MIT"
+}

@@ -1,0 +1,14 @@
+{
+  "kind": "remotion/paths-equation-graph",
+  "title": "Curve draws itself",
+  "description": "A grid and axes draw on, a math curve draws itself (@remotion/paths evolvePath) with a glowing point riding its tip (getPointAtLength), the area under it fills with a gradient. Curves: rise, wave, bell.",
+  "source": {"type": "remotion", "package": "@remotion/paths", "version": "4.0.529"},
+  "license": "MIT",
+  "use": "label",
+  "props": {"text": "1-2 words", "curve": "rise | wave | bell", "formula": "small label (default: the curve's formula, \"\" to hide)"},
+  "place": "box",
+  "size": {"aspect": 1.55, "minW": 0.22, "maxW": 0.34},
+  "dur": 3,
+  "family": "math-graph",
+  "example": {"text": "Growth", "curve": "rise"}
+}

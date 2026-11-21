@@ -1,0 +1,14 @@
+{
+  "kind": "remotion/shapes-agents",
+  "title": "Agent robots pass the ball",
+  "description": "Three little robot characters (built from @remotion/shapes, moved by spring physics) drop in, blink, look at a glowing ball and pass it down the line. The word lands above them.",
+  "source": {"type": "remotion", "package": "@remotion/shapes", "version": "4.0.529", "also": "spring() from remotion"},
+  "license": "MIT",
+  "use": "label",
+  "props": {"text": "1-2 words above the robots", "sub": "small caps under the word"},
+  "place": "box",
+  "size": {"aspect": 1.5, "minW": 0.22, "maxW": 0.34},
+  "dur": 3.4,
+  "family": "characters",
+  "example": {"text": "Teamwork"}
+}

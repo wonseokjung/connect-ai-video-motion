@@ -1,6 +1,6 @@
 ---
 name: connect-ai-video-motion
-description: Put code-made motion graphics on top of the user's own talking-head video, from a catalog of 57 graphics (Remotion packages, HyperFrames blocks, Lottie files, body-aware graphics) or the user's own component, each called with one line, placed in empty space around the person (face, body and hands are measured and avoided). Use when the user says "put motion graphics on my video", "add graphics to this clip", "이 영상에 모션그래픽 얹어 줘", or gives a facecam / talking-head video and wants it to look edited. It never changes the person's pixels.
+description: Put code-made motion graphics on top of the user's own talking-head video, from a catalog of 66 graphics (Remotion packages, HyperFrames blocks, Lottie files, body-aware graphics) or the user's own component, each called with one line, placed in empty space around the person (face, body and hands are measured and avoided). Use when the user says "put motion graphics on my video", "add graphics to this clip", "이 영상에 모션그래픽 얹어 줘", or gives a facecam / talking-head video and wants it to look edited. It never changes the person's pixels.
 ---
 
 # connect-ai-video-motion

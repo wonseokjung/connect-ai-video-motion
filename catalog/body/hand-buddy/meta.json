@@ -1,0 +1,30 @@
+{
+  "kind": "body/hand-buddy",
+  "title": "Robot on your hand",
+  "description": "A little robot character stands next to your raised hand, on the side clear of your body, looks at the hand and waves; a dotted line ties it to the hand. Shown only while the hand is seen clearly.",
+  "use": "body",
+  "props": {
+    "text": "optional word above it",
+    "sub": "small caps",
+    "color": "robot colour"
+  },
+  "place": "attach",
+  "attach": "hand",
+  "size": {
+    "aspect": 0.9,
+    "minW": 0.14,
+    "maxW": 0.2
+  },
+  "dur": 2.8,
+  "family": "hand-buddy",
+  "example": {
+    "text": "Hi",
+    "at": 4.6
+  },
+  "source": {
+    "type": "body",
+    "path": "catalog/body/hand-buddy/index.tsx",
+    "note": "uses the body detector (work/body.json: hands); character drawn with @remotion/shapes"
+  },
+  "license": "MIT"
+}

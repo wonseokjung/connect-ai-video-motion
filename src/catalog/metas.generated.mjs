@@ -87,6 +87,69 @@ export const METAS = {
   "dir": "catalog/body/finger-count",
   "component": "index.tsx"
  },
+ "body/hand-buddy": {
+  "kind": "body/hand-buddy",
+  "title": "Robot on your hand",
+  "description": "A little robot character stands next to your raised hand, on the side clear of your body, looks at the hand and waves; a dotted line ties it to the hand. Shown only while the hand is seen clearly.",
+  "use": "body",
+  "props": {
+   "text": "optional word above it",
+   "sub": "small caps",
+   "color": "robot colour"
+  },
+  "place": "attach",
+  "attach": "hand",
+  "size": {
+   "aspect": 0.9,
+   "minW": 0.14,
+   "maxW": 0.2
+  },
+  "dur": 2.8,
+  "family": "hand-buddy",
+  "example": {
+   "text": "Hi",
+   "at": 4.6
+  },
+  "source": {
+   "type": "body",
+   "path": "catalog/body/hand-buddy/index.tsx",
+   "note": "uses the body detector (work/body.json: hands); character drawn with @remotion/shapes"
+  },
+  "license": "MIT",
+  "dir": "catalog/body/hand-buddy",
+  "component": "index.tsx"
+ },
+ "body/hand-rise-chart": {
+  "kind": "body/hand-rise-chart",
+  "title": "Chart your hand draws",
+  "description": "A live line chart next to your raised hand: the line is the real height of the hand, measured frame by frame, so raising the hand makes it climb. The number is the hand's height in % of the frame.",
+  "use": "body",
+  "props": {
+   "text": "chart title (small caps)",
+   "color": "line colour"
+  },
+  "place": "attach",
+  "attach": "hand",
+  "size": {
+   "aspect": 1.5,
+   "minW": 0.16,
+   "maxW": 0.22
+  },
+  "dur": 3,
+  "family": "hand-chart",
+  "example": {
+   "text": "Hand height",
+   "at": 4.6
+  },
+  "source": {
+   "type": "body",
+   "path": "catalog/body/hand-rise-chart/index.tsx",
+   "note": "uses the body detector (work/body.json: hands)"
+  },
+  "license": "MIT",
+  "dir": "catalog/body/hand-rise-chart",
+  "component": "index.tsx"
+ },
  "body/hand-tag": {
   "kind": "body/hand-tag",
   "title": "Tag on the hand",
@@ -119,6 +182,37 @@ export const METAS = {
   },
   "license": "MIT",
   "dir": "catalog/body/hand-tag",
+  "component": "index.tsx"
+ },
+ "body/palm-hologram": {
+  "kind": "body/palm-hologram",
+  "title": "Hologram from your hand",
+  "description": "A real 3D object (three.js) spins over a glowing platform next to your raised hand, a light beam runs from your palm to it. The hand is measured every frame and the hologram moves with it, never on your face or body.",
+  "use": "body",
+  "props": {
+   "text": "optional small caps under it",
+   "color": "hologram colour"
+  },
+  "place": "attach",
+  "attach": "hand",
+  "size": {
+   "aspect": 0.8,
+   "minW": 0.15,
+   "maxW": 0.21
+  },
+  "dur": 3,
+  "family": "palm-hologram",
+  "example": {
+   "text": "3D",
+   "at": 4.6
+  },
+  "source": {
+   "type": "body",
+   "path": "catalog/body/palm-hologram/index.tsx",
+   "note": "uses the body detector (work/body.json: hands); @remotion/three (three.js, React Three Fiber) for the object"
+  },
+  "license": "MIT",
+  "dir": "catalog/body/palm-hologram",
   "component": "index.tsx"
  },
  "body/point-ray": {
@@ -196,6 +290,52 @@ export const METAS = {
   "license": "MIT",
   "src": "block.html",
   "dir": "catalog/hyperframes/gold-scramble-title",
+  "component": null
+ },
+ "hyperframes/neon-stack": {
+  "kind": "hyperframes/neon-stack",
+  "title": "Neon word stack (GSAP)",
+  "description": "Three words stack up one by one, each with its own neon gradient and glowing bar (GSAP timeline: clip wipe, skew settle, moving gradient); the first two dim and the last one pulses.",
+  "use": "list",
+  "props": {
+   "text": "first word",
+   "sub": "second word",
+   "label": "third word (the one that wins)"
+  },
+  "text": {
+   ".l1": "text",
+   ".l2": "sub",
+   ".l3": "label"
+  },
+  "canvas": [
+   1000,
+   520
+  ],
+  "window": [
+   0,
+   3
+  ],
+  "place": "box",
+  "size": {
+   "aspect": 1.92,
+   "minW": 0.2,
+   "maxW": 0.3
+  },
+  "dur": 3,
+  "family": "hf-neon-stack",
+  "example": {
+   "text": "Tried",
+   "sub": "Failed",
+   "label": "Succeeded"
+  },
+  "source": {
+   "type": "hyperframes",
+   "path": "catalog/hyperframes/neon-stack/block.html",
+   "note": "our own block in the HyperFrames format (HTML + CSS + paused GSAP timeline)"
+  },
+  "license": "MIT",
+  "src": "block.html",
+  "dir": "catalog/hyperframes/neon-stack",
   "component": null
  },
  "hyperframes/registry": {
@@ -834,6 +974,31 @@ export const METAS = {
   "dir": "catalog/lottie/gold-check",
   "component": null
  },
+ "lottie/hop-buddy": {
+  "kind": "lottie/hop-buddy",
+  "title": "Hopping character (Lottie)",
+  "description": "A little round character hops in place: it squashes when it lands, stretches when it jumps, blinks, a sparkle pops beside it. Looped. Any character from After Effects (Bodymovin) or LottieFiles plays the same way.",
+  "use": "emphasis",
+  "loop": true,
+  "size": {
+   "aspect": 1,
+   "minW": 0.1,
+   "maxW": 0.16
+  },
+  "dur": 3,
+  "family": "lottie-character",
+  "source": {
+   "type": "lottie",
+   "path": "catalog/lottie/hop-buddy/anim.json",
+   "note": "our own Lottie file (tools/make-lottie.mjs), played by @remotion/lottie"
+  },
+  "license": "MIT",
+  "src": "anim.json",
+  "place": "box",
+  "props": {},
+  "dir": "catalog/lottie/hop-buddy",
+  "component": null
+ },
  "lottie/signal-pulse": {
   "kind": "lottie/signal-pulse",
   "title": "Signal pulse (Lottie)",
@@ -1066,6 +1231,36 @@ export const METAS = {
   "dir": "catalog/remotion/motion-blur-trail",
   "component": "index.tsx"
  },
+ "remotion/noise-flow-field": {
+  "kind": "remotion/noise-flow-field",
+  "title": "Flow field lines",
+  "description": "Generative geometry: a field of thin lines grows through a moving noise field (@remotion/noise noise3D), each line following the flow, colours running across a gradient. The word sits on top.",
+  "source": {
+   "type": "remotion",
+   "package": "@remotion/noise",
+   "version": "4.0.529"
+  },
+  "license": "MIT",
+  "use": "keyword",
+  "props": {
+   "text": "1 word on top (optional)",
+   "palette": "0 violet-cyan | 1 pink-amber | 2 cyan-lime"
+  },
+  "place": "box",
+  "size": {
+   "aspect": 1.4,
+   "minW": 0.22,
+   "maxW": 0.34
+  },
+  "dur": 3,
+  "family": "flow-field",
+  "example": {
+   "text": "Gravity",
+   "palette": 0
+  },
+  "dir": "catalog/remotion/noise-flow-field",
+  "component": "index.tsx"
+ },
  "remotion/noise-jitter-word": {
   "kind": "remotion/noise-jitter-word",
   "title": "Jitter to clean word",
@@ -1151,6 +1346,37 @@ export const METAS = {
    "text": "One line"
   },
   "dir": "catalog/remotion/paths-brackets",
+  "component": "index.tsx"
+ },
+ "remotion/paths-equation-graph": {
+  "kind": "remotion/paths-equation-graph",
+  "title": "Curve draws itself",
+  "description": "A grid and axes draw on, a math curve draws itself (@remotion/paths evolvePath) with a glowing point riding its tip (getPointAtLength), the area under it fills with a gradient. Curves: rise, wave, bell.",
+  "source": {
+   "type": "remotion",
+   "package": "@remotion/paths",
+   "version": "4.0.529"
+  },
+  "license": "MIT",
+  "use": "label",
+  "props": {
+   "text": "1-2 words",
+   "curve": "rise | wave | bell",
+   "formula": "small label (default: the curve's formula, \"\" to hide)"
+  },
+  "place": "box",
+  "size": {
+   "aspect": 1.55,
+   "minW": 0.22,
+   "maxW": 0.34
+  },
+  "dur": 3,
+  "family": "math-graph",
+  "example": {
+   "text": "Growth",
+   "curve": "rise"
+  },
+  "dir": "catalog/remotion/paths-equation-graph",
   "component": "index.tsx"
  },
  "remotion/paths-journey": {
@@ -1244,6 +1470,34 @@ export const METAS = {
    "sub": "live"
   },
   "dir": "catalog/remotion/paths-signal",
+  "component": "index.tsx"
+ },
+ "remotion/paths-spirograph": {
+  "kind": "remotion/paths-spirograph",
+  "title": "Spirograph draws itself",
+  "description": "A spirograph curve (hypotrochoid) draws itself in rainbow segments (@remotion/paths evolvePath, getPointAtLength) while the figure turns; the word appears in the middle when it closes.",
+  "source": {
+   "type": "remotion",
+   "package": "@remotion/paths",
+   "version": "4.0.529"
+  },
+  "license": "MIT",
+  "use": "emphasis",
+  "props": {
+   "text": "1 short word in the middle (optional)"
+  },
+  "place": "box",
+  "size": {
+   "aspect": 1,
+   "minW": 0.14,
+   "maxW": 0.22
+  },
+  "dur": 3,
+  "family": "spirograph",
+  "example": {
+   "text": "One"
+  },
+  "dir": "catalog/remotion/paths-spirograph",
   "component": "index.tsx"
  },
  "remotion/paths-swoosh": {
@@ -1417,6 +1671,36 @@ export const METAS = {
    "text": "Just ask in words"
   },
   "dir": "catalog/remotion/rounded-message",
+  "component": "index.tsx"
+ },
+ "remotion/shapes-agents": {
+  "kind": "remotion/shapes-agents",
+  "title": "Agent robots pass the ball",
+  "description": "Three little robot characters (built from @remotion/shapes, moved by spring physics) drop in, blink, look at a glowing ball and pass it down the line. The word lands above them.",
+  "source": {
+   "type": "remotion",
+   "package": "@remotion/shapes",
+   "version": "4.0.529",
+   "also": "spring() from remotion"
+  },
+  "license": "MIT",
+  "use": "label",
+  "props": {
+   "text": "1-2 words above the robots",
+   "sub": "small caps under the word"
+  },
+  "place": "box",
+  "size": {
+   "aspect": 1.5,
+   "minW": 0.22,
+   "maxW": 0.34
+  },
+  "dur": 3.4,
+  "family": "characters",
+  "example": {
+   "text": "Teamwork"
+  },
+  "dir": "catalog/remotion/shapes-agents",
   "component": "index.tsx"
  },
  "remotion/shapes-arrow": {

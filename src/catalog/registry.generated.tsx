@@ -5,107 +5,123 @@ import {LottieFile} from '../adapters/Lottie';
 import C0 from '../../catalog/body/behind-text/index';
 import C1 from '../../catalog/body/contour-line/index';
 import C2 from '../../catalog/body/finger-count/index';
-import C3 from '../../catalog/body/hand-tag/index';
-import C4 from '../../catalog/body/point-ray/index';
-import C15 from '../../catalog/kit/card/index';
-import C16 from '../../catalog/kit/chapter/index';
-import C17 from '../../catalog/kit/counter/index';
-import C18 from '../../catalog/kit/endcard/index';
-import C19 from '../../catalog/kit/keyword/index';
-import C20 from '../../catalog/kit/nametag/index';
-import C21 from '../../catalog/kit/steps/index';
-import C25 from '../../catalog/remotion/animation-utils-chip/index';
-import C26 from '../../catalog/remotion/captions-karaoke/index';
-import C27 from '../../catalog/remotion/gsap-letters/index';
-import C28 from '../../catalog/remotion/layout-fit-word/index';
-import C29 from '../../catalog/remotion/light-leaks-glow/index';
-import C30 from '../../catalog/remotion/mac-cursor-click/index';
-import C31 from '../../catalog/remotion/motion-blur-trail/index';
-import C32 from '../../catalog/remotion/noise-jitter-word/index';
-import C33 from '../../catalog/remotion/noise-topo-label/index';
-import C34 from '../../catalog/remotion/paths-brackets/index';
-import C35 from '../../catalog/remotion/paths-journey/index';
-import C36 from '../../catalog/remotion/paths-morph/index';
-import C37 from '../../catalog/remotion/paths-signal/index';
-import C38 from '../../catalog/remotion/paths-swoosh/index';
-import C39 from '../../catalog/remotion/rough-box/index';
-import C40 from '../../catalog/remotion/rough-bracket-list/index';
-import C41 from '../../catalog/remotion/rough-highlight/index';
-import C42 from '../../catalog/remotion/rough-strike/index';
-import C43 from '../../catalog/remotion/rounded-message/index';
-import C44 from '../../catalog/remotion/shapes-arrow/index';
-import C45 from '../../catalog/remotion/shapes-bars/index';
-import C46 from '../../catalog/remotion/shapes-callout/index';
-import C47 from '../../catalog/remotion/shapes-pie/index';
-import C48 from '../../catalog/remotion/shapes-polygon-badge/index';
-import C49 from '../../catalog/remotion/shapes-star-seal/index';
-import C50 from '../../catalog/remotion/shapes-triangle-marker/index';
-import C51 from '../../catalog/remotion/starburst-rays/index';
-import C52 from '../../catalog/remotion/svg3d-badge/index';
-import C53 from '../../catalog/remotion/three-coin/index';
-import C54 from '../../catalog/remotion/transition-clock-wipe/index';
-import C55 from '../../catalog/remotion/transition-flip/index';
-import C56 from '../../catalog/remotion/transition-iris/index';
-import C57 from '../../catalog/remotion/transition-push-cut/index';
-import C59 from '../../catalog/remotion/transition-slide/index';
-import C60 from '../../catalog/remotion/transition-wipe/index';
+import C3 from '../../catalog/body/hand-buddy/index';
+import C4 from '../../catalog/body/hand-rise-chart/index';
+import C5 from '../../catalog/body/hand-tag/index';
+import C6 from '../../catalog/body/palm-hologram/index';
+import C7 from '../../catalog/body/point-ray/index';
+import C19 from '../../catalog/kit/card/index';
+import C20 from '../../catalog/kit/chapter/index';
+import C21 from '../../catalog/kit/counter/index';
+import C22 from '../../catalog/kit/endcard/index';
+import C23 from '../../catalog/kit/keyword/index';
+import C24 from '../../catalog/kit/nametag/index';
+import C25 from '../../catalog/kit/steps/index';
+import C30 from '../../catalog/remotion/animation-utils-chip/index';
+import C31 from '../../catalog/remotion/captions-karaoke/index';
+import C32 from '../../catalog/remotion/gsap-letters/index';
+import C33 from '../../catalog/remotion/layout-fit-word/index';
+import C34 from '../../catalog/remotion/light-leaks-glow/index';
+import C35 from '../../catalog/remotion/mac-cursor-click/index';
+import C36 from '../../catalog/remotion/motion-blur-trail/index';
+import C37 from '../../catalog/remotion/noise-flow-field/index';
+import C38 from '../../catalog/remotion/noise-jitter-word/index';
+import C39 from '../../catalog/remotion/noise-topo-label/index';
+import C40 from '../../catalog/remotion/paths-brackets/index';
+import C41 from '../../catalog/remotion/paths-equation-graph/index';
+import C42 from '../../catalog/remotion/paths-journey/index';
+import C43 from '../../catalog/remotion/paths-morph/index';
+import C44 from '../../catalog/remotion/paths-signal/index';
+import C45 from '../../catalog/remotion/paths-spirograph/index';
+import C46 from '../../catalog/remotion/paths-swoosh/index';
+import C47 from '../../catalog/remotion/rough-box/index';
+import C48 from '../../catalog/remotion/rough-bracket-list/index';
+import C49 from '../../catalog/remotion/rough-highlight/index';
+import C50 from '../../catalog/remotion/rough-strike/index';
+import C51 from '../../catalog/remotion/rounded-message/index';
+import C52 from '../../catalog/remotion/shapes-agents/index';
+import C53 from '../../catalog/remotion/shapes-arrow/index';
+import C54 from '../../catalog/remotion/shapes-bars/index';
+import C55 from '../../catalog/remotion/shapes-callout/index';
+import C56 from '../../catalog/remotion/shapes-pie/index';
+import C57 from '../../catalog/remotion/shapes-polygon-badge/index';
+import C58 from '../../catalog/remotion/shapes-star-seal/index';
+import C59 from '../../catalog/remotion/shapes-triangle-marker/index';
+import C60 from '../../catalog/remotion/starburst-rays/index';
+import C61 from '../../catalog/remotion/svg3d-badge/index';
+import C62 from '../../catalog/remotion/three-coin/index';
+import C63 from '../../catalog/remotion/transition-clock-wipe/index';
+import C64 from '../../catalog/remotion/transition-flip/index';
+import C65 from '../../catalog/remotion/transition-iris/index';
+import C66 from '../../catalog/remotion/transition-push-cut/index';
+import C68 from '../../catalog/remotion/transition-slide/index';
+import C69 from '../../catalog/remotion/transition-wipe/index';
 
 export const REGISTRY: Record<string, React.FC<any>> = {
   "body/behind-text": C0,
   "body/contour-line": C1,
   "body/finger-count": C2,
-  "body/hand-tag": C3,
-  "body/point-ray": C4,
+  "body/hand-buddy": C3,
+  "body/hand-rise-chart": C4,
+  "body/hand-tag": C5,
+  "body/palm-hologram": C6,
+  "body/point-ray": C7,
   "hyperframes/gold-scramble-title": HyperFramesBlock,
+  "hyperframes/neon-stack": HyperFramesBlock,
   "hyperframes/ring-count": HyperFramesBlock,
   "hyperframes/split-words-rise": HyperFramesBlock,
   "hyperframes/warm-grain-circle-stat": HyperFramesBlock,
   "hyperframes/warm-grain-pill-stat": HyperFramesBlock,
   "hyperframes/warm-grain-shape-label": HyperFramesBlock,
   "hyperframes/warm-grain-title-card": HyperFramesBlock,
-  "kit/card": C15,
-  "kit/chapter": C16,
-  "kit/counter": C17,
-  "kit/endcard": C18,
-  "kit/keyword": C19,
-  "kit/nametag": C20,
-  "kit/steps": C21,
+  "kit/card": C19,
+  "kit/chapter": C20,
+  "kit/counter": C21,
+  "kit/endcard": C22,
+  "kit/keyword": C23,
+  "kit/nametag": C24,
+  "kit/steps": C25,
   "lottie/arc-orbit": LottieFile,
   "lottie/gold-check": LottieFile,
+  "lottie/hop-buddy": LottieFile,
   "lottie/signal-pulse": LottieFile,
-  "remotion/animation-utils-chip": C25,
-  "remotion/captions-karaoke": C26,
-  "remotion/gsap-letters": C27,
-  "remotion/layout-fit-word": C28,
-  "remotion/light-leaks-glow": C29,
-  "remotion/mac-cursor-click": C30,
-  "remotion/motion-blur-trail": C31,
-  "remotion/noise-jitter-word": C32,
-  "remotion/noise-topo-label": C33,
-  "remotion/paths-brackets": C34,
-  "remotion/paths-journey": C35,
-  "remotion/paths-morph": C36,
-  "remotion/paths-signal": C37,
-  "remotion/paths-swoosh": C38,
-  "remotion/rough-box": C39,
-  "remotion/rough-bracket-list": C40,
-  "remotion/rough-highlight": C41,
-  "remotion/rough-strike": C42,
-  "remotion/rounded-message": C43,
-  "remotion/shapes-arrow": C44,
-  "remotion/shapes-bars": C45,
-  "remotion/shapes-callout": C46,
-  "remotion/shapes-pie": C47,
-  "remotion/shapes-polygon-badge": C48,
-  "remotion/shapes-star-seal": C49,
-  "remotion/shapes-triangle-marker": C50,
-  "remotion/starburst-rays": C51,
-  "remotion/svg3d-badge": C52,
-  "remotion/three-coin": C53,
-  "remotion/transition-clock-wipe": C54,
-  "remotion/transition-flip": C55,
-  "remotion/transition-iris": C56,
-  "remotion/transition-push-cut": C57,
-  "remotion/transition-slide": C59,
-  "remotion/transition-wipe": C60,
+  "remotion/animation-utils-chip": C30,
+  "remotion/captions-karaoke": C31,
+  "remotion/gsap-letters": C32,
+  "remotion/layout-fit-word": C33,
+  "remotion/light-leaks-glow": C34,
+  "remotion/mac-cursor-click": C35,
+  "remotion/motion-blur-trail": C36,
+  "remotion/noise-flow-field": C37,
+  "remotion/noise-jitter-word": C38,
+  "remotion/noise-topo-label": C39,
+  "remotion/paths-brackets": C40,
+  "remotion/paths-equation-graph": C41,
+  "remotion/paths-journey": C42,
+  "remotion/paths-morph": C43,
+  "remotion/paths-signal": C44,
+  "remotion/paths-spirograph": C45,
+  "remotion/paths-swoosh": C46,
+  "remotion/rough-box": C47,
+  "remotion/rough-bracket-list": C48,
+  "remotion/rough-highlight": C49,
+  "remotion/rough-strike": C50,
+  "remotion/rounded-message": C51,
+  "remotion/shapes-agents": C52,
+  "remotion/shapes-arrow": C53,
+  "remotion/shapes-bars": C54,
+  "remotion/shapes-callout": C55,
+  "remotion/shapes-pie": C56,
+  "remotion/shapes-polygon-badge": C57,
+  "remotion/shapes-star-seal": C58,
+  "remotion/shapes-triangle-marker": C59,
+  "remotion/starburst-rays": C60,
+  "remotion/svg3d-badge": C61,
+  "remotion/three-coin": C62,
+  "remotion/transition-clock-wipe": C63,
+  "remotion/transition-flip": C64,
+  "remotion/transition-iris": C65,
+  "remotion/transition-push-cut": C66,
+  "remotion/transition-slide": C68,
+  "remotion/transition-wipe": C69,
 };

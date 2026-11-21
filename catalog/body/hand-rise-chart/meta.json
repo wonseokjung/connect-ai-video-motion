@@ -1,0 +1,29 @@
+{
+  "kind": "body/hand-rise-chart",
+  "title": "Chart your hand draws",
+  "description": "A live line chart next to your raised hand: the line is the real height of the hand, measured frame by frame, so raising the hand makes it climb. The number is the hand's height in % of the frame.",
+  "use": "body",
+  "props": {
+    "text": "chart title (small caps)",
+    "color": "line colour"
+  },
+  "place": "attach",
+  "attach": "hand",
+  "size": {
+    "aspect": 1.5,
+    "minW": 0.16,
+    "maxW": 0.22
+  },
+  "dur": 3,
+  "family": "hand-chart",
+  "example": {
+    "text": "Hand height",
+    "at": 4.6
+  },
+  "source": {
+    "type": "body",
+    "path": "catalog/body/hand-rise-chart/index.tsx",
+    "note": "uses the body detector (work/body.json: hands)"
+  },
+  "license": "MIT"
+}

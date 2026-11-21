@@ -1,0 +1,18 @@
+{
+  "kind": "hyperframes/neon-stack",
+  "title": "Neon word stack (GSAP)",
+  "description": "Three words stack up one by one, each with its own neon gradient and glowing bar (GSAP timeline: clip wipe, skew settle, moving gradient); the first two dim and the last one pulses.",
+  "use": "list",
+  "props": {"text": "first word", "sub": "second word", "label": "third word (the one that wins)"},
+  "text": {".l1": "text", ".l2": "sub", ".l3": "label"},
+  "canvas": [1000, 520],
+  "window": [0, 3],
+  "place": "box",
+  "size": {"aspect": 1.92, "minW": 0.2, "maxW": 0.3},
+  "dur": 3,
+  "family": "hf-neon-stack",
+  "example": {"text": "Tried", "sub": "Failed", "label": "Succeeded"},
+  "source": {"type": "hyperframes", "path": "catalog/hyperframes/neon-stack/block.html", "note": "our own block in the HyperFrames format (HTML + CSS + paused GSAP timeline)"},
+  "license": "MIT",
+  "src": "block.html"
+}

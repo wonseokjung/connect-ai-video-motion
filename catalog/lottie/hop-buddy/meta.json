@@ -1,0 +1,15 @@
+{
+  "kind": "lottie/hop-buddy",
+  "title": "Hopping character (Lottie)",
+  "description": "A little round character hops in place: it squashes when it lands, stretches when it jumps, blinks, a sparkle pops beside it. Looped. Any character from After Effects (Bodymovin) or LottieFiles plays the same way.",
+  "use": "emphasis",
+  "loop": true,
+  "size": {"aspect": 1, "minW": 0.1, "maxW": 0.16},
+  "dur": 3,
+  "family": "lottie-character",
+  "source": {"type": "lottie", "path": "catalog/lottie/hop-buddy/anim.json", "note": "our own Lottie file (tools/make-lottie.mjs), played by @remotion/lottie"},
+  "license": "MIT",
+  "src": "anim.json",
+  "place": "box",
+  "props": {}
+}
