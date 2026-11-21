@@ -11,8 +11,8 @@ Made with this kit on the author's own videos (AI Mentor Jay, shown with his per
 
 <table>
 <tr><!-- slot: palm-hologram --><td width="50%" valign="top"><img src="docs/gallery/showcase/body-palm-hologram.webp" width="100%" alt="Hologram from your hand"><br><b>Hologram from your hand</b><br>A 3D object spins over your raised hand, a beam runs from your palm.<br><code>{&quot;kind&quot;:&quot;body/palm-hologram&quot;,&quot;text&quot;:&quot;3D&quot;}</code></td><!-- slot: behind-text --><td width="50%" valign="top"><img src="docs/gallery/showcase/body-behind-text.webp" width="100%" alt="Word behind you"><br><b>Word behind you</b><br>Big words stand behind you. You stay in front.<br><code>{&quot;kind&quot;:&quot;body/behind-text&quot;,&quot;text&quot;:&quot;Open source&quot;,&quot;behind&quot;:true}</code></td></tr>
-<tr><!-- slot: aura (placeholder: body/contour-line) --><td width="50%" valign="top"><img src="docs/gallery/showcase/body-contour-line.webp" width="100%" alt="Line around you"><br><b>Line around you</b><br>A glowing line follows your outline while you move.<br><code>{&quot;kind&quot;:&quot;body/contour-line&quot;,&quot;text&quot;:&quot;filmed like this&quot;}</code></td><!-- slot: halo-words (placeholder: body/hand-buddy) --><td width="50%" valign="top"><img src="docs/gallery/showcase/body-hand-buddy.webp" width="100%" alt="Robot on your hand"><br><b>Robot on your hand</b><br>A little robot rides on your hand and follows it.<br><code>{&quot;kind&quot;:&quot;body/hand-buddy&quot;,&quot;text&quot;:&quot;Website&quot;}</code></td></tr>
-<tr><!-- slot: room-to-data (placeholder: remotion/noise-flow-field) --><td width="50%" valign="top"><img src="docs/gallery/showcase/remotion-noise-flow-field.webp" width="100%" alt="Flow field lines"><br><b>Flow field lines</b><br>Lines flow through a noise field and the word rises out of them.<br><code>{&quot;kind&quot;:&quot;remotion/noise-flow-field&quot;,&quot;text&quot;:&quot;Gravity&quot;}</code></td><!-- slot: scene --><td width="50%" valign="top"><img src="docs/gallery/showcase/remotion-shapes-agents.webp" width="100%" alt="Agent robots pass the ball"><br><b>Agent robots pass the ball</b><br>Robots drawn in code pass the ball, in a scene with nobody in it.<br><code>{&quot;kind&quot;:&quot;remotion/shapes-agents&quot;,&quot;text&quot;:&quot;Teamwork&quot;}</code></td></tr>
+<tr><!-- slot: aura --><td width="50%" valign="top"><img src="docs/gallery/showcase/body-aura.webp" width="100%" alt="Aura around you"><br><b>Aura around you</b><br>Your outline grows into turning colour light behind you.<br><code>{&quot;kind&quot;:&quot;body/aura&quot;}</code></td><!-- slot: halo-words --><td width="50%" valign="top"><img src="docs/gallery/showcase/body-halo-words.webp" width="100%" alt="Words circling your head"><br><b>Words circling your head</b><br>Your words orbit your head, behind you and out the other side.<br><code>{&quot;kind&quot;:&quot;body/halo-words&quot;,&quot;text&quot;:&quot;Connect AI Lab&quot;}</code></td></tr>
+<tr><!-- slot: room-to-data --><td width="50%" valign="top"><img src="docs/gallery/showcase/body-room-to-data.webp" width="100%" alt="Room turns into data"><br><b>Room turns into data</b><br>The room behind you turns into data pixels. You stay real.<br><code>{&quot;kind&quot;:&quot;body/room-to-data&quot;,&quot;text&quot;:&quot;Analyze&quot;}</code></td><!-- slot: scene --><td width="50%" valign="top"><img src="docs/gallery/showcase/remotion-shapes-agents.webp" width="100%" alt="Agent robots pass the ball"><br><b>Agent robots pass the ball</b><br>Robots drawn in code pass the ball, in a scene with nobody in it.<br><code>{&quot;kind&quot;:&quot;remotion/shapes-agents&quot;,&quot;text&quot;:&quot;Teamwork&quot;}</code></td></tr>
 </table>
 
 ## Start
@@ -39,12 +39,16 @@ Made with this kit on the author's own videos (AI Mentor Jay, shown with his per
 
 ## More you can make
 
-<!--n-->66<!--/n--> graphics in the catalog, each one line of `plan.json`. Open a group to see them; the [catalog page](docs/index.html) has every one as a living clip with a prompt to copy.
+<!--n-->80<!--/n--> graphics in the catalog, each one line of `plan.json`. Open a group to see them; the [catalog page](docs/index.html) has every one as a living clip with a prompt to copy.
 
-<details><summary><b>Body aware · 4</b>: Follow a hand, count fingers, stand behind you, trace your outline.</summary>
+<details><summary><b>Body aware · 17</b>: Follow a hand, count fingers, stand behind you, trace your outline.</summary>
 
 <table>
-<tr><td width="25%" valign="top"><img src="docs/gallery/body-finger-count.webp" width="100%" alt="Finger count stamp"><br><sub>Finger count stamp</sub></td><td width="25%" valign="top"><img src="docs/gallery/body-hand-rise-chart.webp" width="100%" alt="Chart your hand draws"><br><sub>Chart your hand draws</sub></td><td width="25%" valign="top"><img src="docs/gallery/body-hand-tag.webp" width="100%" alt="Tag on the hand"><br><sub>Tag on the hand</sub></td><td width="25%" valign="top"><img src="docs/gallery/body-point-ray.webp" width="100%" alt="Ray from your finger"><br><sub>Ray from your finger</sub></td></tr>
+<tr><td width="25%" valign="top"><img src="docs/gallery/body-afterimage.webp" width="100%" alt="Afterimages of your motion"><br><sub>Afterimages of your motion</sub></td><td width="25%" valign="top"><img src="docs/gallery/body-air-draw.webp" width="100%" alt="Write in the air"><br><sub>Write in the air</sub></td><td width="25%" valign="top"><img src="docs/gallery/body-beat-count.webp" width="100%" alt="Count on the beat"><br><sub>Count on the beat</sub></td><td width="25%" valign="top"><img src="docs/gallery/body-contour-line.webp" width="100%" alt="Line around you"><br><sub>Line around you</sub></td></tr>
+<tr><td width="25%" valign="top"><img src="docs/gallery/body-finger-count.webp" width="100%" alt="Finger count stamp"><br><sub>Finger count stamp</sub></td><td width="25%" valign="top"><img src="docs/gallery/body-grab-card.webp" width="100%" alt="Card in your hand"><br><sub>Card in your hand</sub></td><td width="25%" valign="top"><img src="docs/gallery/body-hand-arc.webp" width="100%" alt="Energy between your hands"><br><sub>Energy between your hands</sub></td><td width="25%" valign="top"><img src="docs/gallery/body-hand-buddy.webp" width="100%" alt="Robot on your hand"><br><sub>Robot on your hand</sub></td></tr>
+<tr><td width="25%" valign="top"><img src="docs/gallery/body-hand-dial.webp" width="100%" alt="Dial you turn by hand"><br><sub>Dial you turn by hand</sub></td><td width="25%" valign="top"><img src="docs/gallery/body-hand-rise-chart.webp" width="100%" alt="Chart your hand draws"><br><sub>Chart your hand draws</sub></td><td width="25%" valign="top"><img src="docs/gallery/body-hand-tag.webp" width="100%" alt="Tag on the hand"><br><sub>Tag on the hand</sub></td><td width="25%" valign="top"><img src="docs/gallery/body-pass-behind.webp" width="100%" alt="Object passes behind you"><br><sub>Object passes behind you</sub></td></tr>
+<tr><td width="25%" valign="top"><img src="docs/gallery/body-point-ray.webp" width="100%" alt="Ray from your finger"><br><sub>Ray from your finger</sub></td><td width="25%" valign="top"><img src="docs/gallery/body-point-spot.webp" width="100%" alt="Spotlight where you point"><br><sub>Spotlight where you point</sub></td><td width="25%" valign="top"><img src="docs/gallery/body-shoulder-buddy.webp" width="100%" alt="Robot behind your shoulder"><br><sub>Robot behind your shoulder</sub></td><td width="25%" valign="top"><img src="docs/gallery/body-shoulder-hud.webp" width="100%" alt="Body data beside your shoulder"><br><sub>Body data beside your shoulder</sub></td></tr>
+<tr><td width="25%" valign="top"><img src="docs/gallery/body-yield-card.webp" width="100%" alt="Card that makes way"><br><sub>Card that makes way</sub></td></tr>
 </table>
 
 </details>
@@ -82,11 +86,12 @@ Made with this kit on the author's own videos (AI Mentor Jay, shown with his per
 
 </details>
 
-<details><summary><b>Whole-frame scenes · 8</b>: Graphics that fill a frame with nobody in it, light behind you, the end card.</summary>
+<details><summary><b>Whole-frame scenes · 9</b>: Graphics that fill a frame with nobody in it, light behind you, the end card.</summary>
 
 <table>
 <tr><td width="25%" valign="top"><img src="docs/gallery/hyperframes-neon-stack.webp" width="100%" alt="Neon word stack (GSAP)"><br><sub>Neon word stack (GSAP)</sub></td><td width="25%" valign="top"><img src="docs/gallery/kit-endcard.webp" width="100%" alt="End card"><br><sub>End card</sub></td><td width="25%" valign="top"><img src="docs/gallery/lottie-arc-orbit.webp" width="100%" alt="Orbit arcs (Lottie)"><br><sub>Orbit arcs (Lottie)</sub></td><td width="25%" valign="top"><img src="docs/gallery/remotion-light-leaks-glow.webp" width="100%" alt="Light leak behind you"><br><sub>Light leak behind you</sub></td></tr>
-<tr><td width="25%" valign="top"><img src="docs/gallery/remotion-paths-equation-graph.webp" width="100%" alt="Curve draws itself"><br><sub>Curve draws itself</sub></td><td width="25%" valign="top"><img src="docs/gallery/remotion-paths-spirograph.webp" width="100%" alt="Spirograph draws itself"><br><sub>Spirograph draws itself</sub></td><td width="25%" valign="top"><img src="docs/gallery/remotion-shapes-pie.webp" width="100%" alt="Pie to a percent"><br><sub>Pie to a percent</sub></td><td width="25%" valign="top"><img src="docs/gallery/remotion-three-coin.webp" width="100%" alt="3D gold coin"><br><sub>3D gold coin</sub></td></tr>
+<tr><td width="25%" valign="top"><img src="docs/gallery/remotion-noise-flow-field.webp" width="100%" alt="Flow field lines"><br><sub>Flow field lines</sub></td><td width="25%" valign="top"><img src="docs/gallery/remotion-paths-equation-graph.webp" width="100%" alt="Curve draws itself"><br><sub>Curve draws itself</sub></td><td width="25%" valign="top"><img src="docs/gallery/remotion-paths-spirograph.webp" width="100%" alt="Spirograph draws itself"><br><sub>Spirograph draws itself</sub></td><td width="25%" valign="top"><img src="docs/gallery/remotion-shapes-pie.webp" width="100%" alt="Pie to a percent"><br><sub>Pie to a percent</sub></td></tr>
+<tr><td width="25%" valign="top"><img src="docs/gallery/remotion-three-coin.webp" width="100%" alt="3D gold coin"><br><sub>3D gold coin</sub></td></tr>
 </table>
 
 </details>
@@ -102,7 +107,7 @@ Made with this kit on the author's own videos (AI Mentor Jay, shown with his per
 
 <!-- gallery:end -->
 
-**[Open the catalog page](docs/index.html)**: all <!--n-->66<!--/n--> graphics as living clips on real footage, filter by kind, copy a prompt for your coding agent.
+**[Open the catalog page](docs/index.html)**: all <!--n-->80<!--/n--> graphics as living clips on real footage, filter by kind, copy a prompt for your coding agent.
 
 ## How it works
 
@@ -142,7 +147,7 @@ The clip above and every clip on the [catalog page](docs/index.html) is the auth
 
 | | File | What to look at |
 |---|---|---|
-| Catalog page | [docs/index.html](docs/index.html) | <!--n-->66<!--/n--> graphics, one living clip each, with its `kind`, licence and a prompt to copy |
+| Catalog page | [docs/index.html](docs/index.html) | <!--n-->80<!--/n--> graphics, one living clip each, with its `kind`, licence and a prompt to copy |
 | Reel | [docs/hero_v2.mp4](docs/hero_v2.mp4) | the reel at the top in 1920x1080 (with sound: [docs/hero_v2_social.mp4](docs/hero_v2_social.mp4)) |
 | Sheet | [docs/sheet.jpg](docs/sheet.jpg) | one still per graphic at its peak |
 | Body | [docs/body_sheet.jpg](docs/body_sheet.jpg) | what the body detector sees: person area, joints, hands, finger count |
@@ -172,7 +177,7 @@ Your own video: `npx github:wonseokjung/connect-ai-video-motion my-talk.mp4`, or
 
 ## The catalog
 
-`npx github:wonseokjung/connect-ai-video-motion catalog` lists everything. Today: **<!--n-->66<!--/n--> graphics you can play** and 4 listed with the reason they cannot (yet).
+`npx github:wonseokjung/connect-ai-video-motion catalog` lists everything. Today: **<!--n-->80<!--/n--> graphics you can play** and 4 listed with the reason they cannot (yet).
 
 | Source | Count | Examples |
 |---|---|---|

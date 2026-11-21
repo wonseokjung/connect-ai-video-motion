@@ -3,15 +3,17 @@
 //   VNDetectHumanBodyPoseRequest  -> body joints (nose, neck, shoulders, elbows, wrists, hips, ...)
 //   VNDetectHumanHandPoseRequest  -> up to 2 hands, 21 points each, left/right
 //   VNGeneratePersonSegmentationRequest -> person matte (hands and arms included)
+//   VNGenerateForegroundInstanceMaskRequest (macOS 14+, matte frames only) -> microphone, mic arm, desk edge in front
 // Prints one JSON line: {"width","height","fps","source":"macos-vision-body","step","grid":{w,h},"samples":[...],"matte":{...}}
 //   sample = {"t", "joints":{"name":[x,y,conf]}, "hands":[{"side","conf","pts":{"name":[x,y,conf]}}],
 //             "person":{"bbox":[x,y,w,h],"cover":0.31,"rows":["hex per grid row"]}}
 // All points in video pixels, origin top-left. The grid is the matte reduced to grid.w x grid.h cells (1 = person).
 // With matteDir, a grayscale PNG matte (soft edge, not grown) is written for EVERY video frame (m_000000.png ...), used only to draw
 // graphics behind the person; the person's own pixels are never changed.
-// The drawn matte is the person PLUS the things in front of the background (microphone, mic arm, the desk edge, a laptop):
-// VNGenerateForegroundInstanceMaskRequest (macOS 14+) measures them on every matte frame, and the two mattes are merged,
-// so a light or a word behind you also stays behind your microphone. VM_MATTE_OBJECTS=0 = person only.
+// The drawn matte's ALPHA is the person PLUS the things in front of the background (microphone, mic arm, the desk edge,
+// a laptop), measured with VNGenerateForegroundInstanceMaskRequest (macOS 14+) on every matte frame, so a light or a word
+// behind you also stays behind your microphone. Its COLOUR is the person only (a luminance mask for glows and outlines).
+// VM_MATTE_OBJECTS=0 = alpha is the person only too.
 // The person grid in the JSON stays the person only (layout and check keep graphics off YOU; objects use plan "protect").
 import AVFoundation
 import CoreImage
@@ -129,23 +131,26 @@ while let sb = out.copyNextSampleBuffer() {
   }
 
   if mt, let dir = matteDir, !mask.isEmpty {
-    var m = mask
+    let m = mask
+    // things in front of the room that are not the person (microphone, mic arm, the desk edge): the foreground
+    // instance mask measured above on the same frame. They must stay in front of graphics behind the person too.
+    var front = m
     if let ob = objMask {
-      // merge: the brighter of the two (person matte keeps its fine hair edge, the object matte adds the mic and the arm)
       let oc = CIImage(cvPixelBuffer: ob)
       let scaledO = oc.transformed(by: CGAffineTransform(scaleX: CGFloat(mw) / oc.extent.width, y: CGFloat(mh) / oc.extent.height))
       var om = [UInt8](repeating: 0, count: mw * mh)
       om.withUnsafeMutableBytes { buf in
         ctx.render(scaledO, toBitmap: buf.baseAddress!, rowBytes: mw, bounds: CGRect(x: 0, y: 0, width: mw, height: mh), format: .L8, colorSpace: nil)
       }
-      for i in 0..<(mw * mh) where om[i] > m[i] { m[i] = om[i] }
+      for i in 0..<(mw * mh) where om[i] > front[i] { front[i] = om[i] }
       objFrames += 1
     }
     // no growing here: this matte redraws the person over graphics behind him, a grown edge would show a halo of
     // the old background. Keeping graphics off the person is the job of the person grid (layout + check).
-    // white with the matte as alpha: works as a CSS alpha mask and as a luminance mask
+    // alpha = everything in front (person + foreground objects): the CSS alpha mask that redraws them on top.
+    // colour = the person only (premultiplied): a CSS luminance mask gives the person alone (glows, outlines).
     var rgba = [UInt8](repeating: 255, count: mw * mh * 4)
-    for i in 0..<(mw * mh) { let a = m[i]; rgba[i * 4] = a; rgba[i * 4 + 1] = a; rgba[i * 4 + 2] = a; rgba[i * 4 + 3] = a }
+    for i in 0..<(mw * mh) { let a = min(m[i], front[i]); rgba[i * 4] = a; rgba[i * 4 + 1] = a; rgba[i * 4 + 2] = a; rgba[i * 4 + 3] = front[i] }
     let cs = CGColorSpaceCreateDeviceRGB()
     if let prov = CGDataProvider(data: Data(rgba) as CFData),
        let img = CGImage(width: mw, height: mh, bitsPerComponent: 8, bitsPerPixel: 32, bytesPerRow: mw * 4, space: cs, bitmapInfo: CGBitmapInfo(rawValue: CGImageAlphaInfo.premultipliedLast.rawValue), provider: prov, decode: nil, shouldInterpolate: true, intent: .defaultIntent) {

@@ -1,0 +1,31 @@
+{
+  "kind": "body/hand-dial",
+  "title": "Dial you turn by hand",
+  "description": "A big round gauge stands next to your raised hand; its needle follows the real tilt of your hand. The arc fills teal to gold to coral and the number reads the angle in degrees.",
+  "use": "number",
+  "props": {
+    "text": "small caps under the dial",
+    "hand": "left | right | any",
+    "color": "middle colour of the arc"
+  },
+  "place": "attach",
+  "attach": "hand",
+  "size": {
+    "aspect": 0.82,
+    "minW": 0.17,
+    "maxW": 0.28
+  },
+  "rig": true,
+  "dur": 3,
+  "family": "hand-dial",
+  "example": {
+    "text": "My style",
+    "at": 5.4
+  },
+  "source": {
+    "type": "body",
+    "path": "catalog/body/hand-dial/index.tsx",
+    "note": "uses the body detector (work/body.json: hands, joints, face) read every frame through meta \"rig\""
+  },
+  "license": "MIT"
+}

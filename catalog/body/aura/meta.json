@@ -1,0 +1,29 @@
+{
+  "kind": "body/aura",
+  "title": "Aura around you",
+  "description": "Your own outline (the person matte of every frame) grows into layers of turning colour light behind you, with a sharp rim of light at your edge. Not one pixel of you changes.",
+  "use": "emphasis",
+  "props": {
+    "text": "optional small caps above you",
+    "color": "rim colour (gold default)"
+  },
+  "place": "behind",
+  "band": "full",
+  "size": {
+    "aspect": 1.78,
+    "minW": 1,
+    "maxW": 1
+  },
+  "rig": true,
+  "dur": 3,
+  "family": "aura",
+  "example": {
+    "at": 9.6
+  },
+  "source": {
+    "type": "body",
+    "path": "catalog/body/aura/index.tsx",
+    "note": "uses the person matte (drawn behind you, you stay in front) and the body detector through meta \"rig\""
+  },
+  "license": "MIT"
+}

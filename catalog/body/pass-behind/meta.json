@@ -1,0 +1,31 @@
+{
+  "kind": "body/pass-behind",
+  "title": "Object passes behind you",
+  "description": "A real 3D object (three.js: gold shell, glowing core, ring) flies through the room at the height of your eyes and passes behind your head, Free-Guy style, leaving a light trail.",
+  "use": "emphasis",
+  "props": {
+    "text": "optional small caps that trail it",
+    "from": "left | right",
+    "color": "shell colour"
+  },
+  "place": "behind",
+  "band": "full",
+  "size": {
+    "aspect": 1.78,
+    "minW": 1,
+    "maxW": 1
+  },
+  "rig": true,
+  "dur": 2.6,
+  "family": "pass-behind",
+  "example": {
+    "text": "Gravity",
+    "at": 7.4
+  },
+  "source": {
+    "type": "body",
+    "path": "catalog/body/pass-behind/index.tsx",
+    "note": "uses the person matte (drawn behind you, you stay in front) and the body detector through meta \"rig\""
+  },
+  "license": "MIT"
+}

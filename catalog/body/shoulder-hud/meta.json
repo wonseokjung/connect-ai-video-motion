@@ -1,0 +1,32 @@
+{
+  "kind": "body/shoulder-hud",
+  "title": "Body data beside your shoulder",
+  "description": "Film-style corner brackets and hairlines ride beside your shoulder and read your body live: shoulder tilt, head turn, hand height, with a trace of the shoulder line. Your title on top.",
+  "use": "label",
+  "props": {
+    "text": "1-3 words",
+    "sub": "small caps (LIVE · MEASURED)",
+    "hand": "left | right: which shoulder (default: the side with more room)",
+    "color": "bracket colour"
+  },
+  "place": "attach",
+  "attach": "shoulder",
+  "size": {
+    "aspect": 0.95,
+    "minW": 0.2,
+    "maxW": 0.3
+  },
+  "rig": true,
+  "dur": 3.2,
+  "family": "shoulder-hud",
+  "example": {
+    "text": "Problem solving",
+    "at": 10.8
+  },
+  "source": {
+    "type": "body",
+    "path": "catalog/body/shoulder-hud/index.tsx",
+    "note": "uses the body detector (work/body.json: hands, joints, face) read every frame through meta \"rig\""
+  },
+  "license": "MIT"
+}

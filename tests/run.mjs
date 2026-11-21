@@ -15,6 +15,7 @@ import {scanCatalog, prepareProject} from '../lib/catalog-build.mjs';
 import {validateMeta} from '../src/core/catalog.mjs';
 import {checkBlock} from '../lib/hf-import.mjs';
 import {layoutPlan} from '../src/core/layout.mjs';
+import {makeBody, rigTrack, downBeats} from '../src/core/body.mjs';
 import {getStyle} from '../src/styles/presets.mjs';
 import {METAS} from '../src/catalog/metas.generated.mjs';
 
@@ -319,5 +320,51 @@ const withBody = (plan) => {
   const sw = getStyle('connect', {weight: 500});
   assert.equal(sw.weight, 500); assert.ok(sw.heavy >= 700); assert.equal(getStyle('connect', {}).weight, getStyle('connect').weight);
   ok('my-info "weight": 500 makes the type heavier');
+}
+// 17. the measured rig (every joint and finger per frame) for body graphics that draw from the body itself
+{
+  const fx = readJson(path.join(KIT, 'tests', 'fixtures', 'ray-clear.json'));
+  const fps = fx.meta.fps;
+  const B = makeBody(fx.body);
+  const f0 = Math.round(17 * fps), f1 = Math.round(19 * fps);
+  const R = rigTrack(B, f0, f1, fps);
+  assert.equal(R.length, f1 - f0, 'one rig frame per video frame');
+  const seen = R.filter((r) => r.joints.leftShoulder && r.joints.rightShoulder).length;
+  assert.ok(seen >= R.length * 0.9, `shoulders on most frames (${seen}/${R.length})`);
+  const hands = R.filter((r) => r.hands.length);
+  assert.ok(hands.length >= R.length * 0.8, `a hand on most frames (${hands.length}/${R.length})`);
+  for (const r of hands) for (const h of r.hands) {
+    assert.ok(h.box[2] > 0 && h.box[3] > 0, 'hand box');
+    if (h.pinch != null) assert.ok(h.pinch >= 0 && h.pinch <= 1, 'pinch in 0..1');
+  }
+  // smoothing: frame to frame steps of a joint stay small (no 15 fps stair steps)
+  const xs = R.map((r) => r.joints.leftShoulder?.[0]).filter((v) => v != null);
+  const step = Math.max(...xs.slice(1).map((v, q) => Math.abs(v - xs[q])));
+  assert.ok(step < 25, `shoulder glides (${step.toFixed(1)} px max step)`);
+  ok(`rig per frame: ${R.length} frames, shoulders ${seen}, hands ${hands.length}, max shoulder step ${step.toFixed(1)} px`);
+  // beats: lowest points right after a down stroke, never two closer than the gap
+  const ys = [];
+  for (let q = 0; q < 60; q++) ys.push(500 + 80 * Math.abs(Math.sin((q / 15) * Math.PI)));
+  ys[30] = null;
+  const beats = downBeats(ys, 40, 7);
+  assert.ok(beats.length >= 3, JSON.stringify(beats));
+  for (let q = 1; q < beats.length; q++) assert.ok(beats[q] - beats[q - 1] >= 7, 'gap kept');
+  for (const b of beats) assert.ok(ys[b] > 560, `beat at a low point (${ys[b]})`);
+  assert.deepEqual(downBeats(ys.map(() => 500), 40, 7), [], 'a still hand has no beats');
+  ok(`down beats: ${beats.join(', ')}`);
+  // layout hands the rig to "rig" items, and "attach: shoulder" follows the measured shoulder
+  const items = [{id: 'hud', kind: 'body/shoulder-hud', at: fx.at, text: 'Data'}, {id: 'arc', kind: 'body/hand-arc', at: fx.at + 0.2, text: 'Link'}];
+  const L = layoutPlan({meta: fx.meta, face: fx.face, body: fx.body, words: {tier: 'C', captions: []}, plan: {version: 1, items}, info: {}, style: getStyle('connect'), aspect: '16x9'});
+  const hud = L.items.find((x) => x.id === 'hud'), arc = L.items.find((x) => x.id === 'arc');
+  assert.ok(hud && !hud.hidden, hud?.reason);
+  assert.ok(hud.rig && hud.rig.length && hud.track && hud.track.length, 'shoulder item has rig and track');
+  const a = hud.track.find((t) => t && t.anchor)?.anchor;
+  const sh = hud.rig.find((r) => r && r.joints.leftShoulder)?.joints;
+  assert.ok(a && sh, 'anchor and shoulders');
+  const dl = Math.min(Math.hypot(a[0] - sh.leftShoulder[0], a[1] - sh.leftShoulder[1]), Math.hypot(a[0] - sh.rightShoulder[0], a[1] - sh.rightShoulder[1]));
+  assert.ok(dl < 60, `anchor on a shoulder (${dl.toFixed(0)} px)`);
+  assert.ok(arc && arc.place === 'behind' && arc.rig && arc.rig.length === arc.f1 - arc.f0, 'behind rig item gets the rig for every frame');
+  assert.equal(arc.matteDir, undefined, 'no matte measured, so no matte dir');
+  ok(`shoulder attach follows the shoulder (${dl.toFixed(0)} px off), rig given to ${L.items.filter((x) => x.rig).length} items`);
 }
 console.log(`${n} passed`);

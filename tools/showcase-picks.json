@@ -24,35 +24,31 @@
     },
     {
       "slot": "aura",
-      "placeholder": true,
-      "name": "body-contour-line",
-      "en": "A glowing line follows your outline while you move.",
-      "ko": "빛나는 선이 움직이는 내 윤곽을 따라갑니다.",
+      "name": "body-aura",
+      "en": "Your outline grows into turning colour light behind you.",
+      "ko": "내 윤곽이 뒤에서 도는 색의 빛으로 번집니다.",
       "line": {
-        "kind": "body/contour-line",
-        "text": "filmed like this"
+        "kind": "body/aura"
       }
     },
     {
       "slot": "halo-words",
-      "placeholder": true,
-      "name": "body-hand-buddy",
-      "en": "A little robot rides on your hand and follows it.",
-      "ko": "작은 로봇이 손 위에 올라타 손을 따라다닙니다.",
+      "name": "body-halo-words",
+      "en": "Your words orbit your head, behind you and out the other side.",
+      "ko": "내 말이 머리 둘레를 돌며 뒤로 사라졌다 다시 나옵니다.",
       "line": {
-        "kind": "body/hand-buddy",
-        "text": "Website"
+        "kind": "body/halo-words",
+        "text": "Connect AI Lab"
       }
     },
     {
       "slot": "room-to-data",
-      "placeholder": true,
-      "name": "remotion-noise-flow-field",
-      "en": "Lines flow through a noise field and the word rises out of them.",
-      "ko": "노이즈 흐름을 따라 선이 흐르고, 그 사이로 낱말이 떠오릅니다.",
+      "name": "body-room-to-data",
+      "en": "The room behind you turns into data pixels. You stay real.",
+      "ko": "내 뒤의 방이 데이터 픽셀로 바뀝니다. 사람은 그대로.",
       "line": {
-        "kind": "remotion/noise-flow-field",
-        "text": "Gravity"
+        "kind": "body/room-to-data",
+        "text": "Analyze"
       }
     },
     {
@@ -67,13 +63,14 @@
     }
   ],
   "scenes": [
-    "remotion-paths-spirograph",
-    "remotion-paths-equation-graph",
-    "remotion-three-coin",
     "hyperframes-neon-stack",
+    "kit-endcard",
     "lottie-arc-orbit",
-    "remotion-shapes-pie",
     "remotion-light-leaks-glow",
-    "kit-endcard"
+    "remotion-noise-flow-field",
+    "remotion-paths-equation-graph",
+    "remotion-paths-spirograph",
+    "remotion-shapes-pie",
+    "remotion-three-coin"
   ]
 }

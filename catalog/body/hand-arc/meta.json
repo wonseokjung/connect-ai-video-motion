@@ -1,0 +1,30 @@
+{
+  "kind": "body/hand-arc",
+  "title": "Energy between your hands",
+  "description": "Three strands of light (gold, teal, violet) run from one palm to the other and bend with the real distance of your hands. They pass behind you and show on both sides, with a light disc behind each palm.",
+  "use": "body",
+  "props": {
+    "text": "optional small caps near the higher hand",
+    "color": "main strand colour"
+  },
+  "place": "behind",
+  "band": "full",
+  "size": {
+    "aspect": 1.78,
+    "minW": 1,
+    "maxW": 1
+  },
+  "rig": true,
+  "dur": 2.8,
+  "family": "hand-arc",
+  "example": {
+    "text": "Physical",
+    "at": 3.4
+  },
+  "source": {
+    "type": "body",
+    "path": "catalog/body/hand-arc/index.tsx",
+    "note": "uses the person matte (drawn behind you, you stay in front) and the body detector through meta \"rig\""
+  },
+  "license": "MIT"
+}

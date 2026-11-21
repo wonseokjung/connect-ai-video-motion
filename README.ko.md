@@ -11,8 +11,8 @@
 
 <table>
 <tr><!-- slot: palm-hologram --><td width="50%" valign="top"><img src="docs/gallery/showcase/body-palm-hologram.webp" width="100%" alt="Hologram from your hand"><br><b>Hologram from your hand</b><br>든 손 위에서 3D 물체가 돌고, 손바닥에서 빛줄기가 뻗습니다.<br><code>{&quot;kind&quot;:&quot;body/palm-hologram&quot;,&quot;text&quot;:&quot;3D&quot;}</code></td><!-- slot: behind-text --><td width="50%" valign="top"><img src="docs/gallery/showcase/body-behind-text.webp" width="100%" alt="Word behind you"><br><b>Word behind you</b><br>큰 글자가 사람 뒤에 섭니다. 사람은 앞에 그대로.<br><code>{&quot;kind&quot;:&quot;body/behind-text&quot;,&quot;text&quot;:&quot;Open source&quot;,&quot;behind&quot;:true}</code></td></tr>
-<tr><!-- slot: aura (placeholder: body/contour-line) --><td width="50%" valign="top"><img src="docs/gallery/showcase/body-contour-line.webp" width="100%" alt="Line around you"><br><b>Line around you</b><br>빛나는 선이 움직이는 내 윤곽을 따라갑니다.<br><code>{&quot;kind&quot;:&quot;body/contour-line&quot;,&quot;text&quot;:&quot;filmed like this&quot;}</code></td><!-- slot: halo-words (placeholder: body/hand-buddy) --><td width="50%" valign="top"><img src="docs/gallery/showcase/body-hand-buddy.webp" width="100%" alt="Robot on your hand"><br><b>Robot on your hand</b><br>작은 로봇이 손 위에 올라타 손을 따라다닙니다.<br><code>{&quot;kind&quot;:&quot;body/hand-buddy&quot;,&quot;text&quot;:&quot;Website&quot;}</code></td></tr>
-<tr><!-- slot: room-to-data (placeholder: remotion/noise-flow-field) --><td width="50%" valign="top"><img src="docs/gallery/showcase/remotion-noise-flow-field.webp" width="100%" alt="Flow field lines"><br><b>Flow field lines</b><br>노이즈 흐름을 따라 선이 흐르고, 그 사이로 낱말이 떠오릅니다.<br><code>{&quot;kind&quot;:&quot;remotion/noise-flow-field&quot;,&quot;text&quot;:&quot;Gravity&quot;}</code></td><!-- slot: scene --><td width="50%" valign="top"><img src="docs/gallery/showcase/remotion-shapes-agents.webp" width="100%" alt="Agent robots pass the ball"><br><b>Agent robots pass the ball</b><br>코드로 그린 로봇들이 공을 주고받는, 사람 없는 장면.<br><code>{&quot;kind&quot;:&quot;remotion/shapes-agents&quot;,&quot;text&quot;:&quot;Teamwork&quot;}</code></td></tr>
+<tr><!-- slot: aura --><td width="50%" valign="top"><img src="docs/gallery/showcase/body-aura.webp" width="100%" alt="Aura around you"><br><b>Aura around you</b><br>내 윤곽이 뒤에서 도는 색의 빛으로 번집니다.<br><code>{&quot;kind&quot;:&quot;body/aura&quot;}</code></td><!-- slot: halo-words --><td width="50%" valign="top"><img src="docs/gallery/showcase/body-halo-words.webp" width="100%" alt="Words circling your head"><br><b>Words circling your head</b><br>내 말이 머리 둘레를 돌며 뒤로 사라졌다 다시 나옵니다.<br><code>{&quot;kind&quot;:&quot;body/halo-words&quot;,&quot;text&quot;:&quot;Connect AI Lab&quot;}</code></td></tr>
+<tr><!-- slot: room-to-data --><td width="50%" valign="top"><img src="docs/gallery/showcase/body-room-to-data.webp" width="100%" alt="Room turns into data"><br><b>Room turns into data</b><br>내 뒤의 방이 데이터 픽셀로 바뀝니다. 사람은 그대로.<br><code>{&quot;kind&quot;:&quot;body/room-to-data&quot;,&quot;text&quot;:&quot;Analyze&quot;}</code></td><!-- slot: scene --><td width="50%" valign="top"><img src="docs/gallery/showcase/remotion-shapes-agents.webp" width="100%" alt="Agent robots pass the ball"><br><b>Agent robots pass the ball</b><br>코드로 그린 로봇들이 공을 주고받는, 사람 없는 장면.<br><code>{&quot;kind&quot;:&quot;remotion/shapes-agents&quot;,&quot;text&quot;:&quot;Teamwork&quot;}</code></td></tr>
 </table>
 
 ## 시작
@@ -39,12 +39,16 @@
 
 ## 이런 것도 만들 수 있어요
 
-카탈로그에 그래픽 <!--n-->66<!--/n-->개, 하나에 `plan.json` 한 줄. 묶음을 열어 보세요. [카탈로그 페이지](docs/index.html)에는 전부 살아 있는 클립과 복사할 프롬프트가 있습니다.
+카탈로그에 그래픽 <!--n-->80<!--/n-->개, 하나에 `plan.json` 한 줄. 묶음을 열어 보세요. [카탈로그 페이지](docs/index.html)에는 전부 살아 있는 클립과 복사할 프롬프트가 있습니다.
 
-<details><summary><b>몸을 아는 그래픽 · 4</b>: 손을 따라가고, 손가락을 세고, 사람 뒤에 서고, 윤곽을 따라갑니다.</summary>
+<details><summary><b>몸을 아는 그래픽 · 17</b>: 손을 따라가고, 손가락을 세고, 사람 뒤에 서고, 윤곽을 따라갑니다.</summary>
 
 <table>
-<tr><td width="25%" valign="top"><img src="docs/gallery/body-finger-count.webp" width="100%" alt="Finger count stamp"><br><sub>Finger count stamp</sub></td><td width="25%" valign="top"><img src="docs/gallery/body-hand-rise-chart.webp" width="100%" alt="Chart your hand draws"><br><sub>Chart your hand draws</sub></td><td width="25%" valign="top"><img src="docs/gallery/body-hand-tag.webp" width="100%" alt="Tag on the hand"><br><sub>Tag on the hand</sub></td><td width="25%" valign="top"><img src="docs/gallery/body-point-ray.webp" width="100%" alt="Ray from your finger"><br><sub>Ray from your finger</sub></td></tr>
+<tr><td width="25%" valign="top"><img src="docs/gallery/body-afterimage.webp" width="100%" alt="Afterimages of your motion"><br><sub>Afterimages of your motion</sub></td><td width="25%" valign="top"><img src="docs/gallery/body-air-draw.webp" width="100%" alt="Write in the air"><br><sub>Write in the air</sub></td><td width="25%" valign="top"><img src="docs/gallery/body-beat-count.webp" width="100%" alt="Count on the beat"><br><sub>Count on the beat</sub></td><td width="25%" valign="top"><img src="docs/gallery/body-contour-line.webp" width="100%" alt="Line around you"><br><sub>Line around you</sub></td></tr>
+<tr><td width="25%" valign="top"><img src="docs/gallery/body-finger-count.webp" width="100%" alt="Finger count stamp"><br><sub>Finger count stamp</sub></td><td width="25%" valign="top"><img src="docs/gallery/body-grab-card.webp" width="100%" alt="Card in your hand"><br><sub>Card in your hand</sub></td><td width="25%" valign="top"><img src="docs/gallery/body-hand-arc.webp" width="100%" alt="Energy between your hands"><br><sub>Energy between your hands</sub></td><td width="25%" valign="top"><img src="docs/gallery/body-hand-buddy.webp" width="100%" alt="Robot on your hand"><br><sub>Robot on your hand</sub></td></tr>
+<tr><td width="25%" valign="top"><img src="docs/gallery/body-hand-dial.webp" width="100%" alt="Dial you turn by hand"><br><sub>Dial you turn by hand</sub></td><td width="25%" valign="top"><img src="docs/gallery/body-hand-rise-chart.webp" width="100%" alt="Chart your hand draws"><br><sub>Chart your hand draws</sub></td><td width="25%" valign="top"><img src="docs/gallery/body-hand-tag.webp" width="100%" alt="Tag on the hand"><br><sub>Tag on the hand</sub></td><td width="25%" valign="top"><img src="docs/gallery/body-pass-behind.webp" width="100%" alt="Object passes behind you"><br><sub>Object passes behind you</sub></td></tr>
+<tr><td width="25%" valign="top"><img src="docs/gallery/body-point-ray.webp" width="100%" alt="Ray from your finger"><br><sub>Ray from your finger</sub></td><td width="25%" valign="top"><img src="docs/gallery/body-point-spot.webp" width="100%" alt="Spotlight where you point"><br><sub>Spotlight where you point</sub></td><td width="25%" valign="top"><img src="docs/gallery/body-shoulder-buddy.webp" width="100%" alt="Robot behind your shoulder"><br><sub>Robot behind your shoulder</sub></td><td width="25%" valign="top"><img src="docs/gallery/body-shoulder-hud.webp" width="100%" alt="Body data beside your shoulder"><br><sub>Body data beside your shoulder</sub></td></tr>
+<tr><td width="25%" valign="top"><img src="docs/gallery/body-yield-card.webp" width="100%" alt="Card that makes way"><br><sub>Card that makes way</sub></td></tr>
 </table>
 
 </details>
@@ -82,11 +86,12 @@
 
 </details>
 
-<details><summary><b>화면 전체 장면 · 8</b>: 사람 없이 화면을 채우는 그래픽, 사람 뒤의 빛, 엔드 카드.</summary>
+<details><summary><b>화면 전체 장면 · 9</b>: 사람 없이 화면을 채우는 그래픽, 사람 뒤의 빛, 엔드 카드.</summary>
 
 <table>
 <tr><td width="25%" valign="top"><img src="docs/gallery/hyperframes-neon-stack.webp" width="100%" alt="Neon word stack (GSAP)"><br><sub>Neon word stack (GSAP)</sub></td><td width="25%" valign="top"><img src="docs/gallery/kit-endcard.webp" width="100%" alt="End card"><br><sub>End card</sub></td><td width="25%" valign="top"><img src="docs/gallery/lottie-arc-orbit.webp" width="100%" alt="Orbit arcs (Lottie)"><br><sub>Orbit arcs (Lottie)</sub></td><td width="25%" valign="top"><img src="docs/gallery/remotion-light-leaks-glow.webp" width="100%" alt="Light leak behind you"><br><sub>Light leak behind you</sub></td></tr>
-<tr><td width="25%" valign="top"><img src="docs/gallery/remotion-paths-equation-graph.webp" width="100%" alt="Curve draws itself"><br><sub>Curve draws itself</sub></td><td width="25%" valign="top"><img src="docs/gallery/remotion-paths-spirograph.webp" width="100%" alt="Spirograph draws itself"><br><sub>Spirograph draws itself</sub></td><td width="25%" valign="top"><img src="docs/gallery/remotion-shapes-pie.webp" width="100%" alt="Pie to a percent"><br><sub>Pie to a percent</sub></td><td width="25%" valign="top"><img src="docs/gallery/remotion-three-coin.webp" width="100%" alt="3D gold coin"><br><sub>3D gold coin</sub></td></tr>
+<tr><td width="25%" valign="top"><img src="docs/gallery/remotion-noise-flow-field.webp" width="100%" alt="Flow field lines"><br><sub>Flow field lines</sub></td><td width="25%" valign="top"><img src="docs/gallery/remotion-paths-equation-graph.webp" width="100%" alt="Curve draws itself"><br><sub>Curve draws itself</sub></td><td width="25%" valign="top"><img src="docs/gallery/remotion-paths-spirograph.webp" width="100%" alt="Spirograph draws itself"><br><sub>Spirograph draws itself</sub></td><td width="25%" valign="top"><img src="docs/gallery/remotion-shapes-pie.webp" width="100%" alt="Pie to a percent"><br><sub>Pie to a percent</sub></td></tr>
+<tr><td width="25%" valign="top"><img src="docs/gallery/remotion-three-coin.webp" width="100%" alt="3D gold coin"><br><sub>3D gold coin</sub></td></tr>
 </table>
 
 </details>
@@ -102,7 +107,7 @@
 
 <!-- gallery:end -->
 
-**[카탈로그 페이지 열기](docs/index.html)**: 그래픽 <!--n-->66<!--/n-->종을 실제 영상 위 살아 있는 클립으로, 종류별로 골라 보고, 코딩 에이전트에게 줄 프롬프트를 복사합니다.
+**[카탈로그 페이지 열기](docs/index.html)**: 그래픽 <!--n-->80<!--/n-->종을 실제 영상 위 살아 있는 클립으로, 종류별로 골라 보고, 코딩 에이전트에게 줄 프롬프트를 복사합니다.
 
 ## 어떻게 동작하나
 
@@ -142,7 +147,7 @@ MMA 가 여러 무술의 좋은 기술을 하나로 이어 붙였듯이, 이 키
 
 | | 파일 | 볼 것 |
 |---|---|---|
-| 카탈로그 페이지 | [docs/index.html](docs/index.html) | 그래픽 <!--n-->66<!--/n-->종, 하나에 살아 있는 클립 하나, `kind` · 라이선스 · 복사할 프롬프트 |
+| 카탈로그 페이지 | [docs/index.html](docs/index.html) | 그래픽 <!--n-->80<!--/n-->종, 하나에 살아 있는 클립 하나, `kind` · 라이선스 · 복사할 프롬프트 |
 | 릴 | [docs/hero_v2.mp4](docs/hero_v2.mp4) | 맨 위 영상의 1920x1080 버전(소리 있는 버전: [docs/hero_v2_social.mp4](docs/hero_v2_social.mp4)) |
 | 시트 | [docs/sheet.jpg](docs/sheet.jpg) | 그래픽마다 정점의 정지 화면 하나 |
 | 몸 | [docs/body_sheet.jpg](docs/body_sheet.jpg) | 몸 인식이 보는 것: 사람 영역, 관절, 손, 손가락 수 |
@@ -172,7 +177,7 @@ npx github:wonseokjung/connect-ai-video-motion gallery vm-demo --sheet
 
 ## 카탈로그
 
-`npx github:wonseokjung/connect-ai-video-motion catalog` 이 전부 보여 줍니다. 지금 **재생되는 그래픽 <!--n-->66<!--/n-->개**, 그리고 아직 안 되는 4개는 이유와 함께 목록에 있습니다.
+`npx github:wonseokjung/connect-ai-video-motion catalog` 이 전부 보여 줍니다. 지금 **재생되는 그래픽 <!--n-->80<!--/n-->개**, 그리고 아직 안 되는 4개는 이유와 함께 목록에 있습니다.
 
 | 출처 | 수 | 예 |
 |---|---|---|

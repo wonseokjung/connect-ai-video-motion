@@ -13,7 +13,7 @@
 import {faceAt, followTrack, inflate, overlapArea, union} from './face.mjs';
 import {resolveAt, toWords} from './words.mjs';
 import {platformZones} from '../vendor/facecam.mjs';
-import {makeBody, handTrack} from './body.mjs';
+import {makeBody, handTrack, rigTrack} from './body.mjs';
 import {metaFor, kindOf, DEFAULT_SIZE} from './catalog.mjs';
 
 export const FACE_MARGIN = 24; // px at 1080p, scaled with the frame
@@ -300,11 +300,13 @@ export function layoutPlan(input) {
     if (place === 'behind') {
       placeBehind(out, it, w, h, mt);
       if (it.behind && !out.hidden) straddle(out, it);
+      addRig(out, it, mt);
       items.push(out);
       continue;
     }
     if (place === 'attach' && mt.attach !== 'point') {
       placeAttach(out, it, mt, w, h, scales);
+      addRig(out, it, mt);
       items.push(out);
       continue;
     }
@@ -356,6 +358,7 @@ export function layoutPlan(input) {
       else out.segments.push(d);
     }
     if (mt.attach === 'point') addPointer(out, it);
+    addRig(out, it, mt);
     if (it.side && out.segments.length === 1) placeSide(out, it);
     if (ser && out.segments[0]) seriesSlot[ser] = out.segments[0].slot;
     for (const sg of out.segments) placed.push({f0: sg.f0, f1: sg.f1, r: sg.r, seg: sg, out});
@@ -555,9 +558,52 @@ export function layoutPlan(input) {
     out.side = {text: String(it.side), r: sr, fs: Math.round(fs), align: left ? 'left' : 'right'};
   }
 
+  // meta.rig: the graphic also gets the measured body per frame (output px): out.rig[i] = {joints, hands, face}.
+  // It draws its lines and light from real points (fingertips, wrists, shoulders); its main box is still placed
+  // (and checked) like any other graphic. Behind graphics also get the matte folder (out.matteDir) for glows.
+  function addRig(out, it, mt) {
+    if (!mt.rig || out.hidden || !B?.anyKnown) return;
+    const rt = rigTrack(B, it.f0, it.f1, fps);
+    const P = (p, f) => (p ? bodyPt(p, f).map((v) => Math.round(v * 10) / 10) : null);
+    out.rig = rt.map((r, i) => {
+      const f = it.f0 + i;
+      const joints = {};
+      for (const k of Object.keys(r.joints)) if (r.joints[k]) joints[k] = P(r.joints[k], f);
+      const hands = r.hands.map((h) => {
+        const pts = {};
+        for (const k of Object.keys(h.pts)) if (h.pts[k]) pts[k] = P(h.pts[k], f);
+        const b = bodyPt([h.box[0], h.box[1]], f);
+        return {side: h.side, pts, box: [b[0], b[1], h.box[2] * bx * s, h.box[3] * by * s].map((v) => Math.round(v)), count: h.count, pinch: h.pinch == null ? null : +h.pinch.toFixed(2)};
+      });
+      const fb = faceOut(f);
+      return {joints, hands, face: fb ? fb.map((v) => Math.round(v)) : null};
+    });
+    if (B.matte) out.matteDir = B.matte.dir || 'matte';
+    out.scale = s;
+    out.bodyScale = [bx, by];
+  }
+
   // graphics on the body: a per-frame track that follows the hand (or outlines the person), fixed offset per run
   function placeAttach(out, it, mt, w, h, scales) {
     const n = it.f1 - it.f0;
+    const shoulderTrack = (want) => {
+      const rt = rigTrack(B, it.f0, it.f1, fps);
+      let pick = want === 'left' || want === 'right' ? want + 'Shoulder' : null;
+      if (!pick) {
+        // the shoulder whose outer side has more empty frame
+        const r0 = rt.find((r) => r.joints.leftShoulder && r.joints.rightShoulder);
+        if (r0) {
+          const L0 = bodyPt(r0.joints.leftShoulder, it.f0), R0 = bodyPt(r0.joints.rightShoulder, it.f0);
+          const [lo, hi] = L0[0] < R0[0] ? [L0, R0] : [R0, L0];
+          pick = (lo[0] > W - hi[0] ? (L0[0] < R0[0] ? 'left' : 'right') : L0[0] < R0[0] ? 'right' : 'left') + 'Shoulder';
+        } else pick = 'leftShoulder';
+      }
+      return rt.map((r) => {
+        const p = r.joints[pick];
+        const half = 24 / bx;
+        return p ? {x: p[0], y: p[1], box: [p[0] - half, p[1] - half, half * 2, half * 2], count: null, ok: true} : {ok: false};
+      });
+    };
     if (!B?.anyKnown) {
       out.hidden = true;
       out.reason = 'needs the body detector (hands are not known)';
@@ -573,7 +619,8 @@ export function layoutPlan(input) {
       return;
     }
     const side = it.hand || 'any';
-    const tr = handTrack(B, side, it.f0, it.f1, fps);
+    // attach "shoulder": the anchor is the shoulder joint on the side with more room (or "hand": "left" | "right")
+    const tr = mt.attach === 'shoulder' ? shoulderTrack(side) : handTrack(B, side, it.f0, it.f1, fps);
     const sc = scales[Math.min(scales.length - 1, 2)];
     const ww = w * sc, hh = h * sc;
     const gap = 18 * u;
