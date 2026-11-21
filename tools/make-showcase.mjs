@@ -5,7 +5,7 @@
 //   node tools/make-showcase.mjs <dir> stills [--only a,b]   one still per item at its peak -> out/stills/
 //   node tools/make-showcase.mjs <dir> render [--only a,b] [--shard 0/3] [--conc 4]   -> out/clips/<name>.mp4
 //
-// <dir>/showcase.json: {"sources": {"<id>": {"protect": [...], "style": "connect"}},
+// <dir>/showcase.json: {"weight": 500, "sources": {"<id>": {"protect": [...], "style": "connect"}},
 //                       "items": [{"kind": "remotion/rough-strike", "src": "<id>", "at": 2.1, "lead": 0.5, "tail": 0.4, "props": {...}}]}
 // A transition item has "cut": {"a": ["<id>", t], "b": ["<id>", t]} instead of "src".
 // Graphics are placed by the same layout engine as any render: face, body and hands are avoided, pixels of the person untouched.
@@ -48,14 +48,14 @@ function dataOf(id) {
   if (!meta) throw new Error(`source ${id}: run analyze first`);
   const body = readJson(path.join(P.work, 'body.json'));
   if (body?.matte) body.matte = {...body.matte, dir: `${id}/matte`};
-  return (cache[id] = {meta: {...meta, file: `${id}/video.mp4`}, face: readJson(path.join(P.work, 'face.json')), body, info: {style: spec.sources?.[id]?.style || 'connect'}, contrast: {}});
+  return (cache[id] = {meta: {...meta, file: `${id}/video.mp4`}, face: readJson(path.join(P.work, 'face.json')), body, info: {style: spec.sources?.[id]?.style || 'connect', ...((spec.sources?.[id]?.weight ?? spec.weight) ? {weight: spec.sources?.[id]?.weight ?? spec.weight} : {})}, contrast: {}});
 }
 
 const planLine = (it) => ({kind: it.kind, at: it.at, ...(it.dur ? {dur: it.dur} : {}), ...(it.props || {})});
 function layoutOf(it) {
   const data = dataOf(it.src);
   const plan = {version: 1, protect: spec.sources?.[it.src]?.protect || [], items: [{id: 'g', ...planLine(it)}, ...(it.more || []).map((x, i) => ({id: 'g' + (i + 2), ...x}))]};
-  return layoutPlan({meta: data.meta, face: data.face, body: data.body, words: {tier: 'C', captions: []}, plan, info: data.info, style: getStyle(data.info.style), aspect: '16x9', outWidth: 1920});
+  return layoutPlan({meta: data.meta, face: data.face, body: data.body, words: {tier: 'C', captions: []}, plan, info: data.info, style: getStyle(data.info.style, data.info), aspect: '16x9', outWidth: 1920});
 }
 
 async function propsOf(it) {

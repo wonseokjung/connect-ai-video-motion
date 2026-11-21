@@ -20,7 +20,14 @@ export const STYLES = {
   clean: {name: 'clean', font: 'Inter', weight: 300, heavy: 500, tracking: -0.025, ink: '#FFFFFF', inkOnLight: '#111111', accent: '#2F6FA8', accentHi: '#4C8CC6', scrimColor: '#0B0B0B', scrim: 0.0, grain: 0, entry: 'wipe', radius: 10, cardBg: '#FFFFFF'},
 };
 
-export const getStyle = (name) => STYLES[name] || STYLES.connect;
+// my-info.json "weight": 500 sets a heavier type weight on any look (100-900; "heavy" stays at least 200 above it).
+// The looks are thin on purpose; a heavier weight reads better small (thumbnails, phone screens).
+export const getStyle = (name, info) => {
+  const s = STYLES[name] || STYLES.connect;
+  const w = Number(info?.weight);
+  if (!w || w < 100 || w > 900) return s;
+  return {...s, weight: w, heavy: Math.min(900, Math.max(s.heavy, w + 200))};
+};
 
 // Timing numbers (frames at 30 fps) follow motionmaxxing (Apache-2.0, commit 8c8ec0f2a6f6):
 // entry 12, opacity 6, blur 7, exit 13. Ease out when landing, accelerate when leaving.

@@ -6,7 +6,7 @@ import {fileURLToPath} from 'node:url';
 
 const KIT = path.dirname(path.dirname(fileURLToPath(import.meta.url)));
 const rgb = (hex) => [1, 3, 5].map((i) => parseInt(hex.slice(i, i + 2), 16) / 255).concat(1);
-const GOLD = rgb('#D6892A'), IVORY = rgb('#EBE2D2'), TEAL = rgb('#3FB7A6');
+const GOLD = rgb('#D6892A'), IVORY = rgb('#EBE2D2'), TEAL_HI = rgb('#5FF2DF'), SHADE = rgb('#04100E');
 const PINK = rgb('#FF5FA2'), PINK_HI = rgb('#FF9CCB'), WHITE = rgb('#FFFFFF'), INK = rgb('#1B1030'), CHEEK = rgb('#FF2E7E'), SKY = rgb('#5EE7FF');
 const st = (v) => ({a: 0, k: v});
 const key = (pairs, ease = [0.16, 1]) => ({a: 1, k: pairs.map(([t, s], i) => (i < pairs.length - 1 ? {t, s: [].concat(s), i: {x: [0.3], y: [ease[1]]}, o: {x: [ease[0]], y: [0]}} : {t, s: [].concat(s)}))});
@@ -26,9 +26,10 @@ const files = {
     layer(2, 'ring', [{ty: 'gr', nm: 'ring', it: [ellipse(300), trim(key([[0, 0], [26, 100]])), stroke(GOLD, 11), tr()]}], {r: st(-90)}, 75),
     layer(3, 'halo', [{ty: 'gr', nm: 'halo', it: [ellipse(300), stroke(GOLD, 4, key([[24, 0], [30, 70], [60, 0]])), tr({s: key([[24, [100, 100]], [60, [128, 128]]])})]}], {}, 75),
   ]),
+  // bright rings over a soft dark under-ring, so they stay crisp on a busy picture too
   'signal-pulse': anim('signal-pulse', 60, [0, 20, 40].map((t0, i) =>
-    layer(i + 1, 'ring' + i, [{ty: 'gr', nm: 'ring', it: [ellipse(120), stroke(TEAL, 10, key([[t0, 100], [t0 + 40, 30]])), tr({s: key([[t0, [40, 40]], [t0 + 40, [260, 260]]], [0.2, 0.9])})]}], {}, 60),
-  ).concat([layer(4, 'dot', [{ty: 'gr', nm: 'dot', it: [ellipse(34), {ty: 'fl', c: st(TEAL), o: st(100), r: 1, nm: 'Fill'}, tr()]}], {}, 60)])),
+    layer(i + 1, 'ring' + i, [{ty: 'gr', nm: 'ring', it: [ellipse(120), stroke(TEAL_HI, 9, key([[t0, 100], [t0 + 40, 45]])), stroke(SHADE, 20, key([[t0, 45], [t0 + 40, 10]])), tr({s: key([[t0, [40, 40]], [t0 + 40, [260, 260]]], [0.2, 0.9])})]}], {}, 60),
+  ).concat([layer(4, 'dot', [{ty: 'gr', nm: 'dot', it: [ellipse(18), fill(IVORY), tr()]}, {ty: 'gr', nm: 'dot', it: [ellipse(44), fill(TEAL_HI), stroke(SHADE, 8, st(45)), tr()]}], {}, 60)])),
   // a little character that hops in place: squash on landing, stretch on take-off, blinks, cheeks, a sparkle
   'hop-buddy': (() => {
     const T = 30; // one hop

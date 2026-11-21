@@ -1,0 +1,79 @@
+{
+  "_": "Showcase: the 6 big tiles at the top of README.md, README.ko.md and docs/index.html (tools/make-readme-gallery.mjs, tools/make-docs.mjs). A tile with \"placeholder\" stands in for its slot until that graphic is in the catalog. \"scenes\": graphics that fill a frame with nobody in it, listed under Whole-frame scenes.",
+  "showcase": [
+    {
+      "slot": "palm-hologram",
+      "name": "body-palm-hologram",
+      "en": "A 3D object spins over your raised hand, a beam runs from your palm.",
+      "ko": "든 손 위에서 3D 물체가 돌고, 손바닥에서 빛줄기가 뻗습니다.",
+      "line": {
+        "kind": "body/palm-hologram",
+        "text": "3D"
+      }
+    },
+    {
+      "slot": "behind-text",
+      "name": "body-behind-text",
+      "en": "Big words stand behind you. You stay in front.",
+      "ko": "큰 글자가 사람 뒤에 섭니다. 사람은 앞에 그대로.",
+      "line": {
+        "kind": "body/behind-text",
+        "text": "Open source",
+        "behind": true
+      }
+    },
+    {
+      "slot": "aura",
+      "placeholder": true,
+      "name": "body-contour-line",
+      "en": "A glowing line follows your outline while you move.",
+      "ko": "빛나는 선이 움직이는 내 윤곽을 따라갑니다.",
+      "line": {
+        "kind": "body/contour-line",
+        "text": "filmed like this"
+      }
+    },
+    {
+      "slot": "halo-words",
+      "placeholder": true,
+      "name": "body-hand-buddy",
+      "en": "A little robot rides on your hand and follows it.",
+      "ko": "작은 로봇이 손 위에 올라타 손을 따라다닙니다.",
+      "line": {
+        "kind": "body/hand-buddy",
+        "text": "Website"
+      }
+    },
+    {
+      "slot": "room-to-data",
+      "placeholder": true,
+      "name": "remotion-noise-flow-field",
+      "en": "Lines flow through a noise field and the word rises out of them.",
+      "ko": "노이즈 흐름을 따라 선이 흐르고, 그 사이로 낱말이 떠오릅니다.",
+      "line": {
+        "kind": "remotion/noise-flow-field",
+        "text": "Gravity"
+      }
+    },
+    {
+      "slot": "scene",
+      "name": "remotion-shapes-agents",
+      "en": "Robots drawn in code pass the ball, in a scene with nobody in it.",
+      "ko": "코드로 그린 로봇들이 공을 주고받는, 사람 없는 장면.",
+      "line": {
+        "kind": "remotion/shapes-agents",
+        "text": "Teamwork"
+      }
+    }
+  ],
+  "scenes": [
+    "remotion-paths-spirograph",
+    "remotion-paths-equation-graph",
+    "remotion-three-coin",
+    "hyperframes-neon-stack",
+    "lottie-arc-orbit",
+    "remotion-shapes-pie",
+    "remotion-light-leaks-glow",
+    "kit-endcard"
+  ]
+}

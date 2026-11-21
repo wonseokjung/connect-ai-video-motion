@@ -2,15 +2,109 @@
 
 **Open source by CONNECT AI LAB · AI education for everyone.** A tool for one job: motion graphics on top of your own video.
 
-```bash
-npx github:wonseokjung/connect-ai-video-motion demo
-```
+[![Motion graphics on the author's own talking videos](docs/hero_v2.webp)](docs/index.html)
 
-<img src="docs/terminal.png" width="640" alt="What you see in the terminal">
+<!-- gallery:start -->
+## Showcase
 
-[![66 graphics on the author's own talking videos](docs/hero_v2.webp)](docs/index.html)
+Made with this kit on the author's own videos (AI Mentor Jay, shown with his permission). The words on screen are words he said. Not one pixel of him was changed. Under each: what it does and its one line of `plan.json`.
 
-**[Open the catalog page](docs/index.html)**: all 66 graphics as living clips on real footage, filter by source, copy a prompt for your coding agent.
+<table>
+<tr><!-- slot: palm-hologram --><td width="50%" valign="top"><img src="docs/gallery/showcase/body-palm-hologram.webp" width="100%" alt="Hologram from your hand"><br><b>Hologram from your hand</b><br>A 3D object spins over your raised hand, a beam runs from your palm.<br><code>{&quot;kind&quot;:&quot;body/palm-hologram&quot;,&quot;text&quot;:&quot;3D&quot;}</code></td><!-- slot: behind-text --><td width="50%" valign="top"><img src="docs/gallery/showcase/body-behind-text.webp" width="100%" alt="Word behind you"><br><b>Word behind you</b><br>Big words stand behind you. You stay in front.<br><code>{&quot;kind&quot;:&quot;body/behind-text&quot;,&quot;text&quot;:&quot;Open source&quot;,&quot;behind&quot;:true}</code></td></tr>
+<tr><!-- slot: aura (placeholder: body/contour-line) --><td width="50%" valign="top"><img src="docs/gallery/showcase/body-contour-line.webp" width="100%" alt="Line around you"><br><b>Line around you</b><br>A glowing line follows your outline while you move.<br><code>{&quot;kind&quot;:&quot;body/contour-line&quot;,&quot;text&quot;:&quot;filmed like this&quot;}</code></td><!-- slot: halo-words (placeholder: body/hand-buddy) --><td width="50%" valign="top"><img src="docs/gallery/showcase/body-hand-buddy.webp" width="100%" alt="Robot on your hand"><br><b>Robot on your hand</b><br>A little robot rides on your hand and follows it.<br><code>{&quot;kind&quot;:&quot;body/hand-buddy&quot;,&quot;text&quot;:&quot;Website&quot;}</code></td></tr>
+<tr><!-- slot: room-to-data (placeholder: remotion/noise-flow-field) --><td width="50%" valign="top"><img src="docs/gallery/showcase/remotion-noise-flow-field.webp" width="100%" alt="Flow field lines"><br><b>Flow field lines</b><br>Lines flow through a noise field and the word rises out of them.<br><code>{&quot;kind&quot;:&quot;remotion/noise-flow-field&quot;,&quot;text&quot;:&quot;Gravity&quot;}</code></td><!-- slot: scene --><td width="50%" valign="top"><img src="docs/gallery/showcase/remotion-shapes-agents.webp" width="100%" alt="Agent robots pass the ball"><br><b>Agent robots pass the ball</b><br>Robots drawn in code pass the ball, in a scene with nobody in it.<br><code>{&quot;kind&quot;:&quot;remotion/shapes-agents&quot;,&quot;text&quot;:&quot;Teamwork&quot;}</code></td></tr>
+</table>
+
+## Start
+
+1. Check your computer (Node, Remotion, face and body detection):
+
+   ```bash
+   npx github:wonseokjung/connect-ai-video-motion doctor
+   ```
+
+2. Run the built-in sample, start to finish:
+
+   ```bash
+   npx github:wonseokjung/connect-ai-video-motion demo
+   ```
+
+   <img src="docs/terminal.png" width="560" alt="What you see in the terminal">
+
+3. Teach your coding agent (Claude Code, Codex, Antigravity) once, then ask it to "put motion graphics on my video":
+
+   ```bash
+   npx github:wonseokjung/connect-ai-video-motion install-skill
+   ```
+
+## More you can make
+
+<!--n-->66<!--/n--> graphics in the catalog, each one line of `plan.json`. Open a group to see them; the [catalog page](docs/index.html) has every one as a living clip with a prompt to copy.
+
+<details><summary><b>Body aware · 4</b>: Follow a hand, count fingers, stand behind you, trace your outline.</summary>
+
+<table>
+<tr><td width="25%" valign="top"><img src="docs/gallery/body-finger-count.webp" width="100%" alt="Finger count stamp"><br><sub>Finger count stamp</sub></td><td width="25%" valign="top"><img src="docs/gallery/body-hand-rise-chart.webp" width="100%" alt="Chart your hand draws"><br><sub>Chart your hand draws</sub></td><td width="25%" valign="top"><img src="docs/gallery/body-hand-tag.webp" width="100%" alt="Tag on the hand"><br><sub>Tag on the hand</sub></td><td width="25%" valign="top"><img src="docs/gallery/body-point-ray.webp" width="100%" alt="Ray from your finger"><br><sub>Ray from your finger</sub></td></tr>
+</table>
+
+</details>
+
+<details><summary><b>Text · 21</b>: Your own words, set big: key words, titles, quotes, chapters.</summary>
+
+<table>
+<tr><td width="25%" valign="top"><img src="docs/gallery/hyperframes-gold-scramble-title.webp" width="100%" alt="Scramble title (GSAP)"><br><sub>Scramble title (GSAP)</sub></td><td width="25%" valign="top"><img src="docs/gallery/hyperframes-split-words-rise.webp" width="100%" alt="Words rise (GSAP SplitText)"><br><sub>Words rise (GSAP SplitText)</sub></td><td width="25%" valign="top"><img src="docs/gallery/hyperframes-warm-grain-title-card.webp" width="100%" alt="Title card (HyperFrames)"><br><sub>Title card (HyperFrames)</sub></td><td width="25%" valign="top"><img src="docs/gallery/kit-chapter.webp" width="100%" alt="Chapter line"><br><sub>Chapter line</sub></td></tr>
+<tr><td width="25%" valign="top"><img src="docs/gallery/kit-keyword.webp" width="100%" alt="Key word"><br><sub>Key word</sub></td><td width="25%" valign="top"><img src="docs/gallery/kit-nametag.webp" width="100%" alt="Name tag"><br><sub>Name tag</sub></td><td width="25%" valign="top"><img src="docs/gallery/lottie-gold-check.webp" width="100%" alt="Check mark (Lottie)"><br><sub>Check mark (Lottie)</sub></td><td width="25%" valign="top"><img src="docs/gallery/lottie-hop-buddy.webp" width="100%" alt="Hopping character (Lottie)"><br><sub>Hopping character (Lottie)</sub></td></tr>
+<tr><td width="25%" valign="top"><img src="docs/gallery/remotion-captions-karaoke.webp" width="100%" alt="Words lit in time"><br><sub>Words lit in time</sub></td><td width="25%" valign="top"><img src="docs/gallery/remotion-gsap-letters.webp" width="100%" alt="Letters fold up (GSAP)"><br><sub>Letters fold up (GSAP)</sub></td><td width="25%" valign="top"><img src="docs/gallery/remotion-layout-fit-word.webp" width="100%" alt="Fit-to-space word"><br><sub>Fit-to-space word</sub></td><td width="25%" valign="top"><img src="docs/gallery/remotion-motion-blur-trail.webp" width="100%" alt="Fast word with trail"><br><sub>Fast word with trail</sub></td></tr>
+<tr><td width="25%" valign="top"><img src="docs/gallery/remotion-noise-jitter-word.webp" width="100%" alt="Jitter to clean word"><br><sub>Jitter to clean word</sub></td><td width="25%" valign="top"><img src="docs/gallery/remotion-paths-brackets.webp" width="100%" alt="Square brackets"><br><sub>Square brackets</sub></td><td width="25%" valign="top"><img src="docs/gallery/remotion-paths-swoosh.webp" width="100%" alt="Swoosh underline"><br><sub>Swoosh underline</sub></td><td width="25%" valign="top"><img src="docs/gallery/remotion-rough-box.webp" width="100%" alt="Pen box"><br><sub>Pen box</sub></td></tr>
+<tr><td width="25%" valign="top"><img src="docs/gallery/remotion-rough-highlight.webp" width="100%" alt="Highlighter"><br><sub>Highlighter</sub></td><td width="25%" valign="top"><img src="docs/gallery/remotion-rounded-message.webp" width="100%" alt="Message bubble"><br><sub>Message bubble</sub></td><td width="25%" valign="top"><img src="docs/gallery/remotion-shapes-callout.webp" width="100%" alt="Speech callout"><br><sub>Speech callout</sub></td><td width="25%" valign="top"><img src="docs/gallery/remotion-shapes-polygon-badge.webp" width="100%" alt="Hexagon badge"><br><sub>Hexagon badge</sub></td></tr>
+<tr><td width="25%" valign="top"><img src="docs/gallery/remotion-svg3d-badge.webp" width="100%" alt="3D hex badge"><br><sub>3D hex badge</sub></td></tr>
+</table>
+
+</details>
+
+<details><summary><b>Labels and pointers · 11</b>: Tags, arrows, lists and steps that point at what you mean.</summary>
+
+<table>
+<tr><td width="25%" valign="top"><img src="docs/gallery/hyperframes-warm-grain-shape-label.webp" width="100%" alt="Shape label (HyperFrames)"><br><sub>Shape label (HyperFrames)</sub></td><td width="25%" valign="top"><img src="docs/gallery/kit-card.webp" width="100%" alt="Screen card + arrow"><br><sub>Screen card + arrow</sub></td><td width="25%" valign="top"><img src="docs/gallery/kit-steps.webp" width="100%" alt="1 · 2 · 3 steps"><br><sub>1 · 2 · 3 steps</sub></td><td width="25%" valign="top"><img src="docs/gallery/lottie-signal-pulse.webp" width="100%" alt="Signal pulse (Lottie)"><br><sub>Signal pulse (Lottie)</sub></td></tr>
+<tr><td width="25%" valign="top"><img src="docs/gallery/remotion-animation-utils-chip.webp" width="100%" alt="Chip to card"><br><sub>Chip to card</sub></td><td width="25%" valign="top"><img src="docs/gallery/remotion-mac-cursor-click.webp" width="100%" alt="Cursor clicks a button"><br><sub>Cursor clicks a button</sub></td><td width="25%" valign="top"><img src="docs/gallery/remotion-noise-topo-label.webp" width="100%" alt="Contour map label"><br><sub>Contour map label</sub></td><td width="25%" valign="top"><img src="docs/gallery/remotion-paths-signal.webp" width="100%" alt="Signal wave"><br><sub>Signal wave</sub></td></tr>
+<tr><td width="25%" valign="top"><img src="docs/gallery/remotion-rough-bracket-list.webp" width="100%" alt="Bracket list"><br><sub>Bracket list</sub></td><td width="25%" valign="top"><img src="docs/gallery/remotion-shapes-arrow.webp" width="100%" alt="Arrow with a word"><br><sub>Arrow with a word</sub></td><td width="25%" valign="top"><img src="docs/gallery/remotion-shapes-triangle-marker.webp" width="100%" alt="Triangle marker"><br><sub>Triangle marker</sub></td></tr>
+</table>
+
+</details>
+
+<details><summary><b>Numbers and charts · 10</b>: A number or a comparison you said, drawn.</summary>
+
+<table>
+<tr><td width="25%" valign="top"><img src="docs/gallery/hyperframes-ring-count.webp" width="100%" alt="Ring counter (GSAP)"><br><sub>Ring counter (GSAP)</sub></td><td width="25%" valign="top"><img src="docs/gallery/hyperframes-warm-grain-circle-stat.webp" width="100%" alt="Circle stat (HyperFrames)"><br><sub>Circle stat (HyperFrames)</sub></td><td width="25%" valign="top"><img src="docs/gallery/hyperframes-warm-grain-pill-stat.webp" width="100%" alt="Pill stat (HyperFrames)"><br><sub>Pill stat (HyperFrames)</sub></td><td width="25%" valign="top"><img src="docs/gallery/kit-counter.webp" width="100%" alt="Number counter"><br><sub>Number counter</sub></td></tr>
+<tr><td width="25%" valign="top"><img src="docs/gallery/remotion-paths-journey.webp" width="100%" alt="Journey A to B"><br><sub>Journey A to B</sub></td><td width="25%" valign="top"><img src="docs/gallery/remotion-paths-morph.webp" width="100%" alt="Shape morph, before to after"><br><sub>Shape morph, before to after</sub></td><td width="25%" valign="top"><img src="docs/gallery/remotion-rough-strike.webp" width="100%" alt="Strike out"><br><sub>Strike out</sub></td><td width="25%" valign="top"><img src="docs/gallery/remotion-shapes-bars.webp" width="100%" alt="Rising bars"><br><sub>Rising bars</sub></td></tr>
+<tr><td width="25%" valign="top"><img src="docs/gallery/remotion-shapes-star-seal.webp" width="100%" alt="Star seal"><br><sub>Star seal</sub></td><td width="25%" valign="top"><img src="docs/gallery/remotion-starburst-rays.webp" width="100%" alt="Rays behind a number"><br><sub>Rays behind a number</sub></td></tr>
+</table>
+
+</details>
+
+<details><summary><b>Whole-frame scenes · 8</b>: Graphics that fill a frame with nobody in it, light behind you, the end card.</summary>
+
+<table>
+<tr><td width="25%" valign="top"><img src="docs/gallery/hyperframes-neon-stack.webp" width="100%" alt="Neon word stack (GSAP)"><br><sub>Neon word stack (GSAP)</sub></td><td width="25%" valign="top"><img src="docs/gallery/kit-endcard.webp" width="100%" alt="End card"><br><sub>End card</sub></td><td width="25%" valign="top"><img src="docs/gallery/lottie-arc-orbit.webp" width="100%" alt="Orbit arcs (Lottie)"><br><sub>Orbit arcs (Lottie)</sub></td><td width="25%" valign="top"><img src="docs/gallery/remotion-light-leaks-glow.webp" width="100%" alt="Light leak behind you"><br><sub>Light leak behind you</sub></td></tr>
+<tr><td width="25%" valign="top"><img src="docs/gallery/remotion-paths-equation-graph.webp" width="100%" alt="Curve draws itself"><br><sub>Curve draws itself</sub></td><td width="25%" valign="top"><img src="docs/gallery/remotion-paths-spirograph.webp" width="100%" alt="Spirograph draws itself"><br><sub>Spirograph draws itself</sub></td><td width="25%" valign="top"><img src="docs/gallery/remotion-shapes-pie.webp" width="100%" alt="Pie to a percent"><br><sub>Pie to a percent</sub></td><td width="25%" valign="top"><img src="docs/gallery/remotion-three-coin.webp" width="100%" alt="3D gold coin"><br><sub>3D gold coin</sub></td></tr>
+</table>
+
+</details>
+
+<details><summary><b>Transitions · 6</b>: From one shot to the next.</summary>
+
+<table>
+<tr><td width="25%" valign="top"><img src="docs/gallery/remotion-transition-clock-wipe.webp" width="100%" alt="Clock wipe, before to after"><br><sub>Clock wipe, before to after</sub></td><td width="25%" valign="top"><img src="docs/gallery/remotion-transition-flip.webp" width="100%" alt="Card flip, before to after"><br><sub>Card flip, before to after</sub></td><td width="25%" valign="top"><img src="docs/gallery/remotion-transition-iris.webp" width="100%" alt="Iris, before to after"><br><sub>Iris, before to after</sub></td><td width="25%" valign="top"><img src="docs/gallery/remotion-transition-push-cut.webp" width="100%" alt="Push cut with flash, before to after"><br><sub>Push cut with flash, before to after</sub></td></tr>
+<tr><td width="25%" valign="top"><img src="docs/gallery/remotion-transition-slide.webp" width="100%" alt="Push slide, before to after"><br><sub>Push slide, before to after</sub></td><td width="25%" valign="top"><img src="docs/gallery/remotion-transition-wipe.webp" width="100%" alt="Diagonal wipe, before to after"><br><sub>Diagonal wipe, before to after</sub></td></tr>
+</table>
+
+</details>
+
+<!-- gallery:end -->
+
+**[Open the catalog page](docs/index.html)**: all <!--n-->66<!--/n--> graphics as living clips on real footage, filter by kind, copy a prompt for your coding agent.
+
+## How it works
 
 **Every motion graphic ecosystem, called with one line, placed around you.** Remotion packages, HyperFrames blocks, Lottie files and your own components all go through one layer that knows where your face, body and hands are, puts each graphic in good empty space, and checks its own work.
 
@@ -40,91 +134,15 @@ Like mixed martial arts took the best moves of every style and made them work to
 
 The clip above and every clip on the [catalog page](docs/index.html) is the author's own footage (four rooms, four kinds of light), shown with his permission. Each graphic is one line of `plan.json`; the words on screen are words he said in that clip (Korean, shown in English). No box was drawn by hand around his hands: the body detector found them.
 
-
-<!-- gallery:start -->
-## Gallery: 66 graphics, one line of plan.json each
-
-Everything below was made with this kit, on the author's own footage (AI Mentor Jay, shown with his permission): his wide talk shot in four rooms, a talk layout (camera strip next to a colour panel), his practice screen, and a few graphic-only scenes. The words on screen are words he said, in that clip or, for the graphic-only scenes, in the same videos. Not one face pixel was changed. Under each clip: the exact plan.json line that made it.
-
-### Highlights
-
-<table>
-<tr><td width="50%" valign="top"><img src="docs/gallery/hl/remotion-shapes-agents.webp" width="100%" alt="Agent robots pass the ball"><br><b>Agent robots pass the ball</b><br><sub>Robots drawn in code, in a graphic-only scene</sub></td><td width="50%" valign="top"><img src="docs/gallery/hl/body-contour-line.webp" width="100%" alt="Line around you"><br><b>Line around you</b><br><sub>A glowing line that follows his outline</sub></td></tr>
-<tr><td width="50%" valign="top"><img src="docs/gallery/hl/remotion-gsap-letters.webp" width="100%" alt="Letters fold up (GSAP)"><br><b>Letters fold up (GSAP)</b><br><sub>Letters fold up on his practice screen</sub></td><td width="50%" valign="top"><img src="docs/gallery/hl/remotion-noise-flow-field.webp" width="100%" alt="Flow field lines"><br><b>Flow field lines</b><br><sub>Flow field lines, in a graphic-only scene</sub></td></tr>
-<tr><td width="50%" valign="top"><img src="docs/gallery/hl/hyperframes-neon-stack.webp" width="100%" alt="Neon word stack (GSAP)"><br><b>Neon word stack (GSAP)</b><br><sub>Neon word stack, HTML + GSAP</sub></td><td width="50%" valign="top"><img src="docs/gallery/hl/remotion-mac-cursor-click.webp" width="100%" alt="Cursor clicks a button"><br><b>Cursor clicks a button</b><br><sub>A cursor clicks on his screen</sub></td></tr>
-<tr><td width="50%" valign="top"><img src="docs/gallery/hl/remotion-paths-spirograph.webp" width="100%" alt="Spirograph draws itself"><br><b>Spirograph draws itself</b><br><sub>A spirograph draws itself</sub></td><td width="50%" valign="top"><img src="docs/gallery/hl/remotion-transition-iris.webp" width="100%" alt="Iris, before to after"><br><b>Iris, before to after</b><br><sub>Iris from the morning room to the night set</sub></td></tr>
-</table>
-
 <p align="center"><img src="docs/gallery/_before_after.webp" width="720" alt="Before and after: the same frames, plain and with one graphic"><br><sub>Before and after. The same frames: plain, then with one plan.json line. The words stand behind him (person matte in front).</sub></p>
 
 <p align="center"><img src="docs/gallery/_compare.webp" width="720" alt="Same graphic: fixed spot vs face aware"><br><sub>The same graphic. Left: pinned to one spot (cut off by the frame). Right: placed by the face.</sub></p>
-
-### Body aware · 8
-
-Graphics that know where your body and hands are: they follow a hand, count fingers, stand behind you.
-
-<table>
-<tr><td width="33%" valign="top"><img src="docs/gallery/body-behind-text.webp" width="100%" alt="Word behind you"><br><b>Word behind you</b><br><code>{&quot;kind&quot;: &quot;body/behind-text&quot;, &quot;text&quot;: &quot;Open source&quot;, &quot;behind&quot;: true}</code></td><td width="33%" valign="top"><img src="docs/gallery/body-contour-line.webp" width="100%" alt="Line around you"><br><b>Line around you</b><br><code>{&quot;kind&quot;: &quot;body/contour-line&quot;, &quot;text&quot;: &quot;filmed like this&quot;}</code></td><td width="33%" valign="top"><img src="docs/gallery/body-finger-count.webp" width="100%" alt="Finger count stamp"><br><b>Finger count stamp</b><br><code>{&quot;kind&quot;: &quot;body/finger-count&quot;, &quot;text&quot;: &quot;One, Two, Three, Four, Five&quot;}</code></td></tr>
-<tr><td width="33%" valign="top"><img src="docs/gallery/body-hand-buddy.webp" width="100%" alt="Robot on your hand"><br><b>Robot on your hand</b><br><code>{&quot;kind&quot;: &quot;body/hand-buddy&quot;, &quot;text&quot;: &quot;Games&quot;}</code></td><td width="33%" valign="top"><img src="docs/gallery/body-hand-rise-chart.webp" width="100%" alt="Chart your hand draws"><br><b>Chart your hand draws</b><br><code>{&quot;kind&quot;: &quot;body/hand-rise-chart&quot;, &quot;text&quot;: &quot;Hand height&quot;}</code></td><td width="33%" valign="top"><img src="docs/gallery/body-hand-tag.webp" width="100%" alt="Tag on the hand"><br><b>Tag on the hand</b><br><code>{&quot;kind&quot;: &quot;body/hand-tag&quot;, &quot;text&quot;: &quot;Website&quot;, &quot;sub&quot;: &quot;too&quot;}</code></td></tr>
-<tr><td width="33%" valign="top"><img src="docs/gallery/body-palm-hologram.webp" width="100%" alt="Hologram from your hand"><br><b>Hologram from your hand</b><br><code>{&quot;kind&quot;: &quot;body/palm-hologram&quot;, &quot;text&quot;: &quot;&quot;}</code></td><td width="33%" valign="top"><img src="docs/gallery/body-point-ray.webp" width="100%" alt="Ray from your finger"><br><b>Ray from your finger</b><br><code>{&quot;kind&quot;: &quot;body/point-ray&quot;, &quot;text&quot;: &quot;Healthy food&quot;, &quot;sub&quot;: &quot;habit&quot;}</code></td></tr>
-</table>
-
-### Remotion · 39
-
-Official Remotion packages: paths, shapes, noise, three.js, GSAP, transitions, light leaks, characters and math drawn in code.
-
-<table>
-<tr><td width="33%" valign="top"><img src="docs/gallery/remotion-animation-utils-chip.webp" width="100%" alt="Chip to card"><br><b>Chip to card</b><br><code>{&quot;kind&quot;: &quot;remotion/animation-utils-chip&quot;, &quot;text&quot;: &quot;For beginners&quot;}</code></td><td width="33%" valign="top"><img src="docs/gallery/remotion-captions-karaoke.webp" width="100%" alt="Words lit in time"><br><b>Words lit in time</b><br><code>{&quot;kind&quot;: &quot;remotion/captions-karaoke&quot;, &quot;text&quot;: &quot;Define, solve&quot;}</code></td><td width="33%" valign="top"><img src="docs/gallery/remotion-gsap-letters.webp" width="100%" alt="Letters fold up (GSAP)"><br><b>Letters fold up (GSAP)</b><br><code>{&quot;kind&quot;: &quot;remotion/gsap-letters&quot;, &quot;text&quot;: &quot;CONNECT AI LAB&quot;}</code></td></tr>
-<tr><td width="33%" valign="top"><img src="docs/gallery/remotion-layout-fit-word.webp" width="100%" alt="Fit-to-space word"><br><b>Fit-to-space word</b><br><code>{&quot;kind&quot;: &quot;remotion/layout-fit-word&quot;, &quot;text&quot;: &quot;FREE&quot;}</code></td><td width="33%" valign="top"><img src="docs/gallery/remotion-light-leaks-glow.webp" width="100%" alt="Light leak behind you"><br><b>Light leak behind you</b><br><code>{&quot;kind&quot;: &quot;remotion/light-leaks-glow&quot;}</code></td><td width="33%" valign="top"><img src="docs/gallery/remotion-mac-cursor-click.webp" width="100%" alt="Cursor clicks a button"><br><b>Cursor clicks a button</b><br><code>{&quot;kind&quot;: &quot;remotion/mac-cursor-click&quot;, &quot;text&quot;: &quot;Order&quot;, &quot;sub&quot;: &quot;click&quot;}</code></td></tr>
-<tr><td width="33%" valign="top"><img src="docs/gallery/remotion-motion-blur-trail.webp" width="100%" alt="Fast word with trail"><br><b>Fast word with trail</b><br><code>{&quot;kind&quot;: &quot;remotion/motion-blur-trail&quot;, &quot;text&quot;: &quot;Like a movie&quot;}</code></td><td width="33%" valign="top"><img src="docs/gallery/remotion-noise-flow-field.webp" width="100%" alt="Flow field lines"><br><b>Flow field lines</b><br><code>{&quot;kind&quot;: &quot;remotion/noise-flow-field&quot;, &quot;text&quot;: &quot;Gravity&quot;}</code></td><td width="33%" valign="top"><img src="docs/gallery/remotion-noise-jitter-word.webp" width="100%" alt="Jitter to clean word"><br><b>Jitter to clean word</b><br><code>{&quot;kind&quot;: &quot;remotion/noise-jitter-word&quot;, &quot;text&quot;: &quot;Testing&quot;}</code></td></tr>
-<tr><td width="33%" valign="top"><img src="docs/gallery/remotion-noise-topo-label.webp" width="100%" alt="Contour map label"><br><b>Contour map label</b><br><code>{&quot;kind&quot;: &quot;remotion/noise-topo-label&quot;, &quot;text&quot;: &quot;Physical&quot;, &quot;sub&quot;: &quot;this world&quot;}</code></td><td width="33%" valign="top"><img src="docs/gallery/remotion-paths-brackets.webp" width="100%" alt="Square brackets"><br><b>Square brackets</b><br><code>{&quot;kind&quot;: &quot;remotion/paths-brackets&quot;, &quot;text&quot;: &quot;Solve it&quot;}</code></td><td width="33%" valign="top"><img src="docs/gallery/remotion-paths-equation-graph.webp" width="100%" alt="Curve draws itself"><br><b>Curve draws itself</b><br><code>{&quot;kind&quot;: &quot;remotion/paths-equation-graph&quot;, &quot;text&quot;: &quot;Performance&quot;, &quot;curve&quot;: &quot;rise&quot;}</code></td></tr>
-<tr><td width="33%" valign="top"><img src="docs/gallery/remotion-paths-journey.webp" width="100%" alt="Journey A to B"><br><b>Journey A to B</b><br><code>{&quot;kind&quot;: &quot;remotion/paths-journey&quot;, &quot;text&quot;: &quot;Analyze&quot;, &quot;label&quot;: &quot;rebuild&quot;}</code></td><td width="33%" valign="top"><img src="docs/gallery/remotion-paths-morph.webp" width="100%" alt="Shape morph, before to after"><br><b>Shape morph, before to after</b><br><code>{&quot;kind&quot;: &quot;remotion/paths-morph&quot;, &quot;text&quot;: &quot;Engineering&quot;, &quot;sub&quot;: &quot;Business&quot;}</code></td><td width="33%" valign="top"><img src="docs/gallery/remotion-paths-signal.webp" width="100%" alt="Signal wave"><br><b>Signal wave</b><br><code>{&quot;kind&quot;: &quot;remotion/paths-signal&quot;, &quot;text&quot;: &quot;Precise&quot;, &quot;sub&quot;: &quot;as told&quot;}</code></td></tr>
-<tr><td width="33%" valign="top"><img src="docs/gallery/remotion-paths-spirograph.webp" width="100%" alt="Spirograph draws itself"><br><b>Spirograph draws itself</b><br><code>{&quot;kind&quot;: &quot;remotion/paths-spirograph&quot;, &quot;text&quot;: &quot;One&quot;}</code></td><td width="33%" valign="top"><img src="docs/gallery/remotion-paths-swoosh.webp" width="100%" alt="Swoosh underline"><br><b>Swoosh underline</b><br><code>{&quot;kind&quot;: &quot;remotion/paths-swoosh&quot;, &quot;text&quot;: &quot;Quality&quot;}</code></td><td width="33%" valign="top"><img src="docs/gallery/remotion-rough-box.webp" width="100%" alt="Pen box"><br><b>Pen box</b><br><code>{&quot;kind&quot;: &quot;remotion/rough-box&quot;, &quot;text&quot;: &quot;Money flow&quot;}</code></td></tr>
-<tr><td width="33%" valign="top"><img src="docs/gallery/remotion-rough-bracket-list.webp" width="100%" alt="Bracket list"><br><b>Bracket list</b><br><code>{&quot;kind&quot;: &quot;remotion/rough-bracket-list&quot;, &quot;text&quot;: &quot;English, Japanese, German, French&quot;}</code></td><td width="33%" valign="top"><img src="docs/gallery/remotion-rough-highlight.webp" width="100%" alt="Highlighter"><br><b>Highlighter</b><br><code>{&quot;kind&quot;: &quot;remotion/rough-highlight&quot;, &quot;text&quot;: &quot;Autonomous&quot;}</code></td><td width="33%" valign="top"><img src="docs/gallery/remotion-rough-strike.webp" width="100%" alt="Strike out"><br><b>Strike out</b><br><code>{&quot;kind&quot;: &quot;remotion/rough-strike&quot;, &quot;text&quot;: &quot;Just tools&quot;, &quot;sub&quot;: &quot;The flow&quot;}</code></td></tr>
-<tr><td width="33%" valign="top"><img src="docs/gallery/remotion-rounded-message.webp" width="100%" alt="Message bubble"><br><b>Message bubble</b><br><code>{&quot;kind&quot;: &quot;remotion/rounded-message&quot;, &quot;text&quot;: &quot;HyperFrames or Remotion?&quot;}</code></td><td width="33%" valign="top"><img src="docs/gallery/remotion-shapes-agents.webp" width="100%" alt="Agent robots pass the ball"><br><b>Agent robots pass the ball</b><br><code>{&quot;kind&quot;: &quot;remotion/shapes-agents&quot;, &quot;text&quot;: &quot;Teamwork&quot;}</code></td><td width="33%" valign="top"><img src="docs/gallery/remotion-shapes-arrow.webp" width="100%" alt="Arrow with a word"><br><b>Arrow with a word</b><br><code>{&quot;kind&quot;: &quot;remotion/shapes-arrow&quot;, &quot;text&quot;: &quot;Bottom right&quot;}</code></td></tr>
-<tr><td width="33%" valign="top"><img src="docs/gallery/remotion-shapes-bars.webp" width="100%" alt="Rising bars"><br><b>Rising bars</b><br><code>{&quot;kind&quot;: &quot;remotion/shapes-bars&quot;, &quot;value&quot;: &quot;2, 3, 10&quot;}</code></td><td width="33%" valign="top"><img src="docs/gallery/remotion-shapes-callout.webp" width="100%" alt="Speech callout"><br><b>Speech callout</b><br><code>{&quot;kind&quot;: &quot;remotion/shapes-callout&quot;, &quot;text&quot;: &quot;Excuse me&quot;}</code></td><td width="33%" valign="top"><img src="docs/gallery/remotion-shapes-pie.webp" width="100%" alt="Pie to a percent"><br><b>Pie to a percent</b><br><code>{&quot;kind&quot;: &quot;remotion/shapes-pie&quot;, &quot;value&quot;: &quot;100&quot;}</code></td></tr>
-<tr><td width="33%" valign="top"><img src="docs/gallery/remotion-shapes-polygon-badge.webp" width="100%" alt="Hexagon badge"><br><b>Hexagon badge</b><br><code>{&quot;kind&quot;: &quot;remotion/shapes-polygon-badge&quot;, &quot;text&quot;: &quot;Slides&quot;}</code></td><td width="33%" valign="top"><img src="docs/gallery/remotion-shapes-star-seal.webp" width="100%" alt="Star seal"><br><b>Star seal</b><br><code>{&quot;kind&quot;: &quot;remotion/shapes-star-seal&quot;, &quot;value&quot;: &quot;20&quot;}</code></td><td width="33%" valign="top"><img src="docs/gallery/remotion-shapes-triangle-marker.webp" width="100%" alt="Triangle marker"><br><b>Triangle marker</b><br><code>{&quot;kind&quot;: &quot;remotion/shapes-triangle-marker&quot;, &quot;text&quot;: &quot;Tokens&quot;, &quot;sub&quot;: &quot;cost&quot;}</code></td></tr>
-<tr><td width="33%" valign="top"><img src="docs/gallery/remotion-starburst-rays.webp" width="100%" alt="Rays behind a number"><br><b>Rays behind a number</b><br><code>{&quot;kind&quot;: &quot;remotion/starburst-rays&quot;, &quot;value&quot;: &quot;1&quot;}</code></td><td width="33%" valign="top"><img src="docs/gallery/remotion-svg3d-badge.webp" width="100%" alt="3D hex badge"><br><b>3D hex badge</b><br><code>{&quot;kind&quot;: &quot;remotion/svg3d-badge&quot;, &quot;text&quot;: &quot;3D&quot;}</code></td><td width="33%" valign="top"><img src="docs/gallery/remotion-three-coin.webp" width="100%" alt="3D gold coin"><br><b>3D gold coin</b><br><code>{&quot;kind&quot;: &quot;remotion/three-coin&quot;, &quot;value&quot;: &quot;1&quot;}</code></td></tr>
-<tr><td width="33%" valign="top"><img src="docs/gallery/remotion-transition-clock-wipe.webp" width="100%" alt="Clock wipe, before to after"><br><b>Clock wipe, before to after</b><br><code>{&quot;kind&quot;: &quot;remotion/transition-clock-wipe&quot;}</code></td><td width="33%" valign="top"><img src="docs/gallery/remotion-transition-flip.webp" width="100%" alt="Card flip, before to after"><br><b>Card flip, before to after</b><br><code>{&quot;kind&quot;: &quot;remotion/transition-flip&quot;}</code></td><td width="33%" valign="top"><img src="docs/gallery/remotion-transition-iris.webp" width="100%" alt="Iris, before to after"><br><b>Iris, before to after</b><br><code>{&quot;kind&quot;: &quot;remotion/transition-iris&quot;}</code></td></tr>
-<tr><td width="33%" valign="top"><img src="docs/gallery/remotion-transition-push-cut.webp" width="100%" alt="Push cut with flash, before to after"><br><b>Push cut with flash, before to after</b><br><code>{&quot;kind&quot;: &quot;remotion/transition-push-cut&quot;}</code></td><td width="33%" valign="top"><img src="docs/gallery/remotion-transition-slide.webp" width="100%" alt="Push slide, before to after"><br><b>Push slide, before to after</b><br><code>{&quot;kind&quot;: &quot;remotion/transition-slide&quot;}</code></td><td width="33%" valign="top"><img src="docs/gallery/remotion-transition-wipe.webp" width="100%" alt="Diagonal wipe, before to after"><br><b>Diagonal wipe, before to after</b><br><code>{&quot;kind&quot;: &quot;remotion/transition-wipe&quot;}</code></td></tr>
-</table>
-
-### HyperFrames · 8
-
-HTML + CSS + GSAP blocks.
-
-<table>
-<tr><td width="33%" valign="top"><img src="docs/gallery/hyperframes-gold-scramble-title.webp" width="100%" alt="Scramble title (GSAP)"><br><b>Scramble title (GSAP)</b><br><code>{&quot;kind&quot;: &quot;hyperframes/gold-scramble-title&quot;, &quot;text&quot;: &quot;Predict&quot;, &quot;sub&quot;: &quot;the future&quot;}</code></td><td width="33%" valign="top"><img src="docs/gallery/hyperframes-neon-stack.webp" width="100%" alt="Neon word stack (GSAP)"><br><b>Neon word stack (GSAP)</b><br><code>{&quot;kind&quot;: &quot;hyperframes/neon-stack&quot;, &quot;text&quot;: &quot;Tried&quot;, &quot;label&quot;: &quot;Succeeded&quot;}</code></td><td width="33%" valign="top"><img src="docs/gallery/hyperframes-ring-count.webp" width="100%" alt="Ring counter (GSAP)"><br><b>Ring counter (GSAP)</b><br><code>{&quot;kind&quot;: &quot;hyperframes/ring-count&quot;, &quot;value&quot;: &quot;8&quot;}</code></td></tr>
-<tr><td width="33%" valign="top"><img src="docs/gallery/hyperframes-split-words-rise.webp" width="100%" alt="Words rise (GSAP SplitText)"><br><b>Words rise (GSAP SplitText)</b><br><code>{&quot;kind&quot;: &quot;hyperframes/split-words-rise&quot;, &quot;text&quot;: &quot;Coding a video&quot;}</code></td><td width="33%" valign="top"><img src="docs/gallery/hyperframes-warm-grain-circle-stat.webp" width="100%" alt="Circle stat (HyperFrames)"><br><b>Circle stat (HyperFrames)</b><br><code>{&quot;kind&quot;: &quot;hyperframes/warm-grain-circle-stat&quot;, &quot;text&quot;: &quot;wake up&quot;, &quot;value&quot;: &quot;8 AM&quot;}</code></td><td width="33%" valign="top"><img src="docs/gallery/hyperframes-warm-grain-pill-stat.webp" width="100%" alt="Pill stat (HyperFrames)"><br><b>Pill stat (HyperFrames)</b><br><code>{&quot;kind&quot;: &quot;hyperframes/warm-grain-pill-stat&quot;, &quot;value&quot;: &quot;Opportunity&quot;}</code></td></tr>
-<tr><td width="33%" valign="top"><img src="docs/gallery/hyperframes-warm-grain-shape-label.webp" width="100%" alt="Shape label (HyperFrames)"><br><b>Shape label (HyperFrames)</b><br><code>{&quot;kind&quot;: &quot;hyperframes/warm-grain-shape-label&quot;, &quot;text&quot;: &quot;Mix them&quot;}</code></td><td width="33%" valign="top"><img src="docs/gallery/hyperframes-warm-grain-title-card.webp" width="100%" alt="Title card (HyperFrames)"><br><b>Title card (HyperFrames)</b><br><code>{&quot;kind&quot;: &quot;hyperframes/warm-grain-title-card&quot;, &quot;text&quot;: &quot;One person&quot;, &quot;sub&quot;: &quot;AI company&quot;}</code></td></tr>
-</table>
-
-### Lottie · 4
-
-After Effects / LottieFiles animations, characters too.
-
-<table>
-<tr><td width="33%" valign="top"><img src="docs/gallery/lottie-arc-orbit.webp" width="100%" alt="Orbit arcs (Lottie)"><br><b>Orbit arcs (Lottie)</b><br><code>{&quot;kind&quot;: &quot;lottie/arc-orbit&quot;}</code></td><td width="33%" valign="top"><img src="docs/gallery/lottie-gold-check.webp" width="100%" alt="Check mark (Lottie)"><br><b>Check mark (Lottie)</b><br><code>{&quot;kind&quot;: &quot;lottie/gold-check&quot;}</code></td><td width="33%" valign="top"><img src="docs/gallery/lottie-hop-buddy.webp" width="100%" alt="Hopping character (Lottie)"><br><b>Hopping character (Lottie)</b><br><code>{&quot;kind&quot;: &quot;lottie/hop-buddy&quot;}</code></td></tr>
-<tr><td width="33%" valign="top"><img src="docs/gallery/lottie-signal-pulse.webp" width="100%" alt="Signal pulse (Lottie)"><br><b>Signal pulse (Lottie)</b><br><code>{&quot;kind&quot;: &quot;lottie/signal-pulse&quot;}</code></td></tr>
-</table>
-
-### Kit · 7
-
-The kit's own graphics.
-
-<table>
-<tr><td width="33%" valign="top"><img src="docs/gallery/kit-card.webp" width="100%" alt="Screen card + arrow"><br><b>Screen card + arrow</b><br><code>{&quot;kind&quot;: &quot;kit/card&quot;, &quot;text&quot;: &quot;This page&quot;}</code></td><td width="33%" valign="top"><img src="docs/gallery/kit-chapter.webp" width="100%" alt="Chapter line"><br><b>Chapter line</b><br><code>{&quot;kind&quot;: &quot;kit/chapter&quot;, &quot;text&quot;: &quot;Follow along&quot;, &quot;value&quot;: &quot;02&quot;}</code></td><td width="33%" valign="top"><img src="docs/gallery/kit-counter.webp" width="100%" alt="Number counter"><br><b>Number counter</b><br><code>{&quot;kind&quot;: &quot;kit/counter&quot;, &quot;value&quot;: &quot;5&quot;}</code></td></tr>
-<tr><td width="33%" valign="top"><img src="docs/gallery/kit-endcard.webp" width="100%" alt="End card"><br><b>End card</b><br><code>{&quot;kind&quot;: &quot;kit/endcard&quot;, &quot;text&quot;: &quot;CONNECT AI LAB&quot;, &quot;sub&quot;: &quot;AI education for everyone&quot;}</code></td><td width="33%" valign="top"><img src="docs/gallery/kit-keyword.webp" width="100%" alt="Key word"><br><b>Key word</b><br><code>{&quot;kind&quot;: &quot;kit/keyword&quot;, &quot;text&quot;: &quot;Visual\nVibe Coding&quot;}</code></td><td width="33%" valign="top"><img src="docs/gallery/kit-nametag.webp" width="100%" alt="Name tag"><br><b>Name tag</b><br><code>{&quot;kind&quot;: &quot;kit/nametag&quot;, &quot;text&quot;: &quot;AI Mentor Jay&quot;, &quot;sub&quot;: &quot;CONNECT AI LAB&quot;}</code></td></tr>
-<tr><td width="33%" valign="top"><img src="docs/gallery/kit-steps.webp" width="100%" alt="1 · 2 · 3 steps"><br><b>1 · 2 · 3 steps</b><br><code>{&quot;kind&quot;: &quot;kit/steps&quot;, &quot;text&quot;: &quot;Film&quot;, &quot;value&quot;: &quot;1&quot;}</code></td></tr>
-</table>
-
-<!-- gallery:end -->
 
 ## See it
 
 | | File | What to look at |
 |---|---|---|
-| Catalog page | [docs/index.html](docs/index.html) | 66 graphics, one living clip each, with its `kind`, licence and a prompt to copy |
+| Catalog page | [docs/index.html](docs/index.html) | <!--n-->66<!--/n--> graphics, one living clip each, with its `kind`, licence and a prompt to copy |
 | Reel | [docs/hero_v2.mp4](docs/hero_v2.mp4) | the reel at the top in 1920x1080 (with sound: [docs/hero_v2_social.mp4](docs/hero_v2_social.mp4)) |
 | Sheet | [docs/sheet.jpg](docs/sheet.jpg) | one still per graphic at its peak |
 | Body | [docs/body_sheet.jpg](docs/body_sheet.jpg) | what the body detector sees: person area, joints, hands, finger count |
@@ -154,7 +172,7 @@ Your own video: `npx github:wonseokjung/connect-ai-video-motion my-talk.mp4`, or
 
 ## The catalog
 
-`npx github:wonseokjung/connect-ai-video-motion catalog` lists everything. Today: **66 graphics you can play** and 4 listed with the reason they cannot (yet).
+`npx github:wonseokjung/connect-ai-video-motion catalog` lists everything. Today: **<!--n-->66<!--/n--> graphics you can play** and 4 listed with the reason they cannot (yet).
 
 | Source | Count | Examples |
 |---|---|---|
@@ -182,7 +200,7 @@ Each item is a folder `catalog/<source>/<name>/` with the component (or `block.h
 }
 ```
 
-A plan line can also carry `"scale": 1.3` (this graphic 30 % bigger; it still steps down if you leave no room), `"slot": "beside-right"` (try this side first), `"behind": true` or `"head"` (type drawn big behind you, under the person matte: the words are split at a word boundary and set on both sides of you, so your head never eats the letters; `check` fails if you cover more than 25 % of them), `"side": "minutes"` (one plain word on the other side of you, level with the graphic: number on the left, word on the right) and, for `kit/keyword`, a line break in the text (`"Visual\nVibe Coding"`) to stack the words with the last line in gold. `my-info.json` `"style"` picks the look: `connect` (black × gold, default), `day` (the same look for bright rooms: dark ink), `night`, `clean`.
+A plan line can also carry `"scale": 1.3` (this graphic 30 % bigger; it still steps down if you leave no room), `"slot": "beside-right"` (try this side first), `"behind": true` or `"head"` (type drawn big behind you, under the person matte: the words are split at a word boundary and set on both sides of you, so your head never eats the letters; `check` fails if you cover more than 25 % of them), `"side": "minutes"` (one plain word on the other side of you, level with the graphic: number on the left, word on the right) and, for `kit/keyword`, a line break in the text (`"Visual\nVibe Coding"`) to stack the words with the last line in gold. `my-info.json` `"style"` picks the look: `connect` (black × gold, default), `day` (the same look for bright rooms: dark ink), `night`, `clean`. The looks use thin type; `"weight": 500` in `my-info.json` sets a heavier weight that reads better small.
 
 `place` says how the layer treats it: `box` (empty space beside you), `attach` (`hand`, `fingers`, `point`, `contour`: follows your body, hidden while the hand is not seen clearly), `behind` (behind you, drawn under the person matte), `edge`, `post`, `full`. `family` is the design: the same family twice in one video gets a warning.
 

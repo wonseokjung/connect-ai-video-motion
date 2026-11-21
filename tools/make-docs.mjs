@@ -12,6 +12,7 @@ import {execFileSync} from 'node:child_process';
 import {KIT, readJson} from '../lib/analyze.mjs';
 import {buildCatalog} from '../lib/catalog-build.mjs';
 import {ffmpeg} from '../lib/ffmpeg.mjs';
+import {catOf, picks} from './gallery-groups.mjs';
 
 const argv = process.argv.slice(2);
 const D = path.resolve(argv[0] || '.');
@@ -41,7 +42,7 @@ for (const it of spec.items) {
   // a transition item is a word card in a plan line (one word turns into the next); on the page the same presentation is shown between two clips
   const prompt = `Use connect-ai-video-motion on my video. Add "${m.title}" where I say it, with my own words: ${JSON.stringify(isCut ? {kind: it.kind, text: '<before>', sub: '<after>', at: {text: '<the word I say>'}} : {...line, at: {text: '<the word I say>'}})}`;
   const description = (isCut ? `${m.description} Shown here between two clips with the same presentation.` : m.description) + (it.note ? ' ' + it.note : '');
-  items.push({look: it.cut ? 'mix' : spec.sources?.[it.src]?.look || 'night', name, kind: it.kind, source: it.kind.split('/')[0], title: m.title, description, license: m.license, from: m.source?.package || (m.source?.type === 'hyperframes' ? 'HyperFrames' + (m.source?.version ? '@' + m.source.version : '') : m.source?.repo || m.source?.type || 'kit'), words, prompt, clip, still});
+  items.push({look: it.cut ? 'mix' : spec.sources?.[it.src]?.look || 'night', name, cat: catOf(m, name), kind: it.kind, source: it.kind.split('/')[0], title: m.title, description, license: m.license, from: m.source?.package || (m.source?.type === 'hyperframes' ? 'HyperFrames' + (m.source?.version ? '@' + m.source.version : '') : m.source?.repo || m.source?.type || 'kit'), words, prompt, clip, still});
 }
 // order: the strongest first, then source by source; inside a source the kinds of shot take turns
 // (night, warm, morning, day rooms, talk layout with a panel, practice screen, graphic-only scene, transitions)
@@ -94,7 +95,8 @@ if (encode) {
   for (const d of ['clips', 'posters']) for (const f of fs.readdirSync(path.join(DOCS, d))) if (!items.some((x) => f.startsWith(x.name + '.'))) fs.unlinkSync(path.join(DOCS, d, f));
 }
 
-const data = {version: pkg.version, items: items.map(({clip, still, look, ...x}) => x), notYet};
+const showcase = picks.showcase.filter((p) => items.some((x) => x.name === p.name)).map(({name, en, line}) => ({name, en, line}));
+const data = {version: pkg.version, items: items.map(({clip, still, look, ...x}) => x), showcase, notYet};
 const html = fs.readFileSync(path.join(KIT, 'tools', 'docs-template.html'), 'utf8').replace('/*DATA*/', JSON.stringify(data).replace(/</g, '\\u003c')).replace(/__N__/g, String(items.length)).replace(/__V__/g, pkg.version);
 fs.writeFileSync(path.join(DOCS, 'index.html'), html);
 const size = (d) => fs.readdirSync(path.join(DOCS, d)).reduce((s, f) => s + fs.statSync(path.join(DOCS, d, f)).size, 0);

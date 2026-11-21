@@ -65,7 +65,15 @@ h2 em{font-style:italic;color:var(--goldhi)}
 .filters button[aria-pressed=true]{color:#14110E;background:var(--goldhi);border-color:var(--goldhi)}
 .filters button[aria-pressed=true] sup{color:#14110E}
 
-.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(min(100%,300px),1fr));gap:26px 20px}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(min(100%,230px),1fr));gap:22px 16px}
+.grid .card h3{font-size:19px;margin:10px 0 8px}
+.show{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:34px 26px}
+.show .card h3{font-size:30px}
+.show .card .what{color:var(--ivory);font-size:15px;line-height:1.5;margin:4px 0 12px;flex:1}
+.show .card code{font-family:var(--mono);font-size:12.5px;color:var(--goldhi);word-break:break-all}
+.steps{counter-reset:s}
+.steps .row code::before{content:none}
+.steps .num{flex:none;align-self:center;font-family:var(--mono);color:var(--gold);padding:0 0 0 16px;font-size:13px}
 .card{display:flex;flex-direction:column;min-width:0}
 .card[hidden]{display:none}
 .shot{position:relative;aspect-ratio:16/9;background:#000;overflow:hidden;cursor:pointer}
@@ -111,6 +119,7 @@ footer a:hover{color:var(--goldhi)}
 .toast.on{opacity:1;transform:translate(-50%,0)}
 
 @media (max-width:720px){
+  .show{grid-template-columns:1fr}
   .brand span{display:none}
   nav.links{gap:14px}
   nav.links a.gh,nav.links a[href='#catalog']{display:none}
@@ -138,7 +147,9 @@ footer a:hover{color:var(--goldhi)}
 <header class="top">
   <a class="brand" href="https://www.youtube.com/@CONNECT-AI-LAB"><b>CONNECT AI LAB</b><span>AI education for everyone · 모두를 위한 AI 교육</span></a>
   <nav class="links caps">
-    <a href="#catalog">Catalog</a>
+    <a href="#showcase">Showcase</a>
+    <a href="#start">Start</a>
+    <a href="#catalog">More</a>
     <a href="https://www.youtube.com/@CONNECT-AI-LAB">YouTube</a>
     <a href="https://www.aicitybuilders.com">aicitybuilders</a>
     <a class="gh" href="https://github.com/wonseokjung/connect-ai-video-motion">GitHub</a>
@@ -162,13 +173,32 @@ footer a:hover{color:var(--goldhi)}
   <div class="facts caps"><span><b>__N__</b> graphics</span><span><b>4</b> ecosystems, one line</span><span>Face · body · hands aware</span><span>Checks its own work</span><span>MIT</span></div>
 </div>
 
+<section id="showcase">
+  <div class="sec-head">
+    <div><div class="caps gold">Showcase</div><h2>Six to start with, <em>on a real talk.</em></h2></div>
+    <p>Each one is a single line of <span class="gold">plan.json</span> on the author's own footage. The words on screen are words he said. Not one pixel of him was changed.</p>
+  </div>
+  <div class="show" id="show"></div>
+</section>
+
+<section id="start">
+  <div class="sec-head"><div><div class="caps gold">Start</div><h2>Three steps. <em>No install.</em></h2></div><p>Node.js 18 or newer. No Python. With a coding agent (Claude Code, Codex, Antigravity), install the skill once and ask it to put motion graphics on your video.</p></div>
+  <div class="run steps">
+    <div class="row"><span class="num">01</span><code>npx connect-ai-video-motion doctor</code><span class="what">check your computer</span><button class="copy" data-copy="npx connect-ai-video-motion doctor">Copy</button></div>
+    <div class="row"><span class="num">02</span><code>npx connect-ai-video-motion demo</code><span class="what">built-in sample, start to finish</span><button class="copy" data-copy="npx connect-ai-video-motion demo">Copy</button></div>
+    <div class="row"><span class="num">03</span><code>npx connect-ai-video-motion install-skill</code><span class="what">then ask: put motion graphics on my video</span><button class="copy" data-copy="npx connect-ai-video-motion install-skill">Copy</button></div>
+  </div>
+</section>
+
 <section id="catalog">
   <div class="sec-head">
-    <div><div class="caps gold">The catalog</div><h2>Every graphic, <em>on a real talk.</em></h2></div>
-    <p>Each clip below is one line of <span class="gold">plan.json</span> on the author's own footage: four rooms, four kinds of light. The words on screen are words he said in that clip (Korean, shown in English). Copy a prompt and give it to your coding agent.</p>
+    <div><div class="caps gold">More you can make</div><h2>__N__ graphics, <em>one line each.</em></h2></div>
+    <p>Each clip is one line of <span class="gold">plan.json</span> on the author's own footage. The words on screen are words he said (Korean, shown in English). Copy a prompt and give it to your coding agent.</p>
   </div>
-  <div class="filters" role="toolbar" aria-label="Filter by source"></div>
+  <div class="filters" role="toolbar" aria-label="Filter by kind of graphic"></div>
   <div class="grid" id="grid"></div>
+  <p class="note" style="margin-top:44px">The kit is MIT. It runs on <a href="https://www.remotion.dev">Remotion</a>, which is free for individuals, companies with up to 3 employees and non-profits; other companies need a Remotion Company License. HyperFrames blocks are Apache-2.0, GSAP uses GreenSock's standard no-charge license. Every card shows the licence of its own source.</p>
+  <div id="notyet"></div>
 </section>
 
 <section id="how">
@@ -181,17 +211,6 @@ footer a:hover{color:var(--goldhi)}
   </div>
 </section>
 
-<section id="run">
-  <div class="sec-head"><div><div class="caps gold">Run it</div><h2>One line. <em>No install.</em></h2></div><p>Node.js 18 or newer. No Python. With a coding agent (Claude Code, Codex, Antigravity), install the skill once and just ask for motion graphics on your video.</p></div>
-  <div class="run">
-    <div class="row"><code>npx connect-ai-video-motion demo</code><span class="what">built-in sample, start to finish</span><button class="copy" data-copy="npx connect-ai-video-motion demo">Copy</button></div>
-    <div class="row"><code>npx connect-ai-video-motion my-talk.mp4</code><span class="what">your own video</span><button class="copy" data-copy="npx connect-ai-video-motion my-talk.mp4">Copy</button></div>
-    <div class="row"><code>npx connect-ai-video-motion install-skill</code><span class="what">teach your agent</span><button class="copy" data-copy="npx connect-ai-video-motion install-skill">Copy</button></div>
-    <div class="row"><code>npx connect-ai-video-motion catalog</code><span class="what">list every graphic</span><button class="copy" data-copy="npx connect-ai-video-motion catalog">Copy</button></div>
-  </div>
-  <p class="note">The kit is MIT. It runs on <a href="https://www.remotion.dev">Remotion</a>, which is free for individuals, companies with up to 3 employees and non-profits; other companies need a Remotion Company License. HyperFrames blocks are Apache-2.0, GSAP uses GreenSock's standard no-charge license. Every card shows the licence of its own source.</p>
-  <div id="notyet"></div>
-</section>
 
 <footer>
   <div><div class="big">CONNECT AI LAB</div>AI education for everyone · 모두를 위한 AI 교육<br>connect-ai-video-motion __V__ · MIT</div>
@@ -202,6 +221,7 @@ footer a:hover{color:var(--goldhi)}
 <script>
 const DATA = /*DATA*/;
 const SRC = {kit: 'Kit', remotion: 'Remotion', hyperframes: 'HyperFrames', lottie: 'Lottie', body: 'Body-aware'};
+const CAT = {body: 'Body aware', text: 'Text', labels: 'Labels and pointers', data: 'Numbers and charts', scenes: 'Whole-frame scenes', transitions: 'Transitions'};
 const grid = document.getElementById('grid'), bar = document.querySelector('.filters');
 const toast = document.getElementById('toast');
 let toastT;
@@ -213,27 +233,40 @@ function copy(text, btn) {
 document.addEventListener('click', (e) => { const b = e.target.closest('[data-copy]'); if (b) copy(b.dataset.copy, b); });
 
 const esc = (s) => String(s).replace(/[&<>"]/g, (c) => ({'&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;'}[c]));
-DATA.items.forEach((it, i) => {
+const show = document.getElementById('show');
+DATA.showcase.forEach((s) => {
+  const it = DATA.items.find((x) => x.name === s.name);
+  if (!it) return;
   const el = document.createElement('article');
   el.className = 'card';
-  el.dataset.source = it.source;
+  el.innerHTML = `<div class="shot" tabindex="0" aria-label="${esc(it.title)}: play"><video muted loop playsinline preload="none" poster="posters/${it.name}.jpg" data-src="clips/${it.name}.mp4"></video><span class="src caps">${SRC[it.source]}</span></div>
+<h3>${esc(it.title)}</h3><p class="what">${esc(s.en)}</p><code>${esc(JSON.stringify(s.line))}</code>
+<div class="meta" style="margin-top:12px"><span title="${esc(it.license + ' · ' + it.from)}">${esc(it.license)} · ${esc(it.from)}</span><button class="ask" data-copy="${esc(it.prompt)}" title="이 한 줄로 부탁하세요">Copy prompt</button></div>`;
+  show.appendChild(el);
+});
+const inShow = new Set(DATA.showcase.map((s) => s.name));
+DATA.items.filter((it) => !inShow.has(it.name)).forEach((it, i) => {
+  const el = document.createElement('article');
+  el.className = 'card';
+  el.dataset.cat = it.cat;
   el.innerHTML = `<div class="shot" tabindex="0" aria-label="${esc(it.title)}: play"><video muted loop playsinline preload="none" poster="posters/${it.name}.jpg" data-src="clips/${it.name}.mp4"></video><span class="src caps">${SRC[it.source]}</span><span class="n">${String(i + 1).padStart(2, '0')}</span></div>
-<h3>${esc(it.title)}</h3><div class="kind">${esc(it.kind)}</div><p class="desc">${esc(it.description)}</p>
-<div class="meta"><span title="${esc(it.license + ' · ' + it.from)}">${esc(it.license)} · ${esc(it.from)}</span><button class="ask" data-copy="${esc(it.prompt)}" title="이 한 줄로 부탁하세요">Copy prompt</button></div>`;
+<h3>${esc(it.title)}</h3>
+<div class="meta"><span title="${esc(it.kind + ' · ' + it.license)}">${esc(it.kind)}</span><button class="ask" data-copy="${esc(it.prompt)}" title="이 한 줄로 부탁하세요">Copy prompt</button></div>`;
   grid.appendChild(el);
 });
 
 // filters
-const counts = {all: DATA.items.length};
-DATA.items.forEach((it) => (counts[it.source] = (counts[it.source] || 0) + 1));
-[['all', 'All'], ...Object.entries(SRC)].forEach(([k, label]) => {
+const rest = DATA.items.filter((it) => !inShow.has(it.name));
+const counts = {all: rest.length};
+rest.forEach((it) => (counts[it.cat] = (counts[it.cat] || 0) + 1));
+[['all', 'All'], ...Object.entries(CAT)].forEach(([k, label]) => {
   if (!counts[k]) return;
   const b = document.createElement('button');
   b.innerHTML = `${label}<sup>${counts[k]}</sup>`;
   b.setAttribute('aria-pressed', k === 'all');
   b.onclick = () => {
     bar.querySelectorAll('button').forEach((x) => x.setAttribute('aria-pressed', x === b));
-    grid.querySelectorAll('.card').forEach((c) => (c.hidden = k !== 'all' && c.dataset.source !== k));
+    grid.querySelectorAll('.card').forEach((c) => (c.hidden = k !== 'all' && c.dataset.cat !== k));
   };
   bar.appendChild(b);
 });
@@ -244,10 +277,10 @@ const load = (v) => { if (!v.src) v.src = v.dataset.src; };
 const play = (v) => { load(v); const p = v.play(); if (p) p.catch(() => {}); };
 if (!calm && 'IntersectionObserver' in window) {
   const io = new IntersectionObserver((es) => es.forEach((e) => { const v = e.target.querySelector('video'); if (e.isIntersecting) play(v); else v.pause(); }), {threshold: 0.35});
-  grid.querySelectorAll('.shot').forEach((s) => io.observe(s));
+  document.querySelectorAll('#grid .shot, #show .shot').forEach((s) => io.observe(s));
 }
-grid.addEventListener('mouseover', (e) => { const s = e.target.closest('.shot'); if (s) play(s.querySelector('video')); });
-grid.addEventListener('click', (e) => { const s = e.target.closest('.shot'); if (!s) return; const v = s.querySelector('video'); if (v.paused) play(v); else if (calm) v.pause(); });
+[grid, show].forEach((g) => g.addEventListener('mouseover', (e) => { const s = e.target.closest('.shot'); if (s) play(s.querySelector('video')); }));
+[grid, show].forEach((g) => g.addEventListener('click', (e) => { const s = e.target.closest('.shot'); if (!s) return; const v = s.querySelector('video'); if (v.paused) play(v); else if (calm) v.pause(); }));
 if (calm) { const h = document.querySelector('.stage video'); h.removeAttribute('autoplay'); h.pause(); }
 
 // listed but not playable: said plainly, with the reason

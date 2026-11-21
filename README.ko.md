@@ -2,15 +2,109 @@
 
 **CONNECT AI LAB 이 만든 오픈소스 · 모두를 위한 AI 교육.** 쓰임은 하나입니다. 내 영상 위에 모션그래픽을 올릴 때 쓰는 도구.
 
-```bash
-npx github:wonseokjung/connect-ai-video-motion demo
-```
+[![만든 사람의 실제 영상 위 모션그래픽](docs/hero_v2.webp)](docs/index.html)
 
-<img src="docs/terminal.png" width="640" alt="터미널에서 보이는 화면">
+<!-- gallery:start -->
+## 쇼케이스
 
-[![만든 사람의 실제 영상 위 그래픽 66종](docs/hero_v2.webp)](docs/index.html)
+이 키트로 만든 사람(AI 멘토 제이)의 실제 영상 위에 올린 것입니다(허락하에 실었습니다). 화면 글자는 그가 한 말이고, 사람 픽셀은 한 점도 바꾸지 않았습니다. 아래에 하는 일과 `plan.json` 한 줄.
 
-**[카탈로그 페이지 열기](docs/index.html)**: 그래픽 66종을 실제 영상 위 살아 있는 클립으로, 출처별로 골라 보고, 코딩 에이전트에게 줄 프롬프트를 복사합니다.
+<table>
+<tr><!-- slot: palm-hologram --><td width="50%" valign="top"><img src="docs/gallery/showcase/body-palm-hologram.webp" width="100%" alt="Hologram from your hand"><br><b>Hologram from your hand</b><br>든 손 위에서 3D 물체가 돌고, 손바닥에서 빛줄기가 뻗습니다.<br><code>{&quot;kind&quot;:&quot;body/palm-hologram&quot;,&quot;text&quot;:&quot;3D&quot;}</code></td><!-- slot: behind-text --><td width="50%" valign="top"><img src="docs/gallery/showcase/body-behind-text.webp" width="100%" alt="Word behind you"><br><b>Word behind you</b><br>큰 글자가 사람 뒤에 섭니다. 사람은 앞에 그대로.<br><code>{&quot;kind&quot;:&quot;body/behind-text&quot;,&quot;text&quot;:&quot;Open source&quot;,&quot;behind&quot;:true}</code></td></tr>
+<tr><!-- slot: aura (placeholder: body/contour-line) --><td width="50%" valign="top"><img src="docs/gallery/showcase/body-contour-line.webp" width="100%" alt="Line around you"><br><b>Line around you</b><br>빛나는 선이 움직이는 내 윤곽을 따라갑니다.<br><code>{&quot;kind&quot;:&quot;body/contour-line&quot;,&quot;text&quot;:&quot;filmed like this&quot;}</code></td><!-- slot: halo-words (placeholder: body/hand-buddy) --><td width="50%" valign="top"><img src="docs/gallery/showcase/body-hand-buddy.webp" width="100%" alt="Robot on your hand"><br><b>Robot on your hand</b><br>작은 로봇이 손 위에 올라타 손을 따라다닙니다.<br><code>{&quot;kind&quot;:&quot;body/hand-buddy&quot;,&quot;text&quot;:&quot;Website&quot;}</code></td></tr>
+<tr><!-- slot: room-to-data (placeholder: remotion/noise-flow-field) --><td width="50%" valign="top"><img src="docs/gallery/showcase/remotion-noise-flow-field.webp" width="100%" alt="Flow field lines"><br><b>Flow field lines</b><br>노이즈 흐름을 따라 선이 흐르고, 그 사이로 낱말이 떠오릅니다.<br><code>{&quot;kind&quot;:&quot;remotion/noise-flow-field&quot;,&quot;text&quot;:&quot;Gravity&quot;}</code></td><!-- slot: scene --><td width="50%" valign="top"><img src="docs/gallery/showcase/remotion-shapes-agents.webp" width="100%" alt="Agent robots pass the ball"><br><b>Agent robots pass the ball</b><br>코드로 그린 로봇들이 공을 주고받는, 사람 없는 장면.<br><code>{&quot;kind&quot;:&quot;remotion/shapes-agents&quot;,&quot;text&quot;:&quot;Teamwork&quot;}</code></td></tr>
+</table>
+
+## 시작
+
+1. 내 컴퓨터 점검(Node, Remotion, 얼굴 · 몸 인식):
+
+   ```bash
+   npx github:wonseokjung/connect-ai-video-motion doctor
+   ```
+
+2. 들어 있는 샘플로 처음부터 끝까지:
+
+   ```bash
+   npx github:wonseokjung/connect-ai-video-motion demo
+   ```
+
+   <img src="docs/terminal.png" width="560" alt="터미널에서 보이는 화면">
+
+3. 코딩 에이전트(Claude Code, Codex, Antigravity)에 한 번 가르치고, "내 영상에 모션그래픽 넣어줘" 라고 부탁하세요:
+
+   ```bash
+   npx github:wonseokjung/connect-ai-video-motion install-skill
+   ```
+
+## 이런 것도 만들 수 있어요
+
+카탈로그에 그래픽 <!--n-->66<!--/n-->개, 하나에 `plan.json` 한 줄. 묶음을 열어 보세요. [카탈로그 페이지](docs/index.html)에는 전부 살아 있는 클립과 복사할 프롬프트가 있습니다.
+
+<details><summary><b>몸을 아는 그래픽 · 4</b>: 손을 따라가고, 손가락을 세고, 사람 뒤에 서고, 윤곽을 따라갑니다.</summary>
+
+<table>
+<tr><td width="25%" valign="top"><img src="docs/gallery/body-finger-count.webp" width="100%" alt="Finger count stamp"><br><sub>Finger count stamp</sub></td><td width="25%" valign="top"><img src="docs/gallery/body-hand-rise-chart.webp" width="100%" alt="Chart your hand draws"><br><sub>Chart your hand draws</sub></td><td width="25%" valign="top"><img src="docs/gallery/body-hand-tag.webp" width="100%" alt="Tag on the hand"><br><sub>Tag on the hand</sub></td><td width="25%" valign="top"><img src="docs/gallery/body-point-ray.webp" width="100%" alt="Ray from your finger"><br><sub>Ray from your finger</sub></td></tr>
+</table>
+
+</details>
+
+<details><summary><b>글자 · 21</b>: 내가 한 말을 크게: 핵심 낱말, 제목, 인용, 챕터.</summary>
+
+<table>
+<tr><td width="25%" valign="top"><img src="docs/gallery/hyperframes-gold-scramble-title.webp" width="100%" alt="Scramble title (GSAP)"><br><sub>Scramble title (GSAP)</sub></td><td width="25%" valign="top"><img src="docs/gallery/hyperframes-split-words-rise.webp" width="100%" alt="Words rise (GSAP SplitText)"><br><sub>Words rise (GSAP SplitText)</sub></td><td width="25%" valign="top"><img src="docs/gallery/hyperframes-warm-grain-title-card.webp" width="100%" alt="Title card (HyperFrames)"><br><sub>Title card (HyperFrames)</sub></td><td width="25%" valign="top"><img src="docs/gallery/kit-chapter.webp" width="100%" alt="Chapter line"><br><sub>Chapter line</sub></td></tr>
+<tr><td width="25%" valign="top"><img src="docs/gallery/kit-keyword.webp" width="100%" alt="Key word"><br><sub>Key word</sub></td><td width="25%" valign="top"><img src="docs/gallery/kit-nametag.webp" width="100%" alt="Name tag"><br><sub>Name tag</sub></td><td width="25%" valign="top"><img src="docs/gallery/lottie-gold-check.webp" width="100%" alt="Check mark (Lottie)"><br><sub>Check mark (Lottie)</sub></td><td width="25%" valign="top"><img src="docs/gallery/lottie-hop-buddy.webp" width="100%" alt="Hopping character (Lottie)"><br><sub>Hopping character (Lottie)</sub></td></tr>
+<tr><td width="25%" valign="top"><img src="docs/gallery/remotion-captions-karaoke.webp" width="100%" alt="Words lit in time"><br><sub>Words lit in time</sub></td><td width="25%" valign="top"><img src="docs/gallery/remotion-gsap-letters.webp" width="100%" alt="Letters fold up (GSAP)"><br><sub>Letters fold up (GSAP)</sub></td><td width="25%" valign="top"><img src="docs/gallery/remotion-layout-fit-word.webp" width="100%" alt="Fit-to-space word"><br><sub>Fit-to-space word</sub></td><td width="25%" valign="top"><img src="docs/gallery/remotion-motion-blur-trail.webp" width="100%" alt="Fast word with trail"><br><sub>Fast word with trail</sub></td></tr>
+<tr><td width="25%" valign="top"><img src="docs/gallery/remotion-noise-jitter-word.webp" width="100%" alt="Jitter to clean word"><br><sub>Jitter to clean word</sub></td><td width="25%" valign="top"><img src="docs/gallery/remotion-paths-brackets.webp" width="100%" alt="Square brackets"><br><sub>Square brackets</sub></td><td width="25%" valign="top"><img src="docs/gallery/remotion-paths-swoosh.webp" width="100%" alt="Swoosh underline"><br><sub>Swoosh underline</sub></td><td width="25%" valign="top"><img src="docs/gallery/remotion-rough-box.webp" width="100%" alt="Pen box"><br><sub>Pen box</sub></td></tr>
+<tr><td width="25%" valign="top"><img src="docs/gallery/remotion-rough-highlight.webp" width="100%" alt="Highlighter"><br><sub>Highlighter</sub></td><td width="25%" valign="top"><img src="docs/gallery/remotion-rounded-message.webp" width="100%" alt="Message bubble"><br><sub>Message bubble</sub></td><td width="25%" valign="top"><img src="docs/gallery/remotion-shapes-callout.webp" width="100%" alt="Speech callout"><br><sub>Speech callout</sub></td><td width="25%" valign="top"><img src="docs/gallery/remotion-shapes-polygon-badge.webp" width="100%" alt="Hexagon badge"><br><sub>Hexagon badge</sub></td></tr>
+<tr><td width="25%" valign="top"><img src="docs/gallery/remotion-svg3d-badge.webp" width="100%" alt="3D hex badge"><br><sub>3D hex badge</sub></td></tr>
+</table>
+
+</details>
+
+<details><summary><b>라벨 · 가리키기 · 11</b>: 태그, 화살표, 목록, 단계로 가리킵니다.</summary>
+
+<table>
+<tr><td width="25%" valign="top"><img src="docs/gallery/hyperframes-warm-grain-shape-label.webp" width="100%" alt="Shape label (HyperFrames)"><br><sub>Shape label (HyperFrames)</sub></td><td width="25%" valign="top"><img src="docs/gallery/kit-card.webp" width="100%" alt="Screen card + arrow"><br><sub>Screen card + arrow</sub></td><td width="25%" valign="top"><img src="docs/gallery/kit-steps.webp" width="100%" alt="1 · 2 · 3 steps"><br><sub>1 · 2 · 3 steps</sub></td><td width="25%" valign="top"><img src="docs/gallery/lottie-signal-pulse.webp" width="100%" alt="Signal pulse (Lottie)"><br><sub>Signal pulse (Lottie)</sub></td></tr>
+<tr><td width="25%" valign="top"><img src="docs/gallery/remotion-animation-utils-chip.webp" width="100%" alt="Chip to card"><br><sub>Chip to card</sub></td><td width="25%" valign="top"><img src="docs/gallery/remotion-mac-cursor-click.webp" width="100%" alt="Cursor clicks a button"><br><sub>Cursor clicks a button</sub></td><td width="25%" valign="top"><img src="docs/gallery/remotion-noise-topo-label.webp" width="100%" alt="Contour map label"><br><sub>Contour map label</sub></td><td width="25%" valign="top"><img src="docs/gallery/remotion-paths-signal.webp" width="100%" alt="Signal wave"><br><sub>Signal wave</sub></td></tr>
+<tr><td width="25%" valign="top"><img src="docs/gallery/remotion-rough-bracket-list.webp" width="100%" alt="Bracket list"><br><sub>Bracket list</sub></td><td width="25%" valign="top"><img src="docs/gallery/remotion-shapes-arrow.webp" width="100%" alt="Arrow with a word"><br><sub>Arrow with a word</sub></td><td width="25%" valign="top"><img src="docs/gallery/remotion-shapes-triangle-marker.webp" width="100%" alt="Triangle marker"><br><sub>Triangle marker</sub></td></tr>
+</table>
+
+</details>
+
+<details><summary><b>숫자 · 차트 · 10</b>: 말한 숫자와 비교를 그림으로.</summary>
+
+<table>
+<tr><td width="25%" valign="top"><img src="docs/gallery/hyperframes-ring-count.webp" width="100%" alt="Ring counter (GSAP)"><br><sub>Ring counter (GSAP)</sub></td><td width="25%" valign="top"><img src="docs/gallery/hyperframes-warm-grain-circle-stat.webp" width="100%" alt="Circle stat (HyperFrames)"><br><sub>Circle stat (HyperFrames)</sub></td><td width="25%" valign="top"><img src="docs/gallery/hyperframes-warm-grain-pill-stat.webp" width="100%" alt="Pill stat (HyperFrames)"><br><sub>Pill stat (HyperFrames)</sub></td><td width="25%" valign="top"><img src="docs/gallery/kit-counter.webp" width="100%" alt="Number counter"><br><sub>Number counter</sub></td></tr>
+<tr><td width="25%" valign="top"><img src="docs/gallery/remotion-paths-journey.webp" width="100%" alt="Journey A to B"><br><sub>Journey A to B</sub></td><td width="25%" valign="top"><img src="docs/gallery/remotion-paths-morph.webp" width="100%" alt="Shape morph, before to after"><br><sub>Shape morph, before to after</sub></td><td width="25%" valign="top"><img src="docs/gallery/remotion-rough-strike.webp" width="100%" alt="Strike out"><br><sub>Strike out</sub></td><td width="25%" valign="top"><img src="docs/gallery/remotion-shapes-bars.webp" width="100%" alt="Rising bars"><br><sub>Rising bars</sub></td></tr>
+<tr><td width="25%" valign="top"><img src="docs/gallery/remotion-shapes-star-seal.webp" width="100%" alt="Star seal"><br><sub>Star seal</sub></td><td width="25%" valign="top"><img src="docs/gallery/remotion-starburst-rays.webp" width="100%" alt="Rays behind a number"><br><sub>Rays behind a number</sub></td></tr>
+</table>
+
+</details>
+
+<details><summary><b>화면 전체 장면 · 8</b>: 사람 없이 화면을 채우는 그래픽, 사람 뒤의 빛, 엔드 카드.</summary>
+
+<table>
+<tr><td width="25%" valign="top"><img src="docs/gallery/hyperframes-neon-stack.webp" width="100%" alt="Neon word stack (GSAP)"><br><sub>Neon word stack (GSAP)</sub></td><td width="25%" valign="top"><img src="docs/gallery/kit-endcard.webp" width="100%" alt="End card"><br><sub>End card</sub></td><td width="25%" valign="top"><img src="docs/gallery/lottie-arc-orbit.webp" width="100%" alt="Orbit arcs (Lottie)"><br><sub>Orbit arcs (Lottie)</sub></td><td width="25%" valign="top"><img src="docs/gallery/remotion-light-leaks-glow.webp" width="100%" alt="Light leak behind you"><br><sub>Light leak behind you</sub></td></tr>
+<tr><td width="25%" valign="top"><img src="docs/gallery/remotion-paths-equation-graph.webp" width="100%" alt="Curve draws itself"><br><sub>Curve draws itself</sub></td><td width="25%" valign="top"><img src="docs/gallery/remotion-paths-spirograph.webp" width="100%" alt="Spirograph draws itself"><br><sub>Spirograph draws itself</sub></td><td width="25%" valign="top"><img src="docs/gallery/remotion-shapes-pie.webp" width="100%" alt="Pie to a percent"><br><sub>Pie to a percent</sub></td><td width="25%" valign="top"><img src="docs/gallery/remotion-three-coin.webp" width="100%" alt="3D gold coin"><br><sub>3D gold coin</sub></td></tr>
+</table>
+
+</details>
+
+<details><summary><b>전환 · 6</b>: 한 장면에서 다음 장면으로.</summary>
+
+<table>
+<tr><td width="25%" valign="top"><img src="docs/gallery/remotion-transition-clock-wipe.webp" width="100%" alt="Clock wipe, before to after"><br><sub>Clock wipe, before to after</sub></td><td width="25%" valign="top"><img src="docs/gallery/remotion-transition-flip.webp" width="100%" alt="Card flip, before to after"><br><sub>Card flip, before to after</sub></td><td width="25%" valign="top"><img src="docs/gallery/remotion-transition-iris.webp" width="100%" alt="Iris, before to after"><br><sub>Iris, before to after</sub></td><td width="25%" valign="top"><img src="docs/gallery/remotion-transition-push-cut.webp" width="100%" alt="Push cut with flash, before to after"><br><sub>Push cut with flash, before to after</sub></td></tr>
+<tr><td width="25%" valign="top"><img src="docs/gallery/remotion-transition-slide.webp" width="100%" alt="Push slide, before to after"><br><sub>Push slide, before to after</sub></td><td width="25%" valign="top"><img src="docs/gallery/remotion-transition-wipe.webp" width="100%" alt="Diagonal wipe, before to after"><br><sub>Diagonal wipe, before to after</sub></td></tr>
+</table>
+
+</details>
+
+<!-- gallery:end -->
+
+**[카탈로그 페이지 열기](docs/index.html)**: 그래픽 <!--n-->66<!--/n-->종을 실제 영상 위 살아 있는 클립으로, 종류별로 골라 보고, 코딩 에이전트에게 줄 프롬프트를 복사합니다.
+
+## 어떻게 동작하나
 
 **모든 모션그래픽 생태계를 한 줄로 불러서, 내 주변 빈자리에.** Remotion 패키지, HyperFrames 블록, Lottie 파일, 내가 만든 컴포넌트가 모두 하나의 층을 지나갑니다. 이 층은 내 얼굴 · 몸 · 손이 어디 있는지 알고, 그래픽마다 좋은 빈자리를 찾고, 스스로 검사합니다.
 
@@ -40,91 +134,15 @@ MMA 가 여러 무술의 좋은 기술을 하나로 이어 붙였듯이, 이 키
 
 위 영상과 [카탈로그 페이지](docs/index.html)의 모든 클립은 만든 사람의 실제 영상입니다(방 네 곳, 빛 네 가지, 허락하에 실었습니다). 그래픽 하나가 `plan.json` 한 줄이고, 화면 글자는 그 클립에서 그가 한 말입니다(한국어, 화면은 영어). 손 위치를 손으로 적은 상자는 없습니다. 몸 인식이 찾았습니다.
 
-
-<!-- gallery:start -->
-## 예제 갤러리: 66개 그래픽, 하나에 plan.json 한 줄
-
-전부 이 키트로 만든 것입니다. 영상은 만든 사람(AI 멘토 제이)의 실제 촬영본입니다: 네 가지 방에서 찍은 와이드 토크 샷, 토크 레이아웃(카메라 띠 + 색 판), 실습 화면, 그리고 사람 없이 그래픽만 있는 장면 몇 개. 화면 글자는 그가 실제로 한 말입니다(그 장면에서, 그래픽만 있는 장면은 같은 영상에서). 얼굴 픽셀은 하나도 바뀌지 않았습니다. 클립 아래가 그 클립을 만든 plan.json 한 줄입니다.
-
-### 하이라이트
-
-<table>
-<tr><td width="50%" valign="top"><img src="docs/gallery/hl/remotion-shapes-agents.webp" width="100%" alt="Agent robots pass the ball"><br><b>Agent robots pass the ball</b><br><sub>코드로 그린 로봇, 그래픽만 있는 장면</sub></td><td width="50%" valign="top"><img src="docs/gallery/hl/body-contour-line.webp" width="100%" alt="Line around you"><br><b>Line around you</b><br><sub>윤곽을 따라 움직이는 빛나는 선</sub></td></tr>
-<tr><td width="50%" valign="top"><img src="docs/gallery/hl/remotion-gsap-letters.webp" width="100%" alt="Letters fold up (GSAP)"><br><b>Letters fold up (GSAP)</b><br><sub>실습 화면 위로 접혀 오르는 글자</sub></td><td width="50%" valign="top"><img src="docs/gallery/hl/remotion-noise-flow-field.webp" width="100%" alt="Flow field lines"><br><b>Flow field lines</b><br><sub>흐르는 선, 그래픽만 있는 장면</sub></td></tr>
-<tr><td width="50%" valign="top"><img src="docs/gallery/hl/hyperframes-neon-stack.webp" width="100%" alt="Neon word stack (GSAP)"><br><b>Neon word stack (GSAP)</b><br><sub>네온 낱말 쌓기, HTML + GSAP</sub></td><td width="50%" valign="top"><img src="docs/gallery/hl/remotion-mac-cursor-click.webp" width="100%" alt="Cursor clicks a button"><br><b>Cursor clicks a button</b><br><sub>그의 화면 위를 누르는 커서</sub></td></tr>
-<tr><td width="50%" valign="top"><img src="docs/gallery/hl/remotion-paths-spirograph.webp" width="100%" alt="Spirograph draws itself"><br><b>Spirograph draws itself</b><br><sub>스스로 그려지는 스피로그래프</sub></td><td width="50%" valign="top"><img src="docs/gallery/hl/remotion-transition-iris.webp" width="100%" alt="Iris, before to after"><br><b>Iris, before to after</b><br><sub>아침 방에서 밤 세트로 아이리스 전환</sub></td></tr>
-</table>
-
 <p align="center"><img src="docs/gallery/_before_after.webp" width="720" alt="전과 후: 같은 프레임, 그래픽 없이와 한 줄로"><br><sub>전과 후. 같은 프레임을 그래픽 없이, 그리고 plan.json 한 줄로. 글자가 사람 뒤에 섭니다(사람 매트가 앞).</sub></p>
 
 <p align="center"><img src="docs/gallery/_compare.webp" width="720" alt="같은 그래픽: 고정 자리 vs 얼굴 기준"><br><sub>같은 그래픽. 왼쪽은 한 자리에 고정(화면 밖으로 잘림), 오른쪽은 얼굴 기준으로 자리를 찾음.</sub></p>
-
-### Body aware · 8
-
-몸과 손 위치를 아는 그래픽: 손을 따라가고, 손가락을 세고, 사람 뒤에 섭니다.
-
-<table>
-<tr><td width="33%" valign="top"><img src="docs/gallery/body-behind-text.webp" width="100%" alt="Word behind you"><br><b>Word behind you</b><br><code>{&quot;kind&quot;: &quot;body/behind-text&quot;, &quot;text&quot;: &quot;Open source&quot;, &quot;behind&quot;: true}</code></td><td width="33%" valign="top"><img src="docs/gallery/body-contour-line.webp" width="100%" alt="Line around you"><br><b>Line around you</b><br><code>{&quot;kind&quot;: &quot;body/contour-line&quot;, &quot;text&quot;: &quot;filmed like this&quot;}</code></td><td width="33%" valign="top"><img src="docs/gallery/body-finger-count.webp" width="100%" alt="Finger count stamp"><br><b>Finger count stamp</b><br><code>{&quot;kind&quot;: &quot;body/finger-count&quot;, &quot;text&quot;: &quot;One, Two, Three, Four, Five&quot;}</code></td></tr>
-<tr><td width="33%" valign="top"><img src="docs/gallery/body-hand-buddy.webp" width="100%" alt="Robot on your hand"><br><b>Robot on your hand</b><br><code>{&quot;kind&quot;: &quot;body/hand-buddy&quot;, &quot;text&quot;: &quot;Games&quot;}</code></td><td width="33%" valign="top"><img src="docs/gallery/body-hand-rise-chart.webp" width="100%" alt="Chart your hand draws"><br><b>Chart your hand draws</b><br><code>{&quot;kind&quot;: &quot;body/hand-rise-chart&quot;, &quot;text&quot;: &quot;Hand height&quot;}</code></td><td width="33%" valign="top"><img src="docs/gallery/body-hand-tag.webp" width="100%" alt="Tag on the hand"><br><b>Tag on the hand</b><br><code>{&quot;kind&quot;: &quot;body/hand-tag&quot;, &quot;text&quot;: &quot;Website&quot;, &quot;sub&quot;: &quot;too&quot;}</code></td></tr>
-<tr><td width="33%" valign="top"><img src="docs/gallery/body-palm-hologram.webp" width="100%" alt="Hologram from your hand"><br><b>Hologram from your hand</b><br><code>{&quot;kind&quot;: &quot;body/palm-hologram&quot;, &quot;text&quot;: &quot;&quot;}</code></td><td width="33%" valign="top"><img src="docs/gallery/body-point-ray.webp" width="100%" alt="Ray from your finger"><br><b>Ray from your finger</b><br><code>{&quot;kind&quot;: &quot;body/point-ray&quot;, &quot;text&quot;: &quot;Healthy food&quot;, &quot;sub&quot;: &quot;habit&quot;}</code></td></tr>
-</table>
-
-### Remotion · 39
-
-Remotion 공식 패키지: 경로, 도형, 노이즈, three.js, GSAP, 전환, 빛 번짐, 코드로 그린 캐릭터와 수학.
-
-<table>
-<tr><td width="33%" valign="top"><img src="docs/gallery/remotion-animation-utils-chip.webp" width="100%" alt="Chip to card"><br><b>Chip to card</b><br><code>{&quot;kind&quot;: &quot;remotion/animation-utils-chip&quot;, &quot;text&quot;: &quot;For beginners&quot;}</code></td><td width="33%" valign="top"><img src="docs/gallery/remotion-captions-karaoke.webp" width="100%" alt="Words lit in time"><br><b>Words lit in time</b><br><code>{&quot;kind&quot;: &quot;remotion/captions-karaoke&quot;, &quot;text&quot;: &quot;Define, solve&quot;}</code></td><td width="33%" valign="top"><img src="docs/gallery/remotion-gsap-letters.webp" width="100%" alt="Letters fold up (GSAP)"><br><b>Letters fold up (GSAP)</b><br><code>{&quot;kind&quot;: &quot;remotion/gsap-letters&quot;, &quot;text&quot;: &quot;CONNECT AI LAB&quot;}</code></td></tr>
-<tr><td width="33%" valign="top"><img src="docs/gallery/remotion-layout-fit-word.webp" width="100%" alt="Fit-to-space word"><br><b>Fit-to-space word</b><br><code>{&quot;kind&quot;: &quot;remotion/layout-fit-word&quot;, &quot;text&quot;: &quot;FREE&quot;}</code></td><td width="33%" valign="top"><img src="docs/gallery/remotion-light-leaks-glow.webp" width="100%" alt="Light leak behind you"><br><b>Light leak behind you</b><br><code>{&quot;kind&quot;: &quot;remotion/light-leaks-glow&quot;}</code></td><td width="33%" valign="top"><img src="docs/gallery/remotion-mac-cursor-click.webp" width="100%" alt="Cursor clicks a button"><br><b>Cursor clicks a button</b><br><code>{&quot;kind&quot;: &quot;remotion/mac-cursor-click&quot;, &quot;text&quot;: &quot;Order&quot;, &quot;sub&quot;: &quot;click&quot;}</code></td></tr>
-<tr><td width="33%" valign="top"><img src="docs/gallery/remotion-motion-blur-trail.webp" width="100%" alt="Fast word with trail"><br><b>Fast word with trail</b><br><code>{&quot;kind&quot;: &quot;remotion/motion-blur-trail&quot;, &quot;text&quot;: &quot;Like a movie&quot;}</code></td><td width="33%" valign="top"><img src="docs/gallery/remotion-noise-flow-field.webp" width="100%" alt="Flow field lines"><br><b>Flow field lines</b><br><code>{&quot;kind&quot;: &quot;remotion/noise-flow-field&quot;, &quot;text&quot;: &quot;Gravity&quot;}</code></td><td width="33%" valign="top"><img src="docs/gallery/remotion-noise-jitter-word.webp" width="100%" alt="Jitter to clean word"><br><b>Jitter to clean word</b><br><code>{&quot;kind&quot;: &quot;remotion/noise-jitter-word&quot;, &quot;text&quot;: &quot;Testing&quot;}</code></td></tr>
-<tr><td width="33%" valign="top"><img src="docs/gallery/remotion-noise-topo-label.webp" width="100%" alt="Contour map label"><br><b>Contour map label</b><br><code>{&quot;kind&quot;: &quot;remotion/noise-topo-label&quot;, &quot;text&quot;: &quot;Physical&quot;, &quot;sub&quot;: &quot;this world&quot;}</code></td><td width="33%" valign="top"><img src="docs/gallery/remotion-paths-brackets.webp" width="100%" alt="Square brackets"><br><b>Square brackets</b><br><code>{&quot;kind&quot;: &quot;remotion/paths-brackets&quot;, &quot;text&quot;: &quot;Solve it&quot;}</code></td><td width="33%" valign="top"><img src="docs/gallery/remotion-paths-equation-graph.webp" width="100%" alt="Curve draws itself"><br><b>Curve draws itself</b><br><code>{&quot;kind&quot;: &quot;remotion/paths-equation-graph&quot;, &quot;text&quot;: &quot;Performance&quot;, &quot;curve&quot;: &quot;rise&quot;}</code></td></tr>
-<tr><td width="33%" valign="top"><img src="docs/gallery/remotion-paths-journey.webp" width="100%" alt="Journey A to B"><br><b>Journey A to B</b><br><code>{&quot;kind&quot;: &quot;remotion/paths-journey&quot;, &quot;text&quot;: &quot;Analyze&quot;, &quot;label&quot;: &quot;rebuild&quot;}</code></td><td width="33%" valign="top"><img src="docs/gallery/remotion-paths-morph.webp" width="100%" alt="Shape morph, before to after"><br><b>Shape morph, before to after</b><br><code>{&quot;kind&quot;: &quot;remotion/paths-morph&quot;, &quot;text&quot;: &quot;Engineering&quot;, &quot;sub&quot;: &quot;Business&quot;}</code></td><td width="33%" valign="top"><img src="docs/gallery/remotion-paths-signal.webp" width="100%" alt="Signal wave"><br><b>Signal wave</b><br><code>{&quot;kind&quot;: &quot;remotion/paths-signal&quot;, &quot;text&quot;: &quot;Precise&quot;, &quot;sub&quot;: &quot;as told&quot;}</code></td></tr>
-<tr><td width="33%" valign="top"><img src="docs/gallery/remotion-paths-spirograph.webp" width="100%" alt="Spirograph draws itself"><br><b>Spirograph draws itself</b><br><code>{&quot;kind&quot;: &quot;remotion/paths-spirograph&quot;, &quot;text&quot;: &quot;One&quot;}</code></td><td width="33%" valign="top"><img src="docs/gallery/remotion-paths-swoosh.webp" width="100%" alt="Swoosh underline"><br><b>Swoosh underline</b><br><code>{&quot;kind&quot;: &quot;remotion/paths-swoosh&quot;, &quot;text&quot;: &quot;Quality&quot;}</code></td><td width="33%" valign="top"><img src="docs/gallery/remotion-rough-box.webp" width="100%" alt="Pen box"><br><b>Pen box</b><br><code>{&quot;kind&quot;: &quot;remotion/rough-box&quot;, &quot;text&quot;: &quot;Money flow&quot;}</code></td></tr>
-<tr><td width="33%" valign="top"><img src="docs/gallery/remotion-rough-bracket-list.webp" width="100%" alt="Bracket list"><br><b>Bracket list</b><br><code>{&quot;kind&quot;: &quot;remotion/rough-bracket-list&quot;, &quot;text&quot;: &quot;English, Japanese, German, French&quot;}</code></td><td width="33%" valign="top"><img src="docs/gallery/remotion-rough-highlight.webp" width="100%" alt="Highlighter"><br><b>Highlighter</b><br><code>{&quot;kind&quot;: &quot;remotion/rough-highlight&quot;, &quot;text&quot;: &quot;Autonomous&quot;}</code></td><td width="33%" valign="top"><img src="docs/gallery/remotion-rough-strike.webp" width="100%" alt="Strike out"><br><b>Strike out</b><br><code>{&quot;kind&quot;: &quot;remotion/rough-strike&quot;, &quot;text&quot;: &quot;Just tools&quot;, &quot;sub&quot;: &quot;The flow&quot;}</code></td></tr>
-<tr><td width="33%" valign="top"><img src="docs/gallery/remotion-rounded-message.webp" width="100%" alt="Message bubble"><br><b>Message bubble</b><br><code>{&quot;kind&quot;: &quot;remotion/rounded-message&quot;, &quot;text&quot;: &quot;HyperFrames or Remotion?&quot;}</code></td><td width="33%" valign="top"><img src="docs/gallery/remotion-shapes-agents.webp" width="100%" alt="Agent robots pass the ball"><br><b>Agent robots pass the ball</b><br><code>{&quot;kind&quot;: &quot;remotion/shapes-agents&quot;, &quot;text&quot;: &quot;Teamwork&quot;}</code></td><td width="33%" valign="top"><img src="docs/gallery/remotion-shapes-arrow.webp" width="100%" alt="Arrow with a word"><br><b>Arrow with a word</b><br><code>{&quot;kind&quot;: &quot;remotion/shapes-arrow&quot;, &quot;text&quot;: &quot;Bottom right&quot;}</code></td></tr>
-<tr><td width="33%" valign="top"><img src="docs/gallery/remotion-shapes-bars.webp" width="100%" alt="Rising bars"><br><b>Rising bars</b><br><code>{&quot;kind&quot;: &quot;remotion/shapes-bars&quot;, &quot;value&quot;: &quot;2, 3, 10&quot;}</code></td><td width="33%" valign="top"><img src="docs/gallery/remotion-shapes-callout.webp" width="100%" alt="Speech callout"><br><b>Speech callout</b><br><code>{&quot;kind&quot;: &quot;remotion/shapes-callout&quot;, &quot;text&quot;: &quot;Excuse me&quot;}</code></td><td width="33%" valign="top"><img src="docs/gallery/remotion-shapes-pie.webp" width="100%" alt="Pie to a percent"><br><b>Pie to a percent</b><br><code>{&quot;kind&quot;: &quot;remotion/shapes-pie&quot;, &quot;value&quot;: &quot;100&quot;}</code></td></tr>
-<tr><td width="33%" valign="top"><img src="docs/gallery/remotion-shapes-polygon-badge.webp" width="100%" alt="Hexagon badge"><br><b>Hexagon badge</b><br><code>{&quot;kind&quot;: &quot;remotion/shapes-polygon-badge&quot;, &quot;text&quot;: &quot;Slides&quot;}</code></td><td width="33%" valign="top"><img src="docs/gallery/remotion-shapes-star-seal.webp" width="100%" alt="Star seal"><br><b>Star seal</b><br><code>{&quot;kind&quot;: &quot;remotion/shapes-star-seal&quot;, &quot;value&quot;: &quot;20&quot;}</code></td><td width="33%" valign="top"><img src="docs/gallery/remotion-shapes-triangle-marker.webp" width="100%" alt="Triangle marker"><br><b>Triangle marker</b><br><code>{&quot;kind&quot;: &quot;remotion/shapes-triangle-marker&quot;, &quot;text&quot;: &quot;Tokens&quot;, &quot;sub&quot;: &quot;cost&quot;}</code></td></tr>
-<tr><td width="33%" valign="top"><img src="docs/gallery/remotion-starburst-rays.webp" width="100%" alt="Rays behind a number"><br><b>Rays behind a number</b><br><code>{&quot;kind&quot;: &quot;remotion/starburst-rays&quot;, &quot;value&quot;: &quot;1&quot;}</code></td><td width="33%" valign="top"><img src="docs/gallery/remotion-svg3d-badge.webp" width="100%" alt="3D hex badge"><br><b>3D hex badge</b><br><code>{&quot;kind&quot;: &quot;remotion/svg3d-badge&quot;, &quot;text&quot;: &quot;3D&quot;}</code></td><td width="33%" valign="top"><img src="docs/gallery/remotion-three-coin.webp" width="100%" alt="3D gold coin"><br><b>3D gold coin</b><br><code>{&quot;kind&quot;: &quot;remotion/three-coin&quot;, &quot;value&quot;: &quot;1&quot;}</code></td></tr>
-<tr><td width="33%" valign="top"><img src="docs/gallery/remotion-transition-clock-wipe.webp" width="100%" alt="Clock wipe, before to after"><br><b>Clock wipe, before to after</b><br><code>{&quot;kind&quot;: &quot;remotion/transition-clock-wipe&quot;}</code></td><td width="33%" valign="top"><img src="docs/gallery/remotion-transition-flip.webp" width="100%" alt="Card flip, before to after"><br><b>Card flip, before to after</b><br><code>{&quot;kind&quot;: &quot;remotion/transition-flip&quot;}</code></td><td width="33%" valign="top"><img src="docs/gallery/remotion-transition-iris.webp" width="100%" alt="Iris, before to after"><br><b>Iris, before to after</b><br><code>{&quot;kind&quot;: &quot;remotion/transition-iris&quot;}</code></td></tr>
-<tr><td width="33%" valign="top"><img src="docs/gallery/remotion-transition-push-cut.webp" width="100%" alt="Push cut with flash, before to after"><br><b>Push cut with flash, before to after</b><br><code>{&quot;kind&quot;: &quot;remotion/transition-push-cut&quot;}</code></td><td width="33%" valign="top"><img src="docs/gallery/remotion-transition-slide.webp" width="100%" alt="Push slide, before to after"><br><b>Push slide, before to after</b><br><code>{&quot;kind&quot;: &quot;remotion/transition-slide&quot;}</code></td><td width="33%" valign="top"><img src="docs/gallery/remotion-transition-wipe.webp" width="100%" alt="Diagonal wipe, before to after"><br><b>Diagonal wipe, before to after</b><br><code>{&quot;kind&quot;: &quot;remotion/transition-wipe&quot;}</code></td></tr>
-</table>
-
-### HyperFrames · 8
-
-HTML + CSS + GSAP 블록.
-
-<table>
-<tr><td width="33%" valign="top"><img src="docs/gallery/hyperframes-gold-scramble-title.webp" width="100%" alt="Scramble title (GSAP)"><br><b>Scramble title (GSAP)</b><br><code>{&quot;kind&quot;: &quot;hyperframes/gold-scramble-title&quot;, &quot;text&quot;: &quot;Predict&quot;, &quot;sub&quot;: &quot;the future&quot;}</code></td><td width="33%" valign="top"><img src="docs/gallery/hyperframes-neon-stack.webp" width="100%" alt="Neon word stack (GSAP)"><br><b>Neon word stack (GSAP)</b><br><code>{&quot;kind&quot;: &quot;hyperframes/neon-stack&quot;, &quot;text&quot;: &quot;Tried&quot;, &quot;label&quot;: &quot;Succeeded&quot;}</code></td><td width="33%" valign="top"><img src="docs/gallery/hyperframes-ring-count.webp" width="100%" alt="Ring counter (GSAP)"><br><b>Ring counter (GSAP)</b><br><code>{&quot;kind&quot;: &quot;hyperframes/ring-count&quot;, &quot;value&quot;: &quot;8&quot;}</code></td></tr>
-<tr><td width="33%" valign="top"><img src="docs/gallery/hyperframes-split-words-rise.webp" width="100%" alt="Words rise (GSAP SplitText)"><br><b>Words rise (GSAP SplitText)</b><br><code>{&quot;kind&quot;: &quot;hyperframes/split-words-rise&quot;, &quot;text&quot;: &quot;Coding a video&quot;}</code></td><td width="33%" valign="top"><img src="docs/gallery/hyperframes-warm-grain-circle-stat.webp" width="100%" alt="Circle stat (HyperFrames)"><br><b>Circle stat (HyperFrames)</b><br><code>{&quot;kind&quot;: &quot;hyperframes/warm-grain-circle-stat&quot;, &quot;text&quot;: &quot;wake up&quot;, &quot;value&quot;: &quot;8 AM&quot;}</code></td><td width="33%" valign="top"><img src="docs/gallery/hyperframes-warm-grain-pill-stat.webp" width="100%" alt="Pill stat (HyperFrames)"><br><b>Pill stat (HyperFrames)</b><br><code>{&quot;kind&quot;: &quot;hyperframes/warm-grain-pill-stat&quot;, &quot;value&quot;: &quot;Opportunity&quot;}</code></td></tr>
-<tr><td width="33%" valign="top"><img src="docs/gallery/hyperframes-warm-grain-shape-label.webp" width="100%" alt="Shape label (HyperFrames)"><br><b>Shape label (HyperFrames)</b><br><code>{&quot;kind&quot;: &quot;hyperframes/warm-grain-shape-label&quot;, &quot;text&quot;: &quot;Mix them&quot;}</code></td><td width="33%" valign="top"><img src="docs/gallery/hyperframes-warm-grain-title-card.webp" width="100%" alt="Title card (HyperFrames)"><br><b>Title card (HyperFrames)</b><br><code>{&quot;kind&quot;: &quot;hyperframes/warm-grain-title-card&quot;, &quot;text&quot;: &quot;One person&quot;, &quot;sub&quot;: &quot;AI company&quot;}</code></td></tr>
-</table>
-
-### Lottie · 4
-
-After Effects · LottieFiles 애니메이션, 캐릭터도.
-
-<table>
-<tr><td width="33%" valign="top"><img src="docs/gallery/lottie-arc-orbit.webp" width="100%" alt="Orbit arcs (Lottie)"><br><b>Orbit arcs (Lottie)</b><br><code>{&quot;kind&quot;: &quot;lottie/arc-orbit&quot;}</code></td><td width="33%" valign="top"><img src="docs/gallery/lottie-gold-check.webp" width="100%" alt="Check mark (Lottie)"><br><b>Check mark (Lottie)</b><br><code>{&quot;kind&quot;: &quot;lottie/gold-check&quot;}</code></td><td width="33%" valign="top"><img src="docs/gallery/lottie-hop-buddy.webp" width="100%" alt="Hopping character (Lottie)"><br><b>Hopping character (Lottie)</b><br><code>{&quot;kind&quot;: &quot;lottie/hop-buddy&quot;}</code></td></tr>
-<tr><td width="33%" valign="top"><img src="docs/gallery/lottie-signal-pulse.webp" width="100%" alt="Signal pulse (Lottie)"><br><b>Signal pulse (Lottie)</b><br><code>{&quot;kind&quot;: &quot;lottie/signal-pulse&quot;}</code></td></tr>
-</table>
-
-### Kit · 7
-
-키트 기본 그래픽.
-
-<table>
-<tr><td width="33%" valign="top"><img src="docs/gallery/kit-card.webp" width="100%" alt="Screen card + arrow"><br><b>Screen card + arrow</b><br><code>{&quot;kind&quot;: &quot;kit/card&quot;, &quot;text&quot;: &quot;This page&quot;}</code></td><td width="33%" valign="top"><img src="docs/gallery/kit-chapter.webp" width="100%" alt="Chapter line"><br><b>Chapter line</b><br><code>{&quot;kind&quot;: &quot;kit/chapter&quot;, &quot;text&quot;: &quot;Follow along&quot;, &quot;value&quot;: &quot;02&quot;}</code></td><td width="33%" valign="top"><img src="docs/gallery/kit-counter.webp" width="100%" alt="Number counter"><br><b>Number counter</b><br><code>{&quot;kind&quot;: &quot;kit/counter&quot;, &quot;value&quot;: &quot;5&quot;}</code></td></tr>
-<tr><td width="33%" valign="top"><img src="docs/gallery/kit-endcard.webp" width="100%" alt="End card"><br><b>End card</b><br><code>{&quot;kind&quot;: &quot;kit/endcard&quot;, &quot;text&quot;: &quot;CONNECT AI LAB&quot;, &quot;sub&quot;: &quot;AI education for everyone&quot;}</code></td><td width="33%" valign="top"><img src="docs/gallery/kit-keyword.webp" width="100%" alt="Key word"><br><b>Key word</b><br><code>{&quot;kind&quot;: &quot;kit/keyword&quot;, &quot;text&quot;: &quot;Visual\nVibe Coding&quot;}</code></td><td width="33%" valign="top"><img src="docs/gallery/kit-nametag.webp" width="100%" alt="Name tag"><br><b>Name tag</b><br><code>{&quot;kind&quot;: &quot;kit/nametag&quot;, &quot;text&quot;: &quot;AI Mentor Jay&quot;, &quot;sub&quot;: &quot;CONNECT AI LAB&quot;}</code></td></tr>
-<tr><td width="33%" valign="top"><img src="docs/gallery/kit-steps.webp" width="100%" alt="1 · 2 · 3 steps"><br><b>1 · 2 · 3 steps</b><br><code>{&quot;kind&quot;: &quot;kit/steps&quot;, &quot;text&quot;: &quot;Film&quot;, &quot;value&quot;: &quot;1&quot;}</code></td></tr>
-</table>
-
-<!-- gallery:end -->
 
 ## 보기
 
 | | 파일 | 볼 것 |
 |---|---|---|
-| 카탈로그 페이지 | [docs/index.html](docs/index.html) | 그래픽 66종, 하나에 살아 있는 클립 하나, `kind` · 라이선스 · 복사할 프롬프트 |
+| 카탈로그 페이지 | [docs/index.html](docs/index.html) | 그래픽 <!--n-->66<!--/n-->종, 하나에 살아 있는 클립 하나, `kind` · 라이선스 · 복사할 프롬프트 |
 | 릴 | [docs/hero_v2.mp4](docs/hero_v2.mp4) | 맨 위 영상의 1920x1080 버전(소리 있는 버전: [docs/hero_v2_social.mp4](docs/hero_v2_social.mp4)) |
 | 시트 | [docs/sheet.jpg](docs/sheet.jpg) | 그래픽마다 정점의 정지 화면 하나 |
 | 몸 | [docs/body_sheet.jpg](docs/body_sheet.jpg) | 몸 인식이 보는 것: 사람 영역, 관절, 손, 손가락 수 |
@@ -154,7 +172,7 @@ npx github:wonseokjung/connect-ai-video-motion gallery vm-demo --sheet
 
 ## 카탈로그
 
-`npx github:wonseokjung/connect-ai-video-motion catalog` 이 전부 보여 줍니다. 지금 **재생되는 그래픽 66개**, 그리고 아직 안 되는 4개는 이유와 함께 목록에 있습니다.
+`npx github:wonseokjung/connect-ai-video-motion catalog` 이 전부 보여 줍니다. 지금 **재생되는 그래픽 <!--n-->66<!--/n-->개**, 그리고 아직 안 되는 4개는 이유와 함께 목록에 있습니다.
 
 | 출처 | 수 | 예 |
 |---|---|---|
@@ -182,7 +200,7 @@ npx github:wonseokjung/connect-ai-video-motion gallery vm-demo --sheet
 }
 ```
 
-plan 한 줄에 `"scale": 1.3`(이 그래픽만 30 % 크게. 자리가 없으면 평소처럼 한 단계씩 줄어듭니다), `"slot": "beside-right"`(이쪽부터 시도), `"behind": true` 또는 `"head"`(글자를 내 뒤에 크게: 사람 매트 아래에 그리고, 낱말 경계에서 갈라 내 양옆에 놓아서 머리가 글자를 가리지 않습니다. 25 % 넘게 가리면 `check` 가 오류를 냅니다), `"side": "minutes"`(그래픽 반대편에 같은 높이로 놓는 큰 낱말 하나: 왼쪽 숫자, 오른쪽 낱말)를 적을 수 있고, `kit/keyword` 는 글자에 줄바꿈(`"Visual\nVibe Coding"`)을 넣으면 낱말을 쌓고 마지막 줄을 골드로 씁니다. `my-info.json` 의 `"style"` 로 분위기를 고릅니다: `connect`(검정 × 골드, 기본), `day`(밝은 방용 같은 분위기: 어두운 글자), `night`, `clean`.
+plan 한 줄에 `"scale": 1.3`(이 그래픽만 30 % 크게. 자리가 없으면 평소처럼 한 단계씩 줄어듭니다), `"slot": "beside-right"`(이쪽부터 시도), `"behind": true` 또는 `"head"`(글자를 내 뒤에 크게: 사람 매트 아래에 그리고, 낱말 경계에서 갈라 내 양옆에 놓아서 머리가 글자를 가리지 않습니다. 25 % 넘게 가리면 `check` 가 오류를 냅니다), `"side": "minutes"`(그래픽 반대편에 같은 높이로 놓는 큰 낱말 하나: 왼쪽 숫자, 오른쪽 낱말)를 적을 수 있고, `kit/keyword` 는 글자에 줄바꿈(`"Visual\nVibe Coding"`)을 넣으면 낱말을 쌓고 마지막 줄을 골드로 씁니다. `my-info.json` 의 `"style"` 로 분위기를 고릅니다: `connect`(검정 × 골드, 기본), `day`(밝은 방용 같은 분위기: 어두운 글자), `night`, `clean`. 분위기마다 글자가 얇은데, `my-info.json` 에 `"weight": 500` 을 넣으면 작게 봐도 잘 읽히는 굵기가 됩니다.
 
 `place` 는 층이 어떻게 다룰지입니다: `box`(옆 빈자리), `attach`(`hand`, `fingers`, `point`, `contour`: 몸을 따라감, 손이 잘 안 보이면 숨김), `behind`(사람 뒤, 사람 매트 아래), `edge`, `post`, `full`. `family` 는 디자인 이름이라 한 영상에 두 번 쓰면 경고가 나옵니다.
 

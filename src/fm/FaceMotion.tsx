@@ -54,7 +54,7 @@ export const calcFaceMotion: CalculateMetadataFunction<FMProps> = async ({props}
     data = {meta: await get('meta.json'), face: await get('face.json'), body: await get('body.json'), words: await get('words.json', {tier: 'C', captions: []}), plan: await get('plan.json', {items: []}), info: await get('my-info.json', {}), contrast: await get('contrast.json', {})};
   }
   if (!data?.meta) throw new Error('No project loaded. Run: npx connect-ai-video-motion demo');
-  const style = getStyle(data.info?.style);
+  const style = getStyle(data.info?.style, data.info);
   const layout = layoutPlan({meta: data.meta, face: data.face, body: data.body, words: data.words, plan: data.plan, info: data.info, style, aspect: props.aspect, outWidth: props.outWidth});
   return {durationInFrames: layout.total, fps: layout.fps, width: layout.W, height: layout.H, props: {...props, data, layout}};
 };
@@ -144,7 +144,7 @@ const PersonFront: React.FC<{data: FMData; layout: any; f: number; camX: number}
 const Main: React.FC<{p: FMProps}> = ({p}) => {
   const f = useCurrentFrame();
   const {layout, data} = p as any;
-  const style = getStyle(data.info?.style);
+  const style = getStyle(data.info?.style, data.info);
   const s = layout.scale, srcW = data.meta.width, srcH = data.meta.height;
   const camX = layout.camera ? layout.camera[Math.min(layout.camera.length - 1, f)] : 0;
   const u = layout.u;
@@ -221,7 +221,7 @@ const Post: React.FC<{p: FMProps}> = ({p}) => {
   const lf = useCurrentFrame();
   const {layout, data} = p as any;
   const G = (layout.post && kindOf(layout.post.kind) !== 'kit/endcard' && componentFor(layout.post)) || EndCard;
-  return <G it={layout.post} lf={lf} dur={layout.postFrames} st={getStyle(data.info?.style)} u={layout.u} W={layout.W} H={layout.H} info={data.info} r={[0, 0, layout.W, layout.H]} ink={getStyle(data.info?.style).ink} scrim={0} fps={layout.fps} />;
+  return <G it={layout.post} lf={lf} dur={layout.postFrames} st={getStyle(data.info?.style, data.info)} u={layout.u} W={layout.W} H={layout.H} info={data.info} r={[0, 0, layout.W, layout.H]} ink={getStyle(data.info?.style, data.info).ink} scrim={0} fps={layout.fps} />;
 };
 
 export const FaceMotion: React.FC<FMProps> = (p) => {

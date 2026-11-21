@@ -1542,7 +1542,8 @@ export const METAS = {
   "license": "MIT",
   "use": "keyword",
   "props": {
-   "text": "1-2 words"
+   "text": "1-2 words",
+   "card": "true = the word sits on a solid card (for a busy screen behind it)"
   },
   "place": "box",
   "size": {

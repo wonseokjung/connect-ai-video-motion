@@ -20,8 +20,9 @@ const PointRay: React.FC<GraphicProps> = ({it, r, lf, dur, st, ink, scrim, u, L,
     <>
       {tip && (
         <svg style={{position: 'absolute', left: 0, top: 0, overflow: 'visible'}} width={1} height={1}>
-          <line x1={tip[0]} y1={tip[1]} x2={tip[0] + (ex - tip[0]) * k} y2={tip[1] + (ey - tip[1]) * k} stroke={col} strokeWidth={2.5 * u} strokeDasharray={`${8 * u} ${5 * u}`} strokeDashoffset={-lf * 1.5 * u} opacity={1 - out} />
-          <circle cx={tip[0]} cy={tip[1]} r={5 * u} fill="none" stroke={col} strokeWidth={1.5 * u} opacity={1 - out} />
+          {/* a glowing ray: reads at thumbnail size too */}
+          <line x1={tip[0]} y1={tip[1]} x2={tip[0] + (ex - tip[0]) * k} y2={tip[1] + (ey - tip[1]) * k} stroke={col} strokeWidth={4 * u} strokeLinecap="round" strokeDasharray={`${12 * u} ${7 * u}`} strokeDashoffset={-lf * 1.5 * u} opacity={1 - out} style={{filter: `drop-shadow(0 0 ${8 * u}px ${col})`}} />
+          <circle cx={tip[0]} cy={tip[1]} r={9 * u * (1 + 0.15 * Math.sin(lf / 3))} fill={col} fillOpacity={0.25} stroke={col} strokeWidth={2.5 * u} opacity={1 - out} style={{filter: `drop-shadow(0 0 ${8 * u}px ${col})`}} />
         </svg>
       )}
       <Box r={r} scrim={scrim} u={u} style={{opacity: k01(lf, 6, 14) * (1 - out)}}>

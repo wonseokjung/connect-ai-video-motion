@@ -311,5 +311,13 @@ const withBody = (plan) => {
     assert.ok(!rs.errors.some((x) => x.what === 'person' || x.what === 'face'), JSON.stringify(rs.errors));
   }
   ok(`side word ${sd.side ? `"${sd.side.text}" placed ${sd.side.align === 'left' ? 'right' : 'left'} of him, ${sd.side.fs} px` : 'left out (no room), with a note'}`);
+  // 17. --overlay asks Remotion for ProRes 4444 with alpha (the option is "proResProfile"; a misspelt key is ignored and gives HQ, no alpha)
+  const rsrc = fs.readFileSync(path.join(KIT, 'lib', 'render.mjs'), 'utf8');
+  assert.ok(/proResProfile: '4444'/.test(rsrc) && !/proresProfile/.test(rsrc), 'overlay must pass proResProfile: 4444');
+  ok('overlay render asks for ProRes 4444 (alpha)');
+  // 18. my-info "weight" sets a heavier type weight on any look
+  const sw = getStyle('connect', {weight: 500});
+  assert.equal(sw.weight, 500); assert.ok(sw.heavy >= 700); assert.equal(getStyle('connect', {}).weight, getStyle('connect').weight);
+  ok('my-info "weight": 500 makes the type heavier');
 }
 console.log(`${n} passed`);

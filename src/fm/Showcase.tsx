@@ -30,7 +30,7 @@ export type ShowcaseProps = {
 const FPS = 30;
 
 export const showcaseLayout = (p: ShowcaseProps) => {
-  const style = getStyle(p.data?.info?.style);
+  const style = getStyle(p.data?.info?.style, p.data?.info);
   const plan = {version: 1, protect: p.protect || [], items: [{id: 'g', ...p.item}, ...(p.more || []).map((x: any, i: number) => ({id: 'g' + (i + 2), ...x}))]};
   return layoutPlan({meta: p.data.meta, face: p.data.face, body: p.data.body, words: {tier: 'C', captions: []}, plan, info: p.data.info || {}, style, aspect: '16x9', outWidth: 1920});
 };
@@ -128,8 +128,12 @@ export const ShowcaseCut: React.FC<CutProps> = (p) => {
   if (!pr || !p.a?.file) return <AbsoluteFill style={{background: '#0B0A09'}} />;
   const T = p.frames || pr.frames;
   const first = Math.round((p.cutAt ?? 0.5) * total + T / 2);
+  // behind the move: the next shot, blurred and dimmed, so a flip or a slide never shows black around the frame
   return (
     <AbsoluteFill style={{background: '#000'}}>
+      <AbsoluteFill style={{filter: 'blur(36px) brightness(0.7) saturate(1.1)', transform: 'scale(1.12)'}}>
+        <Clip file={p.b.file} t={Math.max(0, p.b.t - (first - T) / FPS)} />
+      </AbsoluteFill>
       <TransitionSeries>
         <TransitionSeries.Sequence durationInFrames={first}>
           <Clip file={p.a.file} t={p.a.t} />
