@@ -1,8 +1,8 @@
 // Dev tool: the gallery part of README.md and README.ko.md, between <!-- gallery:start --> and <!-- gallery:end -->.
 //   node tools/make-readme-gallery.mjs
-// SHOWCASE  6 big tiles (tools/showcase-picks.json, loops in docs/gallery/showcase/<name>.webp)
+// SHOWCASE  12 big tiles (tools/showcase-picks.json, loops in docs/gallery/showcase/<name>.webp)
 // START     3 steps
-// MORE      every other graphic with a loop in docs/gallery/<name>.webp, folded by kind of graphic
+// MORE      every other graphic with a loop in docs/gallery/<name>.webp, folded by kind of graphic (Body aware open)
 // The count comes from the catalog, and every <!--n-->12<!--/n--> in the READMEs is set to it.
 import fs from 'node:fs';
 import path from 'node:path';
@@ -16,6 +16,7 @@ const N = ok.length;
 const GAL = path.join(KIT, 'docs', 'gallery');
 const esc = (s) => String(s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
 const shown = new Set(picks.showcase.map((p) => p.name));
+const last = new Set(picks.last || []); // character graphics go to the end of their group
 
 function block(lang) {
   const en = lang === 'en';
@@ -49,13 +50,13 @@ function block(lang) {
 
   out.push(en ? '## More you can make' : '## 이런 것도 만들 수 있어요', '');
   out.push(en
-    ? `<!--n-->${N}<!--/n--> graphics in the catalog, each one line of \`plan.json\`. Open a group to see them; the [catalog page](docs/index.html) has every one as a living clip with a prompt to copy.`
+    ? `The catalog has <!--n-->${N}<!--/n--> graphics, each one line of \`plan.json\`. Open a group to see them; the [catalog page](docs/index.html) has every one as a living clip with a prompt to copy.`
     : `카탈로그에 그래픽 <!--n-->${N}<!--/n-->개, 하나에 \`plan.json\` 한 줄. 묶음을 열어 보세요. [카탈로그 페이지](docs/index.html)에는 전부 살아 있는 클립과 복사할 프롬프트가 있습니다.`, '');
   const rest = ok.map((m) => ({m, name: nameOf(m.kind)})).filter((x) => !shown.has(x.name) && fs.existsSync(path.join(GAL, x.name + '.webp')));
   for (const [key, ten, den, tko, dko] of CATS) {
-    const ns = rest.filter((x) => catOf(x.m, x.name) === key).sort((a, b) => a.name.localeCompare(b.name));
+    const ns = rest.filter((x) => catOf(x.m, x.name) === key).sort((a, b) => last.has(a.name) - last.has(b.name) || a.name.localeCompare(b.name));
     if (!ns.length) continue;
-    out.push(`<details><summary><b>${en ? ten : tko} · ${ns.length}</b>: ${en ? den : dko}</summary>`, '', '<table>');
+    out.push(`<details${key === 'body' ? ' open' : ''}><summary><b>${en ? ten : tko} · ${ns.length}</b>: ${en ? den : dko}</summary>`, '', '<table>');
     for (let i = 0; i < ns.length; i += 4) {
       out.push(`<tr>${ns.slice(i, i + 4).map(({m, name}) => `<td width="25%" valign="top"><img src="docs/gallery/${name}.webp" width="100%" alt="${esc(m.title)}"><br><sub>${esc(m.title)}</sub></td>`).join('')}</tr>`);
     }

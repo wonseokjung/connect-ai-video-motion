@@ -26,7 +26,7 @@ const pkg = readJson(path.join(KIT, 'package.json'));
 
 const HERO = ['kit-nametag', 'kit-keyword', 'remotion-starburst-rays', 'kit-counter', 'body-behind-text', 'remotion-shapes-callout', 'remotion-motion-blur-trail', 'remotion-three-coin', 'remotion-gsap-letters', 'remotion-shapes-bars', 'remotion-layout-fit-word'];
 // the first cards of the grid: the strongest ones, rooms alternating
-const FIRST = ['body-behind-text', 'remotion-shapes-agents', 'remotion-gsap-letters', 'remotion-noise-flow-field', 'body-contour-line', 'remotion-layout-fit-word', 'remotion-transition-iris', 'hyperframes-neon-stack'];
+const FIRST = ['body-behind-text', 'remotion-gsap-letters', 'remotion-noise-flow-field', 'body-contour-line', 'remotion-layout-fit-word', 'remotion-transition-iris', 'hyperframes-neon-stack'];
 const BEAT = 1.2; // seconds per shot
 
 const ORDER = ['kit', 'body', 'remotion', 'hyperframes', 'lottie'];
