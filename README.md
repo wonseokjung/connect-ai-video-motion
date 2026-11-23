@@ -1,6 +1,6 @@
 # connect-ai-video-motion
 
-**Open source by CONNECT AI LAB · AI education for everyone.** A tool for one job: motion graphics on top of your own video.
+**Open source by CONNECT AI LAB · AI education for everyone.** An AI content employee for commerce and knowledge content. Give it your video, and it puts motion graphics on top.
 
 [![Motion graphics on the author's own talking videos](docs/hero_v2.webp)](docs/index.html)
 

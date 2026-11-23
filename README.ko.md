@@ -1,6 +1,6 @@
 # connect-ai-video-motion
 
-**CONNECT AI LAB 이 만든 오픈소스 · 모두를 위한 AI 교육.** 쓰임은 하나입니다. 내 영상 위에 모션그래픽을 올릴 때 쓰는 도구.
+**CONNECT AI LAB 이 만든 오픈소스 · 모두를 위한 AI 교육.** 커머스 콘텐츠, 지식 콘텐츠를 만들 때 쓰는 AI 콘텐츠 직원이에요. 내 영상을 주면 그 위에 모션그래픽을 올려요.
 
 [![만든 사람의 실제 영상 위 모션그래픽](docs/hero_v2.webp)](docs/index.html)
 
