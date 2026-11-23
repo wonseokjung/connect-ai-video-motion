@@ -20,25 +20,26 @@ Made with this kit on the author's own videos (AI Mentor Jay, shown with his per
 
 ## Start
 
-1. Check your computer (Node, Remotion, face and body detection):
+One line. It gives your coding agent (Claude Code, Codex, Antigravity) the skill:
 
-   ```bash
-   npx github:wonseokjung/connect-ai-video-motion doctor
-   ```
+```bash
+npx connect-ai-video-motion install-skill
+```
 
-2. Run the built-in sample, start to finish:
+Then open a new chat with your agent, drop in your video and say "put motion graphics on my video". The agent runs the kit for you: analyze, plan, check, render.
 
-   ```bash
-   npx github:wonseokjung/connect-ai-video-motion demo
-   ```
+<details>
+<summary>Without an agent, or to try it first</summary>
 
-   <img src="docs/terminal.png" width="560" alt="What you see in the terminal">
+```bash
+npx connect-ai-video-motion doctor          # check Node, Remotion, face and body detection
+npx connect-ai-video-motion demo            # built-in sample, start to finish
+npx connect-ai-video-motion my-video.mp4    # your own video, no agent
+```
 
-3. Teach your coding agent (Claude Code, Codex, Antigravity) once, then ask it to "put motion graphics on my video":
+<img src="docs/terminal.png" width="560" alt="What you see in the terminal">
 
-   ```bash
-   npx github:wonseokjung/connect-ai-video-motion install-skill
-   ```
+</details>
 
 ## More you can make
 
@@ -160,12 +161,12 @@ You need Node.js 18 or newer. No Python. The ffmpeg inside Remotion is used.
 git clone https://github.com/wonseokjung/connect-ai-video-motion.git
 cd connect-ai-video-motion
 npm install
-npx github:wonseokjung/connect-ai-video-motion demo           # built-in sample, start to finish
-npx github:wonseokjung/connect-ai-video-motion catalog        # every graphic you can call, by source
-npx github:wonseokjung/connect-ai-video-motion gallery vm-demo --sheet
+npx connect-ai-video-motion demo           # built-in sample, start to finish
+npx connect-ai-video-motion catalog        # every graphic you can call, by source
+npx connect-ai-video-motion gallery vm-demo --sheet
 ```
 
-Your own video: `npx github:wonseokjung/connect-ai-video-motion my-talk.mp4`, or with a coding agent (Claude Code, Codex, Antigravity): `npx github:wonseokjung/connect-ai-video-motion install-skill`, then ask it to "put motion graphics on my video".
+Your own video: `npx connect-ai-video-motion my-talk.mp4`, or with a coding agent (Claude Code, Codex, Antigravity): `npx connect-ai-video-motion install-skill`, then ask it to "put motion graphics on my video".
 
 ## How it places things
 
@@ -177,7 +178,7 @@ Your own video: `npx github:wonseokjung/connect-ai-video-motion my-talk.mp4`, or
 
 ## The catalog
 
-`npx github:wonseokjung/connect-ai-video-motion catalog` lists everything. Today: **<!--n-->80<!--/n--> graphics you can play** and 4 listed with the reason they cannot (yet).
+`npx connect-ai-video-motion catalog` lists everything. Today: **<!--n-->80<!--/n--> graphics you can play** and 4 listed with the reason they cannot (yet).
 
 | Source | Count | Examples |
 |---|---|---|
@@ -224,7 +225,7 @@ A component gets `{it, r, lf, dur, st, ink, u, fps, L, mainF}`: the plan line, i
 The adapter runs a block (HTML + CSS + a paused GSAP timeline in `window.__timelines`) in its own transparent iframe and seeks it to every Remotion frame. GSAP and its plugins come from the installed `gsap` package, never a CDN. `Math.random` is seeded and CSS animations are held at the frame time, so every render gives the same picture. `meta.window` picks seconds of the block's timeline, `meta.crop` a part of its canvas, `meta.text` puts your words in.
 
 ```bash
-npx github:wonseokjung/connect-ai-video-motion hf-import <folder>   # a registry checkout, a template, or your .html files
+npx connect-ai-video-motion hf-import <folder>   # a registry checkout, a template, or your .html files
 ```
 
 Each block is checked: WebGL / canvas, its own video or audio, a `requestAnimationFrame` loop, scripts from the internet, template placeholders and missing timelines are listed as `unsupported` with the reason.

@@ -20,25 +20,26 @@
 
 ## 시작
 
-1. 내 컴퓨터 점검(Node, Remotion, 얼굴 · 몸 인식):
+한 줄이면 돼요. 내 코딩 에이전트(Claude Code, Codex, Antigravity)에 스킬을 줘요:
 
-   ```bash
-   npx github:wonseokjung/connect-ai-video-motion doctor
-   ```
+```bash
+npx connect-ai-video-motion install-skill
+```
 
-2. 들어 있는 샘플로 처음부터 끝까지:
+그다음 에이전트를 새 대화로 열고, 내 영상을 넣고 "내 영상에 모션그래픽 넣어줘" 라고 말하면 돼요. 분석, 계획, 검사, 렌더는 에이전트가 키트로 해요.
 
-   ```bash
-   npx github:wonseokjung/connect-ai-video-motion demo
-   ```
+<details>
+<summary>에이전트 없이, 또는 먼저 해 보고 싶다면</summary>
 
-   <img src="docs/terminal.png" width="560" alt="터미널에서 보이는 화면">
+```bash
+npx connect-ai-video-motion doctor          # 내 컴퓨터 점검(Node, Remotion, 얼굴 · 몸 인식)
+npx connect-ai-video-motion demo            # 들어 있는 샘플로 처음부터 끝까지
+npx connect-ai-video-motion my-video.mp4    # 내 영상, 에이전트 없이
+```
 
-3. 코딩 에이전트(Claude Code, Codex, Antigravity)에 한 번 가르치고, "내 영상에 모션그래픽 넣어줘" 라고 부탁하세요:
+<img src="docs/terminal.png" width="560" alt="터미널에서 보이는 화면">
 
-   ```bash
-   npx github:wonseokjung/connect-ai-video-motion install-skill
-   ```
+</details>
 
 ## 이런 것도 만들 수 있어요
 
@@ -160,12 +161,12 @@ Node.js 18 이상만 있으면 됩니다. Python 은 필요 없고 ffmpeg 는 Re
 git clone https://github.com/wonseokjung/connect-ai-video-motion.git
 cd connect-ai-video-motion
 npm install
-npx github:wonseokjung/connect-ai-video-motion demo           # 들어 있는 샘플로 처음부터 끝까지
-npx github:wonseokjung/connect-ai-video-motion catalog        # 부를 수 있는 그래픽 전부, 출처별
-npx github:wonseokjung/connect-ai-video-motion gallery vm-demo --sheet
+npx connect-ai-video-motion demo           # 들어 있는 샘플로 처음부터 끝까지
+npx connect-ai-video-motion catalog        # 부를 수 있는 그래픽 전부, 출처별
+npx connect-ai-video-motion gallery vm-demo --sheet
 ```
 
-내 영상: `npx github:wonseokjung/connect-ai-video-motion my-talk.mp4`. 코딩 에이전트(Claude Code, Codex, Antigravity)로 하려면 `npx github:wonseokjung/connect-ai-video-motion install-skill` 한 뒤 "내 영상에 모션그래픽 얹어 줘" 라고 하면 됩니다.
+내 영상: `npx connect-ai-video-motion my-talk.mp4`. 코딩 에이전트(Claude Code, Codex, Antigravity)로 하려면 `npx connect-ai-video-motion install-skill` 한 뒤 "내 영상에 모션그래픽 얹어 줘" 라고 하면 됩니다.
 
 ## 어떻게 놓는가
 
@@ -177,7 +178,7 @@ npx github:wonseokjung/connect-ai-video-motion gallery vm-demo --sheet
 
 ## 카탈로그
 
-`npx github:wonseokjung/connect-ai-video-motion catalog` 이 전부 보여 줍니다. 지금 **재생되는 그래픽 <!--n-->80<!--/n-->개**, 그리고 아직 안 되는 4개는 이유와 함께 목록에 있습니다.
+`npx connect-ai-video-motion catalog` 이 전부 보여 줍니다. 지금 **재생되는 그래픽 <!--n-->80<!--/n-->개**, 그리고 아직 안 되는 4개는 이유와 함께 목록에 있습니다.
 
 | 출처 | 수 | 예 |
 |---|---|---|
@@ -224,7 +225,7 @@ plan 한 줄에 `"scale": 1.3`(이 그래픽만 30 % 크게. 자리가 없으면
 어댑터가 블록(HTML + CSS + `window.__timelines` 의 멈춘 GSAP 타임라인)을 투명 iframe 안에서 돌리고 Remotion 프레임마다 그 시간으로 맞춥니다. GSAP 와 플러그인은 CDN 이 아니라 설치된 `gsap` 패키지에서 가져옵니다. `Math.random` 은 씨앗을 고정하고 CSS 애니메이션도 프레임 시간에 붙잡아 두어, 몇 번을 렌더해도 같은 그림이 나옵니다. `meta.window` 는 블록 타임라인의 몇 초를 쓸지, `meta.crop` 은 캔버스의 어느 부분을, `meta.text` 는 내 말을 어디에 넣을지입니다.
 
 ```bash
-npx github:wonseokjung/connect-ai-video-motion hf-import <폴더>   # 레지스트리, 템플릿, 내 .html 파일
+npx connect-ai-video-motion hf-import <폴더>   # 레지스트리, 템플릿, 내 .html 파일
 ```
 
 블록마다 검사합니다. WebGL · canvas, 자체 영상 · 소리, `requestAnimationFrame` 루프, 인터넷에서 가져오는 스크립트, 템플릿 자리표시자, 타임라인 없음은 `unsupported` 와 이유로 목록에 남습니다.
