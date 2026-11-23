@@ -28,19 +28,6 @@ npx connect-ai-video-motion install-skill
 
 Then open a new chat with your agent, drop in your video and say "put motion graphics on my video". The agent runs the kit for you: analyze, plan, check, render.
 
-<details>
-<summary>Without an agent, or to try it first</summary>
-
-```bash
-npx connect-ai-video-motion doctor          # check Node, Remotion, face and body detection
-npx connect-ai-video-motion demo            # built-in sample, start to finish
-npx connect-ai-video-motion my-video.mp4    # your own video, no agent
-```
-
-<img src="docs/terminal.png" width="560" alt="What you see in the terminal">
-
-</details>
-
 ## More you can make
 
 The catalog has <!--n-->80<!--/n--> graphics, each one line of `plan.json`. Open a group to see them; the [catalog page](docs/index.html) has every one as a living clip with a prompt to copy.

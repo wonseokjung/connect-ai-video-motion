@@ -28,19 +28,6 @@ npx connect-ai-video-motion install-skill
 
 그다음 에이전트를 새 대화로 열고, 내 영상을 넣고 "내 영상에 모션그래픽 넣어줘" 라고 말하면 돼요. 분석, 계획, 검사, 렌더는 에이전트가 키트로 해요.
 
-<details>
-<summary>에이전트 없이, 또는 먼저 해 보고 싶다면</summary>
-
-```bash
-npx connect-ai-video-motion doctor          # 내 컴퓨터 점검(Node, Remotion, 얼굴 · 몸 인식)
-npx connect-ai-video-motion demo            # 들어 있는 샘플로 처음부터 끝까지
-npx connect-ai-video-motion my-video.mp4    # 내 영상, 에이전트 없이
-```
-
-<img src="docs/terminal.png" width="560" alt="터미널에서 보이는 화면">
-
-</details>
-
 ## 이런 것도 만들 수 있어요
 
 카탈로그에 그래픽 <!--n-->80<!--/n-->개, 하나에 `plan.json` 한 줄. 묶음을 열어 보세요. [카탈로그 페이지](docs/index.html)에는 전부 살아 있는 클립과 복사할 프롬프트가 있습니다.
