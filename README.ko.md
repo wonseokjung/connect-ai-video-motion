@@ -4,6 +4,16 @@
 
 [![만든 사람의 실제 영상 위 모션그래픽](docs/hero_v2.webp)](docs/index.html)
 
+## 시작
+
+한 줄이면 돼요. 내 코딩 에이전트(Claude Code, Codex, Antigravity)에 스킬을 줘요:
+
+```bash
+npx connect-ai-video-motion install-skill
+```
+
+그다음 에이전트를 새 대화로 열고, 내 영상을 넣고 "내 영상에 모션그래픽 넣어줘" 라고 말하면 돼요. 분석, 계획, 검사, 렌더는 에이전트가 키트로 해요.
+
 <!-- gallery:start -->
 ## 쇼케이스
 
@@ -17,16 +27,6 @@
 <tr><!-- slot: pass-behind --><td width="50%" valign="top"><img src="docs/gallery/showcase/body-pass-behind.webp" width="100%" alt="Object passes behind you"><br><b>Object passes behind you</b><br>3D 물체가 눈높이로 방을 날아와 머리 뒤로 지나가며 빛 꼬리를 남깁니다.<br><code>{&quot;kind&quot;:&quot;body/pass-behind&quot;,&quot;text&quot;:&quot;AI native&quot;}</code></td><!-- slot: afterimage --><td width="50%" valign="top"><img src="docs/gallery/showcase/body-afterimage.webp" width="100%" alt="Afterimages of your motion"><br><b>Afterimages of your motion</b><br>조금 전의 내 윤곽이 색 실루엣으로 뒤에 남습니다. 팔을 움직이면 무지개처럼 따라옵니다.<br><code>{&quot;kind&quot;:&quot;body/afterimage&quot;}</code></td></tr>
 <tr><!-- slot: hand-dial --><td width="50%" valign="top"><img src="docs/gallery/showcase/body-hand-dial.webp" width="100%" alt="Dial you turn by hand"><br><b>Dial you turn by hand</b><br>든 손 옆에 둥근 게이지가 서고, 바늘이 실제 손 기울기를 따라갑니다.<br><code>{&quot;kind&quot;:&quot;body/hand-dial&quot;,&quot;text&quot;:&quot;Quality&quot;}</code></td><!-- slot: scramble-title --><td width="50%" valign="top"><img src="docs/gallery/showcase/hyperframes-gold-scramble-title.webp" width="100%" alt="Scramble title (GSAP)"><br><b>Scramble title (GSAP)</b><br>얇은 제목이 한 글자씩 풀려 나오고, 아래에 금색 선이 그어집니다.<br><code>{&quot;kind&quot;:&quot;hyperframes/gold-scramble-title&quot;,&quot;text&quot;:&quot;Predict&quot;,&quot;sub&quot;:&quot;the future&quot;}</code></td></tr>
 </table>
-
-## 시작
-
-한 줄이면 돼요. 내 코딩 에이전트(Claude Code, Codex, Antigravity)에 스킬을 줘요:
-
-```bash
-npx connect-ai-video-motion install-skill
-```
-
-그다음 에이전트를 새 대화로 열고, 내 영상을 넣고 "내 영상에 모션그래픽 넣어줘" 라고 말하면 돼요. 분석, 계획, 검사, 렌더는 에이전트가 키트로 해요.
 
 ## 이런 것도 만들 수 있어요
 

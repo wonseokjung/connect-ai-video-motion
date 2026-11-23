@@ -26,7 +26,7 @@ const opt = (n, d = null) => {
   return i >= 0 && argv[i + 1] && !argv[i + 1].startsWith('--') ? argv[i + 1] : d;
 };
 const pos = argv.filter((a, i) => !a.startsWith('--') && !(i > 0 && argv[i - 1].startsWith('--') && ['only', 'agent', 'dir', 'style', 'source', 'secs', 'out', 'prefix', 'license'].includes(argv[i - 1].slice(2))));
-const cmd = pos[0] || 'help';
+const cmd = (flag('help') || argv.includes('-h')) ? 'help' : (pos[0] || 'help');
 const log = (...a) => console.log(...a);
 const secs = (t) => ((Date.now() - t) / 1000).toFixed(1) + ' s';
 

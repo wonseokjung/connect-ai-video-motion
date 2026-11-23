@@ -4,6 +4,16 @@
 
 [![Motion graphics on the author's own talking videos](docs/hero_v2.webp)](docs/index.html)
 
+## Start
+
+One line. It gives your coding agent (Claude Code, Codex, Antigravity) the skill:
+
+```bash
+npx connect-ai-video-motion install-skill
+```
+
+Then open a new chat with your agent, drop in your video and say "put motion graphics on my video". The agent runs the kit for you: analyze, plan, check, render.
+
 <!-- gallery:start -->
 ## Showcase
 
@@ -17,16 +27,6 @@ Made with this kit on the author's own videos (AI Mentor Jay, shown with his per
 <tr><!-- slot: pass-behind --><td width="50%" valign="top"><img src="docs/gallery/showcase/body-pass-behind.webp" width="100%" alt="Object passes behind you"><br><b>Object passes behind you</b><br>A 3D object flies through the room at eye height and passes behind your head, leaving a trail of light.<br><code>{&quot;kind&quot;:&quot;body/pass-behind&quot;,&quot;text&quot;:&quot;AI native&quot;}</code></td><!-- slot: afterimage --><td width="50%" valign="top"><img src="docs/gallery/showcase/body-afterimage.webp" width="100%" alt="Afterimages of your motion"><br><b>Afterimages of your motion</b><br>Your outline from a moment ago trails you as colour silhouettes. Move your arms and a rainbow follows.<br><code>{&quot;kind&quot;:&quot;body/afterimage&quot;}</code></td></tr>
 <tr><!-- slot: hand-dial --><td width="50%" valign="top"><img src="docs/gallery/showcase/body-hand-dial.webp" width="100%" alt="Dial you turn by hand"><br><b>Dial you turn by hand</b><br>A round gauge stands by your raised hand. Its needle follows the real tilt of your hand.<br><code>{&quot;kind&quot;:&quot;body/hand-dial&quot;,&quot;text&quot;:&quot;Quality&quot;}</code></td><!-- slot: scramble-title --><td width="50%" valign="top"><img src="docs/gallery/showcase/hyperframes-gold-scramble-title.webp" width="100%" alt="Scramble title (GSAP)"><br><b>Scramble title (GSAP)</b><br>A thin title decodes letter by letter and a gold line draws under it.<br><code>{&quot;kind&quot;:&quot;hyperframes/gold-scramble-title&quot;,&quot;text&quot;:&quot;Predict&quot;,&quot;sub&quot;:&quot;the future&quot;}</code></td></tr>
 </table>
-
-## Start
-
-One line. It gives your coding agent (Claude Code, Codex, Antigravity) the skill:
-
-```bash
-npx connect-ai-video-motion install-skill
-```
-
-Then open a new chat with your agent, drop in your video and say "put motion graphics on my video". The agent runs the kit for you: analyze, plan, check, render.
 
 ## More you can make
 
