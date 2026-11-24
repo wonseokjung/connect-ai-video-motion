@@ -250,3 +250,16 @@ HyperFrames 레지스트리 전체(456개)는 패키지에 없습니다. 받아�
 오픈소스 부품으로 만들었고 패키지 · 버전 · 라이선스를 [NOTICE.md](NOTICE.md) 에 하나씩 적었습니다. npm 패키지 안의 샘플 영상은 코드로 그린 대역과 합성 목소리입니다. `docs/` 의 클립에는 만든 사람이 허락하에 나옵니다. `tools/make-showcase.mjs` 와 `tools/make-docs.mjs` 로 만들었습니다.
 
 MIT · CONNECT AI LAB
+
+<!-- team:start -->
+## CONNECT AI LAB의 AI 직원들
+
+AI 직원을 하나씩 오픈소스로 만들고 있어요. 필요한 직원부터 데려가 쓰세요.
+
+<table>
+<tr><td width="34%" valign="top"><b>사업 해부 직원</b><br><a href="https://github.com/wonseokjung/reversebusiness"><code>reversebusiness</code></a></td><td valign="top">사업 웹사이트 주소 하나 주면 그 사업이 어떻게 돈 버는지 읽어 줘요.</td></tr>
+<tr><td width="34%" valign="top"><b>영상 편집 직원</b> · <b>지금 보는 직원</b><br><a href="https://github.com/wonseokjung/connect-ai-video-motion"><code>connect-ai-video-motion</code></a></td><td valign="top">내 영상을 주면 몸을 피해서 빈자리에 모션그래픽을 넣어 줘요.</td></tr>
+<tr><td width="34%" valign="top"><b>모션그래픽 직원</b><br><a href="https://github.com/wonseokjung/connect-ai-motion"><code>connect-ai-motion</code></a></td><td valign="top">글 몇 줄 주면 모션그래픽 영상을 만들어 줘요. 찍은 영상은 없어도 돼요.</td></tr>
+<tr><td width="34%" valign="top"><b>마케팅팀</b><br><a href="https://github.com/wonseokjung/connect-ai-marketer"><code>connect-ai-marketer</code></a></td><td valign="top">내 브라우저에서 24시간 댓글, 리스닝, 업로드를 맡아요.</td></tr>
+</table>
+<!-- team:end -->
