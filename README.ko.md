@@ -14,6 +14,13 @@ npx connect-ai-video-motion install-skill
 
 그다음 에이전트를 새 대화로 열고, 내 영상을 넣고 "내 영상에 모션그래픽 넣어줘" 라고 말하면 돼요. 분석, 계획, 검사, 렌더는 에이전트가 키트로 해요.
 
+## 실제로 만든 영상
+
+<table><tr>
+<td width="30%" valign="top"><a href="https://www.youtube.com/shorts/fQvxvk9Wz10"><img src="docs/brand/short_cover.jpg" width="100%" alt="내 얼굴 나오는 영상, 더 잘 팔리게 편집하는 AI 직원"></a><br><b>숏츠</b><br><sub>제 영상에 이 도구로 만들었어요. <a href="https://www.youtube.com/shorts/fQvxvk9Wz10">유튜브</a> · <a href="https://www.instagram.com/reel/DgGc6Ouyjzv/">인스타그램</a> · <a href="https://www.tiktok.com/@aimentorjay/video/7711556091162758420">틱톡</a></sub></td>
+<td valign="top"><a href="https://www.instagram.com/p/DgGa9x6kssz/"><img src="docs/brand/carousel/01.jpg" width="24%" alt="slide 1"></a> <a href="https://www.instagram.com/p/DgGa9x6kssz/"><img src="docs/brand/carousel/02.jpg" width="24%" alt="slide 2"></a> <a href="https://www.instagram.com/p/DgGa9x6kssz/"><img src="docs/brand/carousel/03.jpg" width="24%" alt="slide 3"></a> <a href="https://www.instagram.com/p/DgGa9x6kssz/"><img src="docs/brand/carousel/04.jpg" width="24%" alt="slide 4"></a> <a href="https://www.instagram.com/p/DgGa9x6kssz/"><img src="docs/brand/carousel/05.jpg" width="24%" alt="slide 5"></a> <a href="https://www.instagram.com/p/DgGa9x6kssz/"><img src="docs/brand/carousel/06.jpg" width="24%" alt="slide 6"></a> <a href="https://www.instagram.com/p/DgGa9x6kssz/"><img src="docs/brand/carousel/07.jpg" width="24%" alt="slide 7"></a> <a href="https://www.instagram.com/p/DgGa9x6kssz/"><img src="docs/brand/carousel/08.jpg" width="24%" alt="slide 8"></a> <br><b>8장으로 보는 원리</b><br><sub><a href="https://www.instagram.com/p/DgGa9x6kssz/">인스타그램 캐러셀</a> · 전체 과정 배우기: <a href="https://www.aicitybuilders.com/vibecoding">비주얼 바이브코딩</a></sub></td>
+</tr></table>
+
 <!-- gallery:start -->
 ## 쇼케이스
 
