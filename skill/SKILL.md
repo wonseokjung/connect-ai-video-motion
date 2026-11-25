@@ -21,11 +21,6 @@ In chat apps that render Markdown images (Antigravity, Cursor, IDE chat), open e
 
 Local copies (`chat-*.gif`, square `*.gif`, and `mascot.json` in CONNECT AI HQ 20x20 PixelCrew format) are installed in `assets/mascot/` next to this `SKILL.md`. Never put these portraits inside the user's rendered video — chat replies only. Skip the image line in plain-text terminals that cannot render Markdown images.
 
-## Team Handoff (`connect-ai-handoff/v1`)
-When working in a multi-employee pipeline (e.g. `connect-ai-video-motion` -> `connect-ai-writer` -> `connect-ai-marketer`, or inside CONNECT AI HQ):
-- Before starting, read `handoff.json` in the work folder if present (or call HQ MCP `read_handoff_packet`).
-- On completion, write `handoff.json` (`schema: "connect-ai-handoff/v1"`, `from: "connect-ai-video-motion"`, `to: "connect-ai-writer"`, `summary`, `artifacts`, `nextAction`) or call HQ MCP `write_handoff_packet` with only safe deliverable paths (`out/final.mp4`, `out/short_9x16.mp4`, `work/words.json`; never secrets).
-
 ## Rules you must keep
 - Only what the speaker said. Every graphic comes from a word in `work/words.json` (or from `my-info.json`, which the user wrote). Never add numbers, claims or names they did not say.
 - 1 to 4 words per graphic. Key word, number or thing. Never the whole sentence.
