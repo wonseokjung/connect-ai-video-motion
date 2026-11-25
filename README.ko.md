@@ -14,6 +14,14 @@ npx connect-ai-video-motion install-skill
 
 그다음 에이전트를 새 대화로 열고, 내 영상을 넣고 "내 영상에 모션그래픽 넣어줘" 라고 말하면 돼요. 분석, 계획, 검사, 렌더는 에이전트가 키트로 해요.
 
+<p align="center">
+  <img src="skill/assets/mascot/greet.gif" width="68" alt="영사 화원 · 인사">&nbsp;
+  <img src="skill/assets/mascot/analyze.gif" width="68" alt="영사 화원 · 분석">&nbsp;
+  <img src="skill/assets/mascot/render.gif" width="68" alt="영사 화원 · 편집">&nbsp;
+  <img src="skill/assets/mascot/done.gif" width="68" alt="영사 화원 · 완성"><br>
+  <sub><b>영사 화원 · 영상 편집</b> (CONNECT AI HQ PixelCrew) — 대화할 때 인사·얼굴/손 분석·모션 편집·완성 상태에 맞춰 작게 움직이며 표정이 바뀌는 픽셀 캐릭터예요.</sub>
+</p>
+
 ## 실제로 만든 영상
 
 <table><tr>
