@@ -14,6 +14,14 @@ npx connect-ai-video-motion install-skill
 
 Then open a new chat with your agent, drop in your video and say "put motion graphics on my video". The agent runs the kit for you: analyze, plan, check, render.
 
+<p align="center">
+  <img src="skill/assets/mascot/greet.gif" width="68" alt="Film Editor Painter · Greet">&nbsp;
+  <img src="skill/assets/mascot/analyze.gif" width="68" alt="Film Editor Painter · Analyze">&nbsp;
+  <img src="skill/assets/mascot/render.gif" width="68" alt="Film Editor Painter · Render">&nbsp;
+  <img src="skill/assets/mascot/done.gif" width="68" alt="Film Editor Painter · Done"><br>
+  <sub><b>Yeongsa Film Painter</b> (CONNECT AI HQ PixelCrew) — gently animated pixel portrait that switches expression as it greets, tracks face/hands, edits, and finishes your video.</sub>
+</p>
+
 ## Watch it work
 
 <table><tr>
